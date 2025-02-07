@@ -1,2 +1,4 @@
 SRCS= \
-	main.c
+	main.c\
+	cleaner.c\
+	keyhooks.c

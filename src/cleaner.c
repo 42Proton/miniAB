@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cleaner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/07 21:17:27 by abueskander      ###   ########.fr       */
+/*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
+/*   Updated: 2025/02/07 21:17:55 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-int	init_mlx_pointers(t_rtptr *rts)
+void	cleaner(t_rtptr *rts, char *error)
 {
-	rts->mlx = mlx_init();
-	if (!rts->mlx)
-		return (EXIT_FAILURE);
-	rts->win = mlx_new_window(rts->mlx, WID, HEG, "miniAB");
-	if (!rts->win)
-	{
+	ft_dprintf(2, "%s\n", error);
+	if (rts->win)
+		mlx_destroy_window(rts->mlx, rts->win);
+	if (rts->mlx)
 		mlx_destroy_display(rts->mlx);
-		return (EXIT_FAILURE);
-	}
-	return (EXIT_SUCCESS);
-}
-
-int	main(void)
-{
-	t_rtptr	rts;
-
-	if (init_mlx_pointers(&rts))
-		cleaner(&rts, "Error initialaizing!");
-	mlx_key_hook(rts.win, &keyhook, &rts);
-	mlx_loop(rts.mlx);
-	perror("Loop:");
+	free(rts->mlx);
+	exit(EXIT_SUCCESS);
 }

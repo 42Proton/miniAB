@@ -6,22 +6,31 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/07 20:27:25 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/07 20:46:57 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 #define MINIRT_H
 
+#define XK_MISCELLANY
 #include <libft.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <mlx.h>
 #include <math.h>
-
+#include <X11/X.h>
+#include <X11/keysymdef.h>
+#define PI 3.14
+#define WID 1000
+#define HEG 720
 typedef struct s_rtptr
 {
         void *mlx;
         void *win;
 } t_rtptr;
+
+void    cleaner(t_rtptr *rts, char *error);
+int     keyhook(int keycode,void *param);
+
 #endif
