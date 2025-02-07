@@ -1,6 +1,6 @@
 include Includes.mk
 CC = cc 
-LINKERS= -L./libft/ -lft -L./minilibx-linux/ -lmlx_Linux -lmlx -lXext -lX11 -lm
+LINKERS= -L./libft/ -lft -L./minilibx-linux/ -lmlx_Linux -lmlx -lXext -lX11 -lm -g
 CFLAGS = -Wall -Werror -Werror -I./includes/ -I./libft/includes/ -I./minilibx-linux/
 SRC_DIR = src
 OBJ_DIR = build
