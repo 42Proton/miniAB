@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:06:15 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/08 00:46:41 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/08 11:11:15 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void 	sphere_draw(double radius, double res, t_rtptr *rts)
                 j = 0;
                 while( j < radius)
                 {
-                        // mlx_pixel_put(rts->mlx,rts->win,cos(i) * j + (WID / 2), sin(i) * j +( HEG /2) ,i * 100 + 0x441101);
-                        put_pixel(cos(i) * j + WID /2,sin(i) * j + HEG /2 ,0xFF0F00,&rts->img_st);
+                         mlx_pixel_put(rts->mlx,rts->win,cos(i) * j + (WID / 2), sin(i) * j +( HEG /2) ,i * 100 + 0x441101);
+                        //put_pixel(cos(i) * j + WID /2,sin(i) * j + HEG /2 ,0xFF0F00,&rts->img_st);
                         j+= res;
                 }
                 i+= res;

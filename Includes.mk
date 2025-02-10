@@ -3,3 +3,6 @@ SRCS= \
 	cleaner.c\
 	keyhooks.c\
 	object.c
+MATH=\
+	tuples.c\
+	obj_utils.c

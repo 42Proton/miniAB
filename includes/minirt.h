@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/08 00:28:06 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/10 15:33:09 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,10 @@
 
 #define XK_MISCELLANY
 #include <libft.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include <object.h>
 #include <mlx.h>
-#include <math.h>
 #include <X11/X.h>
 #include <X11/keysymdef.h>
-#define PI 3.14
 #define WID 1000
 #define HEG 720
 typedef struct s_image
@@ -31,7 +28,7 @@ typedef struct s_image
         int size_line;
         int endian;
         char *data;
-}t_image;
+} t_image;
 typedef struct s_rtptr
 {
         void *mlx;
@@ -39,8 +36,8 @@ typedef struct s_rtptr
         t_image img_st;
 } t_rtptr;
 
-void    cleaner(t_rtptr *rts, char *error);
-int     keyhook(int keycode,void *param);
-void 	sphere_draw(double radius, double res,t_rtptr *rts);
+void cleaner(t_rtptr *rts, char *error);
+int keyhook(int keycode, void *param);
+void sphere_draw(double radius, double res, t_rtptr *rts);
 
 #endif
