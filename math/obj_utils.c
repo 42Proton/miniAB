@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/10 16:54:54 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/10 16:56:44 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ float *tupleadd(float *a, float *b)
         if (a[W] + b[W] > 1)
                 return (NULL);
         res = malloc(sizeof(float) * 4);
+        if (!res)
+                return (NULL);
         res[X] = a[X] + b[X];
         res[Y] = a[Y] + b[Y];
         res[Z] = a[Z] + b[Z];
@@ -44,6 +46,8 @@ float *tuplesub(float *a, float *b)
         float *res;
 
         res = malloc(sizeof(float) * 4);
+        if (!res)
+                return (NULL);
         res[X] = a[X] - b[X];
         res[Y] = a[Y] - b[Y];
         res[Z] = a[Z] - b[Z];
@@ -55,6 +59,8 @@ float *tublenegt(float *a)
         float *res;
 
         res = malloc(sizeof(float) * 4);
+        if (!res)
+                return (NULL);
         res[X] = -a[X];
         res[Y] = -a[Y];
         res[Z] = -a[Z];
