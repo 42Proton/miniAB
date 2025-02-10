@@ -48,6 +48,10 @@
     "stdexcept": "cpp",
     "streambuf": "cpp",
     "typeinfo": "cpp",
-    "minirt.h": "c"
+    "minirt.h": "c",
+    "libft.h": "c",
+    "stdlib.h": "c",
+    "keysymdef.h": "c",
+    "object.h": "c"
   }
 }
