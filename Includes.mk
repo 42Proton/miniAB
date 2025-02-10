@@ -5,4 +5,5 @@ SRCS= \
 	object.c
 MATH=\
 	tuples.c\
-	obj_utils.c
+	obj_utils.c\
+	scaler.c

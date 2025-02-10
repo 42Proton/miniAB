@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/10 15:33:09 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/10 17:13:43 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ typedef struct s_rtptr
 void cleaner(t_rtptr *rts, char *error);
 int keyhook(int keycode, void *param);
 void sphere_draw(double radius, double res, t_rtptr *rts);
+int init_mlx_pointers(t_rtptr *rts);
 
 #endif

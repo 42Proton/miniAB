@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/10 16:56:44 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/10 17:15:59 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ float *tuplesub(float *a, float *b)
         res[W] = a[W] - b[W];
         return (res);
 }
-float *tublenegt(float *a)
+float *tuplenegt(float *a)
 {
         float *res;
 
