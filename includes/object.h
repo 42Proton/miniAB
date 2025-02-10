@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/10 16:20:22 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/10 16:47:24 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ enum e_pov
         POINT
 };
 int floatcmp(float a, float b);
-float *floatadd(float *a, float *b);
+int tuplecmp(float *a, float *b);
+float *tuplesub(float *a, float *b);
+float *tupleadd(float *a, float *b);
 float *vector(float x, float y, float z);
 float *point(float x, float y, float z);
 

@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/10 16:02:12 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/10 16:54:54 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,14 @@ int floatcmp(float a, float b)
         else
                 return (0);
 }
-float *floatadd(float *a, float *b)
+int tuplecmp(float *a, float *b)
+{
+        if (floatcmp(a[X], b[X]) && floatcmp(a[Y], b[Y]) && floatcmp(a[Z], b[Z]) && floatcmp(a[W], b[W]))
+                return (1);
+        else
+                return (0);
+}
+float *tupleadd(float *a, float *b)
 {
         float *res;
 
@@ -32,7 +39,7 @@ float *floatadd(float *a, float *b)
         res[W] = a[W] + b[W];
         return (res);
 }
-float *floadsub(float *a, float *b)
+float *tuplesub(float *a, float *b)
 {
         float *res;
 
@@ -41,5 +48,16 @@ float *floadsub(float *a, float *b)
         res[Y] = a[Y] - b[Y];
         res[Z] = a[Z] - b[Z];
         res[W] = a[W] - b[W];
+        return (res);
+}
+float *tublenegt(float *a)
+{
+        float *res;
+
+        res = malloc(sizeof(float) * 4);
+        res[X] = -a[X];
+        res[Y] = -a[Y];
+        res[Z] = -a[Z];
+        res[W] = -a[W];
         return (res);
 }

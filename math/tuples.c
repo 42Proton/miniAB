@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:29:01 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/10 16:19:42 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/10 16:21:55 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ float *point(float x, float y, float z)
         vop[Y] = y;
         vop[Z] = z;
         vop[W] = POINT;
-
         return vop;
 }
 float *vector(float x, float y, float z)
@@ -33,6 +32,5 @@ float *vector(float x, float y, float z)
         vop[Y] = y;
         vop[Z] = z;
         vop[W] = VECTOR;
-
         return vop;
 }
