@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/10 17:15:59 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/11 16:07:05 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,51 +19,51 @@ int floatcmp(float a, float b)
         else
                 return (0);
 }
-int tuplecmp(float *a, float *b)
+int tuplecmp(t_tuple *a, t_tuple *b)
 {
-        if (floatcmp(a[X], b[X]) && floatcmp(a[Y], b[Y]) && floatcmp(a[Z], b[Z]) && floatcmp(a[W], b[W]))
+        if (floatcmp(a->X, b->X) && floatcmp(a->Y, b->Y) && floatcmp(a->Z, b->Z) && floatcmp(a->W, b->W))
                 return (1);
         else
                 return (0);
 }
-float *tupleadd(float *a, float *b)
+t_tuple *tupleadd(t_tuple *a, t_tuple *b)
 {
-        float *res;
+        t_tuple *res;
 
-        if (a[W] + b[W] > 1)
+        if (a->W + b->W > 1)
                 return (NULL);
-        res = malloc(sizeof(float) * 4);
+        res = malloc(sizeof(t_tuple));
         if (!res)
                 return (NULL);
-        res[X] = a[X] + b[X];
-        res[Y] = a[Y] + b[Y];
-        res[Z] = a[Z] + b[Z];
-        res[W] = a[W] + b[W];
+        res->X = a->X + b->X;
+        res->Y = a->Y + b->Y;
+        res->Z = a->Z + b->Z;
+        res->W = a->W + b->W;
         return (res);
 }
-float *tuplesub(float *a, float *b)
+t_tuple *tuplesub(t_tuple *a, t_tuple *b)
 {
-        float *res;
+        t_tuple *res;
 
-        res = malloc(sizeof(float) * 4);
+        res = malloc(sizeof(t_tuple));
         if (!res)
                 return (NULL);
-        res[X] = a[X] - b[X];
-        res[Y] = a[Y] - b[Y];
-        res[Z] = a[Z] - b[Z];
-        res[W] = a[W] - b[W];
+        res->X = a->X - b->X;
+        res->Y = a->Y - b->Y;
+        res->Z = a->Z - b->Z;
+        res->W = a->W - b->W;
         return (res);
 }
-float *tuplenegt(float *a)
+t_tuple *tuplenegt(t_tuple *a)
 {
-        float *res;
+        t_tuple *res;
 
-        res = malloc(sizeof(float) * 4);
+        res = malloc(sizeof(t_tuple));
         if (!res)
                 return (NULL);
-        res[X] = -a[X];
-        res[Y] = -a[Y];
-        res[Z] = -a[Z];
-        res[W] = -a[W];
+        res->X = -a->X;
+        res->Y = -a->Y;
+        res->Z = -a->Z;
+        res->W = -a->W;
         return (res);
 }

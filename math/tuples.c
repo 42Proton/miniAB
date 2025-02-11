@@ -6,31 +6,35 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:29:01 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/10 16:57:23 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/11 16:07:50 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <object.h>
 
-float *point(float x, float y, float z)
+t_tuple *point(float x, float y, float z)
 {
-        float *vop;
+        t_tuple *pnt;
 
-        vop = malloc(sizeof(float) * 4);
-        vop[X] = x;
-        vop[Y] = y;
-        vop[Z] = z;
-        vop[W] = POINT;
-        return vop;
+        pnt = malloc(sizeof(t_tuple));
+        if (!pnt)
+                return (NULL);
+        pnt->W = x;
+        pnt->Y = y;
+        pnt->Z = z;
+        pnt->W = POINT;
+        return pnt;
 }
-float *vector(float x, float y, float z)
+t_tuple *vector(float x, float y, float z)
 {
-        float *vop;
+        t_tuple *vec;
 
-        vop = malloc(sizeof(float) * 4);
-        vop[X] = x;
-        vop[Y] = y;
-        vop[Z] = z;
-        vop[W] = VECTOR;
-        return vop;
+        vec = malloc(sizeof(t_tuple));
+        if (!vec)
+                return (NULL);
+        vec->X = x;
+        vec->Y = y;
+        vec->Z = z;
+        vec->W = VECTOR;
+        return vec;
 }
