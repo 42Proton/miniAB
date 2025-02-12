@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/12 10:45:42 by bismail          ###   ########.fr       */
+/*   Updated: 2025/02/12 10:57:51 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ t_tuple *tupleadd(t_tuple *a, t_tuple *b)
 }
 t_tuple *tuplesub(t_tuple *a, t_tuple *b)
 {
-        struct s_tuple *res;
+        t_tuple *res;
 
-        res = malloc(sizeof(*res) * 4);
+        res = malloc(sizeof(t_tuple));
         if (!res)
                 return (NULL);
         res->X = a->X - b->X;
