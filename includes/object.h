@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/10 17:15:49 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/12 11:54:18 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,29 @@
 #define EPSILON 0.00001
 #define PI 3.14159
 
-enum e_axis
+typedef struct s_tuple
 {
-        X,
-        Y,
-        Z,
-        W
-};
+        float X;
+        float Y;
+        float Z;
+        float W;
+}       t_tuple;
+
 enum e_pov
 {
         VECTOR,
         POINT
 };
 int floatcmp(float a, float b);
-int tuplecmp(float *a, float *b);
-float *tuplesub(float *a, float *b);
-float *tupleadd(float *a, float *b);
-float *vector(float x, float y, float z);
-float *point(float x, float y, float z);
-float *tupleSdiv(float *a, float scale);
-float *tupleSmult(float *a, float scale);
-float *tuplenegt(float *a);
+int tuplecmp(t_tuple *a, t_tuple *b);
+t_tuple *tuplesub(t_tuple *a, t_tuple *b);
+t_tuple *tupleadd(t_tuple *a, t_tuple *b);
+t_tuple *vector(float x, float y, float z);
+t_tuple *point(float x, float y, float z);
+t_tuple *tupleSdiv(t_tuple *a, float scale);
+t_tuple *tupleSmult(t_tuple *a, float scale);
+t_tuple *tuplenegt(t_tuple *a);
+float tuplemagnitude(t_tuple *a);
+t_tuple *tuplenormalize(t_tuple *a);
 
 #endif
