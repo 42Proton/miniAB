@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 09:58:19 by bismail           #+#    #+#             */
-/*   Updated: 2025/02/12 10:51:37 by bismail          ###   ########.fr       */
+/*   Updated: 2025/02/12 11:52:46 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_tuple *tuplenormalize(t_tuple *a)
 {
         t_tuple *res;
-        double   mag;
+        float   mag;
 
         res = malloc(sizeof(t_tuple));
         if(!res)

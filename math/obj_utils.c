@@ -6,13 +6,13 @@
 /*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/12 10:57:51 by bismail          ###   ########.fr       */
+/*   Updated: 2025/02/12 11:54:44 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <object.h>
 
-int floatcmp(double a, double b)
+int floatcmp(float a, float b)
 {
         if (fabs(a - b) < EPSILON)
                 return (1);
@@ -49,8 +49,6 @@ t_tuple *tuplesub(t_tuple *a, t_tuple *b)
         if (!res)
                 return (NULL);
         res->X = a->X - b->X;
-        if(res->X)
-                printf("Hi");
         res->Y = a->Y - b->Y;
         res->Z = a->Z - b->Z;
         res->W = a->W - b->W;

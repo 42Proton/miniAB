@@ -6,13 +6,13 @@
 /*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:07:54 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/12 10:45:30 by bismail          ###   ########.fr       */
+/*   Updated: 2025/02/12 11:54:25 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <object.h>
 
-t_tuple *tupleSmult(t_tuple *a, double scale)
+t_tuple *tupleSmult(t_tuple *a, float scale)
 {
         t_tuple *res;
 
@@ -25,7 +25,7 @@ t_tuple *tupleSmult(t_tuple *a, double scale)
         res->W = a->W;
         return (res);
 }
-t_tuple *tupleSdiv(t_tuple *a, double scale)
+t_tuple *tupleSdiv(t_tuple *a, float scale)
 {
         t_tuple *res;
 
@@ -38,9 +38,9 @@ t_tuple *tupleSdiv(t_tuple *a, double scale)
         res->W = a->W;
         return (res);
 }
-double tuplemagnitude(t_tuple *a)
+float tuplemagnitude(t_tuple *a)
 {
-        double res;
+        float res;
 
         if (a->W == POINT)
                 return (0);
