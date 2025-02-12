@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:14:02 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/12 16:15:10 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/12 16:20:46 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_tuple *tuplecross(t_tuple *a, t_tuple *b)
         return (res);
 }
 
-double tupledot(t_tuple *a, t_tuple *b)
+float tupledot(t_tuple *a, t_tuple *b)
 {
-        double res;
+        float res;
 
         if (!a || !b)
                 return (0);
