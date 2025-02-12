@@ -1,7 +1,7 @@
 include Includes.mk
 CC = cc 
-LINKERS= -L./libft/ -lft -L./minilibx-linux/ -lmlx_Linux -lmlx -lXext -lX11 -lm -g
-CFLAGS = -Wall -Werror -Werror -I./includes/ -I./libft/includes/ -I./minilibx-linux/
+LINKERS= -L./libft/ -lft -L./minilibx-linux/ -lmlx_Linux -lmlx -lXext -lX11 -lm
+CFLAGS = -Wall -Werror -Werror -g -I./includes/ -I./libft/includes/ -I./minilibx-linux/
 SRC_DIR = src
 MATH_DIR = math
 

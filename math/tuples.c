@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:29:01 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/11 16:07:50 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/12 11:49:36 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_tuple *point(float x, float y, float z)
         pnt = malloc(sizeof(t_tuple));
         if (!pnt)
                 return (NULL);
-        pnt->W = x;
+        pnt->X = x;
         pnt->Y = y;
         pnt->Z = z;
         pnt->W = POINT;

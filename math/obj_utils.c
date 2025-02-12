@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/11 16:07:05 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/12 15:05:08 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,18 @@ t_tuple *tuplenegt(t_tuple *a)
         res->Y = -a->Y;
         res->Z = -a->Z;
         res->W = -a->W;
+        return (res);
+}
+t_tuple *tupledot(t_tuple *a, t_tuple *b)
+{
+        t_tuple *res;
+
+        res = malloc(sizeof(t_tuple));
+        if (!res)
+                return (NULL);
+        res->X = a->X * b->X;
+        res->Y = a->Y * b->Y;
+        res->Z = a->Z * b->Z;
+        res->W = a->W * b->W;
         return (res);
 }
