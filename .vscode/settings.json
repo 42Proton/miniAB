@@ -52,6 +52,7 @@
     "libft.h": "c",
     "stdlib.h": "c",
     "keysymdef.h": "c",
-    "object.h": "c"
+    "object.h": "c",
+    "ctype.h": "c"
   }
 }

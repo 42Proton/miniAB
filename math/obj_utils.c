@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   obj_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/11 16:07:05 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/12 10:45:42 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <object.h>
 
-int floatcmp(float a, float b)
+int floatcmp(double a, double b)
 {
         if (fabs(a - b) < EPSILON)
                 return (1);
@@ -43,12 +43,14 @@ t_tuple *tupleadd(t_tuple *a, t_tuple *b)
 }
 t_tuple *tuplesub(t_tuple *a, t_tuple *b)
 {
-        t_tuple *res;
+        struct s_tuple *res;
 
-        res = malloc(sizeof(t_tuple));
+        res = malloc(sizeof(*res) * 4);
         if (!res)
                 return (NULL);
         res->X = a->X - b->X;
+        if(res->X)
+                printf("Hi");
         res->Y = a->Y - b->Y;
         res->Z = a->Z - b->Z;
         res->W = a->W - b->W;

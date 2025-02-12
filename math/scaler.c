@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   scaler.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:07:54 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/11 16:00:52 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/12 10:45:30 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <object.h>
 
-t_tuple *tupleSmult(t_tuple *a, float scale)
+t_tuple *tupleSmult(t_tuple *a, double scale)
 {
         t_tuple *res;
 
@@ -25,7 +25,7 @@ t_tuple *tupleSmult(t_tuple *a, float scale)
         res->W = a->W;
         return (res);
 }
-t_tuple *tupleSdiv(t_tuple *a, float scale)
+t_tuple *tupleSdiv(t_tuple *a, double scale)
 {
         t_tuple *res;
 
@@ -38,9 +38,9 @@ t_tuple *tupleSdiv(t_tuple *a, float scale)
         res->W = a->W;
         return (res);
 }
-float tuplemagnitude(t_tuple *a)
+double tuplemagnitude(t_tuple *a)
 {
-        float res;
+        double res;
 
         if (a->W == POINT)
                 return (0);
