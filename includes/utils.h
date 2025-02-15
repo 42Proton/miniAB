@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/15 13:09:26 by abueskander      ###   ########.fr       */
+/*   Created: 2025/02/15 12:58:26 by abueskander       #+#    #+#             */
+/*   Updated: 2025/02/15 12:59:45 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
+#ifndef UTILS_H
+#define UTILS_H
 
-int main()
-{
-	t_rtptr rts;
+#include <stdio.h>
+#include <stdlib.h>
 
-	init_mlx_pointers(&rts);
-	
-	sphere_draw(10,0.01,&rts);
-	mlx_loop(rts.mlx);
-}
+#endif

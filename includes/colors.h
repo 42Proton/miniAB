@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/15 13:09:26 by abueskander      ###   ########.fr       */
+/*   Created: 2025/02/15 12:33:07 by abueskander       #+#    #+#             */
+/*   Updated: 2025/02/15 13:43:05 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
+#ifndef COLORS_H
+#define COLORS_H
 
-int main()
+
+#include <utils.h>
+typedef struct s_colors
 {
-	t_rtptr rts;
+        int red;
+        int green;
+        int blue;
+        int alpha;
+}       t_colors;
 
-	init_mlx_pointers(&rts);
-	
-	sphere_draw(10,0.01,&rts);
-	mlx_loop(rts.mlx);
-}
+int     colorvalue(t_colors *a);
+t_colors *colorinit(int red, int green, int blue, int alpha);
+
+#endif
