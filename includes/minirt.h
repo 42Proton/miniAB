@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/10 17:13:43 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/15 13:00:27 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #define XK_MISCELLANY
 #include <libft.h>
+#include <utils.h>
+#include <colors.h>
 #include <object.h>
 #include <mlx.h>
 #include <X11/X.h>

@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/12 16:20:38 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/15 13:50:15 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #define OBJECT_H
 
 // includes
-#include <stdio.h>
-#include <stdlib.h>
+#include <utils.h>
 #include <math.h>
 // defintions
 #define EPSILON 0.00001
