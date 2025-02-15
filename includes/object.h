@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/15 13:50:15 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/15 15:11:01 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ t_tuple *tuplenegt(t_tuple *a);
 float tuplemagnitude(t_tuple *a);
 float tupledot(t_tuple *a, t_tuple *b);
 t_tuple *tuplecross(t_tuple *a, t_tuple *b);
+t_tuple *tuplenormalize(t_tuple *a);
 #endif
