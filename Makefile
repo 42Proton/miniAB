@@ -33,6 +33,7 @@ $(OBJ_DIR)/%.o: %.c
 	$(CC) $< $(CFLAGS) -c  -o $@
 clean:
 	@make -C libft fclean
+	@make -C $(MINILIB) clean
 	rm -f $(SRCS_OBJ)
 	rm -f $(MATH_OBJ)
 	rm -f $(COL_OBJ)
