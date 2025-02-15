@@ -6,23 +6,23 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:32:46 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/15 13:44:42 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/15 14:18:20 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <colors.h>
 
-t_colors *colorinit(int red, int green, int blue, int alpha)
+t_colors *colorinit(short red, short green, short blue, short alpha)
 {
         t_colors *res;
 
         res = malloc(sizeof(t_colors));
         if (!res)
                 return(NULL);
-        res->red = red;
-        res->green = green;
-        res->blue = blue;
-        res->alpha = alpha;
+        res->red = color_inrange(red);
+        res->green = color_inrange(green);
+        res->blue = color_inrange(blue);
+        res->alpha = color_inrange(alpha);
         
         return (res);
 }
@@ -40,5 +40,3 @@ int     colorvalue(t_colors *a)
 
         return (res);
 }
-
-//__ __ __ __

@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:06:15 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/15 13:45:21 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/15 14:19:38 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ void 	sphere_draw(double radius, double res,  t_rtptr *rts)
         double  i;
         double j;
         t_colors *colors;
-	
-	colors = colorinit(0xFF,0xAA,0xFF,0xAA);
+	t_colors *a = colorinit(-200,-233,0xFF,0xFF);
+        t_colors *b = colorinit(-200,-233,0xFF,0xFF);
+
+        colors = coloradd(a,b);
+//	colors = colorinit(0xFF,0xAA,0xFF,0xAA);
         i = 0;
         while (i < 2 * PI)
         {

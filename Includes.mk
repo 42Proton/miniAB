@@ -11,4 +11,6 @@ MATH=\
 	normalization.c\
 	products.c
 COLORS=\
-	colors.c
+	colors.c\
+	colors_utils.c\
+	colors_operations.c
