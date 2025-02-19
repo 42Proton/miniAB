@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/15 13:00:38 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/19 15:06:23 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
 #define OBJECT_H
-
+#define _XOPEN_SOURCE=500
 // includes
 #include <utils.h>
 #include <math.h>
 // defintions
 #define EPSILON 0.00001
-#define PI 3.14159
 
 typedef struct s_tuple
 {
