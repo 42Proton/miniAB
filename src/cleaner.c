@@ -16,7 +16,7 @@ void	cleaner(t_rtptr *rts, char *error)
 {
 	ft_dprintf(2, "%s\n", error);
 	if (rts->img_st.img)
-		mlx_destroy_image(rts->mlx,rts->img_st.img);
+		mlx_destroy_image(rts->mlx, rts->img_st.img);
 	if (rts->win)
 		mlx_destroy_window(rts->mlx, rts->win);
 	if (rts->mlx)

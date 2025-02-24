@@ -1,23 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/24 15:29:38 by abueskander      ###   ########.fr       */
+/*   Created: 2025/02/24 15:10:57 by abueskander       #+#    #+#             */
+/*   Updated: 2025/02/24 15:11:13 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
-
-int	main(void)
-{
-	t_rtptr	rts;
-
-	init_mlx_pointers(&rts);
-	sphere_draw(10, 0.1, &rts);
-	mlx_key_hook(rts.win, &keyhook, &rts);
-	mlx_loop(rts.mlx);
-}
+#include <object.h>

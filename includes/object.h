@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/15 15:11:01 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/02/24 15:16:06 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ typedef struct s_tuple
         float Z;
         float W;
 } t_tuple;
+
+typedef struct s_matrix
+{
+        
+}       t_matrix;
+
 enum e_pov
 {
         VECTOR,

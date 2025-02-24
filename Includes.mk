@@ -4,7 +4,7 @@ SRCS= \
 	keyhooks.c\
 	object.c\
 	init.c
-MATH=\
+TUPLES=\
 	tuples.c\
 	obj_utils.c\
 	scaler.c\
@@ -14,3 +14,5 @@ COLORS=\
 	colors.c\
 	colors_utils.c\
 	colors_operations.c
+MATRIX=\
+	matrix.c

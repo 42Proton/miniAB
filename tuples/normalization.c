@@ -12,20 +12,20 @@
 
 #include <object.h>
 
-t_tuple *tuplenormalize(t_tuple *a)
+t_tuple	*tuplenormalize(t_tuple *a)
 {
-        t_tuple *res;
-        float   mag;
+	t_tuple *res;
+	float mag;
 
-        res = malloc(sizeof(t_tuple));
-        if(!res)
-                return (NULL);
-        mag = tuplemagnitude(a);
-        if (!mag)
-                return (NULL);
-        res->X = a->X / mag;
-        res->Y = a->Y / mag;
-        res->Z = a->Z / mag;
-        res->W = a->W;
-        return (res);
+	res = malloc(sizeof(t_tuple));
+	if (!res)
+		return (NULL);
+	mag = tuplemagnitude(a);
+	if (!mag)
+		return (NULL);
+	res->X = a->X / mag;
+	res->Y = a->Y / mag;
+	res->Z = a->Z / mag;
+	res->W = a->W;
+	return (res);
 }
