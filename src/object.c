@@ -29,7 +29,7 @@ void 	sphere_draw(double radius, double res,  t_rtptr *rts)
 	
 	colors = colorinit(0xFF,0xAA,0xFF,0xAA);
         i = 0;
-        while (i < 2 * PI)
+        while (i < 2 * M_PI)
         {
                 j = 0;
                 while( j < radius)

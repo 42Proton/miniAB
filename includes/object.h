@@ -12,9 +12,9 @@
 
 #ifndef OBJECT_H
 #define OBJECT_H
-#define _XOPEN_SOURCE=500
 // includes
 #include <utils.h>
+#define _XOPEN_SOURCE 500
 #include <math.h>
 // defintions
 #define EPSILON 0.00001
