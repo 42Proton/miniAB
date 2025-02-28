@@ -6,11 +6,19 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:13:10 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/24 15:29:57 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/01 00:10:58 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
+
+int	check_args(int argc, char **argv)
+{
+	if (argc != 2)
+		return (EXIT_FAILURE);
+	else
+		return (EXIT_SUCCESS);
+}
 
 int	init_mlx_pointers(t_rtptr *rts)
 {

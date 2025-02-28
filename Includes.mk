@@ -3,7 +3,8 @@ SRCS= \
 	cleaner.c\
 	keyhooks.c\
 	object.c\
-	init.c
+	init.c\
+	input_parser.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\

@@ -3,26 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/19 15:28:04 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/01 00:09:49 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
-#define MINIRT_H
+# define MINIRT_H
 
-#define XK_MISCELLANY
-#include <libft.h>
-#include <utils.h>
-#include <colors.h>
-#include <object.h>
-#include <mlx.h>
-#include <X11/X.h>
-#include <X11/keysymdef.h>
-#define WID 1000
-#define HEG 720
+# define XK_MISCELLANY
+# include <X11/X.h>
+# include <X11/keysymdef.h>
+# include <colors.h>
+# include <mlx.h>
+# include <object.h>
+# include <utils.h>
+# define WID 1000
+# define HEG 720
 
 typedef struct s_image
 {
@@ -31,24 +30,46 @@ typedef struct s_image
 	int		size_line;
 	int		endian;
 	char	*data;
-}	t_image;
+}			t_image;
 
 typedef struct s_camera
 {
-    t_tuple	pos;
+	t_tuple	pos;
 	t_tuple	orientation;
-}	t_camera;
+}			t_camera;
 
 typedef struct s_rtptr
 {
 	void	*mlx;
 	void	*win;
 	t_image	img_st;
-}	t_rtptr;
+	t_list	*objs;
+}			t_rtptr;
 
-void	cleaner(t_rtptr *rts, char *error);
-int		keyhook(int keycode, void *param);
-void	sphere_draw(double radius, double res, t_rtptr *rts);
-int		init_mlx_pointers(t_rtptr *rts);
+typedef struct s_object
+{
+	void	*object;
+	int		type;
+}			t_object;
+
+enum		e_types_of_objects
+{
+	SPHERE,
+	AMBIENTLIGHT,
+
+};
+
+// Parser
+int			parser(char *);
+
+// Cleaner
+void		cleaner(t_rtptr *, char *);
+
+// Hooks
+int			keyhook(int, void *);
+
+// Initalization
+int			check_args(int, char **);
+int			init_mlx_pointers(t_rtptr *);
 
 #endif
