@@ -118,13 +118,14 @@ int	pre_gnl(char **res, char **buffer)
 	return (1);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int free_mode)
 {
 	static char	*buffer;
 	char		*res;
 	int			ret_code;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || !pre_gnl(&res, &buffer))
+	if (fd < 0 || BUFFER_SIZE <= 0
+		|| free_mode || !pre_gnl(&res, &buffer))
 	{
 		free(buffer);
 		buffer = 0;
