@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:13:10 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/01 00:10:58 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/02 12:19:38 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	check_args(int argc, char **argv)
 {
 	if (argc != 2)
 		return (EXIT_FAILURE);
-	else
-		return (EXIT_SUCCESS);
+	if (ft_strncmp(ft_strchr(argv[1], '.'), ".rt", 4))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 int	init_mlx_pointers(t_rtptr *rts)
