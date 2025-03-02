@@ -23,3 +23,13 @@ char	*gnl_strjoin(char *s1, char *s2, int n)
 		free(s2);
 	return (res);
 }
+
+void	gnl_handle(int *is_err, char *res,
+	char *buffer, int mode)
+{
+	free(buffer);
+	buffer = 0;
+	free(res);
+	if (mode)
+		*is_err = 1;
+}
