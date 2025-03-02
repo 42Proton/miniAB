@@ -118,7 +118,7 @@ int	pre_gnl(char **res, char **buffer)
 	return (1);
 }
 
-char	*get_next_line(int fd, int free_mode)
+char	*get_next_line(int fd, int free_mode, int *is_err)
 {
 	static char	*buffer;
 	char		*res;
@@ -129,6 +129,7 @@ char	*get_next_line(int fd, int free_mode)
 	{
 		free(buffer);
 		buffer = 0;
+		*is_err = 1;
 		return (0);
 	}
 	if (*res && res[ft_strlen(res) - 1] == '\n')
@@ -139,6 +140,8 @@ char	*get_next_line(int fd, int free_mode)
 		free(buffer);
 		buffer = 0;
 		free(res);
+		if (!ret_code || ret_code == -1)
+			*is_err = 1;
 		return (0);
 	}
 	return (res);
