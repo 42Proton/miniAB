@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/01 00:09:49 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/02 11:35:53 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,20 @@ typedef struct s_object
 
 enum		e_types_of_objects
 {
-	SPHERE,
 	AMBIENTLIGHT,
-
+	LIGHT,
+	CAMERA,
+	SPHERE,
+	PLANE,
+	CYLINDER,
+	CONE,
+	HYPER,
+	PARA
 };
 
 // Parser
-int			parser(char *);
+int			parser(char *, t_rtptr *);
+t_object	*objectify(int);
 
 // Cleaner
 void		cleaner(t_rtptr *, char *);

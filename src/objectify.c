@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   objectify.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/02 10:32:51 by abueskander      ###   ########.fr       */
+/*   Created: 2025/03/02 11:33:42 by abueskander       #+#    #+#             */
+/*   Updated: 2025/03/02 11:35:44 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-int	main(int argc, char **argv)
+t_object	*objectify(int type)
 {
-	t_rtptr	rts;
-
-	if (check_args(argc, argv))
-		return (EXIT_FAILURE);
-	if (init_mlx_pointers(&rts) || parser(argv[1], &rts))
-		cleaner(&rts, "STARTUP ERROR");
-	mlx_key_hook(rts.win, &keyhook, &rts);
-	mlx_loop(rts.mlx);
+	return (NULL);
 }

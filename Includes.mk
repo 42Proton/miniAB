@@ -4,7 +4,8 @@ SRCS= \
 	keyhooks.c\
 	object.c\
 	init.c\
-	input_parser.c
+	input_parser.c\
+	objectify.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
