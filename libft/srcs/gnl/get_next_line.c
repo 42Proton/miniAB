@@ -124,12 +124,11 @@ char	*get_next_line(int fd, int free_mode, int *is_err)
 	char		*res;
 	int			ret_code;
 
+	*is_err = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0
 		|| free_mode || !pre_gnl(&res, &buffer))
 	{
-		free(buffer);
-		buffer = 0;
-		*is_err = 1;
+		gnl_handle(is_err, 0, buffer, 1);
 		return (0);
 	}
 	if (*res && res[ft_strlen(res) - 1] == '\n')
@@ -137,9 +136,7 @@ char	*get_next_line(int fd, int free_mode, int *is_err)
 	ret_code = gnl_read(fd, &res, &buffer);
 	if (!ret_code || ret_code == -1 || !*res)
 	{
-		free(buffer);
-		buffer = 0;
-		free(res);
+		gnl_handle(is_err, res, buffer, 0);
 		if (!ret_code || ret_code == -1)
 			*is_err = 1;
 		return (0);

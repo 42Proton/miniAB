@@ -48,7 +48,7 @@ SRCS = \
 	srcs/ft_lst/ft_lstiter.c \
 	srcs/ft_mem/ft_memcpy.c \
 	srcs/ft_str/ft_strlcpy.c \
-	srcs/gnl/gnl_strjoin.c \
+	srcs/gnl/gnl_utils.c \
 	srcs/ft_common/ft_isprint.c \
 	srcs/ft_lst/ft_lstlast.c \
 	srcs/ft_mem/ft_memmove.c \

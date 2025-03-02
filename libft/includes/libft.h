@@ -78,7 +78,9 @@ void			*ft_memcpy(void *dest, void *src, size_t size);
 void			*ft_memmove(void *dest, void *src, size_t n);
 void			*ft_memset(void *src, int c, size_t size);
 char			*gnl_strjoin(char *s1, char *s2, int n);
-char			*get_next_line(int fd, int free_mode);
+char			*get_next_line(int fd, int free_mode, int *is_err);
+void			gnl_handle(int *is_err, char *res,
+					char *buffer, int mode);
 char			*ft_strtok(char *s, char *delimiter);
 char			*ft_strchr(const char *str, int c);
 char			*ft_strdup(const char *str);
