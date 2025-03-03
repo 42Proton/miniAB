@@ -5,7 +5,8 @@ SRCS= \
 	object.c\
 	init.c\
 	input_parser.c\
-	objectify.c
+	objectify.c\
+	object_init.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\

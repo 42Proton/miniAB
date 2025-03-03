@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 15:13:09 by amsaleh           #+#    #+#             */
-/*   Updated: 2024/11/23 19:55:48 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/04 02:20:00 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

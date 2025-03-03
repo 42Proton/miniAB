@@ -54,6 +54,8 @@
     "keysymdef.h": "c",
     "object.h": "c",
     "ctype.h": "c",
-    "utils.h": "c"
+    "utils.h": "c",
+    "mlx.h": "c",
+    "colors.h": "c"
   }
 }

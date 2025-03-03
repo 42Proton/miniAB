@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:13:10 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/02 12:19:38 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/04 02:00:06 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int	init_mlx_pointers(t_rtptr *rts)
 		mlx_destroy_display(rts->mlx);
 		return (EXIT_FAILURE);
 	}
+	rts->objs = malloc(sizeof(t_list));
+	if (!rts->objs)
+		cleaner(rts, "Memory Full");
 	rts->img_st.img = mlx_new_image(rts->mlx, WID, HEG);
 	rts->img_st.data = mlx_get_data_addr(rts->img_st.img, &rts->img_st.bpp,
 			&rts->img_st.size_line, &rts->img_st.endian);

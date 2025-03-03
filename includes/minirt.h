@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/02 11:35:53 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/04 01:50:25 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ typedef struct s_image
 	int		endian;
 	char	*data;
 }			t_image;
-
-typedef struct s_camera
-{
-	t_tuple	pos;
-	t_tuple	orientation;
-}			t_camera;
 
 typedef struct s_rtptr
 {
@@ -68,7 +62,7 @@ enum		e_types_of_objects
 // Parser
 int			parser(char *, t_rtptr *);
 t_object	*objectify(int);
-
+void		*ambient_light(void);
 // Cleaner
 void		cleaner(t_rtptr *, char *);
 

@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/02 11:37:39 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/04 02:21:42 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ int	get_type(char *object, t_rtptr *rts)
 
 	splited = ft_strtok(object, " \t\b\r\f\v\n");
 	type = switch_object(splited);
-	obj = objectify(type);
 	if (type == -1)
 		cleaner(rts, "Invalid Type");
-	ft_lstadd_back(&rts->objs, ft_lstnew(obj));
+	obj = objectify(type);
+	if (!obj)
+		cleaner(rts, "Object can't be created");
+	ft_lstadd_front(&rts->objs, ft_lstnew(obj));
 	return (EXIT_SUCCESS);
 }
 
@@ -56,7 +58,7 @@ int	read_file(char *file_name, int fd, t_rtptr *rts)
 	while (1)
 	{
 		process = get_next_line(fd, 0, &errorflag);
-		if (!errorflag)
+		if (errorflag || !process)
 		{
 			get_next_line(fd, 1, &errorflag);
 			return (EXIT_FAILURE);
