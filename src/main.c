@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/04 16:13:33 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/04 22:05:03 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	if (init_mlx_pointers(&rts) || parser(argv[1], &rts))
 		cleaner(&rts, "STARTUP ERROR");
 	mlx_key_hook(rts.mlx, keyhook, &rts);
-	mlx_loop(rts.mlx);
-	mlx_terminate(rts.mlx);
+	// mlx_loop(rts.mlx);
+	cleaner(&rts, NULL);
 	return (0);
 }

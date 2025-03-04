@@ -42,7 +42,7 @@ clean:
 	@rm -f $(SRCS_OBJ)
 	@rm -f $(TUPLES_OBJ)
 	@rm -f $(COL_OBJ)
-	rm -rf $(MATRIX_OBJ)
+	@rm -rf $(MATRIX_OBJ)
 	@rm -rf $(OBJ_DIR)
 
 fclean:clean

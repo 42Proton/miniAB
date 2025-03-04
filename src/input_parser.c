@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/04 16:14:28 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/04 22:00:53 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	read_file(char *file_name, int fd, t_rtptr *rts)
 		}
 		if (get_type(process, rts))
 			return (EXIT_FAILURE);
+		free(process);
 	}
 }
 int	parser(char *file_name, t_rtptr *rts)
