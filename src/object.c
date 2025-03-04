@@ -3,26 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:06:15 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/28 23:51:17 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/04 16:07:03 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-void	put_pixel(int x, int y, int color, t_image *img)
-{
-	int	index;
-
-	if (x >= WID || y >= HEG || x < 0 || y < 0)
-		return ;
-	index = y * img->size_line + x * img->bpp / 8;
-	img->data[index] = color & 0xFF;
-	img->data[index + 1] = (color >> 8) & 0xFF;
-	img->data[index + 2] = (color >> 16) & 0xFF;
-}
+// USE mlx_put_pixel with image
 
 // void	sphere_draw(double radius, double res, t_rtptr *rts)
 // // {

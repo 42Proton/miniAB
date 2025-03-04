@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:13:10 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/04 02:00:06 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/04 15:59:38 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,15 @@ int	check_args(int argc, char **argv)
 
 int	init_mlx_pointers(t_rtptr *rts)
 {
-	rts->mlx = mlx_init();
-	if (!rts->mlx)
-		return (EXIT_FAILURE);
-	rts->win = mlx_new_window(rts->mlx, WID, HEG, "miniAB");
-	if (!rts->win)
-	{
-		mlx_destroy_display(rts->mlx);
-		return (EXIT_FAILURE);
-	}
-	rts->objs = malloc(sizeof(t_list));
-	if (!rts->objs)
-		cleaner(rts, "Memory Full");
-	rts->img_st.img = mlx_new_image(rts->mlx, WID, HEG);
-	rts->img_st.data = mlx_get_data_addr(rts->img_st.img, &rts->img_st.bpp,
-			&rts->img_st.size_line, &rts->img_st.endian);
-	mlx_put_image_to_window(rts->mlx, rts->win, rts->img_st.img, 0, 0);
-	return (EXIT_SUCCESS);
+        rts->mlx = mlx_init(WID, HEG, "miniAB", false);
+        if (!rts->mlx)
+                return (EXIT_FAILURE);
+        rts->img = mlx_new_image(rts->mlx, WID, HEG);
+        if (!rts->img)
+        {
+                mlx_terminate(rts->mlx);
+                return (EXIT_FAILURE);
+        }
+        mlx_image_to_window(rts->mlx, rts->img, 0, 0);
+        return (EXIT_SUCCESS);
 }

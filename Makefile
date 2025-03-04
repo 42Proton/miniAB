@@ -1,7 +1,12 @@
 include Includes.mk
 CC = cc 
-LINKERS= -L./libft/ -lft -L./minilibx-linux/ -lmlx_Linux -lmlx -lXext -lX11 -lm
-CFLAGS = -Wall -Werror -Werror -g -I./includes/ -I./libft/includes/ -I./minilibx-linux/
+
+LIBFT= libft
+MLXLIB= ./MLX42
+
+LINKERS= -L./$(LIBFT)/ -lft -L$(MLXLIB)/build/ -lmlx42 -ldl -lglfw -pthread -lm
+CFLAGS = -Wall -Werror -Werror -g -I./includes/ -I./$(LIBFT)/includes/ -I$(MLXLIB)/include
+
 SRC_DIR = src
 TUPLE_DIR = tuples
 MATRIX_DIR = matrix
@@ -19,15 +24,12 @@ TUPLES_OBJ = $(TUPLESDIR:%.c=$(OBJ_DIR)/%.o)
 COL_OBJ = $(COLDIR:%.c=$(OBJ_DIR)/%.o)
 MATRIX_OBJ = $(MATRIXDIR:%.c=$(OBJ_DIR)/%.o)
 
-LIBFT= libft
-MINILIB= minilibx-linux
-
-all: libft minilibx-linux $(NAME)
+all: libft mlx42 $(NAME)
 
 libft:
 	@make -C $(LIBFT)
-minilibx-linux:
-	@make -C $(MINILIB)
+mlx42:
+	@cmake $(MLXLIB) -B $(MLXLIB)/build && make -C $(MLXLIB)/build -j4
 $(NAME):$(SRCS_OBJ) $(TUPLES_OBJ) $(COL_OBJ) $(MATRIX_OBJ)
 	@make -C $(LIBFT)
 	$(CC) $(SRCS_OBJ) $(TUPLES_OBJ) $(COL_OBJ) $(MATRIX_OBJ) $(CFLAGS) $(LINKERS) -o $(NAME)
@@ -36,15 +38,15 @@ $(OBJ_DIR)/%.o: %.c
 	$(CC) $< $(CFLAGS) -c  -o $@
 clean:
 	@make -C libft fclean
-	@make -C $(MINILIB) clean
-	rm -f $(SRCS_OBJ)
-	rm -f $(TUPLES_OBJ)
-	rm -f $(COL_OBJ)
+	@rm -rf $(MLXLIB)/build
+	@rm -f $(SRCS_OBJ)
+	@rm -f $(TUPLES_OBJ)
+	@rm -f $(COL_OBJ)
 	rm -rf $(MATRIX_OBJ)
-	rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean:clean
-	rm -f $(NAME) 
+	@rm -f $(NAME) 
 re: fclean all
 
 .PHONY: all clean fclean re libft minilibx-linux

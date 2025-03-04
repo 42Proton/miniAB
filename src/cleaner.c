@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleaner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/08 00:50:14 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/04 15:58:59 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 
 void	cleaner(t_rtptr *rts, char *error)
 {
-	ft_dprintf(2, "%s\n", error);
-	if (rts->img_st.img)
-		mlx_destroy_image(rts->mlx, rts->img_st.img);
-	if (rts->win)
-		mlx_destroy_window(rts->mlx, rts->win);
-	if (rts->mlx)
-		mlx_destroy_display(rts->mlx);
-	free(rts->mlx);
+	if (error)
+		ft_dprintf(2, "%s\n", error);
+	mlx_terminate(rts->mlx);
 	exit(EXIT_SUCCESS);
 }

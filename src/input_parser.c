@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/04 02:21:42 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/04 16:14:28 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	get_type(char *object, t_rtptr *rts)
 	obj = objectify(type);
 	if (!obj)
 		cleaner(rts, "Object can't be created");
-	ft_lstadd_front(&rts->objs, ft_lstnew(obj));
+	ft_lstadd_back(&rts->objs, ft_lstnew(obj));
 	return (EXIT_SUCCESS);
 }
 
