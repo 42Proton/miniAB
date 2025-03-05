@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 02:19:51 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/01/07 15:59:13 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 19:39:11 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	printf_addhex(t_printf *data, unsigned int n, int mode)
 		printf_addchar(data, res[i]);
 }
 
-void	process_data(t_printf *data, va_list args)
+void	process_data(t_printf *data, va_list args, int *is_ul)
 {
 	char	c;
 
@@ -77,6 +77,11 @@ void	process_data(t_printf *data, va_list args)
 		printf_addpointer(data, va_arg(args, unsigned long));
 	if (c == 'u')
 		printf_addunbr(data, va_arg(args, unsigned int));
+	if (!ft_strncmp(data->fmt + data->end + 1, "lu", 2))
+	{
+		printf_addunbr(data, va_arg(args, unsigned long));
+		*is_ul = 1;
+	}
 	if (c == '%')
 		printf_addchar(data, '%');
 }

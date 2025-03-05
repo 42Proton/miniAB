@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:19:58 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/05 17:18:38 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 21:53:51 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ size_t			ft_lstsize(t_list *lst);
 size_t			ft_strncpy(char *dst, const char *src, size_t size);
 int				ft_atoi(const char *str);
 int				ft_isalnum(int c);
+int				ft_isspace(char c);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);
 int				ft_isdigit(int c);

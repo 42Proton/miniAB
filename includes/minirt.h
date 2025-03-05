@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 02:56:28 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 21:34:55 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ typedef struct s_rtptr
 	t_list		*objs;
 }	t_rtptr;
 
-typedef struct s_object
+typedef struct s_object_entry
 {
 	void	*object;
 	int		type;
-}	t_object;
+}	t_object_entry;
 
 enum		e_types_of_objects
 {
@@ -48,12 +48,26 @@ enum		e_types_of_objects
 	PARA
 };
 
+enum	e_issues
+{
+	ERR_ARGS_COUNT,
+	ERR_FILE_EXT,
+	ERR_OPEN_FILE,
+	ERR_OBJ_TYPE,
+	ERR_INVALID_FLOAT,
+	ERR_MISSING_TOK,
+	ERR_EXTRA_TOK,
+};
+
 // Parser
 int		parser(char *, t_rtptr *);
-t_object	*objectify(int);
-void		*ambient_light(void);
+t_object_entry	*objectify(t_parser *, int);
+void		*ambient_light(t_parser *, int *);
 // Cleaner
-void		cleaner(t_rtptr *, char *);
+void		cleaner(t_rtptr *);
+// Issues Reporters
+void	simple_report(int);
+void	issue_report(t_parser *, int);
 
 // Hooks
 void    keyhook(struct mlx_key_data, void *);

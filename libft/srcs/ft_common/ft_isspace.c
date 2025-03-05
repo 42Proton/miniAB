@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   objectify.c                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 11:33:42 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 21:08:26 by amsaleh          ###   ########.fr       */
+/*   Created: 2025/03/05 21:52:52 by amsaleh           #+#    #+#             */
+/*   Updated: 2025/03/05 21:53:53 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
-
-t_object_entry	*objectify(t_parser *parser, int type)
+int	ft_isspace(char c)
 {
-	t_object_entry *entry;
-
-	entry = ft_calloc(1, sizeof(t_object_entry));
-	if (!entry)
-	{
-		perror("malloc");
-		return (NULL);
-	}
-	if (type == AMBIENTLIGHT)
-		entry->object = ambient_light(parser, &entry->type);
-	if (!entry->object)
-	{
-		free(entry);
-		return (0);
-	}
-	return (entry);
+	return ((c >= 0x9 && c <= 0xD) || c == ' ');
 }

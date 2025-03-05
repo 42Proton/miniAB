@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:44:42 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/05 17:17:35 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 22:18:06 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	atof_prep_value(const char *str,
 	*n_digits = 0;
 	*sign = 1;
 	*res = 0;
-	while ((str[i] >= 0x9 && str[i] <= 0xD) || str[i] == ' ')
+	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-')
 		*sign = -1;
@@ -51,7 +51,7 @@ static int	atof_prep_decimals(const char *str,
 		{
 			*res = *res * 10 + (str[*i] - 0x30);
 			(*i)++;
-			n_digits += 1;
+			*n_digits += 1;
 			n_decimals++;
 		}
 	}
