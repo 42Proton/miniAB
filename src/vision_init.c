@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 22:54:55 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:32:57 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/05 23:57:55 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ void	*light(void)
 		free(light);
 		return (NULL);
 	}
+	printf("%f,%f,%f %f %d %d %d", light->pos->X, light->pos->Y, light->pos->Z,
+		light->brightness, light->colors->red, light->colors->green,
+		light->colors->blue);
 	return (light);
 }

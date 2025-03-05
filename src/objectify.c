@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:33:42 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:07:15 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/05 23:46:21 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ t_object	*objectify(int type)
 		return (NULL);
 	if (type == AMBIENTLIGHT)
 		item->object = ambient_light();
+	if (type == LIGHT)
+		item->object = light();
 	return (item);
 }

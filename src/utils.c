@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:32:59 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/05 23:48:05 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	*pos(void)
 	arrays = ft_split(tmp, ',');
 	if (!arrays)
 		return (NULL);
-	free_array((void *)arrays);
 	pnt = point(ft_atof(arrays[0]), ft_atof(arrays[1]), ft_atof(arrays[2]));
+	free_array((void *)arrays);
 	return (pnt);
 }
 void	*color(void)

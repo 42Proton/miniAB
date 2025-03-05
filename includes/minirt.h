@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:33:45 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/05 23:46:32 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ enum			e_types_of_objects
 int				parser(char *, t_rtptr *);
 t_object		*objectify(int);
 void			*ambient_light(void);
+void			*light(void);
+
 // Cleaner
 void			cleaner(t_rtptr *, char *);
 

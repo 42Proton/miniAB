@@ -6,13 +6,13 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:09:10 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/06 00:05:08 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-int	switch_object(char *obj)
+static int	switch_type(char *obj)
 {
 	if (!ft_strcmp(obj, "A"))
 		return (AMBIENTLIGHT);
@@ -40,9 +40,10 @@ int	get_type(char *object, t_rtptr *rts)
 	t_object	*obj;
 
 	splited = ft_strtok(object, " \t\r\f\v\n");
-	type = switch_object(splited);
+	type = switch_type(splited);
 	if (type == -1)
 		cleaner(rts, "Invalid Type");
+	// TODO : VALIDATOR
 	obj = objectify(type);
 	if (!obj)
 		cleaner(rts, "Object can't be created");
