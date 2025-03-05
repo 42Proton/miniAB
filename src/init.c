@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:13:10 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 22:09:46 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 22:42:12 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 int	check_args(int argc, char **argv)
 {
+	char	*ptr;
+
 	if (argc != 2)
 	{
 		simple_report(ERR_ARGS_COUNT);
 		return (EXIT_FAILURE);
 	}
-	if (ft_strncmp(ft_strchr(argv[1], '.'), ".rt", 4))
+	ptr = ft_strchr(argv[1], '.');
+	if (!ptr || ft_strncmp(ptr, ".rt", 4))
 	{
 		simple_report(ERR_FILE_EXT);
 		return (EXIT_FAILURE);

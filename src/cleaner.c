@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 22:14:03 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 22:38:20 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	issue_report(t_parser *parser, int issue)
 	ft_dprintf(2, "Error\n");
 	ft_dprintf(2, "%s:%lu:%lu\n", parser->file_name,
 		parser->line_pos, row);
-	ft_strncpy(tmp, parser->token, 128);
+	ft_strncpy(tmp, parser->line_bak, 128);
 	ft_dprintf(2, "%s\n", tmp);
 	if (row - old_row > 0)
 		ft_memset(tmp, ' ', (row - old_row) - 1);
