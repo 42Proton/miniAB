@@ -6,16 +6,17 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 22:38:20 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 23:05:48 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-void	clear_obj(void *content)
+void	object_cleanup(void *content)
 {
+	if (((t_object_entry *)content))
+		free(((t_object_entry *)content)->object);
 	free(content);
-	//to be expanded when objects properties expand
 }
 
 void	cleaner(t_rtptr *rts)
@@ -24,7 +25,7 @@ void	cleaner(t_rtptr *rts)
 		mlx_delete_image(rts->mlx, rts->img);
 	if (rts->mlx)
 		mlx_terminate(rts->mlx);
-	ft_lstclear(&rts->objs, clear_obj);
+	ft_lstclear(&rts->objs, object_cleanup);
 	exit(EXIT_SUCCESS);
 }
 
@@ -79,24 +80,39 @@ void	simple_report(int issue)
 	ft_dprintf(2, "\e[091mError\n%s\e[039m\n", msg);
 }
 
+void	issue_report_highlight(size_t row, char *tmp, t_parser *parser)
+{
+	if (row > 80)
+		ft_strncpy(tmp, parser->line_bak + row,
+			ft_strlen(parser->line_bak + row) - 1);
+	else
+		ft_strncpy(tmp, parser->line_bak,
+			ft_strlen(parser->line_bak) - 1);
+	ft_dprintf(2, "%s\n", tmp);
+	if (row < 80)
+	{
+		ft_memset(tmp, ' ', row);
+		tmp[row] = '^';
+		tmp[row + 1] = 0;
+	}
+	else
+	{
+		tmp[0] = '^';
+		tmp[1] = 0;
+	}
+}
+
 void	issue_report(t_parser *parser, int issue)
 {
 	size_t	row;
-	size_t	old_row;
-	char	tmp[129];
+	char	tmp[81];
 
 	row = goto_token_pos(parser);
-	old_row = row;
 	row = goto_problem_pos(parser, row);
 	ft_dprintf(2, "Error\n");
 	ft_dprintf(2, "%s:%lu:%lu\n", parser->file_name,
 		parser->line_pos, row);
-	ft_strncpy(tmp, parser->line_bak, 128);
-	ft_dprintf(2, "%s\n", tmp);
-	if (row - old_row > 0)
-		ft_memset(tmp, ' ', (row - old_row) - 1);
-	tmp[row - old_row] = '^';
-	tmp[(row - old_row) + 1] = 0;
+	issue_report_highlight(row, tmp, parser);
 	ft_dprintf(2, "\e[091m%s\n", tmp);
 	if (issue == ERR_INVALID_FLOAT)
 		ft_dprintf(2, "Invalid float input\e[39m\n");
