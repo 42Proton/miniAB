@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:02:17 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/05 23:29:43 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	main(int argc, char **argv)
 		ft_dprintf(2, "Invalid Args \n");
 		return (EXIT_FAILURE);
 	}
-	if (parser(argv[1], &rts) || init_mlx_pointers(&rts))
+	if (parser(argv[1], &rts))
 		cleaner(&rts, "STARTUP ERROR");
-	mlx_key_hook(rts.mlx, keyhook, &rts);
+	// mlx_key_hook(rts.mlx, keyhook, &rts);
 	// mlx_loop(rts.mlx);
 	cleaner(&rts, NULL);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 17:16:40 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 23:09:10 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	parser(char *file_name, t_rtptr *rts)
 	fd = open(file_name, R_OK);
 	if (fd == -1)
 		return (EXIT_FAILURE);
-	if (read_file(file_name, fd, rts) == EXIT_FAILURE)
+	if (read_file(file_name, fd, rts))
 		return (EXIT_FAILURE);
 	else
 		return (EXIT_SUCCESS);

@@ -1,57 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vision_init.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 22:54:55 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:32:57 by abueskander      ###   ########.fr       */
+/*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
+/*   Updated: 2025/03/05 23:32:59 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-void	*ambient_light(void)
+void	*pos(void)
 {
-	t_alight	*al;
-	char		*tmp;
-
-	al = malloc(sizeof(t_alight));
-	if (!al)
-		return (NULL);
-	tmp = ft_strtok(NULL, " \t\b\r\f\v\n");
-	al->ratio = ft_atof(tmp);
-	al->colors = color();
-	if (!al->colors)
-	{
-		free(al);
-		return (NULL);
-	}
-	return (al);
-}
-void	*light(void)
-{
-	t_light	*light;
 	char	*tmp;
+	char	**arrays;
+	t_tuple	*pnt;
 
-	light = malloc(sizeof(t_light));
-	if (!light)
-		return (NULL);
-	light->pos = pos();
-	if (!light->pos)
-	{
-		free(light);
-		return (NULL);
-	}
 	tmp = ft_strtok(NULL, " \t\b\r\f\v\n");
-	light->brightness = ft_atof(tmp);
-	light->colors = color();
-	if (!light->colors)
-	{
-		free(light->pos);
-		free(light);
+	arrays = ft_split(tmp, ',');
+	if (!arrays)
 		return (NULL);
-	}
-	return (light);
+	free_array((void *)arrays);
+	pnt = point(ft_atof(arrays[0]), ft_atof(arrays[1]), ft_atof(arrays[2]));
+	return (pnt);
+}
+void	*color(void)
+{
+	char *tmp;
+	char **colors;
+	t_colors *color;
+
+	tmp = ft_strtok(NULL, " \t\b\r\f\v\n");
+	colors = ft_split(tmp, ',');
+	if (!colors)
+		return (NULL);
+	color = colorinit(ft_atoi(colors[0]), ft_atoi(colors[1]),
+			ft_atoi(colors[2]), 0);
+	free_array((void *)colors);
+	return (color);
 }
