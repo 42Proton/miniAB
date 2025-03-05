@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:44:42 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/05 17:17:35 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 20:50:18 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-static int	atof_prep_value(const char *str,
-	int *n_digits, int *sign, double *res)
+static int	atof_prep_value(const char *str, int *n_digits, int *sign,
+		double *res)
 {
 	int	i;
 
@@ -38,8 +38,8 @@ static int	atof_prep_value(const char *str,
 	return (i);
 }
 
-static int	atof_prep_decimals(const char *str,
-	int *n_digits, int *i, double *res)
+static int	atof_prep_decimals(const char *str, int *n_digits, int *i,
+		double *res)
 {
 	int	n_decimals;
 
@@ -51,7 +51,7 @@ static int	atof_prep_decimals(const char *str,
 		{
 			*res = *res * 10 + (str[*i] - 0x30);
 			(*i)++;
-			n_digits += 1;
+			*n_digits = *n_digits + 1;
 			n_decimals++;
 		}
 	}
