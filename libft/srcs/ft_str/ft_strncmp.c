@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 15:13:09 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/04 02:20:00 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/05 23:00:10 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t size)
 	size_t	i;
 	size_t	len;
 
+	if (!s1)
+		return (-1);
 	if (ft_strlen(s1) > ft_strlen(s2))
 		len = ft_strlen(s1);
 	else
