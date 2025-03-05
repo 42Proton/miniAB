@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/04 16:04:33 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 02:56:28 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@
 
 typedef struct s_rtptr
 {
-        mlx_t 		*mlx;
-        mlx_image_t	*img;
-        t_list          *objs;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	t_list		*objs;
 }	t_rtptr;
 
 typedef struct s_object
 {
 	void	*object;
-	int	type;
+	int		type;
 }	t_object;
 
 enum		e_types_of_objects

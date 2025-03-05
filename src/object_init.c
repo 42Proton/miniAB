@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:17:49 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/04 02:07:42 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/05 03:06:26 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ambient_light(void)
 	if (!al)
 		return (NULL);
 	tmp = ft_strtok(NULL, " \t\b\r\f\v\n");
-	al->ratio = atof(tmp);
+	al->ratio = ft_atof(tmp, 0);
 	tmp = ft_strtok(NULL, " \t\b\r\f\v\n");
 	return (al);
 }

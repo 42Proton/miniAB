@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:44:42 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/05 02:15:05 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 17:17:35 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static double	atof_pow_calc(int n_decimals)
 	return (pow_val);
 }
 
-float	ft_atof(const char *str, char **endptr)
+float	ft_atof(const char *str)
 {
 	double	res;
 	int		i;
@@ -79,14 +79,8 @@ float	ft_atof(const char *str, char **endptr)
 	i = atof_prep_value(str, &n_digits, &sign, &res);
 	n_decimals = atof_prep_decimals(str, &n_digits, &i, &res);
 	if (!n_digits)
-	{
-		if (endptr)
-			*endptr = (char *)str + i;
 		return (0);
-	}
 	if (n_decimals)
 		res /= atof_pow_calc(n_decimals);
-	if (endptr)
-		*endptr = (char *)str + i;
 	return (res * sign);
 }

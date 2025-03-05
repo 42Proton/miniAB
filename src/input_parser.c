@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/04 22:00:53 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/05 17:16:40 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	get_type(char *object, t_rtptr *rts)
 	int			type;
 	t_object	*obj;
 
-	splited = ft_strtok(object, " \t\b\r\f\v\n");
+	splited = ft_strtok(object, " \t\r\f\v\n");
 	type = switch_object(splited);
 	if (type == -1)
 		cleaner(rts, "Invalid Type");
@@ -58,11 +58,13 @@ int	read_file(char *file_name, int fd, t_rtptr *rts)
 	while (1)
 	{
 		process = get_next_line(fd, 0, &errorflag);
-		if (errorflag || !process)
+		if (errorflag)
 		{
 			get_next_line(fd, 1, &errorflag);
 			return (EXIT_FAILURE);
 		}
+		if (!process)
+			return (EXIT_SUCCESS);
 		if (get_type(process, rts))
 			return (EXIT_FAILURE);
 		free(process);
@@ -75,7 +77,7 @@ int	parser(char *file_name, t_rtptr *rts)
 	fd = open(file_name, R_OK);
 	if (fd == -1)
 		return (EXIT_FAILURE);
-	if (!read_file(file_name, fd, rts))
+	if (read_file(file_name, fd, rts) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	else
 		return (EXIT_SUCCESS);
