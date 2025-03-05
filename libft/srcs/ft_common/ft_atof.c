@@ -6,14 +6,14 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:44:42 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/05 22:18:06 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 22:26:47 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-static int	atof_prep_value(const char *str,
-	int *n_digits, int *sign, double *res)
+static int	atof_prep_value(const char *str, int *n_digits, int *sign,
+		double *res)
 {
 	int	i;
 
@@ -38,8 +38,8 @@ static int	atof_prep_value(const char *str,
 	return (i);
 }
 
-static int	atof_prep_decimals(const char *str,
-	int *n_digits, int *i, double *res)
+static int	atof_prep_decimals(const char *str, int *n_digits, int *i,
+		double *res)
 {
 	int	n_decimals;
 
@@ -51,7 +51,7 @@ static int	atof_prep_decimals(const char *str,
 		{
 			*res = *res * 10 + (str[*i] - 0x30);
 			(*i)++;
-			*n_digits += 1;
+			*n_digits = *n_digits + 1;
 			n_decimals++;
 		}
 	}
