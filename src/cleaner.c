@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/04 22:18:25 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/05 21:08:04 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	cleaner(t_rtptr *rts, char *error)
 		ft_dprintf(2, "%s\n", error);
 	if (rts->img)
 		mlx_delete_image(rts->mlx, rts->img);
-	// if (rts->mlx)
-	mlx_terminate(rts->mlx);
+	if (rts->mlx)
+		mlx_terminate(rts->mlx);
 	while (rts->objs)
 	{
 		tmp = rts->objs;
