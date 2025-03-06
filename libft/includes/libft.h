@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:19:58 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/05 21:53:51 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/06 23:28:01 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t size);
 size_t			ft_strlen(const char *str);
 size_t			ft_lstsize(t_list *lst);
 size_t			ft_strncpy(char *dst, const char *src, size_t size);
+size_t			ft_arrlen(void **arr);
 int				ft_atoi(const char *str);
 int				ft_isalnum(int c);
 int				ft_isspace(char c);

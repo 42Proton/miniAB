@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 22:41:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/07 00:23:22 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@
 #include <utils.h>
 #include <colors.h>
 #include <object.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stddef.h>
 #include <MLX42/MLX42.h>
+#include <stdio.h>
 #define WID 1000
 #define HEG 720
 
@@ -63,8 +67,15 @@ enum	e_issues
 int		parser(char *, t_rtptr *);
 t_object_entry	*objectify(t_parser *, int);
 void		*ambient_light(t_parser *, int *);
+void		*sphere_init();
+void		*plane_init();
+void		*cylinder_init();
 // Cleaner
 void		cleaner(t_rtptr *);
+// Objects Cleaners
+void	free_sphere(t_sphere *sphere);
+void	free_plane(t_plane *plane);
+void	free_cylinder(t_cylinder *cylinder);
 // Issues Reporters
 void	simple_report(int);
 void	issue_report(t_parser *, int);

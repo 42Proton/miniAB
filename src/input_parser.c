@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 22:21:29 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/07 00:02:44 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int	process_line_data(t_parser *parser, t_rtptr *rts)
 	}
 	entry = objectify(parser, type);
 	if (!entry)
+	{
+		perror("malloc");
 		return (EXIT_FAILURE);
+	}
 	lst = ft_lstnew(entry);
 	if (!lst)
 	{

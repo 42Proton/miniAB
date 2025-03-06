@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:18:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/05 22:17:51 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/06 23:59:55 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,41 @@ void	reset_parser_props(t_parser *parser)
 	parser->tok_pos = 0;
 	parser->problem_pos = 0;
 	parser->token = 0;
+}
+
+t_tuple	*init_vector()
+{
+	char	**split_vec;
+	t_tuple	*res;
+
+	split_vec = ft_split(ft_strtok(0, " \t\r\f\v"), ',');
+	if (!split_vec)
+		return (0);
+	res = point(ft_atof(split_vec[0]),
+		ft_atof(split_vec[1]), ft_atof(split_vec[2]));
+	free_array((void **)split_vec);
+	return (res);
+}
+
+t_colors	*init_colors()
+{
+	char		**split_colors;
+	t_colors	*res;
+	int			red;
+	int			green;
+	int			blue;
+	float		alpha;
+
+	split_colors = ft_split(ft_strtok(0, " \t\r\f\v"), ',');
+	if (!split_colors)
+		return (0);
+	red = ft_atoi(split_colors[0]);
+	green = ft_atoi(split_colors[1]);
+	blue = ft_atoi(split_colors[2]);
+	alpha = 1;
+	if (ft_arrlen((void **)split_colors) > 3)
+		alpha = alpha_ftos(ft_atof(split_colors[3]));
+	res = colorinit(red, green, blue, alpha);
+	free_array((void **)split_colors);
+	return (res);
 }
