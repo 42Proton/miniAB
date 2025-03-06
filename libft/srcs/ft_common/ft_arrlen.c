@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyhooks.c                                         :+:      :+:    :+:   */
+/*   ft_arrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 20:42:32 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 22:16:57 by amsaleh          ###   ########.fr       */
+/*   Created: 2025/03/06 23:27:16 by amsaleh           #+#    #+#             */
+/*   Updated: 2025/03/06 23:27:49 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
+#include <libft.h>
 
-void	keyhook(struct mlx_key_data keydata, void *rts)
+size_t	ft_arrlen(void **arr)
 {
-	if (keydata.key == MLX_KEY_ESCAPE)
-	{
-		ft_printf("ESC pressed!");
-		cleaner(rts);
-	}
+	size_t	i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
 }

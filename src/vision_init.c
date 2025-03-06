@@ -6,18 +6,18 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 22:54:55 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:57:55 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/07 01:10:20 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-void	*ambient_light(void)
+void	*ambient_light_init(void)
 {
 	t_alight	*al;
 	char		*tmp;
 
-	al = malloc(sizeof(t_alight));
+	al = ft_calloc(1, sizeof(t_alight));
 	if (!al)
 		return (NULL);
 	tmp = ft_strtok(NULL, " \t\b\r\f\v\n");
@@ -30,12 +30,12 @@ void	*ambient_light(void)
 	}
 	return (al);
 }
-void	*light(void)
+void	*light_init(void)
 {
 	t_light	*light;
 	char	*tmp;
 
-	light = malloc(sizeof(t_light));
+	light = ft_calloc(1, sizeof(t_light));
 	if (!light)
 		return (NULL);
 	light->pos = pos();
@@ -53,8 +53,5 @@ void	*light(void)
 		free(light);
 		return (NULL);
 	}
-	printf("%f,%f,%f %f %d %d %d", light->pos->X, light->pos->Y, light->pos->Z,
-		light->brightness, light->colors->red, light->colors->green,
-		light->colors->blue);
 	return (light);
 }

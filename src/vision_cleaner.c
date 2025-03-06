@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vision_cleaner.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/07 00:56:33 by abueskander      ###   ########.fr       */
+/*   Created: 2025/03/07 01:00:17 by abueskander       #+#    #+#             */
+/*   Updated: 2025/03/07 01:18:40 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-int	main(int argc, char **argv)
+void	free_ambient(t_alight *al)
 {
-	t_rtptr	rts;
-
-	ft_bzero(&rts, sizeof(t_rtptr));
-	if (check_args(argc, argv))
-		return (EXIT_FAILURE);
-	if (parser(argv[1], &rts))
-		cleaner(&rts);
-	// mlx_key_hook(rts.mlx, keyhook, &rts);
-	// mlx_loop(rts.mlx);
-	cleaner(&rts);
-	return (0);
+	free(al->colors);
+	free(al);
+}
+void	free_light(t_light *light)
+{
+	free(light->colors);
+	free(light->pos);
+	free(light);
 }

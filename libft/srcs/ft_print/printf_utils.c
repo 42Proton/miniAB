@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 02:15:48 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/01/07 15:38:39 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 19:38:38 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void	printf_addnbr(t_printf *data, int n)
 		printf_addchar(data, res[i]);
 }
 
-void	printf_addunbr(t_printf *data, unsigned int n)
+void	printf_addunbr(t_printf *data, unsigned long n)
 {
-	char	res[10];
+	char	res[20];
 	int		i;
 
 	if (!n)

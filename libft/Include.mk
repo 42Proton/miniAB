@@ -2,6 +2,8 @@ SRCS = \
 	srcs/ft_common/find_newline.c \
 	srcs/ft_common/ft_tolower.c \
 	srcs/ft_common/ft_atof.c \
+	srcs/ft_common/ft_isspace.c \
+	srcs/ft_common/ft_arrlen.c \
 	srcs/ft_lst/ft_lstnew.c \
 	srcs/ft_print/ft_printf.c \
 	srcs/ft_print/ft_dprintf.c \

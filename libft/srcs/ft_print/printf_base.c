@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 20:49:24 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/01/07 16:26:17 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 19:35:45 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,18 @@ static void	get_start_end(t_printf *data)
 static int	prep_printf_base(t_printf *data, va_list args)
 {
 	va_list	args_cpy;
+	int		is_ul;
 
 	va_copy(args_cpy, args);
 	while (data->end < data->fmt_len)
 	{
+		is_ul = 0;
 		data->start = data->end;
 		get_start_end(data);
 		data->res_len += data->end - data->start;
 		if (data->fmt[data->end] == '%')
-			printf_base_calc(data, args_cpy);
-		data->end += 2;
+			printf_base_calc(data, args_cpy, &is_ul);
+		data->end += 2 + is_ul;
 	}
 	data->res = malloc(data->res_len + 1);
 	if (!data->res)
@@ -53,8 +55,11 @@ static int	prep_printf_base(t_printf *data, va_list args)
 
 static void	printf_base_iter(t_printf *data, va_list args)
 {
+	int	is_ul;
+
 	while (data->end < data->fmt_len)
 	{
+		is_ul = 0;
 		data->start = data->end;
 		get_start_end(data);
 		if (data->end != data->start)
@@ -64,8 +69,8 @@ static void	printf_base_iter(t_printf *data, va_list args)
 			data->res_i += data->end - data->start;
 		}
 		if (data->fmt[data->end] == '%')
-			process_data(data, args);
-		data->end += 2;
+			process_data(data, args, &is_ul);
+		data->end += 2 + is_ul;
 	}
 }
 

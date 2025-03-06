@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:18:24 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/07 00:49:32 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 // includes
 # include <colors.h>
-# include <math.h>
-# include <utils.h>
+
 // defintions
 # define EPSILON 0.00001
 # define PI 3.14159
@@ -43,7 +42,7 @@ typedef struct s_alight
 typedef struct s_camera
 {
 	t_tuple		*pos;
-	t_tuple		orientation;
+	t_tuple		*orientation;
 	float		fov;
 }				t_camera;
 
@@ -64,14 +63,14 @@ typedef struct s_sphere
 typedef struct s_plane
 {
 	t_tuple		*pos;
-	t_tuple		normal_vector;
+	t_tuple		*normal_vector;
 	t_colors	*colors;
 }				t_plane;
 
 typedef struct s_cylinder
 {
 	t_tuple		*pos;
-	t_tuple		normal_axis;
+	t_tuple		*normal_axis;
 	float		dim;
 	float		height;
 	t_colors	*colors;

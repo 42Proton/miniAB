@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:44:42 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/05 20:50:18 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/05 22:26:47 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	atof_prep_value(const char *str, int *n_digits, int *sign,
 	*n_digits = 0;
 	*sign = 1;
 	*res = 0;
-	while ((str[i] >= 0x9 && str[i] <= 0xD) || str[i] == ' ')
+	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-')
 		*sign = -1;

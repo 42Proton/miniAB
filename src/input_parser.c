@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/06 00:05:08 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/07 00:57:42 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,42 +33,53 @@ static int	switch_type(char *obj)
 	return (-1);
 }
 
-int	get_type(char *object, t_rtptr *rts)
+int	process_line_data(t_parser *parser, t_rtptr *rts)
 {
-	char		*splited;
-	int			type;
-	t_object	*obj;
+	int				type;
+	t_object_entry	*entry;
+	t_list			*lst;
 
-	splited = ft_strtok(object, " \t\r\f\v\n");
-	type = switch_type(splited);
+	parser->token = ft_strtok(parser->line, " \t\r\f\v");
+	type = switch_type(parser->token);
 	if (type == -1)
-		cleaner(rts, "Invalid Type");
-	// TODO : VALIDATOR
-	obj = objectify(type);
-	if (!obj)
-		cleaner(rts, "Object can't be created");
-	ft_lstadd_back(&rts->objs, ft_lstnew(obj));
+	{
+		issue_report(parser, ERR_OBJ_TYPE);
+		return (EXIT_FAILURE);
+	}
+	entry = objectify(parser, type);
+	if (!entry)
+	{
+		perror("malloc");
+		return (EXIT_FAILURE);
+	}
+	lst = ft_lstnew(entry);
+	if (!lst)
+	{
+		perror("malloc");
+		return (EXIT_FAILURE);
+	}
+	ft_lstadd_back(&rts->objs, lst);
 	return (EXIT_SUCCESS);
 }
 
 int	read_file(char *file_name, int fd, t_rtptr *rts)
 {
-	char	*process;
-	int		errorflag;
+	t_parser	parser;
 
+	ft_bzero(&parser, sizeof(t_parser));
+	parser.file_name = file_name;
 	while (1)
 	{
-		process = get_next_line(fd, 0, &errorflag);
-		if (errorflag)
+		if (read_iter_line(fd, &parser))
+			return (EXIT_FAILURE);
+		if (!parser.line)
+			return (EXIT_SUCCESS);
+		if (process_line_data(&parser, rts))
 		{
-			get_next_line(fd, 1, &errorflag);
+			reset_parser_props(&parser);
 			return (EXIT_FAILURE);
 		}
-		if (!process)
-			return (EXIT_SUCCESS);
-		if (get_type(process, rts))
-			return (EXIT_FAILURE);
-		free(process);
+		reset_parser_props(&parser);
 	}
 }
 int	parser(char *file_name, t_rtptr *rts)
@@ -77,9 +88,11 @@ int	parser(char *file_name, t_rtptr *rts)
 
 	fd = open(file_name, R_OK);
 	if (fd == -1)
+	{
+		simple_report(ERR_OPEN_FILE);
 		return (EXIT_FAILURE);
-	if (read_file(file_name, fd, rts))
+	}
+	if (read_file(file_name, fd, rts) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	else
-		return (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

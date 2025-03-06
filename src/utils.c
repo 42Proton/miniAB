@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:48:05 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/07 01:15:40 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,31 @@
 
 void	*pos(void)
 {
-	char	*tmp;
-	char	**arrays;
-	t_tuple	*pnt;
+	char	**split_vec;
+	t_tuple	*res;
 
-	tmp = ft_strtok(NULL, " \t\b\r\f\v\n");
-	arrays = ft_split(tmp, ',');
-	if (!arrays)
-		return (NULL);
-	pnt = point(ft_atof(arrays[0]), ft_atof(arrays[1]), ft_atof(arrays[2]));
-	free_array((void *)arrays);
-	return (pnt);
+	split_vec = ft_split(ft_strtok(0, " \t\r\f\v"), ',');
+	if (!split_vec)
+		return (0);
+	res = point(ft_atof(split_vec[0]), ft_atof(split_vec[1]),
+			ft_atof(split_vec[2]));
+	free_array((void **)split_vec);
+	return (res);
 }
 void	*color(void)
 {
-	char *tmp;
 	char **colors;
 	t_colors *color;
+	int alpha;
 
-	tmp = ft_strtok(NULL, " \t\b\r\f\v\n");
-	colors = ft_split(tmp, ',');
+	alpha = 1;
+	colors = ft_split(ft_strtok(NULL, " \t\b\r\f\v\n"), ',');
 	if (!colors)
 		return (NULL);
+	if (ft_arrlen((void **)colors) > 3)
+		alpha = alpha_ftos(ft_atof(colors[3]));
 	color = colorinit(ft_atoi(colors[0]), ft_atoi(colors[1]),
-			ft_atoi(colors[2]), 0);
-	free_array((void *)colors);
+			ft_atoi(colors[2]), alpha);
+	free_array((void **)colors);
 	return (color);
 }
