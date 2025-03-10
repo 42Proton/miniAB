@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_core.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:31:29 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/10 01:34:29 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:02:22 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,13 @@ static int	validate_object(t_parser *parser, int type)
 {
 	int	res;
 
+	res = 0;
+	printf("TYPE %d\n", type);
 	if (type == AMBIENTLIGHT)
 		res = validate_alight(parser);
+	else if (type == PLANE)
+		res = validate_plane(parser);
+	printf("res %d \n---------\n", res);
 	return (res);
 }
 

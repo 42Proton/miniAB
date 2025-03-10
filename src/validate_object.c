@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl_utils.c                                        :+:      :+:    :+:   */
+/*   validate_object.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 11:47:43 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/10 15:17:52 by abueskander      ###   ########.fr       */
+/*   Created: 2025/03/10 14:07:05 by abueskander       #+#    #+#             */
+/*   Updated: 2025/03/10 15:10:41 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <minirt.h>
 
-char	*gnl_strjoin(char *s1, char *s2, int n)
+int	validate_plane(t_parser *parser)
 {
-	char	*res;
+	char *tok;
 
-	res = ft_strjoin(s1, s2);
-	if (n >= 1)
-		free(s1);
-	if (n >= 2)
-		free(s2);
-	return (res);
-}
-
-void	gnl_handle(int *is_err, char *res, char *buffer, int mode)
-{
-	free(buffer);
-	buffer = 0;
-	free(res);
-	if (mode && *is_err)
-		*is_err = 1;
+	// tok = ft_strtok_iter(NULL, parser, 1);
+	// if (!tok)
+	// 	return (0);
+	if (!validate_pos(parser))
+		return (0);
+	if (!validate_normal(parser))
+		return (0);
+	if (!validate_color(parser))
+		return (0);
+	tok = ft_strtok_iter(NULL, parser, 0);
+	if (tok)
+		return (0);
+	return (1);
 }

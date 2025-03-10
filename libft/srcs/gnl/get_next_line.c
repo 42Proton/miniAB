@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 08:41:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2024/12/20 16:05:47 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:18:25 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	gnl_newline(char *read_buf, char **res, char **buffer)
 			free(temp);
 		if (!*buffer)
 			return (-1);
-		ft_strncpy(*buffer, read_buf + i_newline + 1,
-			ft_strlen(read_buf + i_newline + 1));
+		ft_strncpy(*buffer, read_buf + i_newline + 1, ft_strlen(read_buf
+				+ i_newline + 1));
 	}
 	*res = gnl_strjoin(*res, temp, 2);
 	if (!*res)
@@ -88,8 +88,8 @@ void	gnl_recover_buffer(char **res, char **buffer)
 		return ;
 	ft_strncpy(*res, *buffer, res_size);
 	if (is_newline)
-		ft_strncpy(*buffer, *buffer + newline_i + 1,
-			ft_strlen(*buffer + newline_i + 1));
+		ft_strncpy(*buffer, *buffer + newline_i + 1, ft_strlen(*buffer
+				+ newline_i + 1));
 	else
 	{
 		free(*buffer);
@@ -125,8 +125,7 @@ char	*get_next_line(int fd, int free_mode, int *is_err)
 	int			ret_code;
 
 	*is_err = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0
-		|| free_mode || !pre_gnl(&res, &buffer))
+	if (fd < 0 || BUFFER_SIZE <= 0 || free_mode || !pre_gnl(&res, &buffer))
 	{
 		gnl_handle(is_err, 0, buffer, 1);
 		return (0);

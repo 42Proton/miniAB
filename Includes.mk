@@ -17,7 +17,8 @@ SRCS= \
 	validate_utils_color.c\
 	validate_utils_common.c\
 	validate_utils_float.c\
-	validate_vision.c
+	validate_vision.c\
+	validate_object.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
