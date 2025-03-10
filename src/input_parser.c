@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 13:54:05 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/10 14:01:27 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,17 @@ int	process_line_data(t_parser *parser, t_rtptr *rts)
 	return (EXIT_SUCCESS);
 }
 
+int	check_line_isspace(char *str)
+{
+	while (*str)
+	{
+		if (!ft_isspace(*str))
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
 int	read_file(char *file_name, int fd, t_rtptr *rts)
 {
 	t_parser	parser;
@@ -70,10 +81,13 @@ int	read_file(char *file_name, int fd, t_rtptr *rts)
 			return (EXIT_FAILURE);
 		if (!parser.line)
 			return (EXIT_SUCCESS);
-		if (validate_input(&parser) || process_line_data(&parser, rts))
+		if (!check_line_isspace(parser.line))
 		{
-			reset_parser_props(&parser);
-			return (EXIT_FAILURE);
+			if (validate_input(&parser) || process_line_data(&parser, rts))
+			{
+				reset_parser_props(&parser);
+				return (EXIT_FAILURE);
+			}
 		}
 		reset_parser_props(&parser);
 	}
