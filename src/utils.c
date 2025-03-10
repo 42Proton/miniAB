@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 03:51:47 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/10 13:54:25 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*pos(void)
 	char	**split_vec;
 	t_tuple	*res;
 
-	split_vec = ft_split(ft_strtok(0, " \t\r\f\v"), ',');
+	split_vec = ft_split(ft_strtok(0, " \t\r\f\v\n"), ',');
 	if (!split_vec)
 		return (0);
 	res = point(ft_atof(split_vec[0]), ft_atof(split_vec[1]),
@@ -33,7 +33,7 @@ void	*color(void)
 	int			alpha;
 
 	alpha = 1;
-	colors = ft_split(ft_strtok(NULL, " \t\r\f\v"), ',');
+	colors = ft_split(ft_strtok(NULL, " \t\r\f\v\n"), ',');
 	if (!colors)
 		return (NULL);
 	if (ft_arrlen((void **)colors) > 3)

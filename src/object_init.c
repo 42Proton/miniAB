@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:10:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/09 18:02:09 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/10 13:54:14 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*sphere_init(void)
 	if (!sphere)
 		return (0);
 	sphere->pos = pos();
-	sphere->dim = ft_atof(ft_strtok(0, " \t\r\f\v"));
+	sphere->dim = ft_atof(ft_strtok(0, " \t\r\f\v\n"));
 	sphere->colors = color();
 	if (!sphere->colors || !sphere->pos)
 	{
@@ -57,8 +57,8 @@ void	*cylinder_init(void)
 		return (0);
 	cylinder->pos = pos();
 	cylinder->normal_axis = pos();
-	cylinder->dim = ft_atof(ft_strtok(0, " \t\r\f\v"));
-	cylinder->height = ft_atof(ft_strtok(0, " \t\r\f\v"));
+	cylinder->dim = ft_atof(ft_strtok(0, " \t\r\f\v\n"));
+	cylinder->height = ft_atof(ft_strtok(0, " \t\r\f\v\n"));
 	cylinder->colors = color();
 	if (!cylinder->colors || !cylinder->normal_axis || !cylinder->pos)
 	{

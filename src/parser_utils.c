@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:18:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/10 01:49:06 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/10 13:53:31 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*ft_strtok_iter(char *line,
 
 	parser->problem_pos = 0;
 	if (line)
-		tmp = ft_strtok(line, " \t\r\f\v");
+		tmp = ft_strtok(line, " \t\r\f\v\n");
 	else
-		tmp = ft_strtok(NULL, " \t\r\f\v");
+		tmp = ft_strtok(NULL, " \t\r\f\v\n");
 	parser->tok_pos++;
 	if (!tmp && expect_tok)
 		issue_report(parser, ERR_MISSING_TOK);

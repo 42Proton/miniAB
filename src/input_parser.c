@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 03:50:48 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/10 13:54:05 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	process_line_data(t_parser *parser, t_rtptr *rts)
 	t_object_entry	*entry;
 	t_list			*lst;
 
-	parser->token = ft_strtok(parser->line, " \t\r\f\v");
+	parser->token = ft_strtok(parser->line, " \t\r\f\v\n");
 	type = switch_type(parser->token);
 	entry = objectify(parser, type);
 	if (!entry)

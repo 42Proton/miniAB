@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:13:39 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/10 03:50:25 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/10 13:53:46 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	check_color_input(char *str)
 	{
 		if (i == 3)
 			return (0);
-		if (!ft_isdigit(*str))
+		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}

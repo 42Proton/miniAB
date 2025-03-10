@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 00:38:08 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 03:55:06 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/10 13:48:56 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,16 @@ void	simple_report(int issue)
 
 void	issue_report_highlight(size_t row, char *tmp, t_parser *parser)
 {
+	size_t	len;
+
 	if (row > 80)
 		ft_strncpy(tmp, parser->line_bak + row, ft_strlen(parser->line_bak
 				+ row));
 	else
 		ft_strncpy(tmp, parser->line_bak, ft_strlen(parser->line_bak));
+	len = ft_strlen(tmp);
+	if (tmp[len - 1] == '\n')
+		tmp[len - 1] = 0;
 	ft_dprintf(2, "%s\n", tmp);
 	if (row < 80)
 	{
