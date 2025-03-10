@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:31:29 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/10 15:37:06 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/10 15:56:39 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	validate_object(t_parser *parser, int type)
 		res = validate_plane(parser);
 	else if (type == CYLINDER)
 		res = validate_cylinder(parser);
+	else if (type == SPHERE)
+		res = validate_sphere(parser);
 	printf("res %d \n---------\n", res);
 	return (res);
 }
