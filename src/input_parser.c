@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   input_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/07 00:57:42 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/10 03:50:48 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-static int	switch_type(char *obj)
+int	switch_type(char *obj)
 {
 	if (!ft_strcmp(obj, "A"))
 		return (AMBIENTLIGHT);
@@ -41,18 +41,13 @@ int	process_line_data(t_parser *parser, t_rtptr *rts)
 
 	parser->token = ft_strtok(parser->line, " \t\r\f\v");
 	type = switch_type(parser->token);
-	if (type == -1)
-	{
-		issue_report(parser, ERR_OBJ_TYPE);
-		return (EXIT_FAILURE);
-	}
 	entry = objectify(parser, type);
 	if (!entry)
 	{
 		perror("malloc");
 		return (EXIT_FAILURE);
 	}
-	lst = ft_lstnew(entry);
+	lst = ft_lstnew_protect(entry, object_cleanup);
 	if (!lst)
 	{
 		perror("malloc");
@@ -68,13 +63,14 @@ int	read_file(char *file_name, int fd, t_rtptr *rts)
 
 	ft_bzero(&parser, sizeof(t_parser));
 	parser.file_name = file_name;
+	parser.tok_pos = -1;
 	while (1)
 	{
 		if (read_iter_line(fd, &parser))
 			return (EXIT_FAILURE);
 		if (!parser.line)
 			return (EXIT_SUCCESS);
-		if (process_line_data(&parser, rts))
+		if (validate_input(&parser) || process_line_data(&parser, rts))
 		{
 			reset_parser_props(&parser);
 			return (EXIT_FAILURE);
@@ -82,9 +78,10 @@ int	read_file(char *file_name, int fd, t_rtptr *rts)
 		reset_parser_props(&parser);
 	}
 }
+
 int	parser(char *file_name, t_rtptr *rts)
 {
-	int fd;
+	int	fd;
 
 	fd = open(file_name, R_OK);
 	if (fd == -1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vision_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 22:54:55 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/07 01:10:20 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/10 03:50:02 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ambient_light_init(void)
 	al = ft_calloc(1, sizeof(t_alight));
 	if (!al)
 		return (NULL);
-	tmp = ft_strtok(NULL, " \t\b\r\f\v\n");
+	tmp = ft_strtok(NULL, " \t\r\f\v");
 	al->ratio = ft_atof(tmp);
 	al->colors = color();
 	if (!al->colors)
@@ -30,6 +30,7 @@ void	*ambient_light_init(void)
 	}
 	return (al);
 }
+
 void	*light_init(void)
 {
 	t_light	*light;
@@ -44,7 +45,7 @@ void	*light_init(void)
 		free(light);
 		return (NULL);
 	}
-	tmp = ft_strtok(NULL, " \t\b\r\f\v\n");
+	tmp = ft_strtok(NULL, " \t\r\f\v");
 	light->brightness = ft_atof(tmp);
 	light->colors = color();
 	if (!light->colors)

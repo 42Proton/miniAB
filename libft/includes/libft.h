@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:19:58 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/06 23:28:01 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/09 22:53:15 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ size_t			ft_strlen(const char *str);
 size_t			ft_lstsize(t_list *lst);
 size_t			ft_strncpy(char *dst, const char *src, size_t size);
 size_t			ft_arrlen(void **arr);
+size_t			ft_getchr_count(char *str, char c);
 int				ft_atoi(const char *str);
 int				ft_isalnum(int c);
 int				ft_isspace(char c);
@@ -90,6 +91,7 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strmapi(char const *s, char (*f)(size_t, char));
 char			**ft_split(const char *s, char c);
 t_list			*ft_lstnew(void *content);
+t_list			*ft_lstnew_protect(void *content, void (*del)(void *));
 t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));

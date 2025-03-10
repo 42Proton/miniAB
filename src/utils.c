@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/07 01:15:40 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/10 03:51:47 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ void	*pos(void)
 	free_array((void **)split_vec);
 	return (res);
 }
+
 void	*color(void)
 {
-	char **colors;
-	t_colors *color;
-	int alpha;
+	char		**colors;
+	t_colors	*color;
+	int			alpha;
 
 	alpha = 1;
-	colors = ft_split(ft_strtok(NULL, " \t\b\r\f\v\n"), ',');
+	colors = ft_split(ft_strtok(NULL, " \t\r\f\v"), ',');
 	if (!colors)
 		return (NULL);
 	if (ft_arrlen((void **)colors) > 3)

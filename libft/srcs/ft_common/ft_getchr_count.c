@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object_cleaner.c                                   :+:      :+:    :+:   */
+/*   ft_getchr_count.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 00:59:44 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 03:49:33 by amsaleh          ###   ########.fr       */
+/*   Created: 2025/03/09 22:52:44 by amsaleh           #+#    #+#             */
+/*   Updated: 2025/03/09 22:52:59 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
+#include <libft.h>
 
-void	free_sphere(t_sphere *sphere)
+size_t	ft_getchr_count(char *str, char c)
 {
-	free(sphere->pos);
-	free(sphere->colors);
-	free(sphere);
-}
+	size_t	res;
 
-void	free_plane(t_plane *plane)
-{
-	free(plane->pos);
-	free(plane->normal_vector);
-	free(plane->colors);
-	free(plane);
-}
-
-void	free_cylinder(t_cylinder *cylinder)
-{
-	free(cylinder->pos);
-	free(cylinder->normal_axis);
-	free(cylinder->colors);
-	free(cylinder);
+	res = 0;
+	while (*str)
+	{
+		if (*str == c)
+			res++;
+		str++;
+	}
+	return (res);
 }

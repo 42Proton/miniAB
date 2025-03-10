@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object_cleaner.c                                   :+:      :+:    :+:   */
+/*   ft_lstnew_protect.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 00:59:44 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 03:49:33 by amsaleh          ###   ########.fr       */
+/*   Created: 2025/03/09 20:35:58 by amsaleh           #+#    #+#             */
+/*   Updated: 2025/03/09 20:39:31 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
+#include <libft.h>
 
-void	free_sphere(t_sphere *sphere)
+t_list	*ft_lstnew_protect(void *content, void (*del)(void *))
 {
-	free(sphere->pos);
-	free(sphere->colors);
-	free(sphere);
-}
+	t_list	*node;
 
-void	free_plane(t_plane *plane)
-{
-	free(plane->pos);
-	free(plane->normal_vector);
-	free(plane->colors);
-	free(plane);
-}
-
-void	free_cylinder(t_cylinder *cylinder)
-{
-	free(cylinder->pos);
-	free(cylinder->normal_axis);
-	free(cylinder->colors);
-	free(cylinder);
+	node = ft_calloc(1, sizeof(t_list));
+	if (!node)
+	{
+		del(content);
+		return (0);
+	}
+	node->content = content;
+	return (node);
 }

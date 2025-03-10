@@ -12,7 +12,12 @@ SRCS= \
 	utils.c\
 	report.c\
 	object_cleaner.c\
-	vision_cleaner.c
+	vision_cleaner.c\
+	validate_core.c\
+	validate_utils_color.c\
+	validate_utils_common.c\
+	validate_utils_float.c\
+	validate_vision.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\

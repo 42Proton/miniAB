@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/07 01:03:41 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/10 01:45:40 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,13 @@ enum			e_issues
 	ERR_OPEN_FILE,
 	ERR_OBJ_TYPE,
 	ERR_INVALID_FLOAT,
+	ERR_INVALID_NFLOAT,
 	ERR_MISSING_TOK,
 	ERR_EXTRA_TOK,
+	ERR_INVALID_VEC,
+	ERR_INVALID_RGB,
+	ERR_INVALID_COLOR,
+	ERR_INVALID_RATIO
 };
 
 // Parser

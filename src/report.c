@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   report.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 00:38:08 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/07 00:38:35 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/10 03:55:06 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static size_t	goto_token_pos(t_parser *parser)
 	{
 		while (ft_isspace(parser->line_bak[i]))
 			i++;
-		while (!ft_isspace(parser->line_bak[i]))
+		while (parser->line_bak[i]
+			&& !ft_isspace(parser->line_bak[i]))
 			i++;
 		pos++;
 	}
@@ -67,9 +68,9 @@ void	issue_report_highlight(size_t row, char *tmp, t_parser *parser)
 {
 	if (row > 80)
 		ft_strncpy(tmp, parser->line_bak + row, ft_strlen(parser->line_bak
-				+ row) - 1);
+				+ row));
 	else
-		ft_strncpy(tmp, parser->line_bak, ft_strlen(parser->line_bak) - 1);
+		ft_strncpy(tmp, parser->line_bak, ft_strlen(parser->line_bak));
 	ft_dprintf(2, "%s\n", tmp);
 	if (row < 80)
 	{
@@ -86,17 +87,31 @@ void	issue_report_highlight(size_t row, char *tmp, t_parser *parser)
 
 void	issue_report(t_parser *parser, int issue)
 {
-	size_t row;
-	char tmp[81];
+	size_t	row;
+	char	tmp[81];
 
 	row = goto_token_pos(parser);
 	row = goto_problem_pos(parser, row);
 	ft_dprintf(2, "Error\n");
-	ft_dprintf(2, "%s:%lu:%lu\n", parser->file_name, parser->line_pos, row);
+	ft_dprintf(2, "%s:%lu:%lu\n", parser->file_name, parser->line_pos, row + 1);
 	issue_report_highlight(row, tmp, parser);
 	ft_dprintf(2, "\e[091m%s\n", tmp);
 	if (issue == ERR_INVALID_FLOAT)
 		ft_dprintf(2, "Invalid float input\e[39m\n");
+	if (issue == ERR_INVALID_NFLOAT)
+		ft_dprintf(2, "Invalid normal float input\e[39m\n");
+	if (issue == ERR_INVALID_VEC)
+		ft_dprintf(2, "Invalid vector input\e[39m\n");
+	if (issue == ERR_INVALID_RGB)
+		ft_dprintf(2, "Invalid RGB input\e[39m\n");
+	if (issue == ERR_INVALID_COLOR)
+		ft_dprintf(2, "Invalid color input\e[39m\n");
 	if (issue == ERR_OBJ_TYPE)
 		ft_dprintf(2, "Unknown object\e[39m\n");
+	if (issue == ERR_INVALID_RATIO)
+		ft_dprintf(2, "Invalid ratio input\e[39m\n");
+	if (issue == ERR_MISSING_TOK)
+		ft_dprintf(2, "Missing token input\e[39m\n");
+	if (issue == ERR_EXTRA_TOK)
+		ft_dprintf(2, "Extra token input\e[39m\n");
 }
