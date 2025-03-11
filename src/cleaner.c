@@ -6,32 +6,42 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/04 22:18:25 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/10 15:18:31 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-void	cleaner(t_rtptr *rts, char *error)
+void	object_cleanup(void *content)
 {
-	t_list	*tmp;
+	t_object_entry	*entry;
 
-	if (error)
-		ft_dprintf(2, "%s\n", error);
+	entry = (t_object_entry *)content;
+	if (entry)
+	{
+		if (entry->type == AMBIENTLIGHT)
+			free_ambient(entry->object);
+		else if (entry->type == LIGHT)
+			free_light(entry->object);
+		else if (entry->type == SPHERE)
+			free_sphere(entry->object);
+		else if (entry->type == PLANE)
+			free_plane(entry->object);
+		else if (entry->type == CYLINDER)
+			free_cylinder(entry->object);
+	}
+	free(content);
+}
+
+void	cleaner(t_rtptr *rts)
+{
+	int	dummy;
+
 	if (rts->img)
 		mlx_delete_image(rts->mlx, rts->img);
-	// if (rts->mlx)
-	mlx_terminate(rts->mlx);
-	while (rts->objs)
-	{
-		tmp = rts->objs;
-		rts->objs = rts->objs->next;
-		if (tmp->content)
-		{
-			free(((t_object *)(tmp->content))->object);
-			free(tmp->content);
-		}
-		free(tmp);
-	}
+	if (rts->mlx)
+		mlx_terminate(rts->mlx);
+	ft_lstclear(&rts->objs, object_cleanup);
+	get_next_line(-1, 1, &dummy);
 	exit(EXIT_SUCCESS);
 }

@@ -33,7 +33,7 @@ mlx42:
 $(NAME):$(SRCS_OBJ) $(TUPLES_OBJ) $(COL_OBJ) $(MATRIX_OBJ)
 	@make -C $(LIBFT)
 	$(CC) $(SRCS_OBJ) $(TUPLES_OBJ) $(COL_OBJ) $(MATRIX_OBJ) $(CFLAGS) $(LINKERS) -o $(NAME)
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: %.c 
 	@mkdir -p $(dir $@)
 	$(CC) $< $(CFLAGS) -c  -o $@
 clean:

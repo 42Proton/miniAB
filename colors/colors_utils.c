@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:05:02 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/24 15:31:43 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/06 23:58:49 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,9 @@ short	color_inrange(short color)
 	else
 		res = color;
 	return (res);
+}
+
+short	alpha_ftos(float alpha)
+{
+	return ((short)roundf(alpha * 255.0f));
 }

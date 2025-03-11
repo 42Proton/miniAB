@@ -3,17 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:33:07 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/04 01:43:55 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/06 23:58:57 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLORS_H
 # define COLORS_H
 
-# include <utils.h>
+# include <stdlib.h>
+# include <stddef.h>
+# include <math.h>
+
 typedef struct s_colors
 {
 	short	red;
@@ -30,5 +33,6 @@ t_colors	*coloradd(t_colors *a, t_colors *b);
 t_colors	*colorsub(t_colors *a, t_colors *b);
 t_colors	*colormulti(t_colors *a, t_colors *b);
 short		color_inrange(short color);
+short		alpha_ftos(float alpha);
 
 #endif

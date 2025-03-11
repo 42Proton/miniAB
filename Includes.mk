@@ -6,7 +6,20 @@ SRCS= \
 	init.c\
 	input_parser.c\
 	objectify.c\
-	object_init.c
+	object_init.c\
+	parser_utils.c\
+	vision_init.c\
+	utils.c\
+	report.c\
+	report_utils.c\
+	object_cleaner.c\
+	vision_cleaner.c\
+	validate_core.c\
+	validate_utils_color.c\
+	validate_utils_common.c\
+	validate_utils_float.c\
+	validate_vision.c\
+	validate_object.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\

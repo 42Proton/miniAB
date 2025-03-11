@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyhooks.c                                         :+:      :+:    :+:   */
+/*   object_cleaner.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 20:42:32 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 22:16:57 by amsaleh          ###   ########.fr       */
+/*   Created: 2025/03/07 00:59:44 by abueskander       #+#    #+#             */
+/*   Updated: 2025/03/10 03:49:33 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-void	keyhook(struct mlx_key_data keydata, void *rts)
+void	free_sphere(t_sphere *sphere)
 {
-	if (keydata.key == MLX_KEY_ESCAPE)
-	{
-		ft_printf("ESC pressed!");
-		cleaner(rts);
-	}
+	free(sphere->pos);
+	free(sphere->colors);
+	free(sphere);
+}
+
+void	free_plane(t_plane *plane)
+{
+	free(plane->pos);
+	free(plane->normal_vector);
+	free(plane->colors);
+	free(plane);
+}
+
+void	free_cylinder(t_cylinder *cylinder)
+{
+	free(cylinder->pos);
+	free(cylinder->normal_axis);
+	free(cylinder->colors);
+	free(cylinder);
 }

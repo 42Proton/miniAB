@@ -6,20 +6,36 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:33:42 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/04 01:57:04 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/11 16:18:07 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-t_object	*objectify(int type)
+t_object_entry	*objectify(t_parser *parser, int type)
 {
-	t_object *object;
+	t_object_entry	*entry;
 
-	object = ft_calloc(1, sizeof(t_object));
-	if (!object)
+	entry = ft_calloc(1, sizeof(t_object_entry));
+	if (!entry)
 		return (NULL);
 	if (type == AMBIENTLIGHT)
-		object->object = ambient_light();
-	return (object);
+		entry->object = ambient_light_init();
+	else if (type == CAMERA)
+		entry->object = camera_init();
+	else if (type == LIGHT)
+		entry->object = light_init();
+	else if (type == SPHERE)
+		entry->object = sphere_init();
+	else if (type == PLANE)
+		entry->object = plane_init();
+	else if (type == CYLINDER)
+		entry->object = cylinder_init();
+	if (!entry->object)
+	{
+		free(entry);
+		return (0);
+	}
+	entry->type = type;
+	return (entry);
 }

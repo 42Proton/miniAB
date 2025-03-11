@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:25:50 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/01/07 03:28:53 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/05 19:35:02 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static size_t	printf_pointerlen(unsigned long n)
 	return (res);
 }
 
-static size_t	printf_unbrlen(unsigned int n)
+static size_t	printf_unbrlen(unsigned long n)
 {
 	size_t	res;
 
@@ -64,7 +64,7 @@ static size_t	printf_unbrlen(unsigned int n)
 	return (res);
 }
 
-void	printf_base_calc(t_printf *data, va_list args)
+void	printf_base_calc(t_printf *data, va_list args, int *is_ul)
 {
 	char	c;
 
@@ -84,4 +84,9 @@ void	printf_base_calc(t_printf *data, va_list args)
 		data->res_len += printf_pointerlen(va_arg(args, unsigned long));
 	if (c == 'u')
 		data->res_len += printf_unbrlen(va_arg(args, unsigned int));
+	if (!ft_strncmp(data->fmt + data->end + 1, "lu", 2))
+	{
+		data->res_len += printf_unbrlen(va_arg(args, unsigned long));
+		*is_ul = 1;
+	}
 }

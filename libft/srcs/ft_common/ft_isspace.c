@@ -1,13 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object.c                                           :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/08 00:06:15 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:05:52 by abueskander      ###   ########.fr       */
+/*   Created: 2025/03/05 21:52:52 by amsaleh           #+#    #+#             */
+/*   Updated: 2025/03/05 21:53:53 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
+int	ft_isspace(char c)
+{
+	return ((c >= 0x9 && c <= 0xD) || c == ' ');
+}

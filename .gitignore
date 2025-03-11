@@ -1,5 +1,6 @@
 .vscode
 
 **/**.o
-
 **/**.a
+
+miniRT

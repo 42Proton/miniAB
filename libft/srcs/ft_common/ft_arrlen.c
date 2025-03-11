@@ -1,13 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object.c                                           :+:      :+:    :+:   */
+/*   ft_arrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/08 00:06:15 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:05:52 by abueskander      ###   ########.fr       */
+/*   Created: 2025/03/06 23:27:16 by amsaleh           #+#    #+#             */
+/*   Updated: 2025/03/06 23:27:49 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
+#include <libft.h>
+
+size_t	ft_arrlen(void **arr)
+{
+	size_t	i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
+}
