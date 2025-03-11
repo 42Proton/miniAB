@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_object.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:07:05 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 15:58:14 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/11 14:55:53 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

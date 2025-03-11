@@ -11,6 +11,7 @@ SRCS= \
 	vision_init.c\
 	utils.c\
 	report.c\
+	report_utils.c\
 	object_cleaner.c\
 	vision_cleaner.c\
 	validate_core.c\

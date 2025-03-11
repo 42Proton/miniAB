@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:58:26 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 15:50:16 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/11 15:13:29 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,15 @@ int			validate_normal(t_parser *parser);
 int			validate_color(t_parser *parser);
 int			validate_input(t_parser *parser);
 int			validate_alight(t_parser *parser);
+int			validate_camera(t_parser *parser);
+int			validate_light(t_parser *parser);
 int			validate_plane(t_parser *parser);
 int			validate_cylinder(t_parser *parser);
 int			validate_sphere(t_parser *parser);
 // Rest
 int			switch_type(char *obj);
 int			check_vec_input(char *str);
+//Report utils
+void		issue_report_msg(int issue);
 
 #endif

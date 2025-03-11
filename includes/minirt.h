@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/11 16:17:35 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/11 16:22:33 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ enum			e_issues
 	ERR_INVALID_VEC,
 	ERR_INVALID_RGB,
 	ERR_INVALID_COLOR,
-	ERR_INVALID_RATIO
+	ERR_INVALID_RATIO,
+	ERR_INVALID_FOV
 };
 
 // Parser
