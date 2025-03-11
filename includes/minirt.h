@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 01:45:40 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/11 16:17:35 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int				parser(char *, t_rtptr *);
 t_object_entry	*objectify(t_parser *, int);
 void			*ambient_light_init(void);
 void			*light_init(void);
+void			*camera_init(void);
 void			*sphere_init(void);
 void			*plane_init(void);
 void			*cylinder_init(void);

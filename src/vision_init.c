@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vision_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 22:54:55 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 13:54:46 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/11 16:17:23 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,29 @@ void	*light_init(void)
 		return (NULL);
 	}
 	return (light);
+}
+
+void	*camera_init(void)
+{
+	t_camera	*cam;
+	char		*tmp;
+
+	cam = ft_calloc(1, sizeof(t_camera));
+	if (!cam)
+		return (NULL);
+	cam->pos = pos();
+	if (!cam->pos)
+	{
+		free(cam);
+		return (NULL);
+	}
+	cam->orientation = pos();
+	if (!cam->pos)
+	{
+		free(cam);
+		return (NULL);
+	}
+	tmp = ft_strtok(NULL, " \t\r\f\v\n");
+	cam->fov = ft_atof(tmp);
+	return (cam);
 }

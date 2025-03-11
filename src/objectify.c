@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:33:42 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/07 01:17:52 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/11 16:18:07 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_object_entry	*objectify(t_parser *parser, int type)
 		return (NULL);
 	if (type == AMBIENTLIGHT)
 		entry->object = ambient_light_init();
+	else if (type == CAMERA)
+		entry->object = camera_init();
 	else if (type == LIGHT)
 		entry->object = light_init();
 	else if (type == SPHERE)
