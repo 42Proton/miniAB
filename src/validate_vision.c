@@ -6,13 +6,13 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:32:34 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/10 03:59:03 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/11 15:20:45 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-int	validate_alight(t_parser *parser)
+static int	check_ratio_input(t_parser *parser)
 {
 	char	*tok;
 	float	val;
@@ -28,10 +28,77 @@ int	validate_alight(t_parser *parser)
 	val = ft_atof(tok);
 	if (val < 0.0f || val > 1.0f)
 	{
-		printf("%d\n", parser->tok_pos);
 		issue_report(parser, ERR_INVALID_RATIO);
 		return (0);
 	}
+	return (1);
+}
+
+static int	check_fov_input(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '0' && str[i + 1])
+		return (0);
+	while (str[i])
+	{
+		if (i == 3)
+			return (0);
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	i = ft_atoi(str);
+	if (i < 0 || i > 180)
+		return (0);
+	return (1);
+}
+
+int	validate_alight(t_parser *parser)
+{
+	char	*tok;
+	
+	if (!check_ratio_input(parser))
+		return (0);
+	if (!validate_color(parser))
+		return (0);
+	tok = ft_strtok_iter(NULL, parser, 0);
+	if (tok)
+		return (0);
+	return (1);
+}
+
+int	validate_camera(t_parser *parser)
+{
+	char	*tok;
+
+	if (!validate_pos(parser))
+		return (0);
+	if (!validate_normal(parser))
+		return (0);
+	tok = ft_strtok_iter(NULL, parser, 1);
+	if (!tok)
+		return (0);
+	if (!check_fov_input(tok))
+	{
+		issue_report(parser, ERR_INVALID_FOV);
+		return (0);
+	}
+	tok = ft_strtok_iter(NULL, parser, 0);
+	if (tok)
+		return (0);
+	return (1);
+}
+
+int	validate_light(t_parser *parser)
+{
+	char	*tok;
+
+	if (!validate_pos(parser))
+		return (0);
+	if (!check_ratio_input(parser))
+		return (0);
 	if (!validate_color(parser))
 		return (0);
 	tok = ft_strtok_iter(NULL, parser, 0);

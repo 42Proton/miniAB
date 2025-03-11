@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 01:45:40 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/11 15:08:32 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ enum			e_issues
 	ERR_INVALID_VEC,
 	ERR_INVALID_RGB,
 	ERR_INVALID_COLOR,
-	ERR_INVALID_RATIO
+	ERR_INVALID_RATIO,
+	ERR_INVALID_FOV
 };
 
 // Parser

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_core.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:31:29 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/10 15:56:39 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/11 15:22:32 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@ static int	validate_object(t_parser *parser, int type)
 	int	res;
 
 	res = 0;
-	printf("TYPE %d\n", type);
 	if (type == AMBIENTLIGHT)
 		res = validate_alight(parser);
+	else if (type == CAMERA)
+		res = validate_camera(parser);
+	else if (type == LIGHT)
+		res = validate_light(parser);
 	else if (type == PLANE)
 		res = validate_plane(parser);
 	else if (type == CYLINDER)
 		res = validate_cylinder(parser);
 	else if (type == SPHERE)
 		res = validate_sphere(parser);
-	printf("res %d \n---------\n", res);
 	return (res);
 }
 

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 00:38:08 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 13:48:56 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/11 15:11:06 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,22 +101,5 @@ void	issue_report(t_parser *parser, int issue)
 	ft_dprintf(2, "%s:%lu:%lu\n", parser->file_name, parser->line_pos, row + 1);
 	issue_report_highlight(row, tmp, parser);
 	ft_dprintf(2, "\e[091m%s\n", tmp);
-	if (issue == ERR_INVALID_FLOAT)
-		ft_dprintf(2, "Invalid float input\e[39m\n");
-	if (issue == ERR_INVALID_NFLOAT)
-		ft_dprintf(2, "Invalid normal float input\e[39m\n");
-	if (issue == ERR_INVALID_VEC)
-		ft_dprintf(2, "Invalid vector input\e[39m\n");
-	if (issue == ERR_INVALID_RGB)
-		ft_dprintf(2, "Invalid RGB input\e[39m\n");
-	if (issue == ERR_INVALID_COLOR)
-		ft_dprintf(2, "Invalid color input\e[39m\n");
-	if (issue == ERR_OBJ_TYPE)
-		ft_dprintf(2, "Unknown object\e[39m\n");
-	if (issue == ERR_INVALID_RATIO)
-		ft_dprintf(2, "Invalid ratio input\e[39m\n");
-	if (issue == ERR_MISSING_TOK)
-		ft_dprintf(2, "Missing token input\e[39m\n");
-	if (issue == ERR_EXTRA_TOK)
-		ft_dprintf(2, "Extra token input\e[39m\n");
+	issue_report_msg(issue);
 }
