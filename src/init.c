@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:13:10 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/08 18:26:32 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/14 21:54:50 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ int	check_args(int argc, char **argv)
 
 int	init_mlx_pointers(t_rtptr *rts)
 {
-    rts->mlx = mlx_init(WID, HEG, "miniAB", false);
-    if (!rts->mlx)
-        return (EXIT_FAILURE);
-    rts->img = mlx_new_image(rts->mlx, WID, HEG);
-    if (!rts->img)
-    {
-        mlx_terminate(rts->mlx);
-    	return (EXIT_FAILURE);
-    }
-    mlx_image_to_window(rts->mlx, rts->img, 0, 0);
-    return (EXIT_SUCCESS);
+	rts->mlx = mlx_init(WID, HEG, "miniAB", false);
+	if (!rts->mlx)
+		return (EXIT_FAILURE);
+	rts->img = mlx_new_image(rts->mlx, WID, HEG);
+	if (!rts->img)
+	{
+		mlx_terminate(rts->mlx);
+		return (EXIT_FAILURE);
+	}
+	mlx_image_to_window(rts->mlx, rts->img, 0, 0);
+	return (EXIT_SUCCESS);
 }

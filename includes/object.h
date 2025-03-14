@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/07 00:49:32 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/14 21:44:11 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@
 
 // defintions
 # define EPSILON 0.00001
-# define PI 3.14159
 
 typedef struct s_tuple
 {
-	float		X;
-	float		Y;
-	float		Z;
-	float		W;
+	float		x;
+	float		y;
+	float		z;
+	float		w;
 }				t_tuple;
 
 typedef struct s_matrix

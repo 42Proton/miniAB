@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/11 15:08:32 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/14 21:51:21 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,15 @@ enum			e_issues
 };
 
 // Parser
-int				parser(char *, t_rtptr *);
-t_object_entry	*objectify(t_parser *, int);
+int				parser(char *file_name, t_rtptr *rts);
+t_object_entry	*objectify(t_parser *parser, int type);
 void			*ambient_light_init(void);
 void			*light_init(void);
 void			*sphere_init(void);
 void			*plane_init(void);
 void			*cylinder_init(void);
 // Cleaner
-void			cleaner(t_rtptr *);
+void			cleaner(t_rtptr *rts);
 // Objects Cleaners
 void			free_sphere(t_sphere *sphere);
 void			free_plane(t_plane *plane);
@@ -88,15 +88,15 @@ void			free_ambient(t_alight *al);
 void			free_light(t_light *light);
 
 // Issues Reporters
-void			simple_report(int);
-void			issue_report(t_parser *, int);
+void			simple_report(int issue);
+void			issue_report(t_parser *parser, int issue);
 
 // Hooks
-void			keyhook(struct mlx_key_data, void *);
+void			keyhook(struct mlx_key_data keydata, void *rts);
 
 // Initalization
-int				check_args(int, char **);
-int				init_mlx_pointers(t_rtptr *);
+int				check_args(int ac, char **av);
+int				init_mlx_pointers(t_rtptr *rts);
 
 // utils
 void			*pos(void);

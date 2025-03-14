@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:07:05 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/11 14:55:53 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/14 21:54:11 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,10 @@ int	validate_cylinder(t_parser *parser)
 
 int	validate_sphere(t_parser *parser)
 {
-	char *tok;
+	char	*tok;
 
 	if (!validate_pos(parser))
 		return (0);
-
 	tok = ft_strtok_iter(NULL, parser, 1);
 	if (!tok)
 		return (0);

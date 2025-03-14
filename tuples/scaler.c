@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scaler.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:07:54 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/02 10:48:14 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/14 21:52:02 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ t_tuple	*tuplesmult(t_tuple *a, float scale)
 	res = malloc(sizeof(t_tuple));
 	if (!res)
 		return (NULL);
-	res->X = a->X * scale;
-	res->Y = a->Y * scale;
-	res->Z = a->Z * scale;
-	res->W = a->W;
+	res->x = a->x * scale;
+	res->y = a->y * scale;
+	res->z = a->z * scale;
+	res->w = a->w;
 	return (res);
 }
+
 t_tuple	*tuplesdiv(t_tuple *a, float scale)
 {
 	t_tuple	*res;
@@ -36,25 +37,26 @@ t_tuple	*tuplesdiv(t_tuple *a, float scale)
 	res = malloc(sizeof(t_tuple));
 	if (!res)
 		return (NULL);
-	res->X = a->X / scale;
-	res->Y = a->Y / scale;
-	res->Z = a->Z / scale;
-	res->W = a->W;
+	res->x = a->x / scale;
+	res->y = a->y / scale;
+	res->z = a->z / scale;
+	res->w = a->w;
 	return (res);
 }
+
 float	tuplemagnitude(t_tuple *a)
 {
-	float res;
+	float	res;
 
 	if (!a)
 		return (0);
-	if (a->W == POINT)
+	if (a->w == POINT)
 		return (0);
 	res = 0;
-	res += a->X * a->X;
-	res += a->Y * a->Y;
-	res += a->Z * a->Z;
-	res += a->W * a->W;
+	res += a->x * a->x;
+	res += a->y * a->y;
+	res += a->z * a->z;
+	res += a->w * a->w;
 	res = sqrt(res);
 	return (res);
 }
