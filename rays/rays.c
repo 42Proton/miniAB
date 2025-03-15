@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:56:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/15 23:10:56 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/16 00:01:47 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,17 @@ t_intersections	*sphere_intersect(t_object_entry *obj_entry, t_ray *ray)
 		return (0);
 	}
 	if (quad_eq->discriminant < 0)
+	{
+		free(quad_eq);
 		return (res);
+	}
 	if (!prep_intersections_sphere(res, obj_entry, quad_eq))
 	{
-		ft_lstclear(&res->lst, free);
-		free(res);
+		clear_intersections(res);
+		free(quad_eq);
 		return (0);
 	}
+	free(quad_eq);
 	return (res);
 }
 
