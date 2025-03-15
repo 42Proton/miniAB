@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/14 21:51:21 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/15 22:15:07 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <utils.h>
+# include <rays.h>
 # define WID 1000
 # define HEG 720
 
@@ -32,25 +33,6 @@ typedef struct s_rtptr
 	mlx_image_t	*img;
 	t_list		*objs;
 }				t_rtptr;
-
-typedef struct s_object_entry
-{
-	void		*object;
-	int			type;
-}				t_object_entry;
-
-enum			e_types_of_objects
-{
-	AMBIENTLIGHT,
-	LIGHT,
-	CAMERA,
-	SPHERE,
-	PLANE,
-	CYLINDER,
-	CONE,
-	HYPER,
-	PARA
-};
 
 enum			e_issues
 {

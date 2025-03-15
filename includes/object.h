@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/14 21:44:11 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/15 22:15:14 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,25 @@
 
 // defintions
 # define EPSILON 0.00001
+
+enum			e_types_of_objects
+{
+	AMBIENTLIGHT,
+	LIGHT,
+	CAMERA,
+	SPHERE,
+	PLANE,
+	CYLINDER,
+	CONE,
+	HYPER,
+	PARA
+};
+
+typedef struct s_object_entry
+{
+	void		*object;
+	int			type;
+}				t_object_entry;
 
 typedef struct s_tuple
 {

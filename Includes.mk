@@ -32,3 +32,6 @@ COLORS=\
 	colors_operations.c
 MATRIX=\
 	matrix.c
+RAYS=\
+	intersections.c\
+	rays.c
