@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:58:07 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/15 23:16:40 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/16 00:26:10 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	add_intersection(t_intersections *res,
 	t_list		*node;
 	t_intersect	*intersect;
 
-	intersect = malloc(sizeof(intersect));
+	intersect = malloc(sizeof(t_intersect));
 	if (!intersect)
 		return (0);
 	intersect->obj_type = obj_entry->type;

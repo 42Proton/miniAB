@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/15 23:17:32 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/16 00:25:31 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (parser(argv[1], &rts))
 		cleaner(&rts);
 	t_tuple	*origin = point(0, 0, 0);
-	t_tuple *direction = vector(0, 0, 1);
+	t_tuple *direction = vector(0, 0.1, 0.5);
 	t_ray	*ray = init_ray(origin, direction);
 	t_intersections *data = sphere_intersect((t_object_entry *)rts.objs->content, ray);
 	printf("%ld\n", data->count);
@@ -34,7 +34,10 @@ int	main(int argc, char **argv)
 		lst = lst->next;
 	}
 	t_intersect	*i = get_hit(data);
-	printf("T: %f\n", i->t);
+	if (i)
+		printf("T: %f\n", i->t);
+	else
+		printf("NO HIT\n");
 	// mlx_key_hook(rts.mlx, keyhook, &rts);
 	// mlx_loop(rts.mlx);
 	cleaner(&rts);

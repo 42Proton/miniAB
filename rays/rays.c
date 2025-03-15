@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:56:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/16 00:01:47 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/16 00:23:17 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_quad_eq	*sphere_quad_eq(t_object_entry *obj_entry, t_ray *ray)
 	sphere_to_ray = tuplesub(ray->origin, sphere->pos);
 	if (!sphere_to_ray)
 		return (0);
-	quad_eq = malloc(sizeof(quad_eq));
+	quad_eq = malloc(sizeof(t_quad_eq));
 	if (!quad_eq)
 	{
 		free(sphere_to_ray);
@@ -59,7 +59,7 @@ t_intersections	*sphere_intersect(t_object_entry *obj_entry, t_ray *ray)
 	t_quad_eq		*quad_eq;
 	t_intersections	*res;
 
-	res = ft_calloc(1, sizeof(res));
+	res = ft_calloc(1, sizeof(t_intersections));
 	if (!res)
 		return (0);
 	quad_eq = sphere_quad_eq(obj_entry, ray);
