@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:56:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/16 00:23:17 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/16 23:53:27 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ t_quad_eq	*sphere_quad_eq(t_object_entry *obj_entry, t_ray *ray)
 	}
 	quad_eq->a = tupledot(ray->direction, ray->direction);
 	quad_eq->b = 2 * tupledot(ray->direction, sphere_to_ray);
-	quad_eq->c = tupledot(sphere_to_ray, sphere_to_ray) - sphere->dim;
+	quad_eq->c = tupledot(sphere_to_ray, sphere_to_ray)
+		- sphere->dim * sphere->dim;
 	quad_eq->discriminant = quad_eq->b * quad_eq->b - 4
 		* quad_eq->a * quad_eq->c;
 	free(sphere_to_ray);
