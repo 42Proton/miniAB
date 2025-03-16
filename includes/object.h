@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/15 22:15:14 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/16 23:45:58 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ typedef struct s_tuple
 
 typedef struct s_matrix
 {
-	// TODO
-}				t_matrix;
+	size_t	cols;
+	size_t	rows;
+	float	*data;
+}	t_matrix;
 
 typedef struct s_alight
 {
@@ -113,5 +115,14 @@ float			tuplemagnitude(t_tuple *a);
 float			tupledot(t_tuple *a, t_tuple *b);
 t_tuple			*tuplecross(t_tuple *a, t_tuple *b);
 t_tuple			*tuplenormalize(t_tuple *a);
+//Matrix Utils
+size_t			get_mindex(t_matrix *m, size_t col, size_t row);
+float			*get_melem(t_matrix *m, size_t col, size_t row);
+void			set_matrix_elem(t_matrix *m,
+					size_t col, size_t row, float val);
+float			get_matrix_elem(t_matrix *m,
+					size_t col, size_t row);
+t_matrix		*matrix_init(size_t cols, size_t rows);
+void			free_matrix(t_matrix *m);
 
 #endif
