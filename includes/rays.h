@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/15 23:16:51 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 02:13:13 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct s_quad_eq
 
 typedef struct s_ray
 {
-	t_tuple	*origin;
-	t_tuple	*direction;
+	t_tuple	origin;
+	t_tuple	direction;
 }	t_ray;
 
 //Intersection Utils
@@ -52,6 +52,6 @@ void			clear_intersections(t_intersections *data);
 t_intersections	*sphere_intersect(t_object_entry *obj_entry, t_ray *ray);
 t_intersect		*get_hit(t_intersections *data);
 //Ray Utils
-t_ray			*init_ray(t_tuple *origin, t_tuple *direction);
+t_ray			init_ray(t_tuple *origin, t_tuple *direction);
 
 #endif

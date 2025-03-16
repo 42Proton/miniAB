@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/15 22:15:07 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 02:39:36 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int				parser(char *file_name, t_rtptr *rts);
 t_object_entry	*objectify(t_parser *parser, int type);
 void			*ambient_light_init(void);
 void			*light_init(void);
+void			*camera_init(void);
 void			*sphere_init(void);
 void			*plane_init(void);
 void			*cylinder_init(void);
@@ -68,7 +69,7 @@ void			free_cylinder(t_cylinder *cylinder);
 // Vision Cleaners
 void			free_ambient(t_alight *al);
 void			free_light(t_light *light);
-
+void			free_camera(t_camera *camera);
 // Issues Reporters
 void			simple_report(int issue);
 void			issue_report(t_parser *parser, int issue);
@@ -78,9 +79,9 @@ void			keyhook(struct mlx_key_data keydata, void *rts);
 
 // Initalization
 int				check_args(int ac, char **av);
-int				init_mlx_pointers(t_rtptr *rts);
+int				init_mlx(t_rtptr *rts);
 
 // utils
-void			*pos(void);
-void			*color(void);
+t_tuple			*pos(void);
+t_colors		*color(void);
 #endif

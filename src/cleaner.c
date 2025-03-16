@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleaner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 15:18:31 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/17 02:37:03 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	object_cleanup(void *content)
 			free_ambient(entry->object);
 		else if (entry->type == LIGHT)
 			free_light(entry->object);
+		else if (entry->type == CAMERA)
+			free_camera(entry->object);
 		else if (entry->type == SPHERE)
 			free_sphere(entry->object);
 		else if (entry->type == PLANE)

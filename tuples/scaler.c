@@ -6,41 +6,37 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:07:54 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/14 21:52:02 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 01:53:34 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <object.h>
 
-t_tuple	*tuplesmult(t_tuple *a, float scale)
+t_tuple	tuplesmult(t_tuple *a, float scale)
 {
-	t_tuple	*res;
+	t_tuple	res;
 
+	ft_bzero(&res, sizeof(t_tuple));
 	if (!a)
-		return (NULL);
-	res = malloc(sizeof(t_tuple));
-	if (!res)
-		return (NULL);
-	res->x = a->x * scale;
-	res->y = a->y * scale;
-	res->z = a->z * scale;
-	res->w = a->w;
+		return (res);
+	res.x = a->x * scale;
+	res.y = a->y * scale;
+	res.z = a->z * scale;
+	res.w = a->w;
 	return (res);
 }
 
-t_tuple	*tuplesdiv(t_tuple *a, float scale)
+t_tuple	tuplesdiv(t_tuple *a, float scale)
 {
-	t_tuple	*res;
+	t_tuple	res;
 
+	ft_bzero(&res, sizeof(t_tuple));
 	if (!a)
-		return (NULL);
-	res = malloc(sizeof(t_tuple));
-	if (!res)
-		return (NULL);
-	res->x = a->x / scale;
-	res->y = a->y / scale;
-	res->z = a->z / scale;
-	res->w = a->w;
+		return (res);
+	res.x = a->x / scale;
+	res.y = a->y / scale;
+	res.z = a->z / scale;
+	res.w = a->w;
 	return (res);
 }
 

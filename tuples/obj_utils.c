@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/14 21:53:39 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 02:01:24 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,52 +31,42 @@ int	tuplecmp(t_tuple *a, t_tuple *b)
 		return (0);
 }
 
-t_tuple	*tupleadd(t_tuple *a, t_tuple *b)
+t_tuple	tupleadd(t_tuple *a, t_tuple *b)
 {
-	t_tuple	*res;
+	t_tuple	res;
 
+	ft_bzero(&res, sizeof(t_tuple));
 	if (!a || !b)
-		return (NULL);
+		return (res);
 	if (a->w + b->w > 1)
-		return (NULL);
-	res = malloc(sizeof(t_tuple));
-	if (!res)
-		return (NULL);
-	res->x = a->x + b->x;
-	res->y = a->y + b->y;
-	res->z = a->z + b->z;
-	res->w = a->w + b->w;
+		return (res);
+	res.x = a->x + b->x;
+	res.y = a->y + b->y;
+	res.z = a->z + b->z;
+	res.w = a->w + b->w;
 	return (res);
 }
 
-t_tuple	*tuplesub(t_tuple *a, t_tuple *b)
+void	tuplesub(t_tuple *a, t_tuple *b)
 {
-	t_tuple	*res;
-
 	if (!a || !b)
-		return (NULL);
-	res = malloc(sizeof(t_tuple));
-	if (!res)
-		return (NULL);
-	res->x = a->x - b->x;
-	res->y = a->y - b->y;
-	res->z = a->z - b->z;
-	res->w = a->w - b->w;
-	return (res);
+		return ;
+	a->x = a->x - b->x;
+	a->y = a->y - b->y;
+	a->z = a->z - b->z;
+	a->w = a->w - b->w;
 }
 
-t_tuple	*tuplenegt(t_tuple *a)
+t_tuple	tuplenegt(t_tuple *a)
 {
-	t_tuple	*res;
+	t_tuple	res;
 
+	ft_bzero(&res, sizeof(t_tuple));
 	if (!a)
-		return (NULL);
-	res = malloc(sizeof(t_tuple));
-	if (!res)
-		return (NULL);
-	res->x = -a->x;
-	res->y = -a->y;
-	res->z = -a->z;
-	res->w = -a->w;
+		return (res);
+	res.x = -a->x;
+	res.y = -a->y;
+	res.z = -a->z;
+	res.w = -a->w;
 	return (res);
 }
