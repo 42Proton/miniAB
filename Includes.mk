@@ -23,7 +23,7 @@ SRCS= \
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
-	obj_utils_extra.c\
+	obj_utils_new.c\
 	scaler.c\
 	normalization.c\
 	products.c
