@@ -6,11 +6,12 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:56:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/17 02:29:24 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 22:29:39 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rays.h>
+#include <stdio.h>
 
 int	prep_intersections_sphere(t_intersections *res,
 	t_object_entry *obj_entry, t_quad_eq *quad_eq)
@@ -72,4 +73,14 @@ t_ray	init_ray(t_tuple *origin, t_tuple *direction)
 	ray.origin = *origin;
 	ray.direction = *direction;
 	return (ray);
+}
+
+t_tuple	ray_hitpoint(t_ray *ray, float t)
+{
+	t_tuple hit_direction;
+	t_tuple	res;
+
+	hit_direction = n_tuplesmult(&ray->direction, t);
+	res = n_tupleadd(&ray->origin, &hit_direction);
+	return (res);
 }

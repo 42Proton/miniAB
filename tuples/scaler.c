@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   scaler.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:07:54 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 03:02:13 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/17 22:34:42 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <object.h>
+#include <stdio.h>
 
 void	tuplesmult(t_tuple *a, float scale)
 {
@@ -42,7 +43,19 @@ float	tuplemagnitude(t_tuple *a)
 	res += a->x * a->x;
 	res += a->y * a->y;
 	res += a->z * a->z;
-	res += a->w * a->w;
 	res = sqrt(res);
+	return (res);
+}
+
+t_tuple	unit_vector(t_tuple *a)
+{
+	t_tuple	res;
+	float	magnitude;
+
+	ft_bzero(&res, sizeof(t_tuple));
+	if (!a)
+		return (res);
+	magnitude = tuplemagnitude(a);
+	res = n_tuplesdiv(a, magnitude);
 	return (res);
 }

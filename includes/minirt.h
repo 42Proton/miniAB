@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 17:34:15 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 19:27:46 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <stdlib.h>
 # include <utils.h>
 # include <rays.h>
-# define WID 1000
-# define HEG 720
+# define WID 800
+# define HEG 800
 
 typedef struct s_rtptr
 {

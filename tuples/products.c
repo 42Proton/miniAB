@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:14:02 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 01:52:12 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 22:18:33 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ float	tupledot(t_tuple *a, t_tuple *b)
 	res = a->x * b->x;
 	res += a->y * b->y;
 	res += a->z * b->z;
-	res += a->w * b->w;
 	return (res);
 }

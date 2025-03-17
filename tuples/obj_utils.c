@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 02:55:36 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/17 22:18:25 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	tupleadd(t_tuple *a, t_tuple *b)
 	a->x = a->x + b->x;
 	a->y = a->y + b->y;
 	a->z = a->z + b->z;
-	a->w = a->w + b->w;
 }
 
 void	tuplesub(t_tuple *a, t_tuple *b)
@@ -49,7 +48,6 @@ void	tuplesub(t_tuple *a, t_tuple *b)
 	a->x = a->x - b->x;
 	a->y = a->y - b->y;
 	a->z = a->z - b->z;
-	a->w = a->w - b->w;
 }
 
 t_tuple	tuplenegt(t_tuple *a)
@@ -62,6 +60,6 @@ t_tuple	tuplenegt(t_tuple *a)
 	res.x = -a->x;
 	res.y = -a->y;
 	res.z = -a->z;
-	res.w = -a->w;
+	res.w = a->w;
 	return (res);
 }
