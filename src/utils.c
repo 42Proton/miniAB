@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 02:28:25 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 17:24:38 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_colors	*color(void)
 	t_colors	*color;
 	int			alpha;
 
-	alpha = 1;
+	alpha = 255;
 	colors = ft_split(ft_strtok(NULL, " \t\r\f\v\n"), ',');
 	if (!colors)
 		return (NULL);

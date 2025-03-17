@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:32:46 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 02:23:08 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 17:07:33 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	colorvalue(t_colors *a)
 	if (!a)
 		return (0);
 	res = 0;
-	res = res | (tmcol.alpha << 24);
-	res = res | (tmcol.red << 16);
-	res = res | (tmcol.green << 8);
-	res = res | (tmcol.blue);
+	res = res | (tmcol.red << 24);
+	res = res | (tmcol.green << 16);
+	res = res | (tmcol.blue << 8);
+	res = res | (tmcol.alpha);
 	return (res);
 }

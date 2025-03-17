@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 22:54:55 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 02:35:43 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 17:32:58 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,27 +58,26 @@ void	*light_init(void)
 }
 
 void	*camera_init(void)
- {
- 	t_camera	*cam;
- 	char		*tmp;
- 
- 	cam = ft_calloc(1, sizeof(t_camera));
- 	if (!cam)
- 		return (NULL);
- 	cam->pos = pos();
- 	if (!cam->pos)
- 	{
- 		free(cam);
- 		return (NULL);
- 	}
- 	cam->orientation = pos();
- 	if (!cam->pos)
- 	{
- 		free(cam);
- 		return (NULL);
- 	}
- 	tmp = ft_strtok(NULL, " \t\r\f\v\n");
- 	cam->fov = ft_atof(tmp);
- 	return (cam);
- }
- 
+{
+	t_camera	*cam;
+	char		*tmp;
+
+	cam = ft_calloc(1, sizeof(t_camera));
+	if (!cam)
+		return (NULL);
+	cam->pos = pos();
+	if (!cam->pos)
+	{
+		free(cam);
+		return (NULL);
+	}
+	cam->orientation = pos();
+	if (!cam->pos)
+	{
+		free(cam);
+		return (NULL);
+	}
+	tmp = ft_strtok(NULL, " \t\r\f\v\n");
+	cam->fov = ft_atof(tmp);
+	return (cam);
+}
