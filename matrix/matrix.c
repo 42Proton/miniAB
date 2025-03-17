@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:10:57 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/16 23:43:00 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 03:31:19 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <libft.h>
 
 size_t	get_mindex(t_matrix *m, size_t col, size_t row)
+// Not sure if the norm is going to like this but I think it looks much better this way.
 {
 	return (col * m->rows + row);
 }
@@ -34,9 +35,11 @@ void	set_matrix_elem(t_matrix *m,
 float	get_matrix_elem(t_matrix *m,
 	size_t col, size_t row)
 {
+	float res;
 	if (col >= m->cols || row >= m->rows)
 		return (0);
-	return (m->data[get_mindex(m, col, row)]);
+	res = m->data[get_mindex(m, col, row)];
+	return (res);
 }
 
 t_matrix	*matrix_init(size_t cols, size_t rows)

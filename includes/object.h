@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 02:29:04 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 03:37:47 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,18 +104,27 @@ enum			e_pov
 
 int				floatcmp(float a, float b);
 int				tuplecmp(t_tuple *a, t_tuple *b);
+
+// Modify Old instance
 void			tuplesub(t_tuple *a, t_tuple *b);
+void			tupleadd(t_tuple *a, t_tuple *b);
+void			tuplesdiv(t_tuple *a, float scale);
+void			tuplesmult(t_tuple *a, float scale);
+//New instance
+t_tuple			n_tuplesdiv(t_tuple *a, float scale);
+t_tuple			n_tuplesmult(t_tuple *a, float scale);
 t_tuple			n_tuplesub(t_tuple *a, t_tuple *b);
-t_tuple			tupleadd(t_tuple *a, t_tuple *b);
+t_tuple			n_tupleadd(t_tuple *a, t_tuple *b);
 t_tuple			vector(float x, float y, float z);
 t_tuple			point(float x, float y, float z);
-t_tuple			tuplesdiv(t_tuple *a, float scale);
-t_tuple			tuplesmult(t_tuple *a, float scale);
 t_tuple			tuplenegt(t_tuple *a);
 float			tuplemagnitude(t_tuple *a);
 float			tupledot(t_tuple *a, t_tuple *b);
 t_tuple			tuplecross(t_tuple *a, t_tuple *b);
 t_tuple			tuplenormalize(t_tuple *a);
+
+//Matrix functions
+t_tuple         	transform_f(t_matrix *tmatrix, t_tuple *vec);
 //Matrix Utils
 size_t			get_mindex(t_matrix *m, size_t col, size_t row);
 float			*get_melem(t_matrix *m, size_t col, size_t row);

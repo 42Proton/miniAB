@@ -23,7 +23,7 @@ SRCS= \
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
-	obj_utils_extra.c\
+	obj_utils_new.c\
 	scaler.c\
 	normalization.c\
 	products.c
@@ -33,7 +33,8 @@ COLORS=\
 	colors_operations.c
 MATRIX=\
 	matrix.c\
-	matrix_utils.c
+	matrix_utils.c\
+	transformation.c
 RAYS=\
 	intersections.c\
 	rays.c
