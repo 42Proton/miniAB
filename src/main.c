@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 02:27:18 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 03:45:39 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,26 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (parser(argv[1], &rts))
 		cleaner(&rts);
-	// float	focal_length = 1.0f;
-	// float	aspect_ratio = WID/HEG;
-	// float	viewport_height = 2.0f;
-	// float	viewport_width = viewport_height * aspect_ratio;
-	// t_tuple	*camera_center = point(0, 0, 0);
-	// t_tuple	*viewport_u = vector(viewport_width, 0, 0);
-	// t_tuple	*viewport_v = vector(0, -viewport_height, 0);
-	// t_tuple	*pixel_delta_u = tuplesdiv(viewport_u, WID);
-	// t_tuple	*pixel_delta_v = tuplesdiv(viewport_u, HEG);
-	// t_tuple *viewport_upper_left = tuplesub(tuplesub(camera_center, vector(0, 0, focal_length)), tuplesdiv(viewport_u, 2)) tuplesdiv(viewport_v, 2);
 
-	t_tuple	origin = point(0, 0, 0);
-	t_tuple direction = vector(0, 0, 0.5);
-	t_ray	ray = init_ray(&origin, &direction);
-	t_intersections *data = sphere_intersect((t_object_entry *)rts.objs->content, &ray);
-	printf("%ld\n", data->count);
-	t_list *lst = data->lst;
-	while (lst)
-	{
-		t_intersect *intersect = (t_intersect *)lst->content;
-		printf("OBJ TYPE: %d\nOBJ PTR: %p\nT value: %f\n", intersect->obj_type, intersect->obj, intersect->t);
-		lst = lst->next;
-	}
-	t_intersect	*i = get_hit(data);
-	if (i)
-		printf("T: %f\n", i->t);
-	else
-		printf("NO HIT\n");
-	clear_intersections(data);
+	t_tuple		pos;
+	t_matrix 	*matrix;
+
+	pos = vector(1,1,1);
+	matrix = matrix_init(3, 3);
+	set_matrix_elem(matrix,0,0,2);
+	set_matrix_elem(matrix,0,1,1);
+	set_matrix_elem(matrix,0,2,0);
+
+	set_matrix_elem(matrix,1,0,-1);
+	set_matrix_elem(matrix,1,1,3);
+	set_matrix_elem(matrix,1,2,0);
+
+	set_matrix_elem(matrix,2,0,0);
+	set_matrix_elem(matrix,2,1,0);
+	set_matrix_elem(matrix,2,2,4);
+	
+	pos = transform_f(matrix, &pos);
+	printf("x: %f, y: %f, z: %f\n", pos.x, pos.y, pos.z);
 	// mlx_key_hook(rts.mlx, keyhook, &rts);
 	// mlx_loop(rts.mlx);
 	cleaner(&rts);
