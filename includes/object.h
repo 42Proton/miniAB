@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 21:53:53 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 23:14:28 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ float			tuplemagnitude(t_tuple *a);
 float			tupledot(t_tuple *a, t_tuple *b);
 t_tuple			tuplecross(t_tuple *a, t_tuple *b);
 t_tuple			tuplenormalize(t_tuple *a);
-t_tuple			unit_vector(t_tuple *a);
 
 //Matrix functions
 t_tuple         	transform_f(t_matrix *tmatrix, t_tuple *vec);

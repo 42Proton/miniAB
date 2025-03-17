@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 23:00:54 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/17 23:16:41 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	if (intersect)
 	{
 		t_tuple rhitpoint = ray_hitpoint(ray, intersect->t);
-		t_tuple inverse_vec = vector(0, 0, -1);
-		t_tuple rhitpoint_inverse = n_tuplesub(&rhitpoint, &inverse_vec);
-		rhitpoint_inverse.w = 0;
-		t_tuple normal_vec = unit_vector(&rhitpoint_inverse);
+		t_tuple inverse_point = point(0, 0, -1);
+		t_tuple rhitpoint_inverse = n_tuplesub(&rhitpoint, &inverse_point);
+		t_tuple normal_vec = tuplenormalize(&rhitpoint_inverse);
 		res.red = normal_vec.x * 255;
 		res.green = normal_vec.y * 255;
 		res.blue = normal_vec.z * 255;
@@ -40,7 +39,7 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	}
 	else
 	{
-		t_tuple unit_direction = unit_vector(&ray->direction);
+		t_tuple unit_direction = tuplenormalize(&ray->direction);
 		res.blue = unit_direction.z * 255;
 		res.green = unit_direction.y * 255;
 		res.red = unit_direction.x * 255;
@@ -73,7 +72,6 @@ int	main(int argc, char **argv)
 			float world_x = -half + pixel_size * x;
 			t_tuple position = point(world_x, world_y, viewport_z);
 			t_tuple ray_direction = n_tuplesub(&position, &ray_origin);
-			ray_direction.w = 0;
 			t_ray ray = init_ray(&ray_origin, &ray_direction);
 			t_colors color = ray_color(&rts, &ray);
 			mlx_put_pixel(rts.img, x, y, colorvalue(&color));
