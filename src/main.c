@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/17 18:17:42 by amsaleh          ###   ########.fr       */
-=======
-/*   Updated: 2025/03/17 03:45:39 by abueskander      ###   ########.fr       */
->>>>>>> 4d10cafba7660ea4707abb4a1b99bc405047975a
+/*   Updated: 2025/03/17 18:21:50 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
