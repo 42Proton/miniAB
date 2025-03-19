@@ -34,7 +34,8 @@ COLORS=\
 MATRIX=\
 	matrix.c\
 	matrix_utils.c\
-	transformation.c
+	transformation.c\
+	matrix_operation.c
 RAYS=\
 	intersections.c\
 	rays.c
