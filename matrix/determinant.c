@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:59:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/20 02:45:46 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/20 02:49:44 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ float	determinant(t_matrix *m)
 	if (m->rows == 2 && m->cols == 2)
 		return (determinant2x2(m));
 	if (m->rows == 3 && m->cols == 3)
-		return (determinant2x2(m));
+		return (determinant3x3(m));
 	det = 0;
 	i = -1;
 	while (++i < m->cols)
