@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/19 22:54:12 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/19 23:05:22 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,51 +59,15 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 void	matrix_test(void)
 {
 	t_matrix	*a;
-	t_matrix	*b;
 
-	a = matrix_init(4, 4);
-	b = matrix_init(4, 4);
+	// t_matrix	*b;
+	a = matrix_init(2, 2);
 	set_matrix_elem(a, 0, 0, 1);
-	set_matrix_elem(a, 1, 0, 2);
-	set_matrix_elem(a, 2, 0, 3);
-	set_matrix_elem(a, 3, 0, 4);
-	set_matrix_elem(a, 0, 1, 5);
-	set_matrix_elem(a, 1, 1, 6);
-	set_matrix_elem(a, 2, 1, 7);
-	set_matrix_elem(a, 3, 1, 8);
-	set_matrix_elem(a, 0, 2, 9);
-	set_matrix_elem(a, 1, 2, 8);
-	set_matrix_elem(a, 2, 2, 7);
-	set_matrix_elem(a, 3, 2, 6);
-	set_matrix_elem(a, 0, 3, 5);
-	set_matrix_elem(a, 1, 3, 4);
-	set_matrix_elem(a, 2, 3, 3);
-	set_matrix_elem(a, 3, 3, 2);
-	set_matrix_elem(b, 0, 0, -2);
-	set_matrix_elem(b, 1, 0, 1);
-	set_matrix_elem(b, 2, 0, 2);
-	set_matrix_elem(b, 3, 0, 3);
-	set_matrix_elem(b, 0, 1, 3);
-	set_matrix_elem(b, 1, 1, 2);
-	set_matrix_elem(b, 2, 1, 1);
-	set_matrix_elem(b, 3, 1, -1);
-	set_matrix_elem(b, 0, 2, 4);
-	set_matrix_elem(b, 1, 2, 3);
-	set_matrix_elem(b, 2, 2, 6);
-	set_matrix_elem(b, 3, 2, 5);
-	set_matrix_elem(b, 0, 3, 1);
-	set_matrix_elem(b, 1, 3, 2);
-	set_matrix_elem(b, 2, 3, 7);
-	set_matrix_elem(b, 3, 3, 8);
-	matrix_multiply(a, b);
-	printf("%f\n", get_matrix_elem(b, 0, 0));
-	printf("%f\n", get_matrix_elem(b, 1, 0));
-	printf("%f\n", get_matrix_elem(b, 2, 0));
-	printf("%f\n", get_matrix_elem(b, 3, 0));
-	printf("%f\n", get_matrix_elem(b, 0, 1));
-	printf("%f\n", get_matrix_elem(b, 1, 1));
-	printf("%f\n", get_matrix_elem(b, 2, 1));
-	printf("%f\n", get_matrix_elem(b, 3, 1));
+	set_matrix_elem(a, 1, 0, 5);
+	set_matrix_elem(a, 0, 1, -3);
+	set_matrix_elem(a, 1, 1, 2);
+	printf("Matrix A\n");
+	printf("deteminant: %f\n", determinant2x2(a));
 }
 int	main(int argc, char **argv)
 {
