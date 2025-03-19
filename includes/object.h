@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/19 23:16:09 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/19 23:23:36 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,9 @@ t_tuple			tuplecross(t_tuple *a, t_tuple *b);
 t_tuple			tuplenormalize(t_tuple *a);
 
 // Matrix functions
+t_matrix		*get_submatrix(t_matrix *m, int skip_row, int skip_col);
+t_matrix		*matrix_transpose(t_matrix *m);
+t_matrix		*matrix_copy(t_matrix *m);
 float			determinant(t_matrix *m);
 float			determinant2x2(t_matrix *m);
 int				matrix_multiply(t_matrix *a, t_matrix *b);

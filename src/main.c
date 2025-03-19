@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/19 23:17:53 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/19 23:26:43 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 void	matrix_test(void)
 {
 	t_matrix	*a;
+	t_matrix	*b;
 
-	// t_matrix	*b;
 	a = matrix_init(4, 4);
 	set_matrix_elem(a, 0, 0, -2);
 	set_matrix_elem(a, 1, 0, -8);
@@ -78,8 +78,26 @@ void	matrix_test(void)
 	set_matrix_elem(a, 1, 3, 7);
 	set_matrix_elem(a, 2, 3, 7);
 	set_matrix_elem(a, 3, 3, -9);
+	b = matrix_transpose(a);
 	printf("Matrix A\n");
-	printf("deteminant: %f\n", determinant(a));
+	printf("deteminant: %f\n", determinant(b));
+	int i, j;
+	printf("Before transpose:\n");
+	for (i = 0; i < 4; i++)
+	{
+		for (j = 0; j < 4; j++)
+			printf("%.1f ", a->data[i * 4 + j]);
+		printf("\n");
+	}
+	printf("\nAfter transpose:\n");
+	for (i = 0; i < 4; i++)
+	{
+		for (j = 0; j < 4; j++)
+			printf("%.1f ", b->data[i * 4 + j]);
+		printf("\n");
+	}
+	free_matrix(a);
+	free_matrix(b);
 }
 int	main(int argc, char **argv)
 {

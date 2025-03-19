@@ -6,7 +6,7 @@
 /*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:59:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/19 23:13:55 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/19 23:24:44 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,3 @@ float	determinant(t_matrix *m)
 	}
 	return (det);
 }
-
-// float	determinant3x3(t_matrix *m)
-// {
-// 	float res;
-
-//         if (m->rows != 3 || m->cols != 3)
-//                 return (0);
-
-// }
