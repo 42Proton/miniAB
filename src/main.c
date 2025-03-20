@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/19 23:26:43 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/21 02:02:20 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
-
-void	debug_tuple(t_tuple *tuple)
-{
-	printf("%f %f %f\n", tuple->x, tuple->y, tuple->z);
-}
 
 t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 {
@@ -24,10 +19,7 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	t_intersections	*data;
 	t_intersect		*intersect;
 	t_tuple			rhitpoint;
-	t_tuple			inverse_point;
-	t_tuple			rhitpoint_inverse;
 	t_tuple			normal_vec;
-	t_tuple			unit_direction;
 
 	ft_bzero(&res, sizeof(t_colors));
 	obj_entry = rts->objs->content;
@@ -36,24 +28,33 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	if (intersect)
 	{
 		rhitpoint = ray_hitpoint(ray, intersect->t);
-		inverse_point = point(0, 0, -1);
-		rhitpoint_inverse = n_tuplesub(&rhitpoint, &inverse_point);
-		normal_vec = tuplenormalize(&rhitpoint_inverse);
+		normal_vec = n_tuplesub(&rhitpoint, ((t_sphere *)obj_entry->object)->pos);
 		res.red = normal_vec.x * 255;
 		res.green = normal_vec.y * 255;
-		res.blue = normal_vec.z * 255;
+		res.blue = 255;
 		res.alpha = 255;
 	}
 	else
 	{
-		unit_direction = tuplenormalize(&ray->direction);
-		res.blue = unit_direction.z * 255;
-		res.green = unit_direction.y * 255;
-		res.red = unit_direction.x * 255;
-		res.alpha = unit_direction.y * 255;
+		normal_vec = tuplenormalize(&ray->direction);
+		res.blue = normal_vec.z * 255;
+		res.green = normal_vec.y * 255;
+		res.red = normal_vec.x * 255;
+		res.alpha = normal_vec.y * 255;
 	}
 	clear_intersections(data);
 	return (res);
+}
+
+int	prep_rt_core(int ac, char **av, t_rtptr *rts)
+{
+	ft_bzero(rts, sizeof(t_rtptr));
+	if (check_args(ac, av))
+		return (EXIT_FAILURE);
+	if (parser(av[1], rts))
+		return (EXIT_FAILURE);
+	split_objs(rts);
+	return (EXIT_SUCCESS);
 }
 
 void	matrix_test(void)
@@ -81,37 +82,41 @@ void	matrix_test(void)
 	b = matrix_transpose(a);
 	printf("Matrix A\n");
 	printf("deteminant: %f\n", determinant(b));
-	int i, j;
 	printf("Before transpose:\n");
-	for (i = 0; i < 4; i++)
-	{
-		for (j = 0; j < 4; j++)
-			printf("%.1f ", a->data[i * 4 + j]);
-		printf("\n");
-	}
+	matrix_debug(a);
 	printf("\nAfter transpose:\n");
-	for (i = 0; i < 4; i++)
-	{
-		for (j = 0; j < 4; j++)
-			printf("%.1f ", b->data[i * 4 + j]);
-		printf("\n");
-	}
+	matrix_debug(b);
 	free_matrix(a);
 	free_matrix(b);
 }
-int	main(int argc, char **argv)
+
+int	main(int ac, char **av)
 {
 	t_rtptr	rts;
 
-	ft_bzero(&rts, sizeof(t_rtptr));
-	if (check_args(argc, argv))
-		return (EXIT_FAILURE);
-	if (parser(argv[1], &rts))
+	if (prep_rt_core(ac, av, &rts))
 		cleaner(&rts);
+	// init_mlx is seperate from prep_rt_core for ease of debugging
+	// if (init_mlx(&rts))
+	// 	cleaner(&rts);
 	// mlx_image_to_window(rts.mlx, rts.img, 0, 0);
-	// Leave it clean, if you want to test,
-	// put it in a function then call it here.
-	matrix_test();
+	// float viewport_size = 12.0;
+	// float viewport_z = 10;
+	// float pixel_size = viewport_size / WID;
+	// float half = viewport_size / 2;
+	// for (int y = 0; y < HEG; y++)
+	// {
+	// 	float world_y = half - pixel_size * y;
+	// 	for (int x = 0; x < WID; x++)
+	// 	{
+	// 		float world_x = -half + pixel_size * x;
+	// 		t_tuple position = point(world_x, world_y, viewport_z);
+	// 		t_tuple ray_direction = n_tuplesub(&position, rts.camera->pos);
+	// 		t_ray ray = init_ray(rts.camera->pos, &ray_direction);
+	// 		t_colors color = ray_color(&rts, &ray);
+	// 		mlx_put_pixel(rts.img, x, y, colorvalue(&color));
+	// 	}
+	// }
 	// mlx_key_hook(rts.mlx, keyhook, &rts);
 	// mlx_loop(rts.mlx);
 	cleaner(&rts);

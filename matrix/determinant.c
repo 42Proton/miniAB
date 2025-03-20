@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:59:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/20 02:49:44 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/21 00:12:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ float	s_determinant_3x3(t_matrix_9 *m)
 	return (m0 * m->data[0] - m1 * m->data[1] + m2 * m->data[2]);
 }
 
-float	determinant_3x3(t_matrix *m)
+float	determinant3x3(t_matrix *m)
 {
 	float	m0;
 	float	m1;

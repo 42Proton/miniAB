@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:19:58 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/09 22:53:15 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/21 01:23:04 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void			ft_striteri(char *s, void (*f)(size_t, char *));
 void			ft_lstadd_front(t_list **lst, t_list *new);
 void			ft_lstadd_back(t_list **lst, t_list *new);
 void			free_array(void **arr);
+void			ft_move_lst(t_list *node, t_list **new_lst);
 void			*ft_bzero(void *src, size_t size);
 void			*ft_calloc(size_t nitems, size_t size);
 void			*ft_memchr(const void *src, int c, size_t n);

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 19:27:46 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/21 01:48:26 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_rtptr
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
+	t_camera	*camera;
+	t_list		*vision_objs;
 	t_list		*objs;
 }				t_rtptr;
 
@@ -51,6 +53,8 @@ enum			e_issues
 	ERR_INVALID_FOV
 };
 
+// Object Utils
+void			split_objs(t_rtptr *rts);
 // Parser
 int				parser(char *file_name, t_rtptr *rts);
 t_object_entry	*objectify(t_parser *parser, int type);
@@ -75,11 +79,16 @@ void			simple_report(int issue);
 void			issue_report(t_parser *parser, int issue);
 
 // Hooks
-void			keyhook(struct mlx_key_data keydata, void *rts);
+void			keyhook(struct mlx_key_data keydata, t_rtptr *rts);
 
 // Initalization
 int				check_args(int ac, char **av);
 int				init_mlx(t_rtptr *rts);
+
+// Debug Utils
+void	debug_tuple(t_tuple *tuple);
+void	matrix_debug(t_matrix *m);
+t_colors	ray_color(t_rtptr *rts, t_ray *ray);
 
 // utils
 t_tuple			*pos(void);

@@ -2,7 +2,7 @@ SRCS= \
 	main.c\
 	cleaner.c\
 	keyhooks.c\
-	object.c\
+	object_utils.c\
 	init.c\
 	input_parser.c\
 	objectify.c\
@@ -19,7 +19,8 @@ SRCS= \
 	validate_utils_common.c\
 	validate_utils_float.c\
 	validate_vision.c\
-	validate_object.c
+	validate_object.c\
+	debug.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
