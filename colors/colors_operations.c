@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:53:11 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 02:21:53 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 01:59:02 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

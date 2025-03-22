@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/21 01:24:17 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 02:03:01 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ typedef struct s_tuple
 
 typedef struct s_matrix
 {
-	int		cols;
-	int		rows;
-	float	*data;
+	int			cols;
+	int			rows;
+	float		*data;
 }				t_matrix;
 
 typedef struct s_matrix_9
 {
-	int		cols;
-	int		rows;
-	float	data[9];
+	int			cols;
+	int			rows;
+	float		data[9];
 }				t_matrix_9;
 
 typedef struct s_alight
@@ -131,6 +131,8 @@ t_tuple			tuplecross(t_tuple *a, t_tuple *b);
 t_tuple			tuplenormalize(t_tuple *a);
 
 // Matrix functions
+int				is_invertible(t_matrix *m);
+t_matrix		*matrix_inverse(t_matrix *m);
 t_matrix		*get_submatrix(t_matrix *m, int skip_row, int skip_col);
 t_matrix		*matrix_transpose(t_matrix *m);
 t_matrix		*matrix_copy(t_matrix *m);
@@ -146,7 +148,6 @@ void			set_matrix_elem(t_matrix *m, size_t col, size_t row, float val);
 float			get_matrix_elem(t_matrix *m, size_t col, size_t row);
 t_matrix		*matrix_init(size_t cols, size_t rows);
 void			free_matrix(t_matrix *m);
-t_matrix_9		submatrix_3x3(t_matrix *m,
-	int skip_col, int skip_row);
+t_matrix_9		submatrix_3x3(t_matrix *m, int skip_col, int skip_row);
 
 #endif

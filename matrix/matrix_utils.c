@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 23:34:37 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/16 23:35:34 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 02:08:02 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	free_matrix(t_matrix *m)
 {
-	free(m->data);
+	if (m && m->data)
+		free(m->data);
 	free(m);
 }
