@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 03:11:49 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 03:18:13 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	if (intersect)
 	{
 		rhitpoint = ray_hitpoint(ray, intersect->t);
-		normal_vec = n_tuplesub(&rhitpoint, ((t_sphere *)obj_entry->object)->pos);
+		normal_vec = n_tuplesub(&rhitpoint,
+				((t_sphere *)obj_entry->object)->pos);
 		res.red = normal_vec.x * 255;
 		res.green = normal_vec.y * 255;
 		res.blue = 255;
@@ -59,39 +60,34 @@ int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 	return (EXIT_SUCCESS);
 }
 
-void	matrix_test(void)
+void	testinverse(void)
 {
-	t_matrix	*a;
-	t_matrix	*b;
+	t_matrix	*mat;
+	t_matrix	*inv;
 
-	a = matrix_init(4, 4);
-	set_matrix_elem(a, 0, 0, -2);
-	set_matrix_elem(a, 1, 0, -8);
-	set_matrix_elem(a, 2, 0, 3);
-	set_matrix_elem(a, 3, 0, 5);
-	set_matrix_elem(a, 0, 1, -3);
-	set_matrix_elem(a, 1, 1, 1);
-	set_matrix_elem(a, 2, 1, 7);
-	set_matrix_elem(a, 3, 1, 3);
-	set_matrix_elem(a, 0, 2, 1);
-	set_matrix_elem(a, 1, 2, 2);
-	set_matrix_elem(a, 2, 2, -9);
-	set_matrix_elem(a, 3, 2, 6);
-	set_matrix_elem(a, 0, 3, -6);
-	set_matrix_elem(a, 1, 3, 7);
-	set_matrix_elem(a, 2, 3, 7);
-	set_matrix_elem(a, 3, 3, -9);
-	b = matrix_transpose(a);
-	printf("Matrix A\n");
-	printf("deteminant: %f\n", determinant(b));
-	printf("Before transpose:\n");
-	matrix_debug(a);
-	printf("\nAfter transpose:\n");
-	matrix_debug(b);
-	free_matrix(a);
-	free_matrix(b);
+	mat = matrix_init(4, 4);
+	set_matrix_elem(mat, 0, 0, 8);
+	set_matrix_elem(mat, 0, 1, -5);
+	set_matrix_elem(mat, 0, 2, 9);
+	set_matrix_elem(mat, 0, 3, 2);
+	set_matrix_elem(mat, 1, 0, 7);
+	set_matrix_elem(mat, 1, 1, 5);
+	set_matrix_elem(mat, 1, 2, 6);
+	set_matrix_elem(mat, 1, 3, 1);
+	set_matrix_elem(mat, 2, 0, -6);
+	set_matrix_elem(mat, 2, 1, 0);
+	set_matrix_elem(mat, 2, 2, 9);
+	set_matrix_elem(mat, 2, 3, 6);
+	set_matrix_elem(mat, 3, 0, -3);
+	set_matrix_elem(mat, 3, 1, 0);
+	set_matrix_elem(mat, 3, 2, -9);
+	set_matrix_elem(mat, 3, 3, -4);
+	matrix_debug(mat);
+	inv = matrix_inverse(mat);
+	matrix_debug(inv);
+	free_matrix(mat);
+	free_matrix(inv);
 }
-
 int	main(int ac, char **av)
 {
 	t_rtptr	rts;

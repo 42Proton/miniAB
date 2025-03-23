@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 03:14:10 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 03:18:44 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ typedef struct s_tuple
 
 typedef struct s_matrix
 {
-	int		cols;
-	int		rows;
-	float	*data;
+	int			cols;
+	int			rows;
+	float		*data;
 }				t_matrix;
 
 typedef struct s_matrix_9
 {
-	int		cols;
-	int		rows;
-	float	data[9];
+	int			cols;
+	int			rows;
+	float		data[9];
 }				t_matrix_9;
 
 typedef struct s_alight
@@ -134,6 +134,8 @@ t_tuple			tuplecross(t_tuple *a, t_tuple *b);
 t_tuple			tuplenormalize(t_tuple *a);
 
 // Matrix functions
+int				is_invertible(t_matrix *m);
+t_matrix		*matrix_inverse(t_matrix *m);
 t_matrix		*get_submatrix(t_matrix *m, int skip_row, int skip_col);
 t_matrix		*matrix_transpose(t_matrix *m);
 t_matrix		*matrix_copy(t_matrix *m);

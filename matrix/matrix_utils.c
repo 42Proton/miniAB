@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 23:34:37 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/23 02:51:42 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 03:18:16 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	free_matrix(t_matrix *m)
 {
-	free(m->data);
+	if (m && m->data)
+		free(m->data);
 	free(m);
 }
 
