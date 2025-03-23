@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 03:13:33 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 04:11:35 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@
 # include <MLX42/MLX42.h>
 # include <colors.h>
 # include <fcntl.h>
-# include <libft.h>
+# include <rays.h>
 # include <object.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <utils.h>
-# include <rays.h>
 # define WID 800
 # define HEG 800
 
@@ -33,6 +32,7 @@ typedef struct s_rtptr
 	mlx_image_t	*img;
 	t_camera	*camera;
 	t_list		*vision_objs;
+	t_list		*solid_objs;
 	t_list		*objs;
 }				t_rtptr;
 
@@ -85,9 +85,6 @@ void			keyhook(struct mlx_key_data keydata, void *rts);
 int				check_args(int ac, char **av);
 int				init_mlx(t_rtptr *rts);
 
-// Debug Utils
-void		debug_tuple(t_tuple *tuple);
-void		matrix_debug(t_matrix *m);
 t_colors	ray_color(t_rtptr *rts, t_ray *ray);
 int			prep_transform_m(t_matrix **m);
 int			prep_objs_transform(t_rtptr *rts);

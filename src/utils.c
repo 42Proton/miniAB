@@ -6,11 +6,12 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 03:05:09 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 07:14:54 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
+#include <debug.h>
 
 t_tuple	*pos(void)
 {
@@ -58,8 +59,18 @@ t_colors	*color(void)
 
 int	prep_transform_m(t_matrix **m)
 {
-	*m = ident_matrix4x4(4, 4);
-	if (!m)
+	t_matrix	*t;
+	int			res;
+
+	*m = scale_m(1, 2, 1);
+	if (!*m)
+		return (0);
+	t = translation_m(1, 0, 1);
+	if (!t)
+		return (0);
+	res = matrix_multiply(*m, t);
+	free_matrix(t);
+	if (!res)
 		return (0);
 	return (1);
 }
@@ -71,13 +82,17 @@ int	prep_objs_transform(t_rtptr *rts)
 	void			*obj;
 	int				res;
 
-	tmp = rts->objs;
+	tmp = rts->solid_objs;
 	while (tmp)
 	{
 		entry = (t_object_entry *)tmp->content;
 		obj = entry->object;
 		if (entry->type == SPHERE)
 			res = prep_transform_m(&((t_sphere *)obj)->transform);
+		else if (entry->type == PLANE)
+			res = prep_transform_m(&((t_plane *)obj)->transform);
+		else if (entry->type == CYLINDER)
+			res = prep_transform_m(&((t_cylinder *)obj)->transform);
 		if (!res)
 			return (EXIT_FAILURE);
 		tmp = tmp->next;

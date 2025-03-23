@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 02:37:03 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 04:04:44 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,14 @@ void	cleaner(t_rtptr *rts)
 		mlx_delete_image(rts->mlx, rts->img);
 	if (rts->mlx)
 		mlx_terminate(rts->mlx);
-	ft_lstclear(&rts->objs, object_cleanup);
+	if (rts->objs)
+		ft_lstclear(&rts->objs, object_cleanup);
+	else
+	{
+		ft_lstclear(&rts->solid_objs, object_cleanup);
+		ft_lstclear(&rts->vision_objs, object_cleanup);
+		free_camera(rts->camera);
+	}
 	get_next_line(-1, 1, &dummy);
 	exit(EXIT_SUCCESS);
 }

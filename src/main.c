@@ -6,11 +6,12 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 03:18:13 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 07:13:58 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
+#include <debug.h>
 
 t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 {
@@ -22,7 +23,7 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	t_tuple			normal_vec;
 
 	ft_bzero(&res, sizeof(t_colors));
-	obj_entry = rts->objs->content;
+	obj_entry = rts->solid_objs->content;
 	data = sphere_intersect(obj_entry, ray);
 	intersect = get_hit(data);
 	if (intersect)
@@ -54,9 +55,9 @@ int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 		return (EXIT_FAILURE);
 	if (parser(av[1], rts))
 		return (EXIT_FAILURE);
+	split_objs(rts);
 	if (prep_objs_transform(rts))
 		return (EXIT_FAILURE);
-	split_objs(rts);
 	return (EXIT_SUCCESS);
 }
 
@@ -98,8 +99,8 @@ int	main(int ac, char **av)
 	if (init_mlx(&rts))
 		cleaner(&rts);
 	mlx_image_to_window(rts.mlx, rts.img, 0, 0);
-	float viewport_size = 12.0;
-	float viewport_z = 10;
+	float viewport_size = 15.0;
+	float viewport_z = 0;
 	float pixel_size = viewport_size / WID;
 	float half = viewport_size / 2;
 	for (int y = 0; y < HEG; y++)
@@ -110,7 +111,8 @@ int	main(int ac, char **av)
 			float world_x = -half + pixel_size * x;
 			t_tuple position = point(world_x, world_y, viewport_z);
 			t_tuple ray_direction = n_tuplesub(&position, rts.camera->pos);
-			t_ray ray = init_ray(rts.camera->pos, &ray_direction);
+			t_tuple	rd_normal = tuplenormalize(&ray_direction);
+			t_ray ray = init_ray(&position, &rd_normal);
 			t_colors color = ray_color(&rts, &ray);
 			mlx_put_pixel(rts.img, x, y, colorvalue(&color));
 		}

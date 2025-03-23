@@ -6,14 +6,13 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/17 22:00:51 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 03:53:57 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYS_H
 # define RAYS_H
 
-#include <libft.h>
 #include <object.h>
 
 typedef struct s_intersect
@@ -54,5 +53,6 @@ t_intersect		*get_hit(t_intersections *data);
 //Ray Utils
 t_ray			init_ray(t_tuple *origin, t_tuple *direction);
 t_tuple			ray_hitpoint(t_ray *ray, float t);
+t_ray			transform_ray(t_matrix *m, t_ray *ray);
 
 #endif

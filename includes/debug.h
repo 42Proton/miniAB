@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_lst.c                                      :+:      :+:    :+:   */
+/*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 01:11:59 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/23 04:01:24 by amsaleh          ###   ########.fr       */
+/*   Created: 2025/03/23 04:11:15 by amsaleh           #+#    #+#             */
+/*   Updated: 2025/03/23 04:14:59 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#ifndef DEBUG_H
+# define DEBUG_H
 
-void	ft_move_lst(t_list *node, t_list **new_lst)
-{
-	node->next = 0;
-	node->prev = 0;
-	ft_lstadd_back(new_lst, node);
-}
+#include <object.h>
+#include <stdio.h>
+
+void		debug_tuple(t_tuple *tuple);
+void		matrix_debug(t_matrix *m);
+
+#endif

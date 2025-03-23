@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   submatrix.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 02:43:44 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/23 02:04:28 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/23 06:46:21 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,19 @@ t_matrix_9	submatrix_3x3(t_matrix *m, int skip_col, int skip_row)
 	return (m_9);
 }
 
+t_matrix_4	submatrix_2x2(t_matrix *m, int skip_col, int skip_row)
+{
+	t_matrix_4	m_4;
+	t_matrix	tmp_m;
+
+	m_4.cols = 2;
+	m_4.rows = 2;
+	tmp_m.cols = 2;
+	tmp_m.rows = 2;
+	tmp_m.data = m_4.data;
+	submatrix_copy(m, &tmp_m, skip_col, skip_row);
+	return (m_4);
+}
 
 t_matrix	*get_submatrix(t_matrix *m, int skip_col, int skip_row)
 {

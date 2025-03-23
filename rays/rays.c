@@ -6,12 +6,12 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:56:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/23 03:15:20 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 05:53:07 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rays.h>
-#include <stdio.h>
+#include <debug.h>
 
 int	prep_intersections_sphere(t_intersections *res,
 	t_object_entry *obj_entry, t_quad_eq *quad_eq)
@@ -33,15 +33,15 @@ int	prep_intersections_sphere(t_intersections *res,
 t_quad_eq	sphere_quad_eq(t_object_entry *obj_entry, t_ray *ray)
 {
 	t_tuple		sphere_to_ray;
-	t_sphere	*sphere;
 	t_quad_eq	quad_eq;
+	t_tuple		world_origin;
 
-	sphere = (t_sphere *)obj_entry->object;
-	sphere_to_ray = n_tuplesub(&ray->origin, sphere->pos);
+	world_origin = point(0, 0, 0);
+	sphere_to_ray = n_tuplesub(&ray->origin, &world_origin);
 	quad_eq.a = tupledot(&ray->direction, &ray->direction);
 	quad_eq.b = 2 * tupledot(&ray->direction, &sphere_to_ray);
 	quad_eq.c = tupledot(&sphere_to_ray, &sphere_to_ray)
-		- sphere->dim * sphere->dim;
+		- 1;
 	quad_eq.discriminant = quad_eq.b * quad_eq.b - 4
 		* quad_eq.a * quad_eq.c;
 	return (quad_eq);
@@ -50,12 +50,21 @@ t_quad_eq	sphere_quad_eq(t_object_entry *obj_entry, t_ray *ray)
 t_intersections	*sphere_intersect(t_object_entry *obj_entry, t_ray *ray)
 {
 	t_quad_eq		quad_eq;
+	t_sphere		*sphere;
 	t_intersections	*res;
+	t_ray			ray_transform;
+	t_matrix		*m_inv;
 
+	sphere = (t_sphere *)obj_entry->object;
+	m_inv = matrix_inverse(sphere->transform);
+	if (!m_inv)
+		return (0);
+	ray_transform = transform_ray(m_inv, ray);
+	free_matrix(m_inv);
 	res = ft_calloc(1, sizeof(t_intersections));
 	if (!res)
 		return (0);
-	quad_eq = sphere_quad_eq(obj_entry, ray);
+	quad_eq = sphere_quad_eq(obj_entry, &ray_transform);
 	if (quad_eq.discriminant < 0)
 		return (res);
 	if (!prep_intersections_sphere(res, obj_entry, &quad_eq))

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 03:18:44 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 06:43:23 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,13 @@ typedef struct s_matrix_9
 	int			rows;
 	float		data[9];
 }				t_matrix_9;
+
+typedef struct s_matrix_4
+{
+	int			cols;
+	int			rows;
+	float		data[4];
+}				t_matrix_4;
 
 typedef struct s_alight
 {
@@ -141,6 +148,7 @@ t_matrix		*matrix_transpose(t_matrix *m);
 t_matrix		*matrix_copy(t_matrix *m);
 float			determinant(t_matrix *m);
 float			determinant2x2(t_matrix *m);
+float			s_determinant_3x3(t_matrix_9 *m);
 int				matrix_multiply(t_matrix *a, t_matrix *b);
 int				matrix_equal(t_matrix *a, t_matrix *b);
 t_tuple			transform_f(t_matrix *m, t_tuple *vec);
@@ -154,6 +162,8 @@ void			free_matrix(t_matrix *m);
 t_matrix_9		submatrix_3x3(t_matrix *m,
 	int skip_col, int skip_row);
 t_matrix		*ident_matrix4x4();
+t_matrix_4		submatrix_2x2(t_matrix *m, int skip_col, int skip_row);
 t_matrix		*translation_m(float x, float y, float z);
+t_matrix		*scale_m(float x, float y, float z);
 
 #endif
