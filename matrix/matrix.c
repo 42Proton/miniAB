@@ -6,43 +6,51 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:10:57 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/20 00:30:39 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 03:11:18 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <utils.h>
 #include <libft.h>
 
-size_t	get_mindex(t_matrix *m, size_t col, size_t row)
-// Not sure if the norm is going to like this but I think it looks much better this way.
+size_t	get_mindex(t_matrix *m, int col, int row)
 {
 	return (col * m->rows + row);
 }
 
-float	*get_melem(t_matrix *m, size_t col, size_t row)
+float	*get_melem(t_matrix *m, int col, int row)
 {
-	return (m->data + get_mindex(m, col, row));
+	size_t	i;
+
+	i = get_mindex(m, col, row);
+	return (m->data + i);
 }
 
 void	set_matrix_elem(t_matrix *m,
-	size_t col, size_t row, float val)
+	int col, int row, float val)
 {
+	size_t	i;
+
 	if (col >= m->cols || row >= m->rows)
 		return ;
-	m->data[get_mindex(m, col, row)] = val;
+	i = get_mindex(m, col, row);
+	m->data[i] = val;
 }
 
 float	get_matrix_elem(t_matrix *m,
-	size_t col, size_t row)
+	int col, int row)
 {
 	float res;
+	size_t	i;
+
 	if (col >= m->cols || row >= m->rows)
 		return (0);
-	res = m->data[get_mindex(m, col, row)];
+	i = get_mindex(m, col, row);
+	res = m->data[i];
 	return (res);
 }
 
-t_matrix	*matrix_init(size_t cols, size_t rows)
+t_matrix	*matrix_init(int cols, int rows)
 {
 	t_matrix	*matrix;
 

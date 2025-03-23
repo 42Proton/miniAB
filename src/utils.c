@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 17:24:38 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 03:05:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,33 @@ t_colors	*color(void)
 			ft_atoi(colors[2]), alpha);
 	free_array((void **)colors);
 	return (color);
+}
+
+int	prep_transform_m(t_matrix **m)
+{
+	*m = ident_matrix4x4(4, 4);
+	if (!m)
+		return (0);
+	return (1);
+}
+
+int	prep_objs_transform(t_rtptr *rts)
+{
+	t_list			*tmp;
+	t_object_entry	*entry;
+	void			*obj;
+	int				res;
+
+	tmp = rts->objs;
+	while (tmp)
+	{
+		entry = (t_object_entry *)tmp->content;
+		obj = entry->object;
+		if (entry->type == SPHERE)
+			res = prep_transform_m(&((t_sphere *)obj)->transform);
+		if (!res)
+			return (EXIT_FAILURE);
+		tmp = tmp->next;
+	}
+	return (EXIT_SUCCESS);
 }

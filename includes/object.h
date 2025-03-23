@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/21 01:24:17 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 03:14:10 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_sphere
 	t_tuple		*pos;
 	float		dim;
 	t_colors	*colors;
+	t_matrix	*transform;
 }				t_sphere;
 
 typedef struct s_plane
@@ -92,6 +93,7 @@ typedef struct s_plane
 	t_tuple		*pos;
 	t_tuple		*normal_vector;
 	t_colors	*colors;
+	t_matrix	*transform;
 }				t_plane;
 
 typedef struct s_cylinder
@@ -101,6 +103,7 @@ typedef struct s_cylinder
 	float		dim;
 	float		height;
 	t_colors	*colors;
+	t_matrix	*transform;
 }				t_cylinder;
 
 enum			e_pov
@@ -138,15 +141,17 @@ float			determinant(t_matrix *m);
 float			determinant2x2(t_matrix *m);
 int				matrix_multiply(t_matrix *a, t_matrix *b);
 int				matrix_equal(t_matrix *a, t_matrix *b);
-t_tuple			transform_f(t_matrix *tmatrix, t_tuple *vec);
+t_tuple			transform_f(t_matrix *m, t_tuple *vec);
 // Matrix Utils
-size_t			get_mindex(t_matrix *m, size_t col, size_t row);
-float			*get_melem(t_matrix *m, size_t col, size_t row);
-void			set_matrix_elem(t_matrix *m, size_t col, size_t row, float val);
-float			get_matrix_elem(t_matrix *m, size_t col, size_t row);
-t_matrix		*matrix_init(size_t cols, size_t rows);
+size_t			get_mindex(t_matrix *m, int col, int row);
+float			*get_melem(t_matrix *m, int col, int row);
+void			set_matrix_elem(t_matrix *m, int col, int row, float val);
+float			get_matrix_elem(t_matrix *m, int col, int row);
+t_matrix		*matrix_init(int cols, int rows);
 void			free_matrix(t_matrix *m);
 t_matrix_9		submatrix_3x3(t_matrix *m,
 	int skip_col, int skip_row);
+t_matrix		*ident_matrix4x4();
+t_matrix		*translation_m(float x, float y, float z);
 
 #endif

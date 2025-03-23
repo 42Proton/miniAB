@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/21 02:02:20 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 03:11:49 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 		return (EXIT_FAILURE);
 	if (parser(av[1], rts))
 		return (EXIT_FAILURE);
+	if (prep_objs_transform(rts))
+		return (EXIT_FAILURE);
 	split_objs(rts);
 	return (EXIT_SUCCESS);
 }
@@ -97,28 +99,28 @@ int	main(int ac, char **av)
 	if (prep_rt_core(ac, av, &rts))
 		cleaner(&rts);
 	// init_mlx is seperate from prep_rt_core for ease of debugging
-	// if (init_mlx(&rts))
-	// 	cleaner(&rts);
-	// mlx_image_to_window(rts.mlx, rts.img, 0, 0);
-	// float viewport_size = 12.0;
-	// float viewport_z = 10;
-	// float pixel_size = viewport_size / WID;
-	// float half = viewport_size / 2;
-	// for (int y = 0; y < HEG; y++)
-	// {
-	// 	float world_y = half - pixel_size * y;
-	// 	for (int x = 0; x < WID; x++)
-	// 	{
-	// 		float world_x = -half + pixel_size * x;
-	// 		t_tuple position = point(world_x, world_y, viewport_z);
-	// 		t_tuple ray_direction = n_tuplesub(&position, rts.camera->pos);
-	// 		t_ray ray = init_ray(rts.camera->pos, &ray_direction);
-	// 		t_colors color = ray_color(&rts, &ray);
-	// 		mlx_put_pixel(rts.img, x, y, colorvalue(&color));
-	// 	}
-	// }
-	// mlx_key_hook(rts.mlx, keyhook, &rts);
-	// mlx_loop(rts.mlx);
+	if (init_mlx(&rts))
+		cleaner(&rts);
+	mlx_image_to_window(rts.mlx, rts.img, 0, 0);
+	float viewport_size = 12.0;
+	float viewport_z = 10;
+	float pixel_size = viewport_size / WID;
+	float half = viewport_size / 2;
+	for (int y = 0; y < HEG; y++)
+	{
+		float world_y = half - pixel_size * y;
+		for (int x = 0; x < WID; x++)
+		{
+			float world_x = -half + pixel_size * x;
+			t_tuple position = point(world_x, world_y, viewport_z);
+			t_tuple ray_direction = n_tuplesub(&position, rts.camera->pos);
+			t_ray ray = init_ray(rts.camera->pos, &ray_direction);
+			t_colors color = ray_color(&rts, &ray);
+			mlx_put_pixel(rts.img, x, y, colorvalue(&color));
+		}
+	}
+	mlx_key_hook(rts.mlx, keyhook, &rts);
+	mlx_loop(rts.mlx);
 	cleaner(&rts);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/21 01:48:26 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 03:13:33 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,18 @@ void			simple_report(int issue);
 void			issue_report(t_parser *parser, int issue);
 
 // Hooks
-void			keyhook(struct mlx_key_data keydata, t_rtptr *rts);
+void			keyhook(struct mlx_key_data keydata, void *rts);
 
 // Initalization
 int				check_args(int ac, char **av);
 int				init_mlx(t_rtptr *rts);
 
 // Debug Utils
-void	debug_tuple(t_tuple *tuple);
-void	matrix_debug(t_matrix *m);
+void		debug_tuple(t_tuple *tuple);
+void		matrix_debug(t_matrix *m);
 t_colors	ray_color(t_rtptr *rts, t_ray *ray);
+int			prep_transform_m(t_matrix **m);
+int			prep_objs_transform(t_rtptr *rts);
 
 // utils
 t_tuple			*pos(void);
