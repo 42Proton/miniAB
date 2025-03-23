@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 01:51:25 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 07:14:28 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 20:29:35 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int	is_invertible(t_matrix *m)
 {
-	if (determinant(m) != 0)
-		return (1);
-	return (0);
+	if (determinant(m) < EPSILON)
+		return (0);
+	return (1);
 }
 
 float	m_minor(t_matrix *m, int col, int row)
@@ -53,12 +53,12 @@ t_matrix	*matrix_inverse(t_matrix *m)
 	if (!res)
 		return (0);
 	i = -1;
-	while (++i < m->cols - 1)
+	while (++i < m->cols)
 	{
 		j = -1;
-		while (++j < m->rows - 1)
+		while (++j < m->rows)
 		{
-			c = cofactor(m, i, j);
+			c = cofactor(m, j, i);
 			set_matrix_elem(res, i, j, c / determinant(m));
 		}
 	}

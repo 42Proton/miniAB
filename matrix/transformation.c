@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 23:56:13 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 06:01:21 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/24 01:35:16 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ t_tuple	transform_f(t_matrix *m, t_tuple *vec)
 	ft_bzero(&res, sizeof(t_tuple));
 	if (!m || !vec)
 		return (res);
-	res.x = vec->x * m->data[0] + vec->y * m->data[1] + vec->z * m->data[2];
-	res.y = vec->x * m->data[4] + vec->y * m->data[5] + vec->z * m->data[6];
-	res.z = vec->x * m->data[8] + vec->y * m->data[9] + vec->z * m->data[10];
+	res.x = vec->x * m->data[0] + vec->y * m->data[1]
+		+ vec->z * m->data[2] + vec->w * m->data[3];
+	res.y = vec->x * m->data[4] + vec->y * m->data[5]
+		+ vec->z * m->data[6] + vec->w * m->data[7];
+	res.z = vec->x * m->data[8] + vec->y * m->data[9]
+		+ vec->z * m->data[10] + vec->w * m->data[11];
 	res.w = vec->w;
 	return (res);
 }

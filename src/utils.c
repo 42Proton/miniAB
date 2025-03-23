@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 07:14:54 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/24 01:37:23 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,51 @@ t_colors	*color(void)
 	return (color);
 }
 
-int	prep_transform_m(t_matrix **m)
+t_tuple	norm_to_radian(t_tuple *vec)
 {
-	t_matrix	*t;
+	t_tuple	res;
+
+	if (vec->x >= 0)
+		res.x = vec->x * M_PI;
+	else
+		res.x = ft_fabs(vec->x) * M_PI + M_PI;
+	if (vec->y >= 0)
+		res.y = vec->y * M_PI;
+	else
+		res.y = ft_fabs(vec->y) * M_PI + M_PI;
+	if (vec->z >= 0)
+		res.z = vec->z * M_PI;
+	else
+		res.z = ft_fabs(vec->z) * M_PI + M_PI;
+	res.w = VECTOR;
+	return (res);
+}
+
+int	sphere_transform_m(t_sphere *obj)
+{
+	t_matrix	*s;
+	t_tuple		vec;
 	int			res;
 
-	*m = scale_m(1, 2, 1);
-	if (!*m)
+	obj->transform = translation_m(obj->pos);
+	if (!obj->transform)
 		return (0);
-	t = translation_m(1, 0, 1);
-	if (!t)
+	vec = vector(obj->dim, obj->dim, obj->dim);
+	s = scale_m(&vec);
+	if (!s)
 		return (0);
-	res = matrix_multiply(*m, t);
-	free_matrix(t);
-	if (!res)
-		return (0);
+	res = matrix_multiply(obj->transform, s);
+	free_matrix(s);
+	return (res);
+}
+
+int	plane_transform_m(t_plane *obj)
+{
+	return (1);
+}
+
+int	cylinder_transform_m(t_cylinder *obj)
+{
 	return (1);
 }
 
@@ -88,11 +118,11 @@ int	prep_objs_transform(t_rtptr *rts)
 		entry = (t_object_entry *)tmp->content;
 		obj = entry->object;
 		if (entry->type == SPHERE)
-			res = prep_transform_m(&((t_sphere *)obj)->transform);
+			res = sphere_transform_m((t_sphere *)obj);
 		else if (entry->type == PLANE)
-			res = prep_transform_m(&((t_plane *)obj)->transform);
+			res = plane_transform_m((t_plane *)obj);
 		else if (entry->type == CYLINDER)
-			res = prep_transform_m(&((t_cylinder *)obj)->transform);
+			res = cylinder_transform_m((t_cylinder *)obj);
 		if (!res)
 			return (EXIT_FAILURE);
 		tmp = tmp->next;

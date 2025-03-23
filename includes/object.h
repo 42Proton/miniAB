@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 06:43:23 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/24 01:15:41 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,8 @@ t_matrix_9		submatrix_3x3(t_matrix *m,
 	int skip_col, int skip_row);
 t_matrix		*ident_matrix4x4();
 t_matrix_4		submatrix_2x2(t_matrix *m, int skip_col, int skip_row);
-t_matrix		*translation_m(float x, float y, float z);
-t_matrix		*scale_m(float x, float y, float z);
+t_matrix		*translation_m(t_tuple *pos);
+t_matrix		*rotaion_m(t_tuple *vec);
+t_matrix		*scale_m(t_tuple *vec);
 
 #endif

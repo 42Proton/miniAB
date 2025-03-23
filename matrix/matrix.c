@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:10:57 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 03:11:18 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 20:24:03 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 size_t	get_mindex(t_matrix *m, int col, int row)
 {
-	return (col * m->rows + row);
+	return (col * m->cols + row);
 }
 
 float	*get_melem(t_matrix *m, int col, int row)

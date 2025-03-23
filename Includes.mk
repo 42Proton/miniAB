@@ -39,7 +39,8 @@ MATRIX=\
 	matrix_operation.c\
 	determinant.c\
 	submatrix.c\
-	matrix_inv.c
+	matrix_inv.c\
+	matrix_mult.c
 RAYS=\
 	intersections.c\
 	rays.c

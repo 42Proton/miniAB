@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:45:00 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/01/07 15:58:38 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/23 23:23:14 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,11 @@ int	ft_abs(int x)
 		x *= -1;
 	}
 	return (x);
+}
+
+float	ft_fabs(float val)
+{
+	if (val < 0.00001)
+		return (val * -1);
+	return (val);
 }
