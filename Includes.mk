@@ -20,7 +20,8 @@ SRCS= \
 	validate_utils_float.c\
 	validate_vision.c\
 	validate_object.c\
-	debug.c
+	debug.c\
+	transform.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
