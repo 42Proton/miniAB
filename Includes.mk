@@ -25,6 +25,7 @@ TUPLES=\
 	tuples.c\
 	obj_utils.c\
 	obj_utils_new.c\
+	obj_utils_s.c\
 	scaler.c\
 	normalization.c\
 	products.c

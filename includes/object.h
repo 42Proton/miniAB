@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/24 01:15:41 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/24 02:29:45 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ float			tuplemagnitude(t_tuple *a);
 float			tupledot(t_tuple *a, t_tuple *b);
 t_tuple			tuplecross(t_tuple *a, t_tuple *b);
 t_tuple			tuplenormalize(t_tuple *a);
+// Stack Argument
+t_tuple			s_tuplesub(t_tuple a, t_tuple b);
 
 // Matrix functions
 int				is_invertible(t_matrix *m);
@@ -150,6 +152,7 @@ float			determinant(t_matrix *m);
 float			determinant2x2(t_matrix *m);
 float			s_determinant_3x3(t_matrix_9 *m);
 int				matrix_multiply(t_matrix *a, t_matrix *b);
+t_tuple			matrix_mult_t(t_matrix *m, t_tuple *t);
 int				matrix_equal(t_matrix *a, t_matrix *b);
 t_tuple			transform_f(t_matrix *m, t_tuple *vec);
 // Matrix Utils

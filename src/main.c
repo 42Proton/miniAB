@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 23:53:43 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/24 03:25:58 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,36 +89,67 @@ void	testinverse(void)
 	free_matrix(mat);
 	free_matrix(inv);
 }
+
+t_tuple	*sphere_normal(t_sphere *obj, t_tuple *p)
+{
+	t_tuple		object_norm;
+	t_tuple		*world_norm;
+	t_matrix	*t_inv;
+	t_matrix	*t_transpose;
+
+	t_inv = matrix_inverse(obj->transform);
+	if (!t_inv)
+		return (0);
+	object_norm = s_tuplesub(matrix_mult_t(t_inv, p), point(0, 0, 0));
+	t_transpose = matrix_transpose(t_inv);
+	free_matrix(t_inv);
+	if (!t_transpose)
+		return (0);
+	world_norm = malloc(sizeof(t_tuple));
+	if (!world_norm)
+	{
+		free_matrix(t_transpose);
+		return (0);
+	}
+	*world_norm = matrix_mult_t(t_transpose, &object_norm);
+	*world_norm = tuplenormalize(world_norm);
+	world_norm->w = VECTOR;
+	return (world_norm);
+}
+
 int	main(int ac, char **av)
 {
 	t_rtptr	rts;
 
 	if (prep_rt_core(ac, av, &rts))
 		cleaner(&rts);
+	t_tuple	test = point(0, 1.70711, -0.70711);
+	t_tuple	*norm = sphere_normal(((t_object_entry *)rts.solid_objs->content)->object, &test);
+	debug_tuple(norm);
 	// init_mlx is seperate from prep_rt_core for ease of debugging
-	if (init_mlx(&rts))
-		cleaner(&rts);
-	mlx_image_to_window(rts.mlx, rts.img, 0, 0);
-	float viewport_size = 15.0;
-	float viewport_z = 0;
-	float pixel_size = viewport_size / WID;
-	float half = viewport_size / 2;
-	for (int y = 0; y < HEG; y++)
-	{
-		float world_y = half - pixel_size * y;
-		for (int x = 0; x < WID; x++)
-		{
-			float world_x = -half + pixel_size * x;
-			t_tuple position = point(world_x, world_y, viewport_z);
-			t_tuple ray_direction = n_tuplesub(&position, rts.camera->pos);
-			t_tuple	rd_normal = tuplenormalize(&ray_direction);
-			t_ray ray = init_ray(&position, &rd_normal);
-			t_colors color = ray_color(&rts, &ray);
-			mlx_put_pixel(rts.img, x, y, colorvalue(&color));
-		}
-	}
-	mlx_key_hook(rts.mlx, keyhook, &rts);
-	mlx_loop(rts.mlx);
+	// if (init_mlx(&rts))
+	// 	cleaner(&rts);
+	// mlx_image_to_window(rts.mlx, rts.img, 0, 0);
+	// float viewport_size = 15.0;
+	// float viewport_z = 0;
+	// float pixel_size = viewport_size / WID;
+	// float half = viewport_size / 2;
+	// for (int y = 0; y < HEG; y++)
+	// {
+	// 	float world_y = half - pixel_size * y;
+	// 	for (int x = 0; x < WID; x++)
+	// 	{
+	// 		float world_x = -half + pixel_size * x;
+	// 		t_tuple position = point(world_x, world_y, viewport_z);
+	// 		t_tuple ray_direction = n_tuplesub(&position, rts.camera->pos);
+	// 		t_tuple	rd_normal = tuplenormalize(&ray_direction);
+	// 		t_ray ray = init_ray(&position, &rd_normal);
+	// 		t_colors color = ray_color(&rts, &ray);
+	// 		mlx_put_pixel(rts.img, x, y, colorvalue(&color));
+	// 	}
+	// }
+	// mlx_key_hook(rts.mlx, keyhook, &rts);
+	// mlx_loop(rts.mlx);
 	cleaner(&rts);
 	return (0);
 }
