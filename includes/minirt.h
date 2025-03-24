@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 04:11:35 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/24 03:37:25 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 # include <MLX42/MLX42.h>
 # include <colors.h>
 # include <fcntl.h>
-# include <rays.h>
 # include <object.h>
+# include <rays.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <utils.h>
-# define WID 800
-# define HEG 800
+# define WID 1000
+# define HEG 1000
 
 typedef struct s_rtptr
 {
@@ -85,9 +85,9 @@ void			keyhook(struct mlx_key_data keydata, void *rts);
 int				check_args(int ac, char **av);
 int				init_mlx(t_rtptr *rts);
 
-t_colors	ray_color(t_rtptr *rts, t_ray *ray);
-int			prep_transform_m(t_matrix **m);
-int			prep_objs_transform(t_rtptr *rts);
+t_colors		ray_color(t_rtptr *rts, t_ray *ray);
+int				prep_transform_m(t_matrix **m);
+int				prep_objs_transform(t_rtptr *rts);
 
 // utils
 t_tuple			*pos(void);
