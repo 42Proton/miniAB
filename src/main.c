@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/24 03:25:58 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/25 00:41:16 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,23 @@ t_tuple	*sphere_normal(t_sphere *obj, t_tuple *p)
 		return (0);
 	}
 	*world_norm = matrix_mult_t(t_transpose, &object_norm);
+	free_matrix(t_transpose);
 	*world_norm = tuplenormalize(world_norm);
 	world_norm->w = VECTOR;
 	return (world_norm);
+}
+
+t_tuple	reflect_vec(t_tuple *vec, t_tuple *norm)
+{
+	float	dot;
+	t_tuple	vec_mirror;
+	t_tuple	r;
+
+	dot = tupledot(vec, norm);
+	dot = dot * 2;
+	vec_mirror = n_tuplesmult(norm, dot);
+	r = n_tuplesub(vec, &vec_mirror);
+	return (r);
 }
 
 int	main(int ac, char **av)
@@ -123,9 +137,12 @@ int	main(int ac, char **av)
 
 	if (prep_rt_core(ac, av, &rts))
 		cleaner(&rts);
-	t_tuple	test = point(0, 1.70711, -0.70711);
-	t_tuple	*norm = sphere_normal(((t_object_entry *)rts.solid_objs->content)->object, &test);
-	debug_tuple(norm);
+	// t_tuple	test = point(0, 1.70711, -0.70711);
+	// t_tuple	*norm = sphere_normal(((t_object_entry *)rts.solid_objs->content)->object, &test);
+	t_tuple v = vector(1, -1, 0);
+	t_tuple n = vector(0, 1, 0);
+	t_tuple r = reflect_vec(&v, &n);
+	debug_tuple(&r);
 	// init_mlx is seperate from prep_rt_core for ease of debugging
 	// if (init_mlx(&rts))
 	// 	cleaner(&rts);
