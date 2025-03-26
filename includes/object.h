@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/24 02:29:45 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/26 03:45:08 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,15 @@ typedef struct s_matrix_4
 	float		data[4];
 }				t_matrix_4;
 
+typedef struct s_material
+{
+	t_colors	color;
+	t_colors	ambient;
+	float		diffuse;
+	float		specular;
+	float		shininess;
+}	t_material;
+
 typedef struct s_alight
 {
 	float		ratio;
@@ -91,7 +100,7 @@ typedef struct s_sphere
 {
 	t_tuple		*pos;
 	float		dim;
-	t_colors	*colors;
+	t_material	mat;
 	t_matrix	*transform;
 }				t_sphere;
 
@@ -99,7 +108,7 @@ typedef struct s_plane
 {
 	t_tuple		*pos;
 	t_tuple		*normal_vector;
-	t_colors	*colors;
+	t_material	mat;
 	t_matrix	*transform;
 }				t_plane;
 
@@ -109,7 +118,7 @@ typedef struct s_cylinder
 	t_tuple		*normal_axis;
 	float		dim;
 	float		height;
-	t_colors	*colors;
+	t_material	mat;
 	t_matrix	*transform;
 }				t_cylinder;
 
@@ -169,5 +178,8 @@ t_matrix_4		submatrix_2x2(t_matrix *m, int skip_col, int skip_row);
 t_matrix		*translation_m(t_tuple *pos);
 t_matrix		*rotaion_m(t_tuple *vec);
 t_matrix		*scale_m(t_tuple *vec);
+// Material
+t_material		init_material(t_colors *colors,
+					float diffuse, float specular, float shininess);
 
 #endif

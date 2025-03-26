@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 04:04:44 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/26 03:55:19 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	cleaner(t_rtptr *rts)
 		ft_lstclear(&rts->solid_objs, object_cleanup);
 		ft_lstclear(&rts->vision_objs, object_cleanup);
 		free_camera(rts->camera);
+		free_ambient(rts->alight);
 	}
 	get_next_line(-1, 1, &dummy);
 	exit(EXIT_SUCCESS);

@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vision_cleaner.c                                   :+:      :+:    :+:   */
+/*   material.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 01:00:17 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/26 03:55:57 by amsaleh          ###   ########.fr       */
+/*   Created: 2025/03/26 02:04:39 by amsaleh           #+#    #+#             */
+/*   Updated: 2025/03/26 02:08:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
+#include <object.h>
 
-void	free_ambient(t_alight *al)
+t_material	init_material(t_colors *colors,
+	float diffuse, float specular, float shininess)
 {
-	if (al)
-	{
-		free(al->colors);
-		free(al);
-	}
-}
+	t_material	mat;
 
-void	free_light(t_light *light)
-{
-	free(light->colors);
-	free(light->pos);
-	free(light);
-}
-
-void	free_camera(t_camera *camera)
-{
-	if (camera)
-	{
-		free(camera->orientation);
-		free(camera->pos);
-		free(camera);
-	}
+	mat.color = *colors;
+	mat.diffuse = diffuse;
+	mat.specular = specular;
+	mat.shininess = shininess;
+	return (mat);
 }

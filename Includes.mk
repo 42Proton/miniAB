@@ -21,7 +21,9 @@ SRCS= \
 	validate_vision.c\
 	validate_object.c\
 	debug.c\
-	transform.c
+	transform.c\
+	material.c\
+	postparse_utils.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\

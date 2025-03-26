@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 00:38:08 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/11 15:11:06 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/26 03:27:41 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ void	simple_report(int issue)
 		msg = "Incorrect arguments count";
 	if (issue == ERR_OPEN_FILE)
 		msg = "Error opening file";
+	if (issue == ERR_CAMERA_MISSING)
+		msg = "Camera is missing from the scene";
+	if (issue == ERR_ALIGHT_MISSING)
+		msg = "Ambient light is missing from the scene";
 	ft_dprintf(2, "\e[091mError\n%s\e[039m\n", msg);
 }
 

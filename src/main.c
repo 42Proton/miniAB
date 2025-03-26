@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/25 00:41:16 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/26 03:56:56 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,15 @@ int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 	if (parser(av[1], rts))
 		return (EXIT_FAILURE);
 	split_objs(rts);
-	if (prep_objs_transform(rts))
+	if (!rts->camera || !rts->alight)
+	{
+		if (!rts->camera)
+			simple_report(ERR_CAMERA_MISSING);
+		else
+			simple_report(ERR_ALIGHT_MISSING);
+		return (EXIT_FAILURE);
+	}
+	if (prep_objs_postparse(rts))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -137,12 +145,6 @@ int	main(int ac, char **av)
 
 	if (prep_rt_core(ac, av, &rts))
 		cleaner(&rts);
-	// t_tuple	test = point(0, 1.70711, -0.70711);
-	// t_tuple	*norm = sphere_normal(((t_object_entry *)rts.solid_objs->content)->object, &test);
-	t_tuple v = vector(1, -1, 0);
-	t_tuple n = vector(0, 1, 0);
-	t_tuple r = reflect_vec(&v, &n);
-	debug_tuple(&r);
 	// init_mlx is seperate from prep_rt_core for ease of debugging
 	// if (init_mlx(&rts))
 	// 	cleaner(&rts);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/24 03:37:25 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/26 03:55:07 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_rtptr
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
+	t_alight	*alight;
 	t_camera	*camera;
 	t_list		*vision_objs;
 	t_list		*solid_objs;
@@ -50,7 +51,9 @@ enum			e_issues
 	ERR_INVALID_RGB,
 	ERR_INVALID_COLOR,
 	ERR_INVALID_RATIO,
-	ERR_INVALID_FOV
+	ERR_INVALID_FOV,
+	ERR_CAMERA_MISSING,
+	ERR_ALIGHT_MISSING
 };
 
 // Object Utils
@@ -87,7 +90,13 @@ int				init_mlx(t_rtptr *rts);
 
 t_colors		ray_color(t_rtptr *rts, t_ray *ray);
 int				prep_transform_m(t_matrix **m);
-int				prep_objs_transform(t_rtptr *rts);
+int				sphere_transform_m(t_sphere *obj);
+int				plane_transform_m(t_plane *obj);
+int				cylinder_transform_m(t_cylinder *obj);
+int				sphere_postparse(t_rtptr *rts, t_sphere *obj);
+int				plane_postparse(t_rtptr *rts, t_plane *obj);
+int				cylinder_postparse(t_rtptr *rts, t_cylinder *obj);
+int				prep_objs_postparse(t_rtptr *rts);
 
 // utils
 t_tuple			*pos(void);
