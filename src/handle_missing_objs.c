@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 05:24:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/27 05:28:10 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/27 06:48:49 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	handle_missing_objs(t_rtptr *rts)
 		if (!rts->camera)
 		{
 			perror("malloc");
-			return (0);
+			return (EXIT_FAILURE);
 		}
 	}
 	if (!rts->alight)
@@ -69,8 +69,8 @@ int	handle_missing_objs(t_rtptr *rts)
 		if (!rts->alight)
 		{
 			perror("malloc");
-			return (0);
+			return (EXIT_FAILURE);
 		}
 	}
-	return (1);
+	return (EXIT_SUCCESS);
 }
