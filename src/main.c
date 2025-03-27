@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/26 03:56:56 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/27 05:25:40 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,8 @@ int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 	if (parser(av[1], rts))
 		return (EXIT_FAILURE);
 	split_objs(rts);
-	if (!rts->camera || !rts->alight)
-	{
-		if (!rts->camera)
-			simple_report(ERR_CAMERA_MISSING);
-		else
-			simple_report(ERR_ALIGHT_MISSING);
+	if (handle_missing_objs(rts))
 		return (EXIT_FAILURE);
-	}
 	if (prep_objs_postparse(rts))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

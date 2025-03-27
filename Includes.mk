@@ -23,7 +23,8 @@ SRCS= \
 	debug.c\
 	transform.c\
 	material.c\
-	postparse_utils.c
+	postparse_utils.c\
+	handle_missing_objs.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
