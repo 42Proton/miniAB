@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/26 03:30:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/26 16:18:12 by abueskander      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	sphere_transform_m(t_sphere *obj)
 
 int	plane_transform_m(t_plane *obj)
 {
-	return (1);
 }
 
 int	cylinder_transform_m(t_cylinder *obj)
