@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 00:59:44 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/28 09:29:31 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/28 11:01:02 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	free_sphere(t_sphere *sphere)
 	free(sphere->pos);
 	free_matrix(sphere->transform);
 	free_matrix(sphere->inv_t);
+	free_matrix(sphere->tpose_inv_t);
 	free(sphere);
 }
 
@@ -26,6 +27,7 @@ void	free_plane(t_plane *plane)
 	free(plane->normal_vector);
 	free_matrix(plane->transform);
 	free_matrix(plane->inv_t);
+	free_matrix(plane->tpose_inv_t);
 	free(plane);
 }
 
@@ -35,5 +37,6 @@ void	free_cylinder(t_cylinder *cylinder)
 	free(cylinder->normal_axis);
 	free_matrix(cylinder->transform);
 	free_matrix(cylinder->inv_t);
+	free_matrix(cylinder->tpose_inv_t);
 	free(cylinder);
 }

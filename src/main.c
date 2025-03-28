@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/28 09:36:44 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/28 10:10:02 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,14 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 		res.green = normal_vec->y * 255;
 		free(normal_vec);
 		res.blue = 255;
-		res.alpha = 255;
 	}
 	else
 	{
-		res.blue = ray->direction.z * 255;
-		res.green = ray->direction.y * 255;
-		res.red = ray->direction.x * 255;
-		res.alpha = ray->direction.y * 255;
+		res.blue = 200;
+		res.green = 200;
+		res.red = 200 * ray->direction.y;
 	}
+	res.alpha = 255;
 	clear_intersections(data);
 	return (res);
 }

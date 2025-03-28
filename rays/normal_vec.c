@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 09:16:30 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/28 09:20:24 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/28 10:57:06 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,10 @@ t_tuple	*sphere_normal(t_sphere *obj, t_tuple *p)
 {
 	t_tuple		object_norm;
 	t_tuple		*world_norm;
-	t_matrix	*t_inv;
 	t_matrix	*t_transpose;
 
-	t_inv = matrix_inverse(obj->transform);
-	if (!t_inv)
-		return (0);
-	object_norm = s_tuplesub(matrix_mult_t(t_inv, p), point(0, 0, 0));
-	t_transpose = matrix_transpose(t_inv);
-	free_matrix(t_inv);
+	object_norm = s_tuplesub(matrix_mult_t(obj->inv_t, p), point(0, 0, 0));
+	t_transpose = matrix_transpose(obj->inv_t);
 	if (!t_transpose)
 		return (0);
 	world_norm = malloc(sizeof(t_tuple));

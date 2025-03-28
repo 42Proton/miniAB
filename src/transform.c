@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/28 09:29:08 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/28 11:00:45 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int	sphere_transform_m(t_sphere *obj)
 		return (0);
 	obj->inv_t = matrix_inverse(obj->transform);
 	if (!obj->inv_t)
+		return (0);
+	obj->tpose_inv_t = matrix_transpose(obj->inv_t);
+	if (!obj->tpose_inv_t)
 		return (0);
 	return (1);
 }

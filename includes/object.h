@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/28 09:27:54 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/28 11:00:08 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_sphere
 	t_material	mat;
 	t_matrix	*transform;
 	t_matrix	*inv_t;
+	t_matrix	*tpose_inv_t;
 }				t_sphere;
 
 typedef struct s_plane
@@ -112,6 +113,7 @@ typedef struct s_plane
 	t_material	mat;
 	t_matrix	*transform;
 	t_matrix	*inv_t;
+	t_matrix	*tpose_inv_t;
 }				t_plane;
 
 typedef struct s_cylinder
@@ -123,6 +125,7 @@ typedef struct s_cylinder
 	t_material	mat;
 	t_matrix	*transform;
 	t_matrix	*inv_t;
+	t_matrix	*tpose_inv_t;
 }				t_cylinder;
 
 enum			e_pov
