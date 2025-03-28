@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/28 10:10:02 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/28 20:44:16 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	t_intersections	*data;
 	t_intersect		*intersect;
 	t_tuple			rhitpoint;
-	t_tuple			*normal_vec;
+	t_tuple			normal_vec;
 
 	ft_bzero(&res, sizeof(t_colors));
 	obj_entry = rts->solid_objs->content;
@@ -30,9 +30,8 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	{
 		rhitpoint = ray_hitpoint(ray, intersect->t);
 		normal_vec = normal_at(obj_entry->object, SPHERE, &rhitpoint);
-		res.red = normal_vec->x * 255;
-		res.green = normal_vec->y * 255;
-		free(normal_vec);
+		res.red = normal_vec.x * 255;
+		res.green = normal_vec.y * 255;
 		res.blue = 255;
 	}
 	else
