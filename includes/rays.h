@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/23 03:53:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/28 09:25:01 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ typedef struct s_intersections
 	size_t	count;
 	t_list	*lst;
 }	t_intersections;
+
+typedef struct s_computes
+{
+	t_intersect	*isect;
+	t_tuple		hpoint;
+	t_tuple		eyev;
+	t_tuple		nv;
+}	t_computes;
 
 typedef struct s_quad_eq
 {
@@ -54,5 +62,9 @@ t_intersect		*get_hit(t_intersections *data);
 t_ray			init_ray(t_tuple *origin, t_tuple *direction);
 t_tuple			ray_hitpoint(t_ray *ray, float t);
 t_ray			transform_ray(t_matrix *m, t_ray *ray);
+t_tuple			*sphere_normal(t_sphere *obj, t_tuple *p);
+t_tuple			reflect_vec(t_tuple *vec, t_tuple *norm);
+t_tuple			*normal_at(void *obj, int obj_type, t_tuple *p);
+t_computes		*init_computes(t_intersect *insect, t_ray *ray);
 
 #endif

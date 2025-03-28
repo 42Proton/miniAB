@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:56:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/24 01:31:46 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/28 09:30:35 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,9 @@ t_intersections	*sphere_intersect(t_object_entry *obj_entry, t_ray *ray)
 	t_sphere		*sphere;
 	t_intersections	*res;
 	t_ray			ray_transform;
-	t_matrix		*m_inv;
 
 	sphere = (t_sphere *)obj_entry->object;
-	m_inv = matrix_inverse(sphere->transform);
-	if (!m_inv)
-		return (0);
-	ray_transform = transform_ray(m_inv, ray);
-	free_matrix(m_inv);
+	ray_transform = transform_ray(sphere->inv_t, ray);
 	res = ft_calloc(1, sizeof(t_intersections));
 	if (!res)
 		return (0);

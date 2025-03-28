@@ -23,7 +23,8 @@ SRCS= \
 	debug.c\
 	transform.c\
 	material.c\
-	postparse_utils.c
+	postparse_utils.c\
+	handle_missing_objs.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
@@ -47,4 +48,7 @@ MATRIX=\
 	matrix_mult.c
 RAYS=\
 	intersections.c\
-	rays.c
+	rays.c\
+	normal_vec.c\
+	reflect_vec.c\
+	computes.c

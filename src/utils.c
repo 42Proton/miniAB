@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/24 03:33:48 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/27 05:32:43 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ t_colors	*color(void)
 {
 	char		**colors;
 	t_colors	*color;
-	int			alpha;
 
-	alpha = 255;
 	colors = ft_split(ft_strtok(NULL, " \t\r\f\v\n"), ',');
 	if (!colors)
 		return (NULL);
@@ -49,10 +47,8 @@ t_colors	*color(void)
 		free_array((void **)colors);
 		return (0);
 	}
-	if (ft_arrlen((void **)colors) > 3)
-		alpha = alpha_ftos(ft_atof(colors[3]));
 	*color = colorinit(ft_atoi(colors[0]), ft_atoi(colors[1]),
-			ft_atoi(colors[2]), alpha);
+			ft_atoi(colors[2]), 255);
 	free_array((void **)colors);
 	return (color);
 }
