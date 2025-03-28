@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/26 03:30:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/28 09:29:08 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ int	sphere_transform_m(t_sphere *obj)
 		return (0);
 	res = matrix_multiply(obj->transform, s);
 	free_matrix(s);
-	return (res);
+	if (!res)
+		return (0);
+	obj->inv_t = matrix_inverse(obj->transform);
+	if (!obj->inv_t)
+		return (0);
+	return (1);
 }
 
 int	plane_transform_m(t_plane *obj)

@@ -48,4 +48,7 @@ MATRIX=\
 	matrix_mult.c
 RAYS=\
 	intersections.c\
-	rays.c
+	rays.c\
+	normal_vec.c\
+	reflect_vec.c\
+	computes.c
