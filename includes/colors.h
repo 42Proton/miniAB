@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:33:07 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/26 03:42:11 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/29 20:14:27 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,17 @@
 
 typedef struct s_colors
 {
-	short	red;
-	short	green;
-	short	blue;
-	short	alpha;
+	u_int8_t	red;
+	u_int8_t	green;
+	u_int8_t	blue;
 }			t_colors;
 
-int			colorvalue(t_colors *a);
-t_colors	colorinit(short red, short green, short blue, short alpha);
-short		color_value_check_positve(short color);
-short		color_value_check_negative(short color);
+u_int32_t	colorvalue(t_colors *a);
+t_colors	colorinit(u_int8_t red, u_int8_t green, u_int8_t blue);
 t_colors	coloradd(t_colors *a, t_colors *b);
 t_colors	colorsub(t_colors *a, t_colors *b);
 t_colors	colormulti(t_colors *a, t_colors *b);
 t_colors	colormulti_f(t_colors *a, float val);
-short		color_inrange(short color);
-short		alpha_ftos(float alpha);
+u_int8_t	color_inrange(short val);
 
 #endif

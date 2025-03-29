@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/28 20:44:16 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/29 20:20:14 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,10 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	{
 		rhitpoint = ray_hitpoint(ray, intersect->t);
 		normal_vec = normal_at(obj_entry->object, SPHERE, &rhitpoint);
-		res.red = normal_vec.x * 255;
-		res.green = normal_vec.y * 255;
-		res.blue = 255;
+		res = colorinit(255, ft_fabs(normal_vec.y) * 255, ft_fabs(normal_vec.y) * 100);
 	}
 	else
-	{
-		res.blue = 200;
-		res.green = 200;
-		res.red = 200 * ray->direction.y;
-	}
-	res.alpha = 255;
+		res = colorinit(ft_fabs(ray->direction.y) * 200, 200, 200);
 	clear_intersections(data);
 	return (res);
 }
@@ -95,7 +88,7 @@ int	main(int ac, char **av)
 
 	if (prep_rt_core(ac, av, &rts))
 		cleaner(&rts);
-	// // init_mlx is seperate from prep_rt_core for ease of debugging
+	// init_mlx is seperate from prep_rt_core for ease of debugging
 	if (init_mlx(&rts))
 		cleaner(&rts);
 	mlx_image_to_window(rts.mlx, rts.img, 0, 0);

@@ -6,42 +6,17 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:05:02 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/06 23:58:49 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/29 20:12:45 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <colors.h>
 
-short	color_value_check_positve(short color)
+u_int8_t	color_inrange(short val)
 {
-	if (color > 0xFF)
+	if (val > 0xFF)
 		return (0xFF);
-	else
-		return (color);
-}
-
-short	color_value_check_negative(short color)
-{
-	if (color < 0)
+	if (val < 0)
 		return (0);
-	else
-		return (color);
-}
-
-short	color_inrange(short color)
-{
-	short	res;
-
-	if (color > 0xFF)
-		res = 0xFF;
-	else if (color < 0)
-		res = 0;
-	else
-		res = color;
-	return (res);
-}
-
-short	alpha_ftos(float alpha)
-{
-	return ((short)roundf(alpha * 255.0f));
+	return (val);
 }

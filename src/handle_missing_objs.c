@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 05:24:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/27 06:48:49 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/29 20:06:16 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static t_alight	*init_default_alight()
 		free(alight);
 		return (0);
 	}
-	*alight->colors = colorinit(255, 255, 255, 255);
+	*alight->colors = colorinit(255, 255, 255);
 	alight->ratio = 1.0f;
 	return (alight);
 }
