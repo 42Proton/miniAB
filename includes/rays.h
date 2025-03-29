@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/28 20:42:33 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/29 20:41:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void			add_intersection_sorted(t_intersections *res,
 int				add_intersection(t_intersections *res,
 					float t, t_object_entry *obj_entry);
 void			clear_intersections(t_intersections *data);
-t_intersections	*sphere_intersect(t_object_entry *obj_entry, t_ray *ray);
+int				sphere_intersect(t_intersections *insects,
+					t_object_entry *obj_entry, t_ray *ray);
 t_intersect		*get_hit(t_intersections *data);
 //Ray Utils
 t_ray			init_ray(t_tuple *origin, t_tuple *direction);

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:56:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/28 09:30:35 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/29 20:40:54 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,21 @@ t_quad_eq	sphere_quad_eq(t_object_entry *obj_entry, t_ray *ray)
 	return (quad_eq);
 }
 
-t_intersections	*sphere_intersect(t_object_entry *obj_entry, t_ray *ray)
+int	sphere_intersect(t_intersections *insects,
+	t_object_entry *obj_entry, t_ray *ray)
 {
 	t_quad_eq		quad_eq;
 	t_sphere		*sphere;
-	t_intersections	*res;
 	t_ray			ray_transform;
 
 	sphere = (t_sphere *)obj_entry->object;
 	ray_transform = transform_ray(sphere->inv_t, ray);
-	res = ft_calloc(1, sizeof(t_intersections));
-	if (!res)
-		return (0);
 	quad_eq = sphere_quad_eq(obj_entry, &ray_transform);
 	if (quad_eq.discriminant < 0)
-		return (res);
-	if (!prep_intersections_sphere(res, obj_entry, &quad_eq))
-	{
-		clear_intersections(res);
+		return (1);
+	if (!prep_intersections_sphere(insects, obj_entry, &quad_eq))
 		return (0);
-	}
-	return (res);
+	return (1);
 }
 
 t_ray	init_ray(t_tuple *origin, t_tuple *direction)

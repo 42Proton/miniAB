@@ -6,35 +6,54 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/29 20:20:14 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/29 20:53:03 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 #include <debug.h>
 
+t_intersections	*world_intersect(t_list *solid_objs, t_ray *ray)
+{
+	t_intersections	*insects;
+	t_object_entry	*entry;
+	int				res;
+
+	insects = ft_calloc(1, sizeof(t_intersections));
+	if (!insects)
+		return (0);
+	while (solid_objs)
+	{
+		entry = solid_objs->content;
+		if (entry->type == SPHERE)
+			res = sphere_intersect(insects, entry, ray);
+		if (!res)
+		{
+			clear_intersections(insects);
+			return (0);
+		}
+		solid_objs = solid_objs->next;
+	}
+	return (insects);
+}
+
 t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 {
 	t_colors		res;
-	t_object_entry	*obj_entry;
-	t_intersections	*data;
-	t_intersect		*intersect;
-	t_tuple			rhitpoint;
-	t_tuple			normal_vec;
+	t_intersections	*insects;
+	t_intersect		*insect;
+	//t_computes		comp;
 
-	ft_bzero(&res, sizeof(t_colors));
-	obj_entry = rts->solid_objs->content;
-	data = sphere_intersect(obj_entry, ray);
-	intersect = get_hit(data);
-	if (intersect)
+	insects = world_intersect(rts->solid_objs, ray);
+	insect = get_hit(insects);
+	if (insect)
 	{
-		rhitpoint = ray_hitpoint(ray, intersect->t);
-		normal_vec = normal_at(obj_entry->object, SPHERE, &rhitpoint);
-		res = colorinit(255, ft_fabs(normal_vec.y) * 255, ft_fabs(normal_vec.y) * 100);
+		//comp = init_computes(insect, ray);
+		res = ((t_sphere *)insect->obj)->mat.color;
 	}
 	else
 		res = colorinit(ft_fabs(ray->direction.y) * 200, 200, 200);
-	clear_intersections(data);
+	clear_intersections(insects);
 	return (res);
 }
 
