@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:53:11 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/29 20:13:02 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/29 23:20:58 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ t_colors	colormulti(t_colors *a, t_colors *b)
 	short		green;
 	short		blue;
 
-	red = a->red * b->red;
-	green = a->green * b->green;
-	blue = a->blue * b->blue;
+	red = (a->red / 255.0f) * (b->red / 255.0f) * 255;
+	green = (a->green / 255.0f) * (b->green / 255.0f) * 255;
+	blue = (a->blue / 255.0f) * (b->blue / 255.0f) * 255;
 	res.red = color_inrange(red);
 	res.green = color_inrange(green);
 	res.blue = color_inrange(blue);

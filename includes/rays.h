@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/29 20:41:09 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/29 21:58:06 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_intersections
 
 typedef struct s_computes
 {
-	t_intersect	*isect;
+	t_intersect	*insect;
 	t_tuple		hpoint;
 	t_tuple		eyev;
 	t_tuple		nv;
