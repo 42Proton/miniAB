@@ -6,43 +6,126 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/28 10:10:02 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 00:31:37 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 #include <debug.h>
 
+t_intersections	*world_intersect(t_list *solid_objs, t_ray *ray)
+{
+	t_intersections	*insects;
+	t_object_entry	*entry;
+	int				res;
+
+	insects = ft_calloc(1, sizeof(t_intersections));
+	if (!insects)
+		return (0);
+	while (solid_objs)
+	{
+		entry = solid_objs->content;
+		if (entry->type == SPHERE)
+			res = sphere_intersect(insects, entry, ray);
+		if (!res)
+		{
+			clear_intersections(insects);
+			return (0);
+		}
+		solid_objs = solid_objs->next;
+	}
+	return (insects);
+}
+
+t_material	*get_material(int obj_type, void *obj)
+{
+	t_material	*mat;
+
+	if (obj_type == SPHERE)
+		mat = &((t_sphere *)obj)->mat;
+	else if (obj_type == PLANE)
+		mat = &((t_plane *)obj)->mat;
+	else if (obj_type == CYLINDER)
+		mat = &((t_cylinder *)obj)->mat;
+	return (mat);
+}
+
+typedef struct s_shader
+{
+	t_colors	ambient_c;
+	t_colors	effect_c;
+	t_colors	diffuse_c;
+	t_colors	specular_c;
+	t_tuple		lightv;
+	t_tuple		reflectv;
+	t_material	*mat;
+	float		light_dot_n;
+	float		reflect_dot_e;
+}	t_shader;
+
+t_colors	compute_diffuse(t_shader *shader)
+{
+	t_colors	diffuse_c;
+
+	diffuse_c = colormulti_f(&shader->effect_c, shader->mat->diffuse);
+	diffuse_c = colormulti_f(&shader->effect_c, shader->light_dot_n);
+	return (diffuse_c);
+}
+
+t_colors	compute_specular(t_shader *shader, t_light *light)
+{
+	float		factor;
+	t_colors	specular_c;
+
+	factor = pow(shader->reflect_dot_e, shader->mat->shininess);
+	specular_c = colormulti_f(light->colors, shader->mat->specular);
+	specular_c = colormulti_f(&specular_c, factor);
+	return (specular_c);
+}
+
+t_colors	shade_hit(t_alight *alight, t_computes *comp, t_light *light)
+{
+	t_shader	shader;
+	t_colors	res;
+
+	shader.mat = get_material(comp->insect->obj_type, comp->insect->obj);
+	shader.effect_c = colormulti_f(&shader.mat->color, light->brightness);
+	shader.ambient_c = colormulti_f(&shader.effect_c, alight->ratio);
+	shader.lightv = n_tuplesub(light->pos, &comp->hpoint);
+	shader.lightv = tuplenormalize(&shader.lightv);
+	shader.light_dot_n = tupledot(&shader.lightv, &comp->nv);
+	if (shader.light_dot_n < 0)
+		return (shader.ambient_c);
+	shader.diffuse_c = compute_diffuse(&shader);
+	shader.lightv = tuplenegt(&shader.lightv);
+	shader.reflectv = reflect_vec(&shader.lightv, &comp->nv);
+	shader.reflect_dot_e = tupledot(&shader.reflectv, &comp->eyev);
+	if (shader.reflect_dot_e <= 0)
+		shader.specular_c = colorinit(0, 0, 0);
+	else
+		shader.specular_c = compute_specular(&shader, light);
+	res = coloradd(&shader.ambient_c, &shader.diffuse_c);
+	res = coloradd(&res, &shader.specular_c);
+	return (res);
+}
+
 t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 {
 	t_colors		res;
-	t_object_entry	*obj_entry;
-	t_intersections	*data;
-	t_intersect		*intersect;
-	t_tuple			rhitpoint;
-	t_tuple			*normal_vec;
+	t_intersections	*insects;
+	t_intersect		*insect;
+	t_computes		comp;
 
-	ft_bzero(&res, sizeof(t_colors));
-	obj_entry = rts->solid_objs->content;
-	data = sphere_intersect(obj_entry, ray);
-	intersect = get_hit(data);
-	if (intersect)
+	insects = world_intersect(rts->solid_objs, ray);
+	insect = get_hit(insects);
+	if (insect)
 	{
-		rhitpoint = ray_hitpoint(ray, intersect->t);
-		normal_vec = normal_at(obj_entry->object, SPHERE, &rhitpoint);
-		res.red = normal_vec->x * 255;
-		res.green = normal_vec->y * 255;
-		free(normal_vec);
-		res.blue = 255;
+		comp = init_computes(insect, ray);
+		res = shade_hit(rts->alight, &comp, ((t_object_entry *)rts->vision_objs->content)->object);
 	}
 	else
-	{
-		res.blue = 200;
-		res.green = 200;
-		res.red = 200 * ray->direction.y;
-	}
-	res.alpha = 255;
-	clear_intersections(data);
+		res = colorinit(ft_fabs(ray->direction.y) * 200, 200, 200);
+	clear_intersections(insects);
 	return (res);
 }
 
@@ -96,7 +179,7 @@ int	main(int ac, char **av)
 
 	if (prep_rt_core(ac, av, &rts))
 		cleaner(&rts);
-	// // init_mlx is seperate from prep_rt_core for ease of debugging
+	// init_mlx is seperate from prep_rt_core for ease of debugging
 	if (init_mlx(&rts))
 		cleaner(&rts);
 	mlx_image_to_window(rts.mlx, rts.img, 0, 0);

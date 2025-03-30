@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 00:06:15 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/26 03:55:26 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 00:04:23 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	split_cam_alight(t_rtptr *rts,
 	else
 		rts->alight = entry->object;
 	free(entry);
+	if (tmp->next)
+		tmp->next->prev = 0;
 	free(tmp);
 }
 

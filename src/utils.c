@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/27 05:32:43 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/29 20:06:06 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_colors	*color(void)
 		return (0);
 	}
 	*color = colorinit(ft_atoi(colors[0]), ft_atoi(colors[1]),
-			ft_atoi(colors[2]), 255);
+			ft_atoi(colors[2]));
 	free_array((void **)colors);
 	return (color);
 }
