@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 08:27:59 by bismail          ###   ########.fr       */
+/*   Updated: 2025/03/30 08:30:57 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	plane_transform_m(t_plane *obj)
 	int			res;
 
 	// This Function is theioratically, and practically understandable
+	// i don't know the heck we doing here.
 	obj->transform = translation_m(obj->pos);
 	if (!obj->transform)
 		return (0);
