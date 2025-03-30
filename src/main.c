@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 08:36:13 by bismail          ###   ########.fr       */
+/*   Updated: 2025/03/30 18:42:00 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 				((t_object_entry *)rts->vision_objs->content)->object);
 	}
 	else
-		res = colorinit(ft_fabs(ray->direction.y) * 200, 200, 200);
+		res = colorinit(ft_fabs(ray->direction.y), 0.8, 0.8);
 	clear_intersections(insects);
 	return (res);
 }

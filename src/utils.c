@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/29 20:06:06 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 18:41:17 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ t_colors	*color(void)
 {
 	char		**colors;
 	t_colors	*color;
+	int			red;
+	int			green;
+	int			blue;
 
 	colors = ft_split(ft_strtok(NULL, " \t\r\f\v\n"), ',');
 	if (!colors)
@@ -47,8 +50,11 @@ t_colors	*color(void)
 		free_array((void **)colors);
 		return (0);
 	}
-	*color = colorinit(ft_atoi(colors[0]), ft_atoi(colors[1]),
-			ft_atoi(colors[2]));
+	red = ft_atoi(colors[0]);
+	green = ft_atoi(colors[1]);
+	blue = ft_atoi(colors[2]);
+	*color = colorinit(red / 255.0f, green / 255.0f,
+			blue / 255.0f);
 	free_array((void **)colors);
 	return (color);
 }

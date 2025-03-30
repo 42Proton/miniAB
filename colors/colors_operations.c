@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:53:11 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/29 23:20:58 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 18:34:34 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,63 +15,39 @@
 t_colors	coloradd(t_colors *a, t_colors *b)
 {
 	t_colors	res;
-	short		red;
-	short		green;
-	short		blue;
 
-	red = a->red + b->red;
-	green = a->green + b->green;
-	blue = a->blue + b->blue;
-	res.red = color_inrange(red);
-	res.green = color_inrange(green);
-	res.blue = color_inrange(blue);
+	res.red = a->red + b->red;
+	res.green = a->green + b->green;
+	res.blue = a->blue + b->blue;
 	return (res);
 }
 
 t_colors	colorsub(t_colors *a, t_colors *b)
 {
 	t_colors	res;
-	short		red;
-	short		green;
-	short		blue;
 
-	red = a->red - b->red;
-	green = a->green - b->green;
-	blue = a->blue - b->blue;
-	res.red = color_inrange(red);
-	res.green = color_inrange(green);
-	res.blue = color_inrange(blue);
+	res.red = a->red - b->red;
+	res.green = a->green - b->green;
+	res.blue = a->blue - b->blue;
 	return (res);
 }
 
 t_colors	colormulti(t_colors *a, t_colors *b)
 {
 	t_colors	res;
-	short		red;
-	short		green;
-	short		blue;
 
-	red = (a->red / 255.0f) * (b->red / 255.0f) * 255;
-	green = (a->green / 255.0f) * (b->green / 255.0f) * 255;
-	blue = (a->blue / 255.0f) * (b->blue / 255.0f) * 255;
-	res.red = color_inrange(red);
-	res.green = color_inrange(green);
-	res.blue = color_inrange(blue);
+	res.red = a->red * b->red;
+	res.green = a->green * b->green;
+	res.blue = a->blue * b->blue;
 	return (res);
 }
 
 t_colors	colormulti_f(t_colors *a, float val)
 {
 	t_colors	res;
-	short		red;
-	short		green;
-	short		blue;
 
-	red = a->red * val;
-	green = a->green * val;
-	blue = a->blue * val;
-	res.red = color_inrange(red);
-	res.green = color_inrange(green);
-	res.blue = color_inrange(blue);
+	res.red = a->red * val;
+	res.green = a->green * val;
+	res.blue = a->blue * val;
 	return (res);
 }
