@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/28 11:00:08 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 20:50:27 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct s_matrix_4
 typedef struct s_material
 {
 	t_colors	color;
-	t_colors	ambient;
 	float		diffuse;
 	float		specular;
 	float		shininess;
