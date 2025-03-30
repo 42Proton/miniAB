@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 18:42:00 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 20:41:22 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,10 @@ t_colors	shade_hit(t_alight *alight, t_computes *comp, t_light *light)
 	t_colors	res;
 
 	shader.mat = get_material(comp->insect->obj_type, comp->insect->obj);
-	shader.effect_c = colormulti_f(&shader.mat->color, light->brightness);
-	shader.ambient_c = colormulti_f(&shader.effect_c, alight->ratio);
+	shader.ambient_c = coloradd(alight->colors, &shader.mat->color);
+	shader.effect_c = coloradd(light->colors, &shader.mat->color);
+	shader.effect_c = colormulti_f(&shader.effect_c, light->brightness);
+	shader.ambient_c = colormulti_f(&shader.ambient_c, alight->ratio);
 	shader.lightv = n_tuplesub(light->pos, &comp->hpoint);
 	shader.lightv = tuplenormalize(&shader.lightv);
 	shader.light_dot_n = tupledot(&shader.lightv, &comp->nv);
