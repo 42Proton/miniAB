@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 22:24:43 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 23:01:38 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,8 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 				((t_object_entry *)rts->vision_objs->content)->object);
 	}
 	else
-		res = colorinit(ft_fabs(ray->direction.y), 0.8, 0.8);
+		res = colorinit(ft_fabs(ray->direction.y) * rts->alight->ratio,
+			0.8 * rts->alight->ratio, 0.8 * rts->alight->ratio);
 	clear_intersections(insects);
 	return (res);
 }
