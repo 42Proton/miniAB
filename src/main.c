@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 22:21:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 22:24:43 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ t_colors	compute_specular(t_shader *shader, t_light *light)
 	t_colors	specular_c;
 
 	factor = pow(shader->reflect_dot_e, shader->mat->shininess);
-	specular_c = colormulti_f(light->colors, shader->mat->specular);
+	specular_c = colormulti_f(light->colors, light->ratio);
+	specular_c = colormulti_f(&specular_c, shader->mat->specular);
 	specular_c = colormulti_f(&specular_c, factor);
 	return (specular_c);
 }
@@ -92,7 +93,7 @@ t_colors	shade_hit(t_alight *alight, t_computes *comp, t_light *light)
 	shader.ambient_c = coloradd(alight->colors, &shader.mat->color);
 	shader.effect_c = coloradd(light->colors, &shader.mat->color);
 	shader.ambient_c = colormulti_f(&shader.ambient_c, alight->ratio);
-	shader.effect_c = colormulti_f(&shader.effect_c, light->brightness);
+	shader.effect_c = colormulti_f(&shader.effect_c, light->ratio);
 	shader.lightv = n_tuplesub(light->pos, &comp->hpoint);
 	shader.lightv = tuplenormalize(&shader.lightv);
 	shader.light_dot_n = tupledot(&shader.lightv, &comp->nv);

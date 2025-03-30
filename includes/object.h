@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 21:38:45 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 22:23:43 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct s_camera
 typedef struct s_light
 {
 	t_tuple		*pos;
-	float		brightness;
+	float		ratio;
 	t_colors	*colors;
 }				t_light;
 
