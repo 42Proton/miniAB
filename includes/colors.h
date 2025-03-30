@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:33:07 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 18:36:28 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 21:38:48 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # define __USE_XOPEN
 # include <math.h>
 # include <libft.h>
+
+// defintions
+# define EPSILON 0.00001
 
 typedef struct s_colors
 {

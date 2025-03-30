@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 00:30:01 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 22:05:32 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int				sphere_postparse(t_rtptr *rts, t_sphere *obj);
 int				plane_postparse(t_rtptr *rts, t_plane *obj);
 int				cylinder_postparse(t_rtptr *rts, t_cylinder *obj);
 int				prep_objs_postparse(t_rtptr *rts);
+void			prep_lights_postparse(t_rtptr *rts);
 int				handle_missing_objs(t_rtptr *rts);
 
 // utils

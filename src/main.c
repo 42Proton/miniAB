@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 21:07:35 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 22:05:42 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,8 @@ t_colors	shade_hit(t_alight *alight, t_computes *comp, t_light *light)
 	t_colors	res;
 
 	shader.mat = get_material(comp->insect->obj_type, comp->insect->obj);
-	shader.ambient_c = coloradd(alight->colors, &shader.mat->color);
-	shader.effect_c = coloradd(light->colors, &shader.mat->color);
-	shader.effect_c = colormulti_f(&shader.effect_c, light->brightness);
-	shader.ambient_c = colormulti_f(&shader.ambient_c, alight->ratio);
+	shader.ambient_c = colormulti(alight->colors, &shader.mat->color);
+	shader.effect_c = colormulti(light->colors, &shader.mat->color);
 	shader.lightv = n_tuplesub(light->pos, &comp->hpoint);
 	shader.lightv = tuplenormalize(&shader.lightv);
 	shader.light_dot_n = tupledot(&shader.lightv, &comp->nv);
@@ -144,6 +142,7 @@ int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 		return (EXIT_FAILURE);
 	if (prep_objs_postparse(rts))
 		return (EXIT_FAILURE);
+	prep_lights_postparse(rts);
 	return (EXIT_SUCCESS);
 }
 

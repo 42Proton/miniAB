@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 20:50:27 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 21:38:45 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 // includes
 # include <colors.h>
-
-// defintions
-# define EPSILON 0.00001
 
 enum			e_types_of_objects
 {

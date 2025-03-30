@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:18:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/30 00:29:49 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 22:05:15 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void	reset_parser_props(t_parser *parser)
 
 int	prep_objs_postparse(t_rtptr *rts)
 {
-	t_list *tmp;
-	t_object_entry *entry;
-	void *obj;
-	int res;
+	t_list			*tmp;
+	t_object_entry	*entry;
+	void 			*obj;
+	int				res;
 
 	tmp = rts->solid_objs;
 	while (tmp)
@@ -88,4 +88,22 @@ int	prep_objs_postparse(t_rtptr *rts)
 		tmp = tmp->next;
 	}
 	return (EXIT_SUCCESS);
+}
+
+void	prep_lights_postparse(t_rtptr *rts)
+{
+	t_list 			*tmp;
+	t_object_entry	*entry;
+	t_light			*obj;
+
+	tmp = rts->vision_objs;
+	*rts->alight->colors = colormulti_f(rts->alight->colors,
+		rts->alight->ratio);
+	while (tmp)
+	{
+		entry = (t_object_entry *)tmp->content;
+		obj = entry->object;
+		*obj->colors = colormulti_f(obj->colors, obj->brightness);
+		tmp = tmp->next;
+	}
 }
