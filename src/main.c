@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 00:31:37 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/30 08:36:13 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
 #include <debug.h>
+#include <minirt.h>
 
 t_intersections	*world_intersect(t_list *solid_objs, t_ray *ray)
 {
@@ -61,7 +61,7 @@ typedef struct s_shader
 	t_material	*mat;
 	float		light_dot_n;
 	float		reflect_dot_e;
-}	t_shader;
+}				t_shader;
 
 t_colors	compute_diffuse(t_shader *shader)
 {
@@ -121,7 +121,8 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	if (insect)
 	{
 		comp = init_computes(insect, ray);
-		res = shade_hit(rts->alight, &comp, ((t_object_entry *)rts->vision_objs->content)->object);
+		res = shade_hit(rts->alight, &comp,
+				((t_object_entry *)rts->vision_objs->content)->object);
 	}
 	else
 		res = colorinit(ft_fabs(ray->direction.y) * 200, 200, 200);
@@ -175,7 +176,18 @@ void	testinverse(void)
 
 int	main(int ac, char **av)
 {
-	t_rtptr	rts;
+	t_rtptr		rts;
+	float		viewport_size;
+	float		viewport_z;
+	float		pixel_size;
+	float		half;
+	float		world_y;
+	float		world_x;
+	t_tuple		position;
+	t_tuple		ray_direction;
+	t_tuple		rd_normal;
+	t_ray		ray;
+	t_colors	color;
 
 	if (prep_rt_core(ac, av, &rts))
 		cleaner(&rts);
@@ -183,21 +195,21 @@ int	main(int ac, char **av)
 	if (init_mlx(&rts))
 		cleaner(&rts);
 	mlx_image_to_window(rts.mlx, rts.img, 0, 0);
-	float viewport_size = 15.0;
-	float viewport_z = 0;
-	float pixel_size = viewport_size / WID;
-	float half = viewport_size / 2;
+	viewport_size = 15.0;
+	viewport_z = 0;
+	pixel_size = viewport_size / WID;
+	half = viewport_size / 2;
 	for (int y = 0; y < HEG; y++)
 	{
-		float world_y = half - pixel_size * y;
+		world_y = half - pixel_size * y;
 		for (int x = 0; x < WID; x++)
 		{
-			float world_x = -half + pixel_size * x;
-			t_tuple position = point(world_x, world_y, viewport_z);
-			t_tuple ray_direction = n_tuplesub(&position, rts.camera->pos);
-			t_tuple	rd_normal = tuplenormalize(&ray_direction);
-			t_ray ray = init_ray(&position, &rd_normal);
-			t_colors color = ray_color(&rts, &ray);
+			world_x = -half + pixel_size * x;
+			position = point(world_x, world_y, viewport_z);
+			ray_direction = n_tuplesub(&position, rts.camera->pos);
+			rd_normal = tuplenormalize(&ray_direction);
+			ray = init_ray(&position, &rd_normal);
+			color = ray_color(&rts, &ray);
 			mlx_put_pixel(rts.img, x, y, colorvalue(&color));
 		}
 	}
