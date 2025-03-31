@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 23:56:13 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/24 01:35:16 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/31 15:02:30 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_tuple	transform_f(t_matrix *m, t_tuple *vec)
 		+ vec->z * m->data[6] + vec->w * m->data[7];
 	res.z = vec->x * m->data[8] + vec->y * m->data[9]
 		+ vec->z * m->data[10] + vec->w * m->data[11];
-	res.w = vec->w;
+	res.w = vec->x * m->data[12] + vec->y * m->data[13]
+		+ vec->z * m->data[14] + vec->w * m->data[15];
 	return (res);
 }
 

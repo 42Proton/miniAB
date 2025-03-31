@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 18:41:17 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/31 14:33:37 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,9 @@ t_tuple	norm_to_radian(t_tuple *vec)
 		res.z = ft_fabs(vec->z) * M_PI + M_PI;
 	res.w = VECTOR;
 	return (res);
+}
+
+float	deg_to_rad(float deg)
+{
+	return (deg * (M_PI / 180));
 }

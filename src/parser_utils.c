@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:18:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/30 22:21:39 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/31 14:30:05 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ int	prep_objs_postparse(t_rtptr *rts)
 		entry = (t_object_entry *)tmp->content;
 		obj = entry->object;
 		if (entry->type == SPHERE)
-			res = sphere_transform_m((t_sphere *)obj);
+			res = sphere_postparse(rts, (t_sphere *)obj);
 		else if (entry->type == PLANE)
-			res = plane_transform_m((t_plane *)obj);
+			res = plane_postparse(rts, (t_plane *)obj);
 		else if (entry->type == CYLINDER)
-			res = cylinder_transform_m((t_cylinder *)obj);
+			res = cylinder_postparse(rts, (t_cylinder *)obj);
 		if (!res)
 			return (EXIT_FAILURE);
 		tmp = tmp->next;

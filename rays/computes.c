@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 08:22:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/29 23:43:25 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/31 15:09:41 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 t_computes	init_computes(t_intersect *insect, t_ray *ray)
 {
 	t_computes	computes;
+	float		dot_nv_e;
 
 	computes.insect = insect;
  	computes.hpoint = ray_hitpoint(ray, insect->t);
  	computes.eyev = tuplenegt(&ray->direction);
  	computes.nv = normal_at(insect->obj, insect->obj_type, &computes.hpoint);
+	dot_nv_e = tupledot(&computes.nv, &computes.eyev);
+	if (dot_nv_e < 0)
+		computes.nv = tuplenegt(&computes.nv);
 	return (computes);
 }
