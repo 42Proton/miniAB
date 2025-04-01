@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 23:56:13 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/01 05:33:40 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/01 16:08:20 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ t_tuple	transform_f(t_matrix *m, t_tuple *vec)
 	return (res);
 }
 
+int	check_if_scale_m(t_matrix *m)
+{
+	if (!floatcmp(m->data[0], 1) || !floatcmp(m->data[5], 1)
+		|| !floatcmp(m->data[10], 1))
+		return (1);
+	return (0);
+}
+
 t_ray	transform_ray(t_matrix *m, t_ray *ray)
 {
 	t_ray		res;
@@ -40,6 +48,7 @@ t_ray	transform_ray(t_matrix *m, t_ray *ray)
 		return (res);
 	res.origin = transform_f(m, &ray->origin);
 	res.direction = transform_f(m, &ray->direction);
-	res.direction = tuplenormalize(&res.direction);
+	if (!check_if_scale_m(m))
+		res.direction = tuplenormalize(&res.direction);
 	return (res);
 }

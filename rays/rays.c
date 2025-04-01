@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:56:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/01 14:01:55 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/01 15:18:47 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	prep_intersections_sphere(t_intersections *res,
 {
 	float	t1;
 	float	t2;
+	float	disc_sqrt;
 
-	t1 = (-quad_eq->b - sqrt(quad_eq->discriminant))
+	disc_sqrt = sqrt(quad_eq->discriminant);
+	t1 = (-quad_eq->b - disc_sqrt)
 		/ (2 * quad_eq->a);
-	t2 = (-quad_eq->b  + sqrt(quad_eq->discriminant))
+	t2 = (-quad_eq->b  + disc_sqrt)
 		/ (2 * quad_eq->a);
 	if (!add_intersection(res, t1, obj_entry))
 		return (0);
