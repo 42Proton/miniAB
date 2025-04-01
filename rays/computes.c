@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 08:22:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/01 09:54:40 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/01 13:37:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ t_computes	init_computes(t_intersect *insect, t_ray *ray)
 	dot_nv_e = tupledot(&computes.nv, &computes.eyev);
 	if (dot_nv_e < 0)
 		computes.nv = tuplenegt(&computes.nv);
+	computes.eyev = tuplenormalize(&computes.eyev);
 	return (computes);
 }
