@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:58:07 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/16 00:26:10 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/01 06:26:11 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	add_intersection_sorted(t_intersections *res,
 			tmp->prev = node;
 			if (node->prev)
 				node->prev->next = node;
+			else
+				res->lst = node;
 			return ;
 		}
 		tmp = tmp->next;
