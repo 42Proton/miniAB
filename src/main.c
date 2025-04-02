@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 23:01:38 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/02 18:53:00 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_intersections	*world_intersect(t_list *solid_objs, t_ray *ray)
 		entry = solid_objs->content;
 		if (entry->type == SPHERE)
 			res = sphere_intersect(insects, entry, ray);
+		// if (entry->type == PLANE)
+		// 	res = plane_intersect(insects, entry, ray);
 		if (!res)
 		{
 			clear_intersections(insects);
@@ -120,6 +122,8 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	t_computes		comp;
 
 	insects = world_intersect(rts->solid_objs, ray);
+	if (!insects)
+		return (colorinit(0, 0, 0));
 	insect = get_hit(insects);
 	if (insect)
 	{
@@ -128,8 +132,8 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 				((t_object_entry *)rts->vision_objs->content)->object);
 	}
 	else
-		res = colorinit(ft_fabs(ray->direction.y) * rts->alight->ratio,
-			0.8 * rts->alight->ratio, 0.8 * rts->alight->ratio);
+		res = colorinit(ft_fabs(ray->direction.y) * rts->alight->ratio, 0.8
+				* rts->alight->ratio, 0.8 * rts->alight->ratio);
 	clear_intersections(insects);
 	return (res);
 }
@@ -201,14 +205,14 @@ int	main(int ac, char **av)
 	mlx_image_to_window(rts.mlx, rts.img, 0, 0);
 	viewport_size = 15.0;
 	viewport_z = 0;
-	pixel_size = viewport_size / WID;
-	half = viewport_size / 2;
+	pixel_size = viewport_size / WID; // 15 / 800 = 0.001875
+	half = viewport_size / 2;         // 7.5
 	for (int y = 0; y < HEG; y++)
 	{
-		world_y = half - pixel_size * y;
+		world_y = half - pixel_size * y; // 7.5 - 0.02 * 1 = 7.98
 		for (int x = 0; x < WID; x++)
 		{
-			world_x = -half + pixel_size * x;
+			world_x = -half + pixel_size * x; // -8 + 0.02 * 1 = -7.98
 			position = point(world_x, world_y, viewport_z);
 			ray_direction = n_tuplesub(&position, rts.camera->pos);
 			rd_normal = tuplenormalize(&ray_direction);

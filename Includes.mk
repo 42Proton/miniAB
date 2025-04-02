@@ -51,4 +51,5 @@ RAYS=\
 	rays.c\
 	normal_vec.c\
 	reflect_vec.c\
-	computes.c
+	computes.c\
+	plane_intersect.c

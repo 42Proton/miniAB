@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:58:07 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/16 00:26:10 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/02 18:37:15 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rays.h>
 
-void	add_intersection_sorted(t_intersections *res,
-	t_list *node)
+void	add_intersection_sorted(t_intersections *res, t_list *node)
 {
 	t_list		*tmp;
 	t_intersect	*intersect;
-	float	t;
+	float		t;
 
 	tmp = res->lst;
 	t = ((t_intersect *)node->content)->t;
@@ -38,8 +37,7 @@ void	add_intersection_sorted(t_intersections *res,
 	ft_lstadd_back(&res->lst, node);
 }
 
-int	add_intersection(t_intersections *res,
-	float t, t_object_entry *obj_entry)
+int	add_intersection(t_intersections *res, float t, t_object_entry *obj_entry)
 {
 	t_list		*node;
 	t_intersect	*intersect;
@@ -72,6 +70,8 @@ t_intersect	*get_hit(t_intersections *data)
 	t_list		*lst;
 	t_intersect	*intersect;
 
+	if (!data || !data->lst)
+		return (0);
 	lst = data->lst;
 	while (lst)
 	{
