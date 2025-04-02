@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 01:19:21 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/24 02:53:29 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/01 10:08:30 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ float	m_dot_product(t_matrix *a,
 
 	i = 0;
 	res = 0;
-	while (i < a->rows)
+	while (i < a->cols)
 	{
-		res += a->data[i_a * a->cols + i] * b->data[i_b * a->cols + i];
+		res += a->data[i_a * a->cols + i] * b->data[i * b->cols + i_b];
 		i++;
 	}
 	return (res);

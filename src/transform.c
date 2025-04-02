@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 08:35:13 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/01 16:05:05 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
+
+int	camera_transform_m(t_camera *obj)
+{
+	t_matrix	*m;
+	t_tuple		vec;
+	int			res;
+
+	obj->transform = translation_m(obj->pos);
+	if (!obj->transform)
+		return (0);
+	vec = norm_to_radian(obj->orientation);
+	m = rotaion_m(&vec);
+	if (!m)
+		return (0);
+	res = matrix_multiply(obj->transform, m);
+	free_matrix(m);
+	if (!res)
+		return (0);
+	obj->inv_t = matrix_inverse(obj->transform);
+	if (!obj->inv_t)
+		return (0);
+	return (1);
+}
 
 int	sphere_transform_m(t_sphere *obj)
 {

@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/02 18:53:00 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/03 00:33:25 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_colors	compute_diffuse(t_shader *shader)
 	t_colors	diffuse_c;
 
 	diffuse_c = colormulti_f(&shader->effect_c, shader->mat->diffuse);
-	diffuse_c = colormulti_f(&shader->effect_c, shader->light_dot_n);
+	diffuse_c = colormulti_f(&diffuse_c, shader->light_dot_n);
 	return (diffuse_c);
 }
 
@@ -92,16 +92,15 @@ t_colors	shade_hit(t_alight *alight, t_computes *comp, t_light *light)
 	t_colors	res;
 
 	shader.mat = get_material(comp->insect->obj_type, comp->insect->obj);
-	shader.ambient_c = coloradd(alight->colors, &shader.mat->color);
-	shader.effect_c = coloradd(light->colors, &shader.mat->color);
-	shader.ambient_c = colormulti_f(&shader.ambient_c, alight->ratio);
-	shader.effect_c = colormulti_f(&shader.effect_c, light->ratio);
+	shader.effect_c = colormulti_f(&shader.mat->color, light->ratio);
+	shader.ambient_c = colormulti_f(&shader.mat->color, alight->ratio);
 	shader.lightv = n_tuplesub(light->pos, &comp->hpoint);
 	shader.lightv = tuplenormalize(&shader.lightv);
 	shader.light_dot_n = tupledot(&shader.lightv, &comp->nv);
 	if (shader.light_dot_n < 0)
-		return (shader.ambient_c);
-	shader.diffuse_c = compute_diffuse(&shader);
+		shader.diffuse_c = colorinit(0, 0, 0);
+	else
+		shader.diffuse_c = compute_diffuse(&shader);
 	shader.lightv = tuplenegt(&shader.lightv);
 	shader.reflectv = reflect_vec(&shader.lightv, &comp->nv);
 	shader.reflect_dot_e = tupledot(&shader.reflectv, &comp->eyev);
@@ -150,6 +149,8 @@ int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 		return (EXIT_FAILURE);
 	if (prep_objs_postparse(rts))
 		return (EXIT_FAILURE);
+	if (!camera_portparse(rts->camera))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -182,41 +183,43 @@ void	testinverse(void)
 	free_matrix(inv);
 }
 
+t_ray	ray_pixel(t_camera *cam, int x, int y)
+{
+	float	world_x;
+	float	world_y;
+	t_tuple	world_origin;
+	t_tuple	world_point;
+	t_ray	ray;
+	t_tuple	ray_direction;
+
+	world_x = cam->hwidth - ((x + 0.5) * cam->pixel_size);
+	world_y = cam->hheight - ((y + 0.5) * cam->pixel_size);
+	world_origin = point(0, 0, 0);
+	world_point = point(world_x, world_y, -1);
+	world_origin = transform_f(cam->inv_t, &world_origin);
+	world_point = transform_f(cam->inv_t, &world_point);
+	ray_direction = n_tuplesub(&world_point, &world_origin);
+	ray_direction = tuplenormalize(&ray_direction);
+	ray = init_ray(&world_origin, &ray_direction);
+	return (ray);
+}
+
 int	main(int ac, char **av)
 {
 	t_rtptr		rts;
-	float		viewport_size;
-	float		viewport_z;
-	float		pixel_size;
-	float		half;
-	float		world_y;
-	float		world_x;
-	t_tuple		position;
-	t_tuple		ray_direction;
-	t_tuple		rd_normal;
 	t_ray		ray;
 	t_colors	color;
 
 	if (prep_rt_core(ac, av, &rts))
 		cleaner(&rts);
-	// init_mlx is seperate from prep_rt_core for ease of debugging
 	if (init_mlx(&rts))
 		cleaner(&rts);
 	mlx_image_to_window(rts.mlx, rts.img, 0, 0);
-	viewport_size = 15.0;
-	viewport_z = 0;
-	pixel_size = viewport_size / WID; // 15 / 800 = 0.001875
-	half = viewport_size / 2;         // 7.5
 	for (int y = 0; y < HEG; y++)
 	{
-		world_y = half - pixel_size * y; // 7.5 - 0.02 * 1 = 7.98
 		for (int x = 0; x < WID; x++)
 		{
-			world_x = -half + pixel_size * x; // -8 + 0.02 * 1 = -7.98
-			position = point(world_x, world_y, viewport_z);
-			ray_direction = n_tuplesub(&position, rts.camera->pos);
-			rd_normal = tuplenormalize(&ray_direction);
-			ray = init_ray(&position, &rd_normal);
+			ray = ray_pixel(rts.camera, x, y);
 			color = ray_color(&rts, &ray);
 			mlx_put_pixel(rts.img, x, y, colorvalue(&color));
 		}

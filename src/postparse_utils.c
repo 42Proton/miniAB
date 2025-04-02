@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:32:31 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/30 20:52:25 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/01 05:08:55 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,27 @@ int	cylinder_postparse(t_rtptr *rts, t_cylinder *obj)
 
 	res = cylinder_transform_m(obj);
 	return (res);
+}
+
+int	camera_portparse(t_camera *obj)
+{
+	float	hview;
+	float	aspect;
+
+	if (!camera_transform_m(obj))
+		return (0);
+	hview = tan(deg_to_rad(obj->fov) / 2);
+	aspect = (float)WID / (float)HEG;
+	if (aspect >= 1)
+	{
+		obj->hwidth = hview;
+		obj->hheight = hview / aspect;
+	}
+	else
+	{
+		obj->hwidth = hview * aspect;
+		obj->hheight = hview;
+	}
+	obj->pixel_size = (obj->hwidth * 2) / WID;
+	return (1);
 }

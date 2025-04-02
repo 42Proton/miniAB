@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:58:07 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/02 18:37:15 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/03 00:33:53 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	add_intersection_sorted(t_intersections *res, t_list *node)
 			tmp->prev = node;
 			if (node->prev)
 				node->prev->next = node;
+			else
+				res->lst = node;
 			return ;
 		}
 		tmp = tmp->next;

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 22:05:32 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/31 14:33:43 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <utils.h>
+# include <debug.h>
 # define WID 1000
-# define HEG 1000
+# define HEG 800
 
 typedef struct s_rtptr
 {
@@ -93,9 +94,11 @@ int				prep_transform_m(t_matrix **m);
 int				sphere_transform_m(t_sphere *obj);
 int				plane_transform_m(t_plane *obj);
 int				cylinder_transform_m(t_cylinder *obj);
+int				camera_transform_m(t_camera *obj);
 int				sphere_postparse(t_rtptr *rts, t_sphere *obj);
 int				plane_postparse(t_rtptr *rts, t_plane *obj);
 int				cylinder_postparse(t_rtptr *rts, t_cylinder *obj);
+int				camera_portparse(t_camera *obj);
 int				prep_objs_postparse(t_rtptr *rts);
 void			prep_lights_postparse(t_rtptr *rts);
 int				handle_missing_objs(t_rtptr *rts);
@@ -103,4 +106,6 @@ int				handle_missing_objs(t_rtptr *rts);
 // utils
 t_tuple			*pos(void);
 t_colors		*color(void);
+t_tuple			norm_to_radian(t_tuple *vec);
+float			deg_to_rad(float deg);
 #endif

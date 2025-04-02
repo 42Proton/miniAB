@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 22:23:43 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/01 16:05:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,12 @@ typedef struct s_camera
 {
 	t_tuple		*pos;
 	t_tuple		*orientation;
+	t_matrix	*transform;
+	t_matrix	*inv_t;
 	float		fov;
+	float		hwidth;
+	float		hheight;
+	float		pixel_size;
 }				t_camera;
 
 typedef struct s_light
