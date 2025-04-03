@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 09:16:30 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/01 15:49:24 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/03 13:41:53 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_tuple	normal_at(void *obj, int obj_type, t_tuple *p)
 {
 	t_tuple	nv;
 
+	ft_bzero(&nv, sizeof(t_tuple));
 	if (obj_type == SPHERE)
 		nv = sphere_normal(obj, p);
 	return (nv);
