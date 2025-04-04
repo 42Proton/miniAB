@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:46:45 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/02 18:50:32 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/03 12:46:01 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ float	check_plane_intersect(t_plane *plane, t_ray *ray)
 	plane_to_ray = n_tuplesub(&ray->origin, plane->pos);
 	dot = tupledot(plane->normal_vector, &ray->direction);
 	if (floatcmp(dot, 0))
-		return (1);
+		return (0);
 	t = tupledot(plane->normal_vector, &plane_to_ray) / dot;
 	if (t < 0)
 		return (0);

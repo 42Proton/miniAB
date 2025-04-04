@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/03 00:33:25 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/03 12:43:48 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_intersections	*world_intersect(t_list *solid_objs, t_ray *ray)
 		entry = solid_objs->content;
 		if (entry->type == SPHERE)
 			res = sphere_intersect(insects, entry, ray);
-		// if (entry->type == PLANE)
-		// 	res = plane_intersect(insects, entry, ray);
+		if (entry->type == PLANE)
+			res = plane_intersect(insects, entry, ray);
 		if (!res)
 		{
 			clear_intersections(insects);
