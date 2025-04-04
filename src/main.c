@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/03 12:43:48 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/04 13:59:50 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_material	*get_material(int obj_type, void *obj)
 {
 	t_material	*mat;
 
+	mat = 0;
 	if (obj_type == SPHERE)
 		mat = &((t_sphere *)obj)->mat;
 	else if (obj_type == PLANE)
