@@ -45,7 +45,8 @@ MATRIX=\
 	determinant.c\
 	submatrix.c\
 	matrix_inv.c\
-	matrix_mult.c
+	matrix_mult.c\
+	rotation_matrix.c
 RAYS=\
 	intersections.c\
 	rays.c\

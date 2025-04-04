@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 09:16:30 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/04 20:01:34 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/04 21:45:23 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ t_tuple plane_normal(t_plane *obj)
 	object_normal = *obj->normal_vector;
 	world_normal = matrix_mult_t(obj->tpose_inv_t, &object_normal);
 	world_normal = tuplenormalize(&world_normal);
-	world_normal.z = 0;
 	return (world_normal);
 }
-
 
 t_tuple	normal_at(void *obj, int obj_type, t_tuple *p)
 {

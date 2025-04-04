@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:46:45 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/04 20:01:07 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/04 22:06:26 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ float	check_plane_intersect(t_plane *plane, t_ray *ray)
 
 	normpos = tuplenormalize(plane->pos);
 	n = plane->normal_vector;
-	n->z = 0;
 	denom = tupledot(n, &ray->direction);
-	if (denom < -EPSILON)
+	if (denom > -EPSILON)
 	{
 		p2r = n_tuplesub(&normpos, &ray->origin);
 		t = tupledot(&p2r, n) / denom;

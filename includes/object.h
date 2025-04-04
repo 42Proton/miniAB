@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/01 16:05:09 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/04 23:36:01 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,7 @@ t_matrix_9		submatrix_3x3(t_matrix *m,
 t_matrix		*ident_matrix4x4();
 t_matrix_4		submatrix_2x2(t_matrix *m, int skip_col, int skip_row);
 t_matrix		*translation_m(t_tuple *pos);
-t_matrix		*rotaion_m(t_tuple *vec);
+t_matrix		*rotation_m(t_tuple *vec);
 t_matrix		*scale_m(t_tuple *vec);
 // Material
 t_material		init_material(t_colors *colors,

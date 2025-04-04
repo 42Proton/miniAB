@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/04 19:31:18 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/04 23:36:04 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	camera_transform_m(t_camera *obj)
 	if (!obj->transform)
 		return (0);
 	vec = norm_to_radian(obj->orientation);
-	m = rotaion_m(&vec);
+	m = rotation_m(&vec);
 	if (!m)
 		return (0);
 	res = matrix_multiply(obj->transform, m);
