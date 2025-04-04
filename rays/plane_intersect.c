@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:46:45 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/04 20:48:53 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/04 21:01:30 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ float	check_plane_intersect(t_plane *plane, t_ray *ray)
 	denom = tupledot(n, &ray->direction);
 	if (denom < -EPSILON)
 	{
-		p2r = n_tuplesub(&ray->origin, &normpos);
+		p2r = n_tuplesub(&normpos, &ray->origin);
 		t = tupledot(&p2r, n) / denom;
-		return (ft_fabs(t));
+		if (t >= 0)
+			return (t);
 	}
 	return (0);
 }
