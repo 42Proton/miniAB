@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/01 16:05:05 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/04 19:31:18 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,10 @@ int	sphere_transform_m(t_sphere *obj)
 
 int	plane_transform_m(t_plane *obj)
 {
-	t_matrix	*s;
-	t_tuple		vec;
-	int			res;
-
 	// This Function is theioratically, and practically understandable
 	// i don't know the heck we doing here.
 	obj->transform = translation_m(obj->pos);
 	if (!obj->transform)
-		return (0);
-	vec = vector(1, 1, 1);
-	s = scale_m(&vec);
-	if (!s)
-		return (0);
-	res = matrix_multiply(obj->transform, s);
-	free_matrix(s);
-	if (!res)
 		return (0);
 	obj->inv_t = matrix_inverse(obj->transform);
 	if (!obj->inv_t)

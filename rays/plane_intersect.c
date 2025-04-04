@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane_intersect.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:46:45 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/04 15:39:23 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/04 20:01:07 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ float	check_plane_intersect(t_plane *plane, t_ray *ray)
 
 	normpos = tuplenormalize(plane->pos);
 	n = plane->normal_vector;
+	n->z = 0;
 	denom = tupledot(n, &ray->direction);
 	if (denom < -EPSILON)
 	{
