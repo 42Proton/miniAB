@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:58:07 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/03 00:33:53 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:12:46 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,30 @@ t_intersect	*get_hit(t_intersections *data)
 		lst = lst->next;
 	}
 	return (0);
+}
+
+t_intersections	*world_intersect(t_list *solid_objs, t_ray *ray)
+{
+	t_intersections	*insects;
+	t_object_entry	*entry;
+	int				res;
+
+	insects = ft_calloc(1, sizeof(t_intersections));
+	if (!insects)
+		return (0);
+	while (solid_objs)
+	{
+		entry = solid_objs->content;
+		if (entry->type == SPHERE)
+			res = sphere_intersect(insects, entry, ray);
+		if (entry->type == PLANE)
+			res = plane_intersect(insects, entry, ray);
+		if (!res)
+		{
+			clear_intersections(insects);
+			return (0);
+		}
+		solid_objs = solid_objs->next;
+	}
+	return (insects);
 }
