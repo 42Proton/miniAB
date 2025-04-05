@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   handle_missing_objs.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 05:24:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/30 18:38:27 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 12:58:51 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-static t_camera	*init_default_camera()
+static t_camera	*init_default_camera(void)
 {
 	t_camera	*cam;
 
@@ -32,7 +32,7 @@ static t_camera	*init_default_camera()
 	return (cam);
 }
 
-static t_alight	*init_default_alight()
+static t_alight	*init_default_alight(void)
 {
 	t_alight	*alight;
 

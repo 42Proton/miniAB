@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_mult.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 01:19:21 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/01 10:08:30 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:12:50 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ float	m_dot_product(t_matrix *a,
 	return (res);
 }
 
-void	m_mult_iter(t_matrix* res,
+void	m_mult_iter(t_matrix *res,
 	t_matrix *a, t_matrix *b)
 {
 	int		i;

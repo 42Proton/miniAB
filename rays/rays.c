@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:56:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/01 15:18:47 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:11:22 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	prep_intersections_sphere(t_intersections *res,
 	disc_sqrt = sqrt(quad_eq->discriminant);
 	t1 = (-quad_eq->b - disc_sqrt)
 		/ (2 * quad_eq->a);
-	t2 = (-quad_eq->b  + disc_sqrt)
+	t2 = (-quad_eq->b + disc_sqrt)
 		/ (2 * quad_eq->a);
 	if (!add_intersection(res, t1, obj_entry))
 		return (0);
@@ -77,7 +77,7 @@ t_ray	init_ray(t_tuple *origin, t_tuple *direction)
 
 t_tuple	ray_hitpoint(t_ray *ray, float t)
 {
-	t_tuple hit_direction;
+	t_tuple	hit_direction;
 	t_tuple	res;
 
 	hit_direction = n_tuplesmult(&ray->direction, t);

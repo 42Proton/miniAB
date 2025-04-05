@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 23:18:51 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/04 23:37:11 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:14:42 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_matrix	*rotation_z(float z)
 	return (m);
 }
 
-int rotation_m_multi(t_matrix *m_z,
+int	rotation_m_multi(t_matrix *m_z,
 	t_matrix *m_y, t_matrix *m_x)
 {
 	int	res;

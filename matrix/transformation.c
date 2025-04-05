@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transformation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 23:56:13 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/01 16:08:20 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:13:16 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_tuple	transform_f(t_matrix *m, t_tuple *vec)
 {
-	t_tuple res;
+	t_tuple	res;
 
 	ft_bzero(&res, sizeof(t_tuple));
 	if (!m || !vec)

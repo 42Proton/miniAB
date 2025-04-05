@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_inv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 01:51:25 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/24 03:19:53 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:12:31 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ float	m_minor(t_matrix *m, int col, int row)
 {
 	t_matrix_9	sub_m;
 	float		det;
-	
+
 	sub_m = submatrix_3x3(m, col, row);
 	det = s_determinant_3x3(&sub_m);
 	return (det);
@@ -34,7 +34,7 @@ float	cofactor(t_matrix *m, int col, int row)
 {
 	float	m0;
 	int		sign;
-	
+
 	m0 = m_minor(m, col, row);
 	sign = pow(-1, col + row);
 	return (m0 * sign);
