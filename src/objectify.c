@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objectify.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:33:42 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/11 16:18:07 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/17 17:32:16 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

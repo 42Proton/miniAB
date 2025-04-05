@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_utils_color.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:13:39 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/10 15:11:18 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/27 05:33:05 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static char	**pre_color_validation(t_parser *parser)
 	if (!token)
 		return (0);
 	comma_count = ft_getchr_count(token, ',');
-	if (!check_vec_input(token) || comma_count < 2 || comma_count > 3)
+	if (!check_vec_input(token) || comma_count != 2)
 	{
 		issue_report(parser, ERR_INVALID_RGB);
 		return (0);

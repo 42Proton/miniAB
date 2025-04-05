@@ -3,58 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   scaler.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:07:54 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/02 10:48:14 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/17 23:14:16 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <object.h>
+#include <stdio.h>
 
-t_tuple	*tuplesmult(t_tuple *a, float scale)
+void	tuplesmult(t_tuple *a, float scale)
 {
-	t_tuple	*res;
-
 	if (!a)
-		return (NULL);
-	res = malloc(sizeof(t_tuple));
-	if (!res)
-		return (NULL);
-	res->X = a->X * scale;
-	res->Y = a->Y * scale;
-	res->Z = a->Z * scale;
-	res->W = a->W;
-	return (res);
+		return ;
+	a->x = a->x * scale;
+	a->y = a->y * scale;
+	a->z = a->z * scale;
 }
-t_tuple	*tuplesdiv(t_tuple *a, float scale)
+
+void	tuplesdiv(t_tuple *a, float scale)
 {
-	t_tuple	*res;
-
 	if (!a)
-		return (NULL);
-	res = malloc(sizeof(t_tuple));
-	if (!res)
-		return (NULL);
-	res->X = a->X / scale;
-	res->Y = a->Y / scale;
-	res->Z = a->Z / scale;
-	res->W = a->W;
-	return (res);
+		return ;
+	a->x = a->x / scale;
+	a->y = a->y / scale;
+	a->z = a->z / scale;
 }
+
 float	tuplemagnitude(t_tuple *a)
 {
-	float res;
+	float	res;
 
 	if (!a)
 		return (0);
-	if (a->W == POINT)
+	if (a->w == POINT)
 		return (0);
 	res = 0;
-	res += a->X * a->X;
-	res += a->Y * a->Y;
-	res += a->Z * a->Z;
-	res += a->W * a->W;
+	res += a->x * a->x;
+	res += a->y * a->y;
+	res += a->z * a->z;
 	res = sqrt(res);
 	return (res);
 }

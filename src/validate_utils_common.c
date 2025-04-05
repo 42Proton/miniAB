@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:45:25 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/10 03:49:05 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/27 17:49:27 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_vec_input(char *str)
 {
 	while (*str)
 	{
-		if (*str == ',' && (*(str + 1) == ',' || !*str))
+		if (*str == ',' && (*(str + 1) == ',' || !*(str + 1)))
 			return (0);
 		str++;
 	}

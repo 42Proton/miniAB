@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors_utils.c                                     :+:      :+:    :+:   */
+/*   reflect_vec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/15 14:05:02 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 21:39:22 by amsaleh          ###   ########.fr       */
+/*   Created: 2025/03/28 09:15:20 by amsaleh           #+#    #+#             */
+/*   Updated: 2025/03/28 09:15:38 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <colors.h>
+#include <rays.h>
 
-u_int8_t	color_inrange(float val)
+t_tuple	reflect_vec(t_tuple *vec, t_tuple *norm)
 {
-	if (val > 1.0)
-		return (0xFF);
-	if (val <= 0)
-		return (0);
-	return (val * 255);
+	float	dot;
+	t_tuple	vec_mirror;
+	t_tuple	r;
+
+	dot = tupledot(vec, norm);
+	dot = dot * 2;
+	vec_mirror = n_tuplesmult(norm, dot);
+	r = n_tuplesub(vec, &vec_mirror);
+	return (r);
 }

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:32:34 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/11 15:20:45 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/03/14 21:55:08 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	check_fov_input(char *str)
 int	validate_alight(t_parser *parser)
 {
 	char	*tok;
-	
+
 	if (!check_ratio_input(parser))
 		return (0);
 	if (!validate_color(parser))

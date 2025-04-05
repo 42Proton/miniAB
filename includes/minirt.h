@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/11 16:22:33 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/04/05 13:15:04 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,40 +17,39 @@
 # include <MLX42/MLX42.h>
 # include <colors.h>
 # include <fcntl.h>
-# include <libft.h>
 # include <object.h>
+# include <rays.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <utils.h>
+# include <debug.h>
 # define WID 1000
-# define HEG 720
+# define HEG 800
 
 typedef struct s_rtptr
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
+	t_alight	*alight;
+	t_camera	*camera;
+	t_list		*vision_objs;
+	t_list		*solid_objs;
 	t_list		*objs;
 }				t_rtptr;
 
-typedef struct s_object_entry
+typedef struct s_shader
 {
-	void		*object;
-	int			type;
-}				t_object_entry;
-
-enum			e_types_of_objects
-{
-	AMBIENTLIGHT,
-	LIGHT,
-	CAMERA,
-	SPHERE,
-	PLANE,
-	CYLINDER,
-	CONE,
-	HYPER,
-	PARA
-};
+	t_colors	ambient_c;
+	t_colors	effect_c;
+	t_colors	diffuse_c;
+	t_colors	specular_c;
+	t_tuple		lightv;
+	t_tuple		reflectv;
+	t_material	*mat;
+	float		light_dot_n;
+	float		reflect_dot_e;
+}				t_shader;
 
 enum			e_issues
 {
@@ -66,12 +65,16 @@ enum			e_issues
 	ERR_INVALID_RGB,
 	ERR_INVALID_COLOR,
 	ERR_INVALID_RATIO,
-	ERR_INVALID_FOV
+	ERR_INVALID_FOV,
+	WARN_CAMERA_MISSING,
+	WARN_ALIGHT_MISSING
 };
 
+// Object Utils
+void			split_objs(t_rtptr *rts);
 // Parser
-int				parser(char *, t_rtptr *);
-t_object_entry	*objectify(t_parser *, int);
+int				parser(char *file_name, t_rtptr *rts);
+t_object_entry	*objectify(t_parser *parser, int type);
 void			*ambient_light_init(void);
 void			*light_init(void);
 void			*camera_init(void);
@@ -79,7 +82,7 @@ void			*sphere_init(void);
 void			*plane_init(void);
 void			*cylinder_init(void);
 // Cleaner
-void			cleaner(t_rtptr *);
+void			cleaner(t_rtptr *rts);
 // Objects Cleaners
 void			free_sphere(t_sphere *sphere);
 void			free_plane(t_plane *plane);
@@ -87,19 +90,38 @@ void			free_cylinder(t_cylinder *cylinder);
 // Vision Cleaners
 void			free_ambient(t_alight *al);
 void			free_light(t_light *light);
-
+void			free_camera(t_camera *camera);
 // Issues Reporters
-void			simple_report(int);
-void			issue_report(t_parser *, int);
+void			simple_report(int issue);
+void			issue_report(t_parser *parser, int issue);
 
 // Hooks
-void			keyhook(struct mlx_key_data, void *);
+void			keyhook(struct mlx_key_data keydata, void *rts);
 
 // Initalization
-int				check_args(int, char **);
-int				init_mlx_pointers(t_rtptr *);
+int				check_args(int ac, char **av);
+int				init_mlx(t_rtptr *rts);
+int				prep_transform_m(t_matrix **m);
+int				sphere_transform_m(t_sphere *obj);
+int				plane_transform_m(t_plane *obj);
+int				cylinder_transform_m(t_cylinder *obj);
+int				camera_transform_m(t_camera *obj);
+int				sphere_postparse(t_rtptr *rts, t_sphere *obj);
+int				plane_postparse(t_rtptr *rts, t_plane *obj);
+int				cylinder_postparse(t_rtptr *rts, t_cylinder *obj);
+int				camera_portparse(t_camera *obj);
+int				prep_objs_postparse(t_rtptr *rts);
+void			prep_lights_postparse(t_rtptr *rts);
+int				handle_missing_objs(t_rtptr *rts);
+
+// Render
+t_colors		shade_hit(t_alight *alight,
+					t_computes *comp, t_light *light);
+int				render_viewport(t_rtptr *rts);
 
 // utils
-void			*pos(void);
-void			*color(void);
+t_tuple			*pos(void);
+t_colors		*color(void);
+t_tuple			norm_to_radian(t_tuple *vec);
+float			deg_to_rad(float deg);
 #endif

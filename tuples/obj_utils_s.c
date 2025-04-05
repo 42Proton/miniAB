@@ -1,13 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object.c                                           :+:      :+:    :+:   */
+/*   obj_utils_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/08 00:06:15 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/05 23:05:52 by abueskander      ###   ########.fr       */
+/*   Created: 2025/03/24 02:25:53 by amsaleh           #+#    #+#             */
+/*   Updated: 2025/03/24 02:41:29 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minirt.h>
+#include <object.h>
+
+t_tuple	s_tuplesub(t_tuple a, t_tuple b)
+{
+	t_tuple	res;
+
+	res.x = a.x - b.x;
+	res.y = a.y - b.y;
+	res.z = a.z - b.z;
+	res.w = a.w - b.w;
+	return (res);
+}

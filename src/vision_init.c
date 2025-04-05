@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vision_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 22:54:55 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/11 16:17:23 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/30 22:24:20 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	*light_init(void)
 		return (NULL);
 	}
 	tmp = ft_strtok(NULL, " \t\r\f\v\n");
-	light->brightness = ft_atof(tmp);
+	light->ratio = ft_atof(tmp);
 	light->colors = color();
 	if (!light->colors)
 	{

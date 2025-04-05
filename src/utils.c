@@ -6,13 +6,14 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/10 13:54:25 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/01 15:17:52 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <debug.h>
 #include <minirt.h>
 
-void	*pos(void)
+t_tuple	*pos(void)
 {
 	char	**split_vec;
 	t_tuple	*res;
@@ -20,26 +21,65 @@ void	*pos(void)
 	split_vec = ft_split(ft_strtok(0, " \t\r\f\v\n"), ',');
 	if (!split_vec)
 		return (0);
-	res = point(ft_atof(split_vec[0]), ft_atof(split_vec[1]),
+	res = malloc(sizeof(t_tuple));
+	if (!res)
+	{
+		free_array((void **)split_vec);
+		return (0);
+	}
+	*res = point(ft_atof(split_vec[0]), ft_atof(split_vec[1]),
 			ft_atof(split_vec[2]));
 	free_array((void **)split_vec);
 	return (res);
 }
 
-void	*color(void)
+t_colors	*color(void)
 {
 	char		**colors;
 	t_colors	*color;
-	int			alpha;
+	int			red;
+	int			green;
+	int			blue;
 
-	alpha = 1;
 	colors = ft_split(ft_strtok(NULL, " \t\r\f\v\n"), ',');
 	if (!colors)
 		return (NULL);
-	if (ft_arrlen((void **)colors) > 3)
-		alpha = alpha_ftos(ft_atof(colors[3]));
-	color = colorinit(ft_atoi(colors[0]), ft_atoi(colors[1]),
-			ft_atoi(colors[2]), alpha);
+	color = malloc(sizeof(t_colors));
+	if (!color)
+	{
+		free_array((void **)colors);
+		return (0);
+	}
+	red = ft_atoi(colors[0]);
+	green = ft_atoi(colors[1]);
+	blue = ft_atoi(colors[2]);
+	*color = colorinit(red / 255.0f, green / 255.0f,
+			blue / 255.0f);
 	free_array((void **)colors);
 	return (color);
+}
+
+t_tuple	norm_to_radian(t_tuple *vec)
+{
+	t_tuple	res;
+
+	if (vec->x >= 0)
+		res.x = vec->x * M_PI;
+	else
+		res.x = (1.0f + vec->x) + M_PI;
+	if (vec->y >= 0)
+		res.y = vec->y * M_PI;
+	else
+		res.y = (1.0f + vec->y) + M_PI;
+	if (vec->z >= 0)
+		res.z = vec->z * M_PI;
+	else
+		res.z = (1.0f + vec->z) * M_PI;
+	res.w = VECTOR;
+	return (res);
+}
+
+float	deg_to_rad(float deg)
+{
+	return (deg * (M_PI / 180));
 }

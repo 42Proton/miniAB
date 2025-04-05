@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:18:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/10 13:53:31 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:05:11 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-char	*ft_strtok_iter(char *line,
-	t_parser *parser, int expect_tok)
+char	*ft_strtok_iter(char *line, t_parser *parser, int expect_tok)
 {
 	char	*tmp;
 
@@ -63,4 +62,29 @@ void	reset_parser_props(t_parser *parser)
 	parser->tok_pos = -1;
 	parser->problem_pos = 0;
 	parser->token = 0;
+}
+
+int	prep_objs_postparse(t_rtptr *rts)
+{
+	t_list			*tmp;
+	t_object_entry	*entry;
+	void			*obj;
+	int				res;
+
+	tmp = rts->solid_objs;
+	while (tmp)
+	{
+		entry = (t_object_entry *)tmp->content;
+		obj = entry->object;
+		if (entry->type == SPHERE)
+			res = sphere_postparse(rts, (t_sphere *)obj);
+		else if (entry->type == PLANE)
+			res = plane_postparse(rts, (t_plane *)obj);
+		else if (entry->type == CYLINDER)
+			res = cylinder_postparse(rts, (t_cylinder *)obj);
+		if (!res)
+			return (EXIT_FAILURE);
+		tmp = tmp->next;
+	}
+	return (EXIT_SUCCESS);
 }

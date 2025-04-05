@@ -3,44 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:32:46 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/06 23:55:16 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:14:50 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <colors.h>
 
-t_colors	*colorinit(short red, short green, short blue, short alpha)
+t_colors	colorinit(float red, float green, float blue)
 {
-	t_colors	*res;
+	t_colors	res;
 
-	res = malloc(sizeof(t_colors));
-	if (!res)
-		return (NULL);
-	res->red = (red);
-	res->green = (green);
-	res->blue = (blue);
-	res->alpha = (alpha);
+	res.red = red;
+	res.green = green;
+	res.blue = blue;
 	return (res);
 }
 
-int	colorvalue(t_colors *a)
+u_int32_t	colorvalue(t_colors *a)
 {
 	int			res;
-	t_colors	*tmcol;
+	u_int8_t	red;
+	u_int8_t	green;
+	u_int8_t	blue;
 
-	tmcol = colorinit(color_inrange(a->red), color_inrange(a->green),
-			color_inrange(a->blue), color_inrange(a->alpha));
-	if (!tmcol)
-		return (0);
 	if (!a)
 		return (0);
+	red = color_inrange(a->red);
+	green = color_inrange(a->green);
+	blue = color_inrange(a->blue);
 	res = 0;
-	res = res | (tmcol->alpha << 24);
-	res = res | (tmcol->red << 16);
-	res = res | (tmcol->green << 8);
-	res = res | (tmcol->blue);
+	res = res | (red << 24);
+	res = res | (green << 16);
+	res = res | (blue << 8);
+	res = res | 0xFF;
 	return (res);
 }

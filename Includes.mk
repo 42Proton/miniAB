@@ -2,7 +2,7 @@ SRCS= \
 	main.c\
 	cleaner.c\
 	keyhooks.c\
-	object.c\
+	object_utils.c\
 	init.c\
 	input_parser.c\
 	objectify.c\
@@ -19,10 +19,19 @@ SRCS= \
 	validate_utils_common.c\
 	validate_utils_float.c\
 	validate_vision.c\
-	validate_object.c
+	validate_object.c\
+	debug.c\
+	transform.c\
+	material.c\
+	postparse_utils.c\
+	handle_missing_objs.c\
+	testing.c\
+	shader.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
+	obj_utils_new.c\
+	obj_utils_s.c\
 	scaler.c\
 	normalization.c\
 	products.c
@@ -31,4 +40,20 @@ COLORS=\
 	colors_utils.c\
 	colors_operations.c
 MATRIX=\
-	matrix.c
+	matrix.c\
+	matrix_utils.c\
+	transformation.c\
+	matrix_operation.c\
+	determinant.c\
+	submatrix.c\
+	matrix_inv.c\
+	matrix_mult.c\
+	rotation_matrix.c
+RAYS=\
+	intersections.c\
+	rays.c\
+	normal_vec.c\
+	reflect_vec.c\
+	computes.c\
+	plane_intersect.c\
+	rays_render_utils.c

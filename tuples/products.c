@@ -3,39 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   products.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abueskander <abueskander@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:14:02 by abueskander       #+#    #+#             */
-/*   Updated: 2025/02/12 16:20:46 by abueskander      ###   ########.fr       */
+/*   Updated: 2025/03/17 22:18:33 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <object.h>
+#include <libft.h>
 
-t_tuple	*tuplecross(t_tuple *a, t_tuple *b)
+t_tuple	tuplecross(t_tuple *a, t_tuple *b)
 {
-	t_tuple	*res;
+	t_tuple	res;
 
+	ft_bzero(&res, sizeof(t_tuple));
 	if (!a || !b)
-		return (NULL);
-	res = malloc(sizeof(t_tuple));
-	if (!res)
-		return (NULL);
-	res->X = a->Y * b->Z - b->Y * a->Z;
-	res->Y = a->Z * b->X - b->Z * a->X;
-	res->Z = a->X * b->Y - b->X * a->Y;
+		return (res);
+	res.x = a->y * b->z - b->y * a->z;
+	res.y = a->z * b->x - b->z * a->x;
+	res.z = a->x * b->y - b->x * a->y;
 	return (res);
 }
 
 float	tupledot(t_tuple *a, t_tuple *b)
 {
-	float res;
+	float	res;
 
 	if (!a || !b)
 		return (0);
-	res = a->X * b->X;
-	res += a->Y * b->Y;
-	res += a->Z * b->Z;
-	res += a->W * b->W;
+	res = a->x * b->x;
+	res += a->y * b->y;
+	res += a->z * b->z;
 	return (res);
 }

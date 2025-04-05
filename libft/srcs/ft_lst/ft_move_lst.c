@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors_utils.c                                     :+:      :+:    :+:   */
+/*   ft_move_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/15 14:05:02 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 21:39:22 by amsaleh          ###   ########.fr       */
+/*   Created: 2025/03/21 01:11:59 by amsaleh           #+#    #+#             */
+/*   Updated: 2025/03/30 00:04:32 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <colors.h>
+#include <libft.h>
 
-u_int8_t	color_inrange(float val)
+void	ft_move_lst(t_list *node, t_list **new_lst)
 {
-	if (val > 1.0)
-		return (0xFF);
-	if (val <= 0)
-		return (0);
-	return (val * 255);
+	node->next = 0;
+	node->prev = 0;
+	if (node->next)
+		node->next->prev = 0;
+	ft_lstadd_back(new_lst, node);
 }
