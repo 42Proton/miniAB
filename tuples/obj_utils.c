@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 23:11:56 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:18:23 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ int	tuplecmp(t_tuple *a, t_tuple *b)
 
 void	tupleadd(t_tuple *a, t_tuple *b)
 {
-
 	if (a->w + b->w > 1)
-		return;
+		return ;
 	a->x = a->x + b->x;
 	a->y = a->y + b->y;
 	a->z = a->z + b->z;
