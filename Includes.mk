@@ -24,7 +24,9 @@ SRCS= \
 	transform.c\
 	material.c\
 	postparse_utils.c\
-	handle_missing_objs.c
+	handle_missing_objs.c\
+	testing.c\
+	shader.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
@@ -53,4 +55,5 @@ RAYS=\
 	normal_vec.c\
 	reflect_vec.c\
 	computes.c\
-	plane_intersect.c
+	plane_intersect.c\
+	rays_render_utils.c

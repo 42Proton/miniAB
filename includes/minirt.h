@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/31 14:33:43 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:15:04 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,19 @@ typedef struct s_rtptr
 	t_list		*solid_objs;
 	t_list		*objs;
 }				t_rtptr;
+
+typedef struct s_shader
+{
+	t_colors	ambient_c;
+	t_colors	effect_c;
+	t_colors	diffuse_c;
+	t_colors	specular_c;
+	t_tuple		lightv;
+	t_tuple		reflectv;
+	t_material	*mat;
+	float		light_dot_n;
+	float		reflect_dot_e;
+}				t_shader;
 
 enum			e_issues
 {
@@ -88,8 +101,6 @@ void			keyhook(struct mlx_key_data keydata, void *rts);
 // Initalization
 int				check_args(int ac, char **av);
 int				init_mlx(t_rtptr *rts);
-
-t_colors		ray_color(t_rtptr *rts, t_ray *ray);
 int				prep_transform_m(t_matrix **m);
 int				sphere_transform_m(t_sphere *obj);
 int				plane_transform_m(t_plane *obj);
@@ -102,6 +113,11 @@ int				camera_portparse(t_camera *obj);
 int				prep_objs_postparse(t_rtptr *rts);
 void			prep_lights_postparse(t_rtptr *rts);
 int				handle_missing_objs(t_rtptr *rts);
+
+// Render
+t_colors		shade_hit(t_alight *alight,
+					t_computes *comp, t_light *light);
+int				render_viewport(t_rtptr *rts);
 
 // utils
 t_tuple			*pos(void);

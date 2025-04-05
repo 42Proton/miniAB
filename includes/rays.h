@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/02 17:53:31 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:21:23 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,16 @@ typedef struct s_ray
 	t_tuple		direction;
 }				t_ray;
 
+typedef struct s_ray_pixel
+{
+	float	world_x;
+	float	world_y;
+	t_tuple	world_origin;
+	t_tuple	world_point;
+	t_ray	ray;
+	t_tuple	ray_direction;
+}	t_ray_pixel;
+
 // Intersection Utils
 void			add_intersection_sorted(t_intersections *res, t_list *node);
 int				add_intersection(t_intersections *res, float t,
@@ -60,6 +70,7 @@ int				sphere_intersect(t_intersections *insects,
 int				plane_intersect(t_intersections *insects,
 					t_object_entry *object, t_ray *ray);
 t_intersect		*get_hit(t_intersections *data);
+t_intersections	*world_intersect(t_list *solid_objs, t_ray *ray);
 // Ray Utils
 t_ray			init_ray(t_tuple *origin, t_tuple *direction);
 t_tuple			ray_hitpoint(t_ray *ray, float t);
