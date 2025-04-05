@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane_intersect.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:46:45 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/05 00:00:35 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:09:10 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ float	check_plane_intersect(t_plane *plane, t_ray *ray)
 int	plane_intersect(t_intersections *insects, t_object_entry *object,
 		t_ray *ray)
 {
-	t_plane *plane;
-	t_ray ray_transform;
-	float t;
+	t_plane	*plane;
+	t_ray	ray_transform;
+	float	t;
 
 	if (!insects || !object || !ray)
 		return (0);

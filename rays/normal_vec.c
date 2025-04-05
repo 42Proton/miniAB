@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal_vec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 09:16:30 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/04 21:45:23 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:11:45 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ t_tuple	sphere_normal(t_sphere *obj, t_tuple *p)
 	return (world_norm);
 }
 
-t_tuple plane_normal(t_plane *obj)
+t_tuple	plane_normal(t_plane *obj)
 {
-	t_tuple object_normal;
-	t_tuple world_normal;
+	t_tuple	object_normal;
+	t_tuple	world_normal;
 
 	object_normal = *obj->normal_vector;
 	world_normal = matrix_mult_t(obj->tpose_inv_t, &object_normal);
