@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/04 23:36:04 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:04:30 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ int	sphere_transform_m(t_sphere *obj)
 
 int	plane_transform_m(t_plane *obj)
 {
-	// This Function is theioratically, and practically understandable
-	// i don't know the heck we doing here.
 	obj->transform = translation_m(obj->pos);
 	if (!obj->transform)
 		return (0);
@@ -83,7 +81,6 @@ int	cylinder_transform_m(t_cylinder *obj)
 	t_tuple		vec;
 	int			res;
 
-	// This Function is theioratically, and practically understandable
 	obj->transform = translation_m(obj->pos);
 	if (!obj->transform)
 		return (0);
@@ -95,7 +92,6 @@ int	cylinder_transform_m(t_cylinder *obj)
 	free_matrix(s);
 	if (!res)
 		return (0);
-	// There should be a rotation matrix here
 	obj->inv_t = matrix_inverse(obj->transform);
 	if (!obj->inv_t)
 		return (0);

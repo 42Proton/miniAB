@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:18:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/31 14:30:05 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:05:11 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-char	*ft_strtok_iter(char *line,
-	t_parser *parser, int expect_tok)
+char	*ft_strtok_iter(char *line, t_parser *parser, int expect_tok)
 {
 	char	*tmp;
 
@@ -69,7 +68,7 @@ int	prep_objs_postparse(t_rtptr *rts)
 {
 	t_list			*tmp;
 	t_object_entry	*entry;
-	void 			*obj;
+	void			*obj;
 	int				res;
 
 	tmp = rts->solid_objs;
