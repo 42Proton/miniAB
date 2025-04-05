@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:10:57 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/23 20:24:03 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/05 13:13:03 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	set_matrix_elem(t_matrix *m,
 float	get_matrix_elem(t_matrix *m,
 	int col, int row)
 {
-	float res;
+	float	res;
 	size_t	i;
 
 	if (col >= m->cols || row >= m->rows)
