@@ -6,12 +6,14 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/05 13:21:23 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/07 21:46:55 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYS_H
 # define RAYS_H
+
+#define SHADOW_BIAS 0.005
 
 # include <object.h>
 
@@ -34,6 +36,9 @@ typedef struct s_computes
 	t_tuple		hpoint;
 	t_tuple		eyev;
 	t_tuple		nv;
+	t_tuple		over_point;
+	int			is_shadow;
+	int			is_err;
 }				t_computes;
 
 typedef struct s_quad_eq
@@ -60,6 +65,18 @@ typedef struct s_ray_pixel
 	t_tuple	ray_direction;
 }	t_ray_pixel;
 
+typedef struct s_shadow
+{
+	t_intersections	*insects;
+	t_intersect		*insect;
+	t_tuple			v;
+	t_tuple			direction;
+	t_light			*light;
+	t_list			*vision_objs;
+	t_ray			ray;
+	float			dist;
+}	t_shadow;
+
 // Intersection Utils
 void			add_intersection_sorted(t_intersections *res, t_list *node);
 int				add_intersection(t_intersections *res, float t,
@@ -78,6 +95,5 @@ t_ray			transform_ray(t_matrix *m, t_ray *ray);
 t_tuple			sphere_normal(t_sphere *obj, t_tuple *p);
 t_tuple			reflect_vec(t_tuple *vec, t_tuple *norm);
 t_tuple			normal_at(void *obj, int obj_type, t_tuple *p);
-t_computes		init_computes(t_intersect *insect, t_ray *ray);
 
 #endif

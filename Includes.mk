@@ -56,4 +56,5 @@ RAYS=\
 	reflect_vec.c\
 	computes.c\
 	plane_intersect.c\
-	rays_render_utils.c
+	rays_render_utils.c\
+	shadow.c

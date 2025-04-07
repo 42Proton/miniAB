@@ -6,35 +6,41 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/07 20:16:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/07 21:51:10 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-t_colors	*ray_color(t_rtptr *rts, t_ray *ray)
+t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 {
-	t_colors		*res;
+	t_colors		res;
 	t_intersections	*insects;
 	t_intersect		*insect;
 	t_computes		comp;
 
 	insects = world_intersect(rts->solid_objs, ray);
-	res = malloc(sizeof(t_colors));
-	if (!insects || !res)
+	ft_bzero(&res, sizeof(t_colors));
+	if (!insects)
 	{
-		free(res);
+		rts->is_err = 1;
 		clear_intersections(insects);
-		return (0);
+		return (res);
 	}
 	insect = get_hit(insects);
 	if (insect)
 	{
-		comp = init_computes(insect, ray);
-		*res = shade_hit(rts->alight, &comp, rts->vision_objs);
+		comp = init_computes(rts, insect, ray);
+		if (comp.is_err)
+		{
+			rts->is_err = 1;
+			clear_intersections(insects);
+			return (res);
+		}
+		res = shade_hit(rts->alight, &comp, rts->vision_objs);
 	}
 	else
-		*res = colorinit(ft_fabs(ray->direction.y) * rts->alight->ratio, 0.8
+		res = colorinit(ft_fabs(ray->direction.y) * rts->alight->ratio, 0.8
 				* rts->alight->ratio, 0.8 * rts->alight->ratio);
 	clear_intersections(insects);
 	return (res);
@@ -59,7 +65,7 @@ t_ray	ray_pixel(t_camera *cam, int x, int y)
 int	render_viewport(t_rtptr *rts)
 {
 	t_ray		ray;
-	t_colors	*color;
+	t_colors	color;
 	int			x;
 	int			y;
 
@@ -71,10 +77,9 @@ int	render_viewport(t_rtptr *rts)
 		{
 			ray = ray_pixel(rts->camera, x, y);
 			color = ray_color(rts, &ray);
-			if (!color)
+			if (rts->is_err)
 				return (0);
-			mlx_put_pixel(rts->img, x, y, colorvalue(color));
-			free(color);
+			mlx_put_pixel(rts->img, x, y, colorvalue(&color));
 			x++;
 		}
 		y++;

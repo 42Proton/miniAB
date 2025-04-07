@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:12:04 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/07 20:20:05 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/07 21:06:21 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ t_colors	shade_hit(t_alight *alight, t_computes *comp, t_list *vision_objs)
 	shader.mat = get_material(comp->insect->obj_type, comp->insect->obj);
 	shader.ambient_c = coloradd(&shader.mat->color, alight->colors);
 	shader.ambient_c = colormulti_f(&shader.ambient_c, alight->ratio);
+	if (comp->is_shadow)
+		return (shader.ambient_c);
 	shader.specular_c = colorinit(0, 0, 0);
 	shader.diffuse_c = colorinit(0, 0, 0);
 	while (vision_objs)

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/07 20:16:43 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/07 21:48:14 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_rtptr
 	t_list		*vision_objs;
 	t_list		*solid_objs;
 	t_list		*objs;
+	int			is_err;
 }				t_rtptr;
 
 typedef struct s_shader
@@ -126,4 +127,8 @@ t_tuple			*pos(void);
 t_colors		*color(void);
 t_tuple			norm_to_radian(t_tuple *vec);
 float			deg_to_rad(float deg);
+// Ray utils
+t_computes		init_computes(t_rtptr *rts, t_intersect *insect, t_ray *ray);
+int				is_shadow(t_rtptr *rts, t_tuple *p);
+
 #endif
