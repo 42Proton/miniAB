@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/05 13:22:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/07 20:16:57 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ t_colors	*ray_color(t_rtptr *rts, t_ray *ray)
 	if (insect)
 	{
 		comp = init_computes(insect, ray);
-		*res = shade_hit(rts->alight, &comp,
-				((t_object_entry *)rts->vision_objs->content)->object);
+		*res = shade_hit(rts->alight, &comp, rts->vision_objs);
 	}
 	else
 		*res = colorinit(ft_fabs(ray->direction.y) * rts->alight->ratio, 0.8

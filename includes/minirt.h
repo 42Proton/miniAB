@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/05 13:15:04 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/07 20:16:43 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_shader
 	t_colors	effect_c;
 	t_colors	diffuse_c;
 	t_colors	specular_c;
+	t_colors	tmp_diffuse_c;
+	t_colors	tmp_specular_c;
 	t_tuple		lightv;
 	t_tuple		reflectv;
 	t_material	*mat;
@@ -116,7 +118,7 @@ int				handle_missing_objs(t_rtptr *rts);
 
 // Render
 t_colors		shade_hit(t_alight *alight,
-					t_computes *comp, t_light *light);
+					t_computes *comp, t_list *vision);
 int				render_viewport(t_rtptr *rts);
 
 // utils
