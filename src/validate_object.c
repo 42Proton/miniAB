@@ -6,11 +6,24 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:07:05 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/14 21:54:11 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/08 16:23:22 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
+
+// int	validate_misc(t_parser *parser)
+// {
+// 	char	*tok;
+
+// 	tok = ft_strtok_iter(NULL, parser, 0);
+// 	while (tok)
+// 	{
+
+		
+// 	}
+// 	return (1);
+// }
 
 int	validate_plane(t_parser *parser)
 {
