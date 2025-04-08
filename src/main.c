@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/08 19:23:31 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/09 01:03:36 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ int	prep_textures(t_rtptr *rts)
 
 	dir = opendir("./textures");
 	if (!dir)
-	{
-		perror("opendir");
-		return (EXIT_FAILURE);
-	}
+		return (EXIT_SUCCESS);
 	res = prep_textures_iter(dir, rts);
 	closedir(dir);
 	if (res)
