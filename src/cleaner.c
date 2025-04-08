@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/26 03:55:19 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:20:52 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	cleaner(t_rtptr *rts)
 		free_ambient(rts->alight);
 	}
 	get_next_line(-1, 1, &dummy);
+	ft_lstclear(&rts->textures_list, free);
 	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:45:25 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/27 17:49:27 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:31:42 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	validate_iter_vec(t_parser *parser,
 	return (1);
 }
 
-static char	**pre_vec_validation(t_parser *parser)
+char	**pre_vec_validation(t_parser *parser)
 {
 	char	*token;
 	char	**split_vec;

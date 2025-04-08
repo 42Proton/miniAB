@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/07 21:48:14 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/08 18:30:31 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <stdlib.h>
 # include <utils.h>
 # include <debug.h>
+# include <sys/types.h>
+# include <dirent.h>
 # define WID 1000
 # define HEG 800
 
@@ -36,6 +38,7 @@ typedef struct s_rtptr
 	t_list		*vision_objs;
 	t_list		*solid_objs;
 	t_list		*objs;
+	t_list		*textures_list;
 	int			is_err;
 }				t_rtptr;
 
@@ -69,6 +72,8 @@ enum			e_issues
 	ERR_INVALID_COLOR,
 	ERR_INVALID_RATIO,
 	ERR_INVALID_FOV,
+	ERR_UNKNOWN_MISC,
+	ERR_UNKNOWN_TEXTURE,
 	WARN_CAMERA_MISSING,
 	WARN_ALIGHT_MISSING
 };
@@ -84,6 +89,9 @@ void			*camera_init(void);
 void			*sphere_init(void);
 void			*plane_init(void);
 void			*cylinder_init(void);
+// Parser validation
+char			**pre_vec_validation(t_parser *parser);
+int				validate_misc(t_parser *parser);
 // Cleaner
 void			cleaner(t_rtptr *rts);
 // Objects Cleaners

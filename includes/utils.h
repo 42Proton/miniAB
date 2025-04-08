@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:58:26 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/08 14:43:02 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/08 18:13:50 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 typedef struct s_parser
 {
+	t_list	*textures_list;
 	char	*file_name;
 	char	*line;
 	char	*line_bak;

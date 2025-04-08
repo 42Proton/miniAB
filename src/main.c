@@ -6,17 +6,58 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/05 13:13:45 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:23:31 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <debug.h>
 #include <minirt.h>
 
+int	prep_textures_iter(DIR *dir, t_rtptr *rts)
+{
+	struct dirent	*entry;
+	char			*str;
+	t_list			*node;
+
+	entry = readdir(dir);
+	while (entry)
+	{
+		str = ft_strdup(entry->d_name);
+		if (!str)
+			return (EXIT_FAILURE);
+		node = ft_lstnew_protect(str, free);
+		if (!node)
+			return (EXIT_FAILURE);
+		ft_lstadd_back(&rts->textures_list, node);
+		entry = readdir(dir);
+	}
+	return (EXIT_SUCCESS);
+}
+
+int	prep_textures(t_rtptr *rts)
+{
+	DIR	*dir;
+	int	res;
+
+	dir = opendir("./textures");
+	if (!dir)
+	{
+		perror("opendir");
+		return (EXIT_FAILURE);
+	}
+	res = prep_textures_iter(dir, rts);
+	closedir(dir);
+	if (res)
+		perror("malloc");
+	return (res);
+}
+
 int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 {
 	ft_bzero(rts, sizeof(t_rtptr));
 	if (check_args(ac, av))
+		return (EXIT_FAILURE);
+	if (prep_textures(rts))
 		return (EXIT_FAILURE);
 	if (parser(av[1], rts))
 		return (EXIT_FAILURE);

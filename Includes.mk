@@ -26,7 +26,8 @@ SRCS= \
 	postparse_utils.c\
 	handle_missing_objs.c\
 	testing.c\
-	shader.c
+	shader.c\
+	validate_utils_extra.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\

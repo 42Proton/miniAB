@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/05 13:16:04 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:19:25 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,9 @@ typedef struct s_plane
 	t_tuple		*pos;
 	t_tuple		*normal_vector;
 	t_material	mat;
+	t_tuple		*phong_props;
+	char		*color_map;
+	char		*bump_map;
 	t_matrix	*transform;
 	t_matrix	*inv_t;
 	t_matrix	*tpose_inv_t;
@@ -188,5 +191,6 @@ t_matrix		*scale_m(t_tuple *vec);
 // Material
 t_material		init_material(t_colors *colors,
 					float diffuse, float specular, float shininess);
+t_material		init_material_misc(t_colors *colors, t_tuple *props);
 
 #endif
