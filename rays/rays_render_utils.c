@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/07 21:51:10 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/09 22:16:05 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ t_ray	ray_pixel(t_camera *cam, int x, int y)
 {
 	t_ray_pixel	data;
 
-	data.world_x = cam->hwidth - ((x + 0.5) * cam->pixel_size);
-	data.world_y = cam->hheight - ((y + 0.5) * cam->pixel_size);
+	data.world_x = cam->hwidth - (x + 0.5) * cam->pixel_size;
+	data.world_y = cam->hheight - (y + 0.5) * cam->pixel_size;
 	data.world_origin = point(0, 0, 0);
 	data.world_point = point(data.world_x, data.world_y, -1);
 	data.world_origin = transform_f(cam->inv_t, &data.world_origin);

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/08 14:56:21 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/09 22:47:42 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 int	camera_transform_m(t_camera *obj)
 {
+	int	res;
 	t_matrix	*m;
-	t_tuple		vec;
-	int			res;
 
 	obj->transform = translation_m(obj->pos);
 	if (!obj->transform)
 		return (0);
-	vec = norm_to_radian(obj->orientation);
+	t_tuple vec = norm_to_radian(obj->orientation);
 	m = rotation_m(&vec);
 	if (!m)
 		return (0);
@@ -37,7 +36,7 @@ int	camera_transform_m(t_camera *obj)
 
 int	sphere_transform_m(t_sphere *obj)
 {
-	t_matrix	*s;
+	t_matrix	*m;
 	t_tuple		vec;
 	int			res;
 
@@ -45,11 +44,11 @@ int	sphere_transform_m(t_sphere *obj)
 	if (!obj->transform)
 		return (0);
 	vec = vector(obj->dim, obj->dim, obj->dim);
-	s = scale_m(&vec);
-	if (!s)
+	m = scale_m(&vec);
+	if (!m)
 		return (0);
-	res = matrix_multiply(obj->transform, s);
-	free_matrix(s);
+	res = matrix_multiply(obj->transform, m);
+	free_matrix(m);
 	if (!res)
 		return (0);
 	obj->inv_t = matrix_inverse(obj->transform);
@@ -63,20 +62,8 @@ int	sphere_transform_m(t_sphere *obj)
 
 int	plane_transform_m(t_plane *obj)
 {
-	t_matrix	*m;
-	t_tuple		vec;
-	int			res;
-	
 	obj->transform = translation_m(obj->pos);
 	if (!obj->transform)
-		return (0);
-	vec = norm_to_radian(obj->normal_vector);
-	m = rotation_m(&vec);
-	if (!m)
-		return (0);
-	res = matrix_multiply(obj->transform, m);
-	free_matrix(m);
-	if (!res)
 		return (0);
 	obj->inv_t = matrix_inverse(obj->transform);
 	if (!obj->inv_t)
