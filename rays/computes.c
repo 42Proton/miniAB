@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 08:22:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/10 04:09:48 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 17:12:49 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,14 @@ t_colors	get_map_color(void *obj, int obj_type, t_tuple *p)
 		plane = obj;
 		if (plane->normal_vector->z > EPSILON)
 		{
-			x = plane->color_map_ref->width *  fmod(p->x * plane->color_map_ref->width / 10000, 1);
-			y = plane->color_map_ref->height *  fmod(p->y * plane->color_map_ref->height / 10000, 1);
+			x = fmod(ft_fabs(p->x) * 40, plane->color_map_ref->width);
+			y = fmod(ft_fabs(p->y) * 40, plane->color_map_ref->height);
 		}
 		else
 		{
-			x = plane->color_map_ref->width *  fmod(p->x * plane->color_map_ref->width / 10000, 1);
-			y = plane->color_map_ref->height *  fmod(p->z * plane->color_map_ref->height / 10000, 1);
+			x = fmod(ft_fabs(p->x) * 40, plane->color_map_ref->width);
+			y = fmod(ft_fabs(p->z) * 40, plane->color_map_ref->height);
 		}
-		x = ft_abs(x);
-		y = ft_abs(y);
-		// printf("%f %f\n", fmod(p->x, 1), fmod(p->y, 1));
-		// printf("%u %u\n", x, y);
 		res = get_pixel_color(plane->color_map_ref, x, y);
 	}
 	return (res);

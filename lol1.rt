@@ -1,9 +1,6 @@
-A 0.5 20,100,0
+A 0.2 20,100,0
 C 0,-10,-100 0,1,0 90
-L -60,0,-20 1 0,0,255
+L -60,0,-20 1 100,100,100
 
-sp 0,0,0 2 0,0,255
-
-pl 0,-40,0 0,-1,0 0,0,255 color:awesomeface.png
-pl 0,0,100 0,0,1 50,50,0 color:awesomeface.png
-pl 100,0,0 1,0,1 50,50,0 color:awesomeface.png
+pl 0,-40,0 0,-1,0 0,0,0 color:awesomeface.png
+pl 0,0,100 0,0,1 0,0,0 color:space.png
