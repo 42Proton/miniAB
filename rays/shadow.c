@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 19:43:40 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/09 01:03:04 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 04:05:45 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	is_shadow(t_rtptr *rts, t_tuple *p)
 		if (data.insect && data.insect->t < data.dist)
 			is_insect = 1;
 		else
+		{
+			clear_intersections(data.insects);
 			return (0);
+		}
 		clear_intersections(data.insects);
 		data.vision_objs = data.vision_objs->next;
 	}

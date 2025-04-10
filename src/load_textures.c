@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 00:47:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/10 03:11:36 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 04:08:13 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ mlx_texture_t	*load_texture(char *str)
 		return (0);
 	}
 	map = mlx_load_png(path);
+	free(path);
 	if (!map)
 	{
 		ft_dprintf(2, "mlx_load_png failure\n");

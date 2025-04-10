@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:46:45 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/09 22:47:53 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 04:18:12 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ float	check_plane_intersect(t_plane *plane, t_ray *ray)
 	float	t;
 
 	n = *plane->normal_vector;
-	
 	denom = tupledot(&n, &ray->direction);
 	if (ft_fabs(denom) > EPSILON)
 	{

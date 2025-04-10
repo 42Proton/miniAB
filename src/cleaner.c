@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/10 03:44:38 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 04:06:33 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	free_texture(void *content)
 	t_texture	*texture;
 
 	texture = content;
-	free(texture->name);
-	free(texture);
+	mlx_delete_texture(texture->map);
+	free(content);
 }
 
 void	object_cleanup(void *content)
