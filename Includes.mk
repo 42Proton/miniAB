@@ -26,7 +26,9 @@ SRCS= \
 	postparse_utils.c\
 	handle_missing_objs.c\
 	testing.c\
-	shader.c
+	shader.c\
+	render_init.c
+
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
@@ -57,3 +59,10 @@ RAYS=\
 	computes.c\
 	plane_intersect.c\
 	rays_render_utils.c
+INCLUDES=\
+	colors.h\
+	debug.h\
+	minirt.h\
+	object.h\
+	rays.h\
+	utils.h

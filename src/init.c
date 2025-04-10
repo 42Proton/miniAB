@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:13:10 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 01:16:34 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 06:56:36 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	check_args(int argc, char **argv)
 
 int	init_mlx(t_rtptr *rts)
 {
-	rts->mlx = mlx_init(WID, HEG, "miniAB", false);
+	rts->mlx = mlx_init(wid_res, heg_res, "miniAB", false);
 	if (!rts->mlx)
 		return (EXIT_FAILURE);
-	rts->img = mlx_new_image(rts->mlx, WID, HEG);
+	rts->img = mlx_new_image(rts->mlx, wid_res, heg_res);
 	if (!rts->img)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/05 13:13:45 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 07:23:35 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 		return (EXIT_FAILURE);
 	if (!camera_portparse(rts->camera))
 		return (EXIT_FAILURE);
+	if (render_init(rts))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -40,6 +42,7 @@ int	main(int ac, char **av)
 		cleaner(&rts);
 	mlx_image_to_window(rts.mlx, rts.img, 0, 0);
 	render_viewport(&rts);
+	render(&rts);
 	mlx_key_hook(rts.mlx, keyhook, &rts);
 	mlx_loop(rts.mlx);
 	cleaner(&rts);

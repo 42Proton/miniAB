@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays_render_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/05 13:22:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 07:32:06 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,20 @@ int	render_viewport(t_rtptr *rts)
 	int			y;
 
 	y = 0;
-	while (y < HEG)
+	while (y < heg_res)
 	{
 		x = 0;
-		while (x < WID)
+		while (x < wid_res)
 		{
 			ray = ray_pixel(rts->camera, x, y);
 			color = ray_color(rts, &ray);
 			if (!color)
 				return (0);
-			mlx_put_pixel(rts->img, x, y, colorvalue(color));
+			set_rendered(rts,x,y,colorvalue(color));			
 			free(color);
-			x++;
+			x ++;
 		}
-		y++;
+		y ++;
 	}
 	return (1);
 }

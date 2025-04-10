@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   postparse_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:32:31 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/01 05:08:55 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 07:29:11 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ int	camera_portparse(t_camera *obj)
 		obj->hwidth = hview * aspect;
 		obj->hheight = hview;
 	}
-	obj->pixel_size = (obj->hwidth * 2) / WID;
+	obj->pixel_size = (obj->hwidth * 2) / wid_res;
 	return (1);
 }

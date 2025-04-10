@@ -15,6 +15,7 @@ TUPLESDIR = $(addprefix tuples/,$(TUPLES))
 COLDIR = $(addprefix colors/,$(COLORS))
 MATRIXDIR =$(addprefix matrix/,$(MATRIX))
 RAYSDIR =$(addprefix rays/,$(RAYS))
+INCLUDES_DIR = $(addprefix includes/,$(INCLUDES))
 
 SRCS_OBJ = $(SRCSDIR:%.c=$(OBJ_DIR)/%.o)
 TUPLES_OBJ = $(TUPLESDIR:%.c=$(OBJ_DIR)/%.o)
@@ -31,7 +32,7 @@ mlx42:
 $(NAME):$(SRCS_OBJ) $(TUPLES_OBJ) $(COL_OBJ) $(MATRIX_OBJ) $(RAYS_OBJ)
 	@make -C $(LIBFT)
 	$(CC) $(SRCS_OBJ) $(TUPLES_OBJ) $(COL_OBJ) $(MATRIX_OBJ) $(RAYS_OBJ) $(CFLAGS) $(LINKERS) -o $(NAME)
-$(OBJ_DIR)/%.o: %.c 
+$(OBJ_DIR)/%.o: %.c  $(INCLUDES_DIR)
 	@mkdir -p $(dir $@)
 	$(CC) $< $(CFLAGS) -c -o $@
 clean:
