@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 06:17:05 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/10 07:15:04 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/10 07:35:45 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void    render(t_rtptr *rts)
                 x = 0;
                 while (x < wid_res)
                 {
-                        color = rts->rendered_image[y * WID + x];
+                        color = rts->rendered_image[y * wid_res + x];
                         mlx_put_pixel(rts->img, x, y, color);
                         x++;
                 }
