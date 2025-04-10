@@ -27,7 +27,10 @@ SRCS= \
 	handle_missing_objs.c\
 	testing.c\
 	shader.c\
-	validate_utils_extra.c
+	validate_utils_extra.c\
+	object_init_misc.c\
+	textures_utils.c\
+	load_textures.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\

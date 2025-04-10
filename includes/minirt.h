@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/08 18:30:31 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 02:09:56 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MINIRT_H
 
 # define XK_MISCELLANY
-# include <MLX42/MLX42.h>
 # include <colors.h>
 # include <fcntl.h>
 # include <object.h>
@@ -39,6 +38,7 @@ typedef struct s_rtptr
 	t_list		*solid_objs;
 	t_list		*objs;
 	t_list		*textures_list;
+	t_list		*textures;
 	int			is_err;
 }				t_rtptr;
 
@@ -56,6 +56,12 @@ typedef struct s_shader
 	float		light_dot_n;
 	float		reflect_dot_e;
 }				t_shader;
+
+typedef struct s_texture
+{
+	char			*name;
+	mlx_texture_t	*map;
+}	t_texture;
 
 enum			e_issues
 {
@@ -124,6 +130,15 @@ int				camera_portparse(t_camera *obj);
 int				prep_objs_postparse(t_rtptr *rts);
 void			prep_lights_postparse(t_rtptr *rts);
 int				handle_missing_objs(t_rtptr *rts);
+int				init_misc_sphere(t_sphere *obj);
+int				init_misc_plane(t_plane *obj);
+int				init_misc_cylinder(t_cylinder *obj);
+
+// Textures
+int				load_textures(t_rtptr *rts);
+mlx_texture_t	*get_texture_ref(char *str, t_rtptr *rts);
+void			*get_color_map_name(t_object_entry *entry);
+void			*get_bump_map_name(t_object_entry *entry);
 
 // Render
 t_colors		shade_hit(t_alight *alight,

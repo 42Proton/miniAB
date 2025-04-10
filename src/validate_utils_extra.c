@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 18:23:21 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/08 19:36:56 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 02:16:54 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,17 @@ int	validate_phong(t_parser *parser, char *tok)
 	char	**split_vec;
 	int		res;
 
+	if (parser->phong_done)
+	{
+		issue_report(parser, ERR_EXTRA_TOK);
+		return (0);
+	}
 	split_vec = pre_vec_validation_misc(parser, tok + 6);
 	if (!split_vec)
 		return (0);
 	res = validate_iter_vec_misc(parser, split_vec);
 	free_array((void **)split_vec);
+	parser->phong_done = 1;
 	return (res);
 }
 
@@ -94,10 +100,15 @@ int	check_textures_list(char *str, t_list *textures_list)
 
 int	validate_map(t_parser *parser, char *tok)
 {
-	if ((!ft_strncmp(tok, "color:", 6) && parser->color_done)
-		|| (!ft_strncmp(tok, "bump:", 5) && parser->bump_done))
+	int	type;
+
+	type = 0;
+	if (!ft_strncmp(tok, "color:", 6))
+		type = 1;
+	if ((type && parser->color_done)
+		|| (!type && parser->bump_done))
 	{
-		simple_report(ERR_EXTRA_TOK);
+		issue_report(parser, ERR_EXTRA_TOK);
 		return (0);
 	}
 	tok = ft_strchr(tok, ':');
@@ -107,6 +118,10 @@ int	validate_map(t_parser *parser, char *tok)
 		simple_report(ERR_UNKNOWN_TEXTURE);
 		return (0);
 	}
+	if (type)
+		parser->color_done = 1;
+	else
+		parser->bump_done = 1;
 	return (1);
 }
 

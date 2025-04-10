@@ -6,11 +6,20 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/08 19:20:52 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 03:44:38 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
+
+void	free_texture(void *content)
+{
+	t_texture	*texture;
+
+	texture = content;
+	free(texture->name);
+	free(texture);
+}
 
 void	object_cleanup(void *content)
 {
@@ -54,5 +63,6 @@ void	cleaner(t_rtptr *rts)
 	}
 	get_next_line(-1, 1, &dummy);
 	ft_lstclear(&rts->textures_list, free);
+	ft_lstclear(&rts->textures, free_texture);
 	exit(EXIT_SUCCESS);
 }

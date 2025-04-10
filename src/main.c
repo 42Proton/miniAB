@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/09 16:25:29 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 03:36:30 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 		return (EXIT_FAILURE);
 	split_objs(rts);
 	if (handle_missing_objs(rts))
+		return (EXIT_FAILURE);
+	if (load_textures(rts))
 		return (EXIT_FAILURE);
 	if (prep_objs_postparse(rts))
 		return (EXIT_FAILURE);

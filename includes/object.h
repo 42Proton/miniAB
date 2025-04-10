@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/08 19:19:25 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 02:33:12 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define OBJECT_H
 
 // includes
+# include <MLX42/MLX42.h>
 # include <colors.h>
 
 enum			e_types_of_objects
@@ -99,38 +100,51 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	t_tuple		*pos;
-	float		dim;
-	t_material	mat;
-	t_matrix	*transform;
-	t_matrix	*inv_t;
-	t_matrix	*tpose_inv_t;
+	t_tuple			*pos;
+	float			dim;
+	t_material		mat;
+	t_tuple			*phong_props;
+	char			*color_map;
+	char			*bump_map;
+	mlx_texture_t	*color_map_ref;
+	mlx_texture_t	*bump_map_ref;
+	t_matrix		*transform;
+	t_matrix		*inv_t;
+	t_matrix		*tpose_inv_t;
 }				t_sphere;
 
 typedef struct s_plane
 {
-	t_tuple		*pos;
-	t_tuple		*normal_vector;
-	t_material	mat;
-	t_tuple		*phong_props;
-	char		*color_map;
-	char		*bump_map;
-	t_matrix	*transform;
-	t_matrix	*inv_t;
-	t_matrix	*tpose_inv_t;
+	t_tuple			*pos;
+	t_tuple			*normal_vector;
+	t_material		mat;
+	t_tuple			*phong_props;
+	char			*color_map;
+	char			*bump_map;
+	mlx_texture_t	*color_map_ref;
+	mlx_texture_t	*bump_map_ref;
+	t_matrix		*transform;
+	t_matrix		*inv_t;
+	t_matrix		*tpose_inv_t;
 }				t_plane;
 
 typedef struct s_cylinder
 {
-	t_tuple		*pos;
-	t_tuple		*normal_axis;
-	float		dim;
-	float		height;
-	t_material	mat;
-	t_matrix	*transform;
-	t_matrix	*inv_t;
-	t_matrix	*tpose_inv_t;
+	t_tuple			*pos;
+	t_tuple			*normal_axis;
+	float			dim;
+	float			height;
+	t_material		mat;
+	t_tuple			*phong_props;
+	char			*color_map;
+	char			*bump_map;
+	mlx_texture_t	*color_map_ref;
+	mlx_texture_t	*bump_map_ref;
+	t_matrix		*transform;
+	t_matrix		*inv_t;
+	t_matrix		*tpose_inv_t;
 }				t_cylinder;
+
 
 enum			e_pov
 {

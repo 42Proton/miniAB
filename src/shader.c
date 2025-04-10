@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:12:04 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/07 21:06:21 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 03:31:20 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	compute_light_props(t_shader *shader,
 	t_tuple	tmp;
 
 	shader->effect_c = coloradd(&shader->mat->color, light->colors);
+	shader->effect_c = coloradd(&shader->mat->color, &comp->map_color);
 	shader->effect_c = colormulti_f(&shader->effect_c, light->ratio);
 	shader->lightv = n_tuplesub(light->pos, &comp->hpoint);
 	shader->lightv = tuplenormalize(&shader->lightv);
@@ -80,6 +81,7 @@ t_colors	shade_hit(t_alight *alight, t_computes *comp, t_list *vision_objs)
 
 	shader.mat = get_material(comp->insect->obj_type, comp->insect->obj);
 	shader.ambient_c = coloradd(&shader.mat->color, alight->colors);
+	shader.ambient_c = coloradd(&shader.mat->color, &comp->map_color);
 	shader.ambient_c = colormulti_f(&shader.ambient_c, alight->ratio);
 	if (comp->is_shadow)
 		return (shader.ambient_c);

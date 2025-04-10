@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/08 17:37:22 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/10 02:26:30 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_computes
 	t_tuple		eyev;
 	t_tuple		nv;
 	t_tuple		over_point;
+	t_colors	map_color;
 	int			is_shadow;
 	int			is_err;
 }				t_computes;
