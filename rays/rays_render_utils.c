@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/11 10:48:13 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/11 10:58:47 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_colors	*scaled_ray(t_rtptr *rts ,t_camera *cam, int x, int y)
 	t_colors *total_color;
 	t_colors *temp;
 
-	i = -SSAA;
+	i = -SSAA + 1;
 	total_color = malloc(sizeof(t_colors));
 	if(!total_color)
 		return (NULL);
@@ -76,7 +76,7 @@ t_colors	*scaled_ray(t_rtptr *rts ,t_camera *cam, int x, int y)
 	{	
 		if( y + i > 0 && y + i < HEG)
 		{
-			j = -SSAA;
+			j = -SSAA + 1;
 			while(j < SSAA)
 			{
 				if( x + j > 0 && x + j < WID)
