@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 23:06:11 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/11 23:13:56 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct s_rtptr
 	t_list		*textures_list;
 	t_list		*textures;
 	int			is_err;
-	u_int32_t	*rendered_image;
 }				t_rtptr;
 
 typedef struct s_shader
