@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:33:07 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 21:38:48 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/11 11:34:52 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ t_colors	colorsub(t_colors *a, t_colors *b);
 t_colors	colormulti(t_colors *a, t_colors *b);
 t_colors	colormulti_f(t_colors *a, float val);
 u_int8_t	color_inrange(float val);
+t_colors color_from_value(u_int32_t color_value);
 
 #endif

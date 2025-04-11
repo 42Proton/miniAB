@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/10 03:59:55 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:23:53 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define XK_MISCELLANY
 # include <colors.h>
+# include <debug.h>
 # include <fcntl.h>
 # include <object.h>
 # include <rays.h>
@@ -27,6 +28,10 @@
 # include <dirent.h>
 # define WID 1000
 # define HEG 800
+# define SSAA 2
+
+static const u_int32_t wid_res = WID * SSAA;
+static const u_int32_t heg_res = HEG * SSAA;
 
 typedef struct s_rtptr
 {
@@ -40,6 +45,7 @@ typedef struct s_rtptr
 	t_list		*textures_list;
 	t_list		*textures;
 	int			is_err;
+	u_int32_t	*rendered_image;
 }				t_rtptr;
 
 typedef struct s_shader
@@ -143,7 +149,13 @@ void			*get_bump_map_name(t_object_entry *entry);
 // Render
 t_colors		shade_hit(t_alight *alight,
 					t_computes *comp, t_list *vision);
+int			render_init(t_rtptr *rts);
 int				render_viewport(t_rtptr *rts);
+void			render(t_rtptr *rts);
+void    		set_rendered(t_rtptr *rts, u_int32_t x, u_int32_t y, u_int32_t color_v);
+int	render_viewport_basil(t_rtptr *rts);
+
+// SSAA
 
 // utils
 t_tuple			*pos(void);

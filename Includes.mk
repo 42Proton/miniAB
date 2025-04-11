@@ -30,7 +30,9 @@ SRCS= \
 	validate_utils_extra.c\
 	object_init_misc.c\
 	textures_utils.c\
-	load_textures.c
+	load_textures.c\
+	render_init.c
+
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
@@ -62,3 +64,10 @@ RAYS=\
 	plane_intersect.c\
 	rays_render_utils.c\
 	shadow.c
+INCLUDES=\
+	colors.h\
+	debug.h\
+	minirt.h\
+	object.h\
+	rays.h\
+	utils.h

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/10 03:36:30 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:23:37 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 	if (prep_objs_postparse(rts))
 		return (EXIT_FAILURE);
 	if (!camera_portparse(rts->camera))
+		return (EXIT_FAILURE);
+	if (render_init(rts))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/09 22:16:05 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:26:17 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 	return (res);
 }
 
-t_ray	ray_pixel(t_camera *cam, int x, int y)
+t_ray	ray_pixel(t_camera *cam, float x, float y)
 {
 	t_ray_pixel	data;
 
@@ -62,21 +62,59 @@ t_ray	ray_pixel(t_camera *cam, int x, int y)
 	return (data.ray);
 }
 
-int	render_viewport(t_rtptr *rts)
+t_colors	scaled_ray(t_rtptr *rts, t_camera *cam, int x, int y)
 {
 	t_ray		ray;
+	int			i;
+	int			j;
+	int			counter;
+	t_colors	total_color;
+	t_colors	temp;
+	float offset_x;
+	float offset_y;
+
+	total_color = colorinit(0, 0, 0);
+	counter = 0;
+	i = 0;
+	while(i < SSAA)
+	{
+		j = 0;
+		while(j < SSAA)
+		{
+			offset_x = ((float)j + 0.5) / SSAA - 0.5;
+			offset_y = ((float)i + 0.5) / SSAA - 0.5;
+			ray = ray_pixel(cam, x + offset_x, y + offset_y);
+			temp = ray_color(rts, &ray);
+			if (rts->is_err)
+				return (total_color);
+			total_color = coloradd(&total_color, &temp);
+			counter++;
+			j++;
+		}
+		i++;
+	}
+	if (counter > 0)
+	{
+		total_color.blue /= counter;
+		total_color.red /= counter;
+		total_color.green /= counter;
+	}
+	return (total_color);
+}
+
+int	render_viewport(t_rtptr *rts)
+{
 	t_colors	color;
 	int			x;
 	int			y;
-
+;
 	y = 0;
 	while (y < HEG)
 	{
 		x = 0;
 		while (x < WID)
 		{
-			ray = ray_pixel(rts->camera, x, y);
-			color = ray_color(rts, &ray);
+			color = scaled_ray(rts, rts->camera, x, y);
 			if (rts->is_err)
 				return (0);
 			mlx_put_pixel(rts->img, x, y, colorvalue(&color));
