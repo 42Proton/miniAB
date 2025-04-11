@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/11 12:11:18 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:12:23 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ t_colors	*scaled_ray(t_rtptr *rts, t_camera *cam, int x, int y)
 	t_colors	*temp;
 	float offset_x;
 	float offset_y;
+	
 	total_color = malloc(sizeof(t_colors));
 	if (!total_color)
 		return (NULL);

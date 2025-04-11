@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 12:07:03 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:14:27 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <utils.h>
 # define WID 800
 # define HEG 800
-# define SSAA 2
+# define SSAA 10
 
 static const u_int32_t wid_res = WID * SSAA;
 static const u_int32_t heg_res = HEG * SSAA;
