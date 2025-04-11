@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_object.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:07:05 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 21:53:19 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 00:11:54 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ int	validate_sphere(t_parser *parser)
 	if (!validate_color(parser))
 		return (0);
 	if (!validate_misc(parser))
-		return (0);;
+		return (0);
 	return (1);
 }

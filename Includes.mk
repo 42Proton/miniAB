@@ -28,10 +28,10 @@ SRCS= \
 	testing.c\
 	shader.c\
 	validate_utils_extra.c\
+	validate_utils_extra2.c\
 	object_init_misc.c\
 	textures_utils.c\
-	load_textures.c\
-	render_init.c
+	load_textures.c
 
 TUPLES=\
 	tuples.c\

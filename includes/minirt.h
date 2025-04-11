@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 23:13:56 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 00:09:41 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@
 # define WID 800
 # define HEG 600
 # define SSAA 1
-
-static const u_int32_t wid_res = WID * SSAA;
-static const u_int32_t heg_res = HEG * SSAA;
 
 typedef struct s_rtptr
 {
@@ -109,6 +106,11 @@ void			*cylinder_init(void);
 // Parser validation
 char			**pre_vec_validation(t_parser *parser);
 int				validate_misc(t_parser *parser);
+int				validate_iter_vec_misc(t_parser *parser,
+					char **split_vec);
+char			**pre_vec_validation_misc(t_parser *parser, char *token);
+int				validate_phong(t_parser *parser, char *tok);
+
 // Cleaner
 void			cleaner(t_rtptr *rts);
 // Objects Cleaners
@@ -154,12 +156,7 @@ void			*get_bump_map_name(t_object_entry *entry);
 // Render
 t_colors		shade_hit(t_alight *alight,
 					t_computes *comp, t_list *vision);
-int			render_init(t_rtptr *rts);
 int				render_viewport(t_rtptr *rts);
-void			render(t_rtptr *rts);
-void    		set_rendered(t_rtptr *rts, u_int32_t x, u_int32_t y, u_int32_t color_v);
-int	render_viewport_basil(t_rtptr *rts);
-
 // SSAA
 
 // utils

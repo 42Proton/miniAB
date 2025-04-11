@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 23:14:07 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/11 23:54:35 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ int	prep_rt_core(int ac, char **av, t_rtptr *rts)
 	if (prep_objs_postparse(rts))
 		return (EXIT_FAILURE);
 	if (!camera_portparse(rts->camera))
-		return (EXIT_FAILURE);
-	if (render_init(rts))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

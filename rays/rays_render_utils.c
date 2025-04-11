@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays_render_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/11 12:26:17 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 00:01:20 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,16 @@ t_colors	scaled_ray(t_rtptr *rts, t_camera *cam, int x, int y)
 	int			counter;
 	t_colors	total_color;
 	t_colors	temp;
-	float offset_x;
-	float offset_y;
+	float		offset_x;
+	float		offset_y;
 
 	total_color = colorinit(0, 0, 0);
 	counter = 0;
 	i = 0;
-	while(i < SSAA)
+	while (i < SSAA)
 	{
 		j = 0;
-		while(j < SSAA)
+		while (j < SSAA)
 		{
 			offset_x = ((float)j + 0.5) / SSAA - 0.5;
 			offset_y = ((float)i + 0.5) / SSAA - 0.5;
@@ -107,7 +107,7 @@ int	render_viewport(t_rtptr *rts)
 	t_colors	color;
 	int			x;
 	int			y;
-;
+
 	y = 0;
 	while (y < HEG)
 	{

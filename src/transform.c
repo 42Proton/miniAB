@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/10 04:17:52 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 00:11:15 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 int	camera_transform_m(t_camera *obj)
 {
-	int	res;
+	int			res;
 	t_matrix	*m;
+	t_tuple		vec;
 
 	obj->transform = translation_m(obj->pos);
 	if (!obj->transform)
 		return (0);
-	t_tuple vec = norm_to_radian(obj->orientation);
+	vec = norm_to_radian(obj->orientation);
 	m = rotation_m(&vec);
 	if (!m)
 		return (0);

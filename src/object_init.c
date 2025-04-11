@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:10:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/09 23:50:41 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 00:11:26 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	*cylinder_init(void)
 	cylinder->height = ft_atof(ft_strtok(0, " \t\r\f\v\n"));
 	colors = color();
 	if (!colors || !cylinder->normal_axis
-			|| !cylinder->pos || !init_misc_cylinder(cylinder))
+		|| !cylinder->pos || !init_misc_cylinder(cylinder))
 	{
 		free_cylinder(cylinder);
 		free(colors);

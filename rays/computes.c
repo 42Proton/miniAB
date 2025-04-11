@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   computes.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 08:22:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/11 21:53:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 00:00:20 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_colors	get_pixel_color(mlx_texture_t *texture, t_uv *uv)
 
 	width = texture->width - 1;
 	height = texture->height - 1;
-	offset = ((int)roundf(uv->v * height) * texture->width + (int)roundf(uv->u * width)) * 4;
+	offset = ((int)roundf(uv->v * height) * texture->width
+			+ (int)roundf(uv->u * width)) * 4;
 	res.red = (float)texture->pixels[offset] / 255;
 	res.green = (float)texture->pixels[offset + 1] / 255;
 	res.blue = (float)texture->pixels[offset + 2] / 255;
@@ -96,12 +97,6 @@ t_computes	init_computes(t_rtptr *rts,
 		comps.nv = tuplenegt(&comps.nv);
 	comps.eyev = tuplenormalize(&comps.eyev);
 	comps.map_color = get_map_color(insect->obj, insect->obj_type, &comps);
-	// Computations of shadow intersections
-	// The reason in here we are not checking the direct hpoint
-	// and we are using shifted point instead is because
-	// We can't represent the start point with infintie precision
-	// Which causes self intersection to prevent that we shift the point
-	// With artifical value called shadow bias which solves the issue
 	comps.over_point = n_tuplesmult(&comps.nv, SHADOW_BIAS);
 	comps.over_point = n_tupleadd(&comps.over_point, &comps.hpoint);
 	comps.is_shadow = is_shadow(rts, &comps.over_point);

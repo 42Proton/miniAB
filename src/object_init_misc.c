@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_init_misc.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:42:50 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/09 23:49:55 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 00:11:05 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_tuple	*phong_props(char *tok)
 	return (res);
 }
 
-int	check_init_misc(char *tok, void *phong_props,
-	void *color_map, void *bump_map)
+int	check_init_misc(char *tok, void *phong_props, void *color_map,
+		void *bump_map)
 {
 	if (!ft_strncmp(tok, "phong:", 6))
 	{
@@ -53,7 +53,7 @@ int	check_init_misc(char *tok, void *phong_props,
 	return (1);
 }
 
-int		init_misc_sphere(t_sphere *obj)
+int	init_misc_sphere(t_sphere *obj)
 {
 	char	*tok;
 
@@ -66,15 +66,15 @@ int		init_misc_sphere(t_sphere *obj)
 			obj->color_map = ft_strdup(tok + 6);
 		else if (!ft_strncmp(tok, "bump:", 5))
 			obj->bump_map = ft_strdup(tok + 5);
-		if (!check_init_misc(tok, obj->phong_props,
-			obj->color_map, obj->bump_map))
+		if (!check_init_misc(tok, obj->phong_props, obj->color_map,
+				obj->bump_map))
 			return (0);
 		tok = ft_strtok(0, " \t\r\f\v\n");
 	}
 	return (1);
 }
 
-int		init_misc_plane(t_plane *obj)
+int	init_misc_plane(t_plane *obj)
 {
 	char	*tok;
 
@@ -87,15 +87,15 @@ int		init_misc_plane(t_plane *obj)
 			obj->color_map = ft_strdup(tok + 6);
 		else if (!ft_strncmp(tok, "bump:", 5))
 			obj->bump_map = ft_strdup(tok + 5);
-		if (!check_init_misc(tok, obj->phong_props,
-			obj->color_map, obj->bump_map))
+		if (!check_init_misc(tok, obj->phong_props, obj->color_map,
+				obj->bump_map))
 			return (0);
 		tok = ft_strtok(0, " \t\r\f\v\n");
 	}
 	return (1);
 }
 
-int		init_misc_cylinder(t_cylinder *obj)
+int	init_misc_cylinder(t_cylinder *obj)
 {
 	char	*tok;
 
@@ -108,8 +108,8 @@ int		init_misc_cylinder(t_cylinder *obj)
 			obj->color_map = ft_strdup(tok + 6);
 		else if (!ft_strncmp(tok, "bump:", 5))
 			obj->bump_map = ft_strdup(tok + 5);
-		if (!check_init_misc(tok, obj->phong_props,
-			obj->color_map, obj->bump_map))
+		if (!check_init_misc(tok, obj->phong_props, obj->color_map,
+				obj->bump_map))
 			return (0);
 		tok = ft_strtok(0, " \t\r\f\v\n");
 	}
