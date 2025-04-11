@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleaner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 12:21:30 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/11 14:12:39 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void	cleaner(t_rtptr *rts)
 		free_camera(rts->camera);
 		free_ambient(rts->alight);
 	}
-	if(rts->rendered_image)
-		free(rts->rendered_image);
 	get_next_line(-1, 1, &dummy);
 	ft_lstclear(&rts->textures_list, free);
 	ft_lstclear(&rts->textures, free_texture);
