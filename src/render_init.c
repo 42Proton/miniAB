@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 06:17:05 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/10 07:35:45 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/11 11:53:17 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ void    render(t_rtptr *rts)
         u_int32_t color;
 
         y = 0;
-        while (y < heg_res)
+        while (y < WID)
         {
                 x = 0;
-                while (x < wid_res)
+                while (x < HEG)
                 {
-                        color = rts->rendered_image[y * wid_res + x];
+                        color = rts->rendered_image[y * WID + x];
                         mlx_put_pixel(rts->img, x, y, color);
                         x++;
                 }
                 y++;
         }
+        printf("rendered");
 }

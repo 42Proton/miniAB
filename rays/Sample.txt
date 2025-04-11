@@ -1,0 +1,162 @@
+// u_int32_t ray_scale(u_int32_t *image,int x,int y)
+// {
+// 	int 	i;
+// 	int	j;
+// 	t_colors *total_color;
+// 	t_colors temp;
+// 	int counter;
+// 	u_int32_t color;
+
+// 	counter = 0;
+// 	total_color = malloc(sizeof(total_color));
+// 	if(!total_color)
+// 		return (-1);
+// 	i = -SSAA + 1;
+// 	while (i < SSAA)
+// 	{
+// 		if (y + i > 0 && y + i < heg_res)
+// 		{
+// 			j = -SSAA + 1;
+// 			while (j < SSAA)
+// 			{
+// 				if (x + j > 0 && x + j < wid_res)
+// 				{
+// 					temp = color_from_value(image[(y + i) *wid_res + (x + j)]);
+// 					*total_color = coloradd(total_color, &temp);
+// 					counter++;
+// 				}
+// 				j++;
+// 			}
+// 		}
+// 		i++;
+// 	}
+// 	total_color->blue /= counter;
+// 	total_color->red /= counter;
+// 	total_color->green /= counter;
+// 	color =  (colorvalue(total_color));
+// 	free(total_color);
+// 	return color;
+// }
+// int	downscale(t_rtptr *rts)
+// {
+// 	u_int32_t	*final;
+// 	int			i;
+// 	int			j;
+
+// 	final = malloc(sizeof(u_int32_t) * WID * HEG);
+// 	if (!final)
+// 		return (1);
+// 	i = 0;
+// 	while (i < HEG)
+// 	{
+// 		j = 0;
+// 		while (j < WID)
+// 		{
+// 			final[i * WID + j] = ray_scale(rts->rendered_image,j,i);
+// 			j++;
+// 		}
+
+// 		i++;
+// 	}
+// 	free(rts->rendered_image);
+// 	rts->rendered_image = final;
+// 	return (0);
+// }
+// int	render_viewport_basil(t_rtptr *rts)
+// {
+// 	t_ray		ray;
+// 	t_colors	*color;
+// 	int			x;
+// 	int			y;
+
+// 	y = 0;
+// 	while (y < heg_res)
+// 	{
+// 		x = 0;
+// 		while (x < wid_res)
+// 		{
+// 			ray = ray_pixel(rts->camera, x, y);
+// 			color = ray_color(rts, &ray);
+// 			if (!color)
+// 				return (0);
+// 			set_rendered(rts, x, y, colorvalue(color));
+// 			free(color);
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	downscale(rts);
+// 	render(rts);
+// 	return (1);
+// }
+
+int render_viewport_basil(t_rtptr *rts)
+{
+    t_ray ray;
+    t_colors *color;
+    t_colors total_color;
+    int x, y, ss_x, ss_y;
+    int valid_samples;
+    
+    // First, allocate the final (display) buffer
+    rts->rendered_image = malloc(sizeof(u_int32_t) * WID * HEG);
+    if (!rts->rendered_image)
+        return (0);
+
+    // For each pixel in the final image
+    for (y = 0; y < HEG; y++)
+    {
+        for (x = 0; x < WID; x++)
+        {
+            // Reset accumulator for this pixel
+            total_color = colorinit(0.0, 0.0, 0.0);
+            valid_samples = 0;
+            
+            // Sample multiple points within this pixel
+            for (ss_y = 0; ss_y < SSAA; ss_y++)
+            {
+                for (ss_x = 0; ss_x < SSAA; ss_x++)
+                {
+                    // Calculate subpixel position with controlled jittering
+                    // Use smaller jitter values (0.1-0.2 range is good)
+                    float jitter_x = ((float)rand() / RAND_MAX - 0.5) * 0.2;
+                    float jitter_y = ((float)rand() / RAND_MAX - 0.5) * 0.2;
+                    
+                    // More precise subpixel positioning within the current pixel
+                    float subpixel_x = x + ((float)ss_x + 0.5) / SSAA + jitter_x;
+                    float subpixel_y = y + ((float)ss_y + 0.5) / SSAA + jitter_y;
+                    
+                    // Generate and trace ray for this sample
+                    ray = ray_pixel(rts->camera, subpixel_x, subpixel_y);
+                    color = ray_color(rts, &ray);
+                    
+                    if (color)
+                    {
+                        // Add color contribution
+                        total_color.red += color->red;
+                        total_color.green += color->green;
+                        total_color.blue += color->blue;
+                        valid_samples++;
+                        free(color);
+                    }
+                }
+            }
+            
+            // Avoid division by zero
+            if (valid_samples > 0)
+            {
+                // Average the result
+                total_color.red /= valid_samples;
+                total_color.green /= valid_samples;
+                total_color.blue /= valid_samples;
+            }
+            
+            // Store the final color directly
+            rts->rendered_image[y * WID + x] = colorvalue(&total_color);
+        }
+    }
+    
+    // Display the rendered image
+    render(rts);
+    return (1);
+}

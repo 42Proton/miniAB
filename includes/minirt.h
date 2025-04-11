@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 10:59:04 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:07:03 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <utils.h>
-# define WID 1000
-# define HEG 1000
+# define WID 800
+# define HEG 800
 # define SSAA 2
 
 static const u_int32_t wid_res = WID * SSAA;
@@ -125,7 +125,7 @@ t_colors		shade_hit(t_alight *alight, t_computes *comp, t_light *light);
 int				render_viewport(t_rtptr *rts);
 void			render(t_rtptr *rts);
 void    		set_rendered(t_rtptr *rts, u_int32_t x, u_int32_t y, u_int32_t color_v);
-
+int	render_viewport_basil(t_rtptr *rts);
 
 // SSAA
 
