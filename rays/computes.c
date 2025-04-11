@@ -6,47 +6,77 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 08:22:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/10 17:12:49 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/11 21:53:57 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-t_colors	get_pixel_color(mlx_texture_t *texture, int x, int y)
+t_colors	get_pixel_color(mlx_texture_t *texture, t_uv *uv)
 {
 	t_colors	res;
 	size_t		offset;
+	int			width;
+	int			height;
 
-	offset = (y * texture->width + x) * 4;
+	width = texture->width - 1;
+	height = texture->height - 1;
+	offset = ((int)roundf(uv->v * height) * texture->width + (int)roundf(uv->u * width)) * 4;
 	res.red = (float)texture->pixels[offset] / 255;
 	res.green = (float)texture->pixels[offset + 1] / 255;
 	res.blue = (float)texture->pixels[offset + 2] / 255;
 	return (res);
 }
 
-t_colors	get_map_color(void *obj, int obj_type, t_tuple *p)
+t_uv	compute_plane_uv(t_plane *obj, t_tuple *p)
 {
-	t_colors	res;
-	t_plane		*plane;
-	int			x;
-	int			y;
+	t_uv			uv;
+	mlx_texture_t	*ref;
+	float			aspect_r;
+
+	ref = obj->color_map_ref;
+	aspect_r = (float)ref->width / ref->height;
+	uv.u = p->x * (aspect_r * 0.05);
+	if (obj->normal_vector->z > EPSILON)
+		uv.v = p->y * (aspect_r * 0.05);
+	else
+		uv.v = p->z * (aspect_r * 0.05);
+	uv.u = fmod(uv.u - floorf(uv.u), 1);
+	uv.v = fmod(uv.v - floorf(uv.v), 1);
+	return (uv);
+}
+
+t_uv	compute_sphere_uv(t_sphere *obj, t_computes *comps)
+{
+	t_uv	uv;
+	t_tuple	nv;
+
+	nv = comps->nv;
+	uv.u = (asin(nv.x) / M_PI) + 0.5;
+	uv.v = (asin(nv.y) / M_PI) + 0.5;
+	return (uv);
+}
+
+t_colors	get_map_color(void *obj, int obj_type, t_computes *comps)
+{
+	t_colors		res;
+	t_uv			uv;
+	mlx_texture_t	*ref;
 
 	res = colorinit(0, 0, 0);
+	ref = 0;
 	if (obj_type == PLANE && ((t_plane *)obj)->color_map_ref)
 	{
-		plane = obj;
-		if (plane->normal_vector->z > EPSILON)
-		{
-			x = fmod(ft_fabs(p->x) * 40, plane->color_map_ref->width);
-			y = fmod(ft_fabs(p->y) * 40, plane->color_map_ref->height);
-		}
-		else
-		{
-			x = fmod(ft_fabs(p->x) * 40, plane->color_map_ref->width);
-			y = fmod(ft_fabs(p->z) * 40, plane->color_map_ref->height);
-		}
-		res = get_pixel_color(plane->color_map_ref, x, y);
+		uv = compute_plane_uv(obj, &comps->hpoint);
+		ref = ((t_plane *)obj)->color_map_ref;
 	}
+	if (obj_type == SPHERE && ((t_sphere *)obj)->color_map_ref)
+	{
+		uv = compute_sphere_uv(obj, comps);
+		ref = ((t_sphere *)obj)->color_map_ref;
+	}
+	if (ref)
+		res = get_pixel_color(ref, &uv);
 	return (res);
 }
 
@@ -65,7 +95,7 @@ t_computes	init_computes(t_rtptr *rts,
 	if (dot_nv_e < 0)
 		comps.nv = tuplenegt(&comps.nv);
 	comps.eyev = tuplenormalize(&comps.eyev);
-	comps.map_color = get_map_color(insect->obj, insect->obj_type, &comps.hpoint);
+	comps.map_color = get_map_color(insect->obj, insect->obj_type, &comps);
 	// Computations of shadow intersections
 	// The reason in here we are not checking the direct hpoint
 	// and we are using shifted point instead is because

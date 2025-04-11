@@ -1,6 +1,8 @@
 A 0.2 20,100,0
-C 0,-10,-100 0,1,0 90
-L -60,0,-20 1 100,100,100
+C 0,-10,-50 0,1,0 90
+L -60,0,-20 1 40,40,40
 
-pl 0,-40,0 0,-1,0 0,0,0 color:awesomeface.png
-pl 0,0,100 0,0,1 0,0,0 color:space.png
+sp 0,0,0 20 0,0,0 color:moon.png
+sp 0,0,0 20 0,0,0 color:wallpaper.png
+pl 0,-40,0 0,-1,0 0,0,0 color:wallpaper.png
+pl 0,0,100 0,0,1 255,0,0 color:Checkerboard_tile.png

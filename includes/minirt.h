@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 12:23:53 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/11 21:46:18 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # include <debug.h>
 # include <sys/types.h>
 # include <dirent.h>
-# define WID 1000
-# define HEG 800
-# define SSAA 2
+# define WID 800
+# define HEG 600
+# define SSAA 1
 
 static const u_int32_t wid_res = WID * SSAA;
 static const u_int32_t heg_res = HEG * SSAA;
@@ -68,6 +68,12 @@ typedef struct s_texture
 	char			*name;
 	mlx_texture_t	*map;
 }	t_texture;
+
+typedef struct s_uv
+{
+	float	u;
+	float	v;
+}	t_uv;
 
 enum			e_issues
 {

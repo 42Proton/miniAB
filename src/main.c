@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 12:23:37 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/11 13:49:00 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	main(int ac, char **av)
 		cleaner(&rts);
 	if (init_mlx(&rts))
 		cleaner(&rts);
-	mlx_image_to_window(rts.mlx, rts.img, 0, 0);
 	render_viewport(&rts);
+	mlx_image_to_window(rts.mlx, rts.img, 0, 0);
 	mlx_key_hook(rts.mlx, keyhook, &rts);
 	mlx_loop(rts.mlx);
 	cleaner(&rts);
