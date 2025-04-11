@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/10 07:23:35 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/11 10:01:20 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 		cleaner(&rts);
 	mlx_image_to_window(rts.mlx, rts.img, 0, 0);
 	render_viewport(&rts);
-	render(&rts);
+	// render(&rts);
 	mlx_key_hook(rts.mlx, keyhook, &rts);
 	mlx_loop(rts.mlx);
 	cleaner(&rts);

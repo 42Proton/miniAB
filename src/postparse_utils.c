@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:32:31 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/10 07:29:11 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/11 10:14:37 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ int	camera_portparse(t_camera *obj)
 		obj->hwidth = hview * aspect;
 		obj->hheight = hview;
 	}
-	obj->pixel_size = (obj->hwidth * 2) / wid_res;
+	obj->pixel_size = (obj->hwidth * 2) / WID;
 	return (1);
 }
