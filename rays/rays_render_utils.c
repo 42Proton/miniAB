@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/12 00:01:20 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/12 11:00:46 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,43 +62,41 @@ t_ray	ray_pixel(t_camera *cam, float x, float y)
 	return (data.ray);
 }
 
-t_colors	scaled_ray(t_rtptr *rts, t_camera *cam, int x, int y)
+t_colors	scaled_pixel(t_rtptr *rts, float offset_x, float offset_y)
 {
 	t_ray		ray;
+	t_colors	color;
+
+	ray = ray_pixel(rts->camera, offset_x, offset_y);
+	color = ray_color(rts, &ray);
+	return (color);
+}
+
+t_colors	scaled_ray(t_rtptr *rts, t_camera *cam, int x, int y)
+{
 	int			i;
 	int			j;
 	int			counter;
 	t_colors	total_color;
 	t_colors	temp;
-	float		offset_x;
-	float		offset_y;
 
 	total_color = colorinit(0, 0, 0);
 	counter = 0;
-	i = 0;
-	while (i < SSAA)
+	i = -1;
+	while (++i < SSAA)
 	{
-		j = 0;
-		while (j < SSAA)
+		j = -1;
+		while (++j < SSAA)
 		{
-			offset_x = ((float)j + 0.5) / SSAA - 0.5;
-			offset_y = ((float)i + 0.5) / SSAA - 0.5;
-			ray = ray_pixel(cam, x + offset_x, y + offset_y);
-			temp = ray_color(rts, &ray);
+			temp = scaled_pixel(rts, x + ((float)j + 0.5) / SSAA - 0.5,
+					y + ((float)i + 0.5) / SSAA - 0.5);
 			if (rts->is_err)
 				return (total_color);
 			total_color = coloradd(&total_color, &temp);
 			counter++;
-			j++;
 		}
-		i++;
 	}
-	if (counter > 0)
-	{
-		total_color.blue /= counter;
-		total_color.red /= counter;
-		total_color.green /= counter;
-	}
+	colorscale(&total_color, counter);
 	return (total_color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 00:09:41 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/12 10:57:28 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <dirent.h>
 # define WID 800
 # define HEG 600
-# define SSAA 1
+# define SSAA 3
 
 typedef struct s_rtptr
 {
