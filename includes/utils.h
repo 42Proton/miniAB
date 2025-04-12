@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:58:26 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/11 15:13:29 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/08 18:13:50 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 typedef struct s_parser
 {
+	t_list	*textures_list;
 	char	*file_name;
 	char	*line;
 	char	*line_bak;
@@ -25,6 +26,9 @@ typedef struct s_parser
 	int		tok_pos;
 	int		problem_pos;
 	int		errorflag;
+	int		phong_done;
+	int		color_done;
+	int		bump_done;
 }			t_parser;
 
 int			check_float_input(const char *str);

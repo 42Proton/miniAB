@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/01 15:17:52 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/08 00:48:12 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,9 @@ t_tuple	norm_to_radian(t_tuple *vec)
 {
 	t_tuple	res;
 
-	if (vec->x >= 0)
-		res.x = vec->x * M_PI;
-	else
-		res.x = (1.0f + vec->x) + M_PI;
-	if (vec->y >= 0)
-		res.y = vec->y * M_PI;
-	else
-		res.y = (1.0f + vec->y) + M_PI;
-	if (vec->z >= 0)
-		res.z = vec->z * M_PI;
-	else
-		res.z = (1.0f + vec->z) * M_PI;
+	res.x = vec->x * M_PI;
+	res.y = vec->y * M_PI;
+	res.z = vec->z * M_PI;
 	res.w = VECTOR;
 	return (res);
 }

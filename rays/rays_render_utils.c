@@ -6,79 +6,51 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/05 13:22:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 12:21:44 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-t_colors	*ray_color(t_rtptr *rts, t_ray *ray)
+t_colors	get_insect_color(t_rtptr *rts,
+	t_intersections *insects, t_ray *ray)
 {
-	t_colors		*res;
-	t_intersections	*insects;
 	t_intersect		*insect;
+	t_colors		res;
 	t_computes		comp;
 
-	insects = world_intersect(rts->solid_objs, ray);
-	res = malloc(sizeof(t_colors));
-	if (!insects || !res)
-	{
-		free(res);
-		clear_intersections(insects);
-		return (0);
-	}
+	ft_bzero(&res, sizeof(t_colors));
 	insect = get_hit(insects);
 	if (insect)
 	{
-		comp = init_computes(insect, ray);
-		*res = shade_hit(rts->alight, &comp,
-				((t_object_entry *)rts->vision_objs->content)->object);
+		comp = init_computes(rts, insect, ray);
+		if (comp.is_err)
+		{
+			rts->is_err = 1;
+			return (res);
+		}
+		res = shade_hit(rts->alight, &comp, rts->vision_objs);
 	}
 	else
-		*res = colorinit(ft_fabs(ray->direction.y) * rts->alight->ratio, 0.8
+		res = colorinit(ft_fabs(ray->direction.y) * rts->alight->ratio, 0.8
 				* rts->alight->ratio, 0.8 * rts->alight->ratio);
-	clear_intersections(insects);
 	return (res);
 }
 
-t_ray	ray_pixel(t_camera *cam, int x, int y)
+t_colors	ray_color(t_rtptr *rts, t_ray *ray)
 {
-	t_ray_pixel	data;
+	t_colors		res;
+	t_intersections	*insects;
 
-	data.world_x = cam->hwidth - ((x + 0.5) * cam->pixel_size);
-	data.world_y = cam->hheight - ((y + 0.5) * cam->pixel_size);
-	data.world_origin = point(0, 0, 0);
-	data.world_point = point(data.world_x, data.world_y, -1);
-	data.world_origin = transform_f(cam->inv_t, &data.world_origin);
-	data.world_point = transform_f(cam->inv_t, &data.world_point);
-	data.ray_direction = n_tuplesub(&data.world_point, &data.world_origin);
-	data.ray_direction = tuplenormalize(&data.ray_direction);
-	data.ray = init_ray(&data.world_origin, &data.ray_direction);
-	return (data.ray);
-}
-
-int	render_viewport(t_rtptr *rts)
-{
-	t_ray		ray;
-	t_colors	*color;
-	int			x;
-	int			y;
-
-	y = 0;
-	while (y < HEG)
+	insects = world_intersect(rts->solid_objs, ray);
+	ft_bzero(&res, sizeof(t_colors));
+	if (!insects)
 	{
-		x = 0;
-		while (x < WID)
-		{
-			ray = ray_pixel(rts->camera, x, y);
-			color = ray_color(rts, &ray);
-			if (!color)
-				return (0);
-			mlx_put_pixel(rts->img, x, y, colorvalue(color));
-			free(color);
-			x++;
-		}
-		y++;
+		rts->is_err = 1;
+		clear_intersections(insects);
+		return (res);
 	}
-	return (1);
+	res = get_insect_color(rts, insects, ray);
+	clear_intersections(insects);
+	return (res);
 }

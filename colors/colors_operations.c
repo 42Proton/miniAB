@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:53:11 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 18:34:34 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/11 22:03:36 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,16 @@ t_colors	colormulti_f(t_colors *a, float val)
 	res.red = a->red * val;
 	res.green = a->green * val;
 	res.blue = a->blue * val;
+	return (res);
+}
+
+t_colors	coloravg(t_colors *a, t_colors *b)
+{
+	t_colors	res;
+
+	res = coloradd(a, b);
+	res.red /= 2;
+	res.green /= 2;
+	res.blue /= 2;
 	return (res);
 }

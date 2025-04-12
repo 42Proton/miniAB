@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:10:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/26 02:12:29 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 00:11:26 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	*sphere_init(void)
 	sphere->pos = pos();
 	sphere->dim = ft_atof(ft_strtok(0, " \t\r\f\v\n"));
 	colors = color();
-	if (!colors || !sphere->pos)
+	if (!colors || !sphere->pos || !init_misc_sphere(sphere))
 	{
 		free_sphere(sphere);
 		free(colors);
 		return (0);
 	}
-	sphere->mat = init_material(colors, 0.5, 0.5, 100);
+	sphere->mat = init_material(colors, 1, 1, 200);
 	free(colors);
 	return (sphere);
 }
@@ -45,13 +45,17 @@ void	*plane_init(void)
 	plane->pos = pos();
 	plane->normal_vector = pos();
 	colors = color();
-	if (!colors || !plane->normal_vector || !plane->pos)
+	if (!colors || !plane->normal_vector
+		|| !plane->pos || !init_misc_plane(plane))
 	{
 		free_plane(plane);
 		free(colors);
 		return (0);
 	}
-	plane->mat = init_material(colors, 0.5, 0.5, 100);
+	if (plane->phong_props)
+		plane->mat = init_material_misc(colors, plane->phong_props);
+	else
+		plane->mat = init_material(colors, 1, 1, 200);
 	free(colors);
 	return (plane);
 }
@@ -69,13 +73,14 @@ void	*cylinder_init(void)
 	cylinder->dim = ft_atof(ft_strtok(0, " \t\r\f\v\n"));
 	cylinder->height = ft_atof(ft_strtok(0, " \t\r\f\v\n"));
 	colors = color();
-	if (!colors || !cylinder->normal_axis || !cylinder->pos)
+	if (!colors || !cylinder->normal_axis
+		|| !cylinder->pos || !init_misc_cylinder(cylinder))
 	{
 		free_cylinder(cylinder);
 		free(colors);
 		return (0);
 	}
-	cylinder->mat = init_material(colors, 0.5, 0.5, 100);
+	cylinder->mat = init_material(colors, 1, 1, 200);
 	free(colors);
 	return (cylinder);
 }

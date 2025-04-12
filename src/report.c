@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 00:38:08 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/27 05:30:52 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/08 18:15:42 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ void	simple_report(int issue)
 		msg = "Incorrect arguments count";
 	if (issue == ERR_OPEN_FILE)
 		msg = "Error opening file";
+	if (issue == ERR_UNKNOWN_MISC)
+		msg = "Unknown misc";
+	if (issue == ERR_UNKNOWN_TEXTURE)
+		msg = "Unknown texture";
 	if (issue == WARN_CAMERA_MISSING)
 		msg = "Camera is missing from the scene\
 \nInit default camera";

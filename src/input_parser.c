@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/17 02:33:21 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/08 18:14:41 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	read_file(char *file_name, int fd, t_rtptr *rts)
 	ft_bzero(&parser, sizeof(t_parser));
 	parser.file_name = file_name;
 	parser.tok_pos = -1;
+	parser.textures_list = rts->textures_list;
 	while (1)
 	{
 		if (read_iter_line(fd, &parser))

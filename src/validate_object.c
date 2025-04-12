@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_object.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:07:05 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/14 21:54:11 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 00:11:54 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 int	validate_plane(t_parser *parser)
 {
-	char	*tok;
-
 	if (!validate_pos(parser))
 		return (0);
 	if (!validate_normal(parser))
 		return (0);
 	if (!validate_color(parser))
 		return (0);
-	tok = ft_strtok_iter(NULL, parser, 0);
-	if (tok)
+	if (!validate_misc(parser))
 		return (0);
 	return (1);
 }
@@ -51,8 +48,7 @@ int	validate_cylinder(t_parser *parser)
 	}
 	if (!validate_color(parser))
 		return (0);
-	tok = ft_strtok_iter(NULL, parser, 0);
-	if (tok)
+	if (!validate_misc(parser))
 		return (0);
 	return (1);
 }
@@ -73,8 +69,7 @@ int	validate_sphere(t_parser *parser)
 	}
 	if (!validate_color(parser))
 		return (0);
-	tok = ft_strtok_iter(NULL, parser, 0);
-	if (tok)
+	if (!validate_misc(parser))
 		return (0);
 	return (1);
 }
