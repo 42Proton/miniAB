@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 10:57:28 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/12 12:43:58 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <dirent.h>
 # define WID 800
 # define HEG 600
-# define SSAA 3
+# define SSAA 2
 
 typedef struct s_rtptr
 {
@@ -167,5 +167,14 @@ float			deg_to_rad(float deg);
 // Ray utils
 t_computes		init_computes(t_rtptr *rts, t_intersect *insect, t_ray *ray);
 int				is_shadow(t_rtptr *rts, t_tuple *p);
+t_colors		ray_color(t_rtptr *rts, t_ray *ray);
+// Shader Utils
+void			shader_vision_iter(t_shader *shader,
+					t_computes *comp, t_list *vision_objs);
+void			compute_light_props(t_shader *shader,
+					t_light *light, t_computes *comp);
+t_colors		compute_specular(t_shader *shader, t_light *light);
+t_material		*get_material(int obj_type, void *obj);
+t_colors		compute_diffuse(t_shader *shader);
 
 #endif
