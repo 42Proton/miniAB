@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/08 18:14:41 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 17:34:31 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	switch_type(char *obj)
 		return (CYLINDER);
 	else if (!ft_strcmp(obj, "hy"))
 		return (HYPER);
-	else if (!ft_strcmp(obj, "par"))
-		return (PARA);
 	return (-1);
 }
 

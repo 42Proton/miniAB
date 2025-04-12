@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:32:31 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/11 12:22:04 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 17:44:04 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@ int	cylinder_postparse(t_rtptr *rts, t_cylinder *obj)
 	if (obj->bump_map)
 		obj->bump_map_ref = get_texture_ref(obj->bump_map, rts);
 	res = cylinder_transform_m(obj);
+	return (res);
+}
+
+int	hyper_postparse(t_rtptr *rts, t_hyper *obj)
+{
+	int	res;
+
+	if (obj->color_map)
+		obj->color_map_ref = get_texture_ref(obj->color_map, rts);
+	if (obj->bump_map)
+		obj->bump_map_ref = get_texture_ref(obj->bump_map, rts);
+	res = hyper_transform_m(obj);
 	return (res);
 }
 

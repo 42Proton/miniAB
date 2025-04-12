@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:10:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/12 00:11:26 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/12 22:29:18 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,28 @@ void	*cylinder_init(void)
 	cylinder->mat = init_material(colors, 1, 1, 200);
 	free(colors);
 	return (cylinder);
+}
+
+void	*hyper_init(void)
+{
+	t_hyper		*hyper;
+	t_colors	*colors;
+
+	hyper = ft_calloc(1, sizeof(t_hyper));
+	if (!hyper)
+		return (0);
+	hyper->pos = pos();
+	hyper->scale = pos();
+	hyper->nv = pos();
+	colors = color();
+	if (!colors || !hyper->pos
+		|| !hyper->scale || !hyper->nv || !init_misc_hyper(hyper))
+	{
+		free_hyper(hyper);
+		free(colors);
+		return (0);
+	}
+	hyper->mat = init_material(colors, 1, 1, 200);
+	free(colors);
+	return (hyper);
 }

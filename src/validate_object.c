@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_object.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:07:05 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 00:11:54 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/12 22:28:03 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,21 @@ int	validate_sphere(t_parser *parser)
 		issue_report(parser, ERR_INVALID_FLOAT);
 		return (0);
 	}
+	if (!validate_color(parser))
+		return (0);
+	if (!validate_misc(parser))
+		return (0);
+	return (1);
+}
+
+int	validate_hyper(t_parser *parser)
+{
+	if (!validate_pos(parser))
+		return (0);
+	if (!validate_pos(parser))
+		return (0);
+	if (!validate_normal(parser))
+		return (0);
 	if (!validate_color(parser))
 		return (0);
 	if (!validate_misc(parser))

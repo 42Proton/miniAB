@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 23:57:27 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/12 22:28:57 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ enum			e_types_of_objects
 	SPHERE,
 	PLANE,
 	CYLINDER,
-	CONE,
-	HYPER,
-	PARA
+	HYPER
 };
 
 typedef struct s_object_entry
@@ -112,6 +110,22 @@ typedef struct s_sphere
 	t_matrix		*inv_t;
 	t_matrix		*tpose_inv_t;
 }				t_sphere;
+
+typedef struct s_hyper
+{
+	t_tuple			*pos;
+	t_tuple			*scale;
+	t_tuple			*nv;
+	t_material		mat;
+	t_tuple			*phong_props;
+	char			*color_map;
+	char			*bump_map;
+	mlx_texture_t	*color_map_ref;
+	mlx_texture_t	*bump_map_ref;
+	t_matrix		*transform;
+	t_matrix		*inv_t;
+	t_matrix		*tpose_inv_t;
+}				t_hyper;
 
 typedef struct s_plane
 {

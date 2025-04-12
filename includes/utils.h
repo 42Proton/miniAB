@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:58:26 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/08 18:13:50 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 17:37:03 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int			validate_light(t_parser *parser);
 int			validate_plane(t_parser *parser);
 int			validate_cylinder(t_parser *parser);
 int			validate_sphere(t_parser *parser);
+int			validate_hyper(t_parser *parser);
 // Rest
 int			switch_type(char *obj);
 int			check_vec_input(char *str);

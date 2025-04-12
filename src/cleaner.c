@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleaner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 14:12:39 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/12 17:50:07 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	object_cleanup(void *content)
 			free_plane(entry->object);
 		else if (entry->type == CYLINDER)
 			free_cylinder(entry->object);
+		else if (entry->type == HYPER)
+			free_hyper(entry->object);
 	}
 	free(content);
 }

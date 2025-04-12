@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 12:43:58 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 17:48:16 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void			*camera_init(void);
 void			*sphere_init(void);
 void			*plane_init(void);
 void			*cylinder_init(void);
+void			*hyper_init(void);
 // Parser validation
 char			**pre_vec_validation(t_parser *parser);
 int				validate_misc(t_parser *parser);
@@ -117,6 +118,7 @@ void			cleaner(t_rtptr *rts);
 void			free_sphere(t_sphere *sphere);
 void			free_plane(t_plane *plane);
 void			free_cylinder(t_cylinder *cylinder);
+void			free_hyper(t_hyper *hyper);
 // Vision Cleaners
 void			free_ambient(t_alight *al);
 void			free_light(t_light *light);
@@ -135,10 +137,12 @@ int				prep_transform_m(t_matrix **m);
 int				sphere_transform_m(t_sphere *obj);
 int				plane_transform_m(t_plane *obj);
 int				cylinder_transform_m(t_cylinder *obj);
+int				hyper_transform_m(t_hyper *obj);
 int				camera_transform_m(t_camera *obj);
 int				sphere_postparse(t_rtptr *rts, t_sphere *obj);
 int				plane_postparse(t_rtptr *rts, t_plane *obj);
 int				cylinder_postparse(t_rtptr *rts, t_cylinder *obj);
+int				hyper_postparse(t_rtptr *rts, t_hyper *obj);
 int				camera_portparse(t_camera *obj);
 int				prep_objs_postparse(t_rtptr *rts);
 void			prep_lights_postparse(t_rtptr *rts);
@@ -146,6 +150,7 @@ int				handle_missing_objs(t_rtptr *rts);
 int				init_misc_sphere(t_sphere *obj);
 int				init_misc_plane(t_plane *obj);
 int				init_misc_cylinder(t_cylinder *obj);
+int				init_misc_hyper(t_hyper *obj);
 
 // Textures
 int				load_textures(t_rtptr *rts);

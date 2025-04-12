@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:18:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/10 03:36:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 17:45:15 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int	prep_objs_postparse(t_rtptr *rts)
 			res = plane_postparse(rts, (t_plane *)obj);
 		else if (entry->type == CYLINDER)
 			res = cylinder_postparse(rts, (t_cylinder *)obj);
+		else if (entry->type == HYPER)
+			res = hyper_postparse(rts, (t_hyper *)obj);
 		if (!res)
 			return (EXIT_FAILURE);
 		tmp = tmp->next;
