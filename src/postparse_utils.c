@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   postparse_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:32:31 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/11 10:14:37 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:22:04 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ int	sphere_postparse(t_rtptr *rts, t_sphere *obj)
 {
 	int	res;
 
+	if (obj->color_map)
+		obj->color_map_ref = get_texture_ref(obj->color_map, rts);
+	if (obj->bump_map)
+		obj->bump_map_ref = get_texture_ref(obj->bump_map, rts);
 	res = sphere_transform_m(obj);
 	return (res);
 }
@@ -24,6 +28,10 @@ int	plane_postparse(t_rtptr *rts, t_plane *obj)
 {
 	int	res;
 
+	if (obj->color_map)
+		obj->color_map_ref = get_texture_ref(obj->color_map, rts);
+	if (obj->bump_map)
+		obj->bump_map_ref = get_texture_ref(obj->bump_map, rts);
 	res = plane_transform_m(obj);
 	return (res);
 }
@@ -32,6 +40,10 @@ int	cylinder_postparse(t_rtptr *rts, t_cylinder *obj)
 {
 	int	res;
 
+	if (obj->color_map)
+		obj->color_map_ref = get_texture_ref(obj->color_map, rts);
+	if (obj->bump_map)
+		obj->bump_map_ref = get_texture_ref(obj->bump_map, rts);
 	res = cylinder_transform_m(obj);
 	return (res);
 }

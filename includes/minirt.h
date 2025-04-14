@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 12:14:27 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/14 14:29:48 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MINIRT_H
 
 # define XK_MISCELLANY
-# include <MLX42/MLX42.h>
 # include <colors.h>
 # include <debug.h>
 # include <fcntl.h>
@@ -24,12 +23,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <utils.h>
+# include <debug.h>
+# include <sys/types.h>
+# include <dirent.h>
 # define WID 800
-# define HEG 800
-# define SSAA 10
-
-static const u_int32_t wid_res = WID * SSAA;
-static const u_int32_t heg_res = HEG * SSAA;
+# define HEG 600
+# define SSAA 2
 
 typedef struct s_rtptr
 {
@@ -40,7 +39,9 @@ typedef struct s_rtptr
 	t_list		*vision_objs;
 	t_list		*solid_objs;
 	t_list		*objs;
-	u_int32_t	*rendered_image;
+	t_list		*textures_list;
+	t_list		*textures;
+	int			is_err;
 }				t_rtptr;
 
 typedef struct s_shader
@@ -49,12 +50,26 @@ typedef struct s_shader
 	t_colors	effect_c;
 	t_colors	diffuse_c;
 	t_colors	specular_c;
+	t_colors	tmp_diffuse_c;
+	t_colors	tmp_specular_c;
 	t_tuple		lightv;
 	t_tuple		reflectv;
 	t_material	*mat;
 	float		light_dot_n;
 	float		reflect_dot_e;
 }				t_shader;
+
+typedef struct s_texture
+{
+	char			*name;
+	mlx_texture_t	*map;
+}	t_texture;
+
+typedef struct s_uv
+{
+	float	u;
+	float	v;
+}	t_uv;
 
 enum			e_issues
 {
@@ -71,6 +86,8 @@ enum			e_issues
 	ERR_INVALID_COLOR,
 	ERR_INVALID_RATIO,
 	ERR_INVALID_FOV,
+	ERR_UNKNOWN_MISC,
+	ERR_UNKNOWN_TEXTURE,
 	WARN_CAMERA_MISSING,
 	WARN_ALIGHT_MISSING
 };
@@ -86,6 +103,14 @@ void			*camera_init(void);
 void			*sphere_init(void);
 void			*plane_init(void);
 void			*cylinder_init(void);
+// Parser validation
+char			**pre_vec_validation(t_parser *parser);
+int				validate_misc(t_parser *parser);
+int				validate_iter_vec_misc(t_parser *parser,
+					char **split_vec);
+char			**pre_vec_validation_misc(t_parser *parser, char *token);
+int				validate_phong(t_parser *parser, char *tok);
+
 // Cleaner
 void			cleaner(t_rtptr *rts);
 // Objects Cleaners
@@ -118,15 +143,20 @@ int				camera_portparse(t_camera *obj);
 int				prep_objs_postparse(t_rtptr *rts);
 void			prep_lights_postparse(t_rtptr *rts);
 int				handle_missing_objs(t_rtptr *rts);
+int				init_misc_sphere(t_sphere *obj);
+int				init_misc_plane(t_plane *obj);
+int				init_misc_cylinder(t_cylinder *obj);
+
+// Textures
+int				load_textures(t_rtptr *rts);
+mlx_texture_t	*get_texture_ref(char *str, t_rtptr *rts);
+void			*get_color_map_name(t_object_entry *entry);
+void			*get_bump_map_name(t_object_entry *entry);
 
 // Render
-int			render_init(t_rtptr *rts);
-t_colors		shade_hit(t_alight *alight, t_computes *comp, t_light *light);
+t_colors		shade_hit(t_alight *alight,
+					t_computes *comp, t_list *vision);
 int				render_viewport(t_rtptr *rts);
-void			render(t_rtptr *rts);
-void    		set_rendered(t_rtptr *rts, u_int32_t x, u_int32_t y, u_int32_t color_v);
-int	render_viewport_basil(t_rtptr *rts);
-
 // SSAA
 
 // utils
@@ -134,4 +164,17 @@ t_tuple			*pos(void);
 t_colors		*color(void);
 t_tuple			norm_to_radian(t_tuple *vec);
 float			deg_to_rad(float deg);
+// Ray utils
+t_computes		init_computes(t_rtptr *rts, t_intersect *insect, t_ray *ray);
+int				is_shadow(t_rtptr *rts, t_tuple *p);
+t_colors		ray_color(t_rtptr *rts, t_ray *ray);
+// Shader Utils
+void			shader_vision_iter(t_shader *shader,
+					t_computes *comp, t_list *vision_objs);
+void			compute_light_props(t_shader *shader,
+					t_light *light, t_computes *comp);
+t_colors		compute_specular(t_shader *shader, t_light *light);
+t_material		*get_material(int obj_type, void *obj);
+t_colors		compute_diffuse(t_shader *shader);
+
 #endif

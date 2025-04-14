@@ -27,7 +27,12 @@ SRCS= \
 	handle_missing_objs.c\
 	testing.c\
 	shader.c\
-	render_init.c
+	validate_utils_extra.c\
+	validate_utils_extra2.c\
+	object_init_misc.c\
+	textures_utils.c\
+	load_textures.c\
+	shader_utils.c
 
 TUPLES=\
 	tuples.c\
@@ -58,7 +63,9 @@ RAYS=\
 	reflect_vec.c\
 	computes.c\
 	plane_intersect.c\
-	rays_render_utils.c
+	rays_render_utils.c\
+	shadow.c\
+	rays_viewport_utils.c
 INCLUDES=\
 	colors.h\
 	debug.h\

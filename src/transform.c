@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/05 13:04:30 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/12 00:11:15 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	camera_transform_m(t_camera *obj)
 {
+	int			res;
 	t_matrix	*m;
 	t_tuple		vec;
-	int			res;
 
 	obj->transform = translation_m(obj->pos);
 	if (!obj->transform)
@@ -37,7 +37,7 @@ int	camera_transform_m(t_camera *obj)
 
 int	sphere_transform_m(t_sphere *obj)
 {
-	t_matrix	*s;
+	t_matrix	*m;
 	t_tuple		vec;
 	int			res;
 
@@ -45,11 +45,11 @@ int	sphere_transform_m(t_sphere *obj)
 	if (!obj->transform)
 		return (0);
 	vec = vector(obj->dim, obj->dim, obj->dim);
-	s = scale_m(&vec);
-	if (!s)
+	m = scale_m(&vec);
+	if (!m)
 		return (0);
-	res = matrix_multiply(obj->transform, s);
-	free_matrix(s);
+	res = matrix_multiply(obj->transform, m);
+	free_matrix(m);
 	if (!res)
 		return (0);
 	obj->inv_t = matrix_inverse(obj->transform);

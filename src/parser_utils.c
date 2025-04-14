@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:18:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/05 13:05:11 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/10 03:36:57 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ char	*ft_strtok_iter(char *line, t_parser *parser, int expect_tok)
 	char	*tmp;
 
 	parser->problem_pos = 0;
-	if (line)
-		tmp = ft_strtok(line, " \t\r\f\v\n");
-	else
-		tmp = ft_strtok(NULL, " \t\r\f\v\n");
+	tmp = ft_strtok(line, " \t\r\f\v\n");
 	parser->tok_pos++;
 	if (!tmp && expect_tok)
 		issue_report(parser, ERR_MISSING_TOK);
@@ -62,6 +59,9 @@ void	reset_parser_props(t_parser *parser)
 	parser->tok_pos = -1;
 	parser->problem_pos = 0;
 	parser->token = 0;
+	parser->phong_done = 0;
+	parser->bump_done = 0;
+	parser->color_done = 0;
 }
 
 int	prep_objs_postparse(t_rtptr *rts)

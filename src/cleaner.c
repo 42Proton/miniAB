@@ -6,11 +6,20 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/10 06:38:38 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/11 14:12:39 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
+
+void	free_texture(void *content)
+{
+	t_texture	*texture;
+
+	texture = content;
+	mlx_delete_texture(texture->map);
+	free(content);
+}
 
 void	object_cleanup(void *content)
 {
@@ -52,8 +61,8 @@ void	cleaner(t_rtptr *rts)
 		free_camera(rts->camera);
 		free_ambient(rts->alight);
 	}
-	if(rts->rendered_image)
-		free(rts->rendered_image);
 	get_next_line(-1, 1, &dummy);
+	ft_lstclear(&rts->textures_list, free);
+	ft_lstclear(&rts->textures, free_texture);
 	exit(EXIT_SUCCESS);
 }

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_mult.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 01:19:21 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/05 13:12:50 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/06 12:01:54 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <utils.h>
+#include <stdio.h>
 
 float	m_dot_product(t_matrix *a,
 	t_matrix *b, int i_a, int i_b)
@@ -20,7 +21,7 @@ float	m_dot_product(t_matrix *a,
 
 	i = 0;
 	res = 0;
-	while (i < a->cols)
+	while (i < b->cols)
 	{
 		res += a->data[i_a * a->cols + i] * b->data[i * b->cols + i_b];
 		i++;
@@ -36,10 +37,10 @@ void	m_mult_iter(t_matrix *res,
 	float	dot_p;
 
 	i = 0;
-	while (i < b->rows)
+	while (i < a->rows)
 	{
 		j = 0;
-		while (j < a->cols)
+		while (j < b->cols)
 		{
 			dot_p = m_dot_product(a, b, i, j);
 			set_matrix_elem(res, i, j, dot_p);
@@ -53,7 +54,7 @@ int	matrix_multiply(t_matrix *a, t_matrix *b)
 {
 	t_matrix	*res;
 
-	if (a->cols != b->rows)
+	if (a->cols != b->rows || a->rows != b->cols)
 		return (0);
 	res = matrix_init(b->cols, a->rows);
 	if (!res)
