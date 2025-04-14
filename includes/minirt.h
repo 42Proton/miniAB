@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/14 14:29:48 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/14 14:42:31 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,9 @@ int				load_textures(t_rtptr *rts);
 mlx_texture_t	*get_texture_ref(char *str, t_rtptr *rts);
 void			*get_color_map_name(t_object_entry *entry);
 void			*get_bump_map_name(t_object_entry *entry);
+int				prep_textures_iter(DIR *dir, t_rtptr *rts);
+int				prep_textures(t_rtptr *rts);
+int				prep_rt_core(int ac, char **av, t_rtptr *rts);
 
 // Render
 t_colors		shade_hit(t_alight *alight,
