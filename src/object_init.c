@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:10:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/12 22:29:18 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/15 16:46:54 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	*sphere_init(void)
 		free(colors);
 		return (0);
 	}
-	sphere->mat = init_material(colors, 1, 1, 200);
+	if (sphere->phong_props)
+		sphere->mat = init_material_misc(colors, sphere->phong_props);
+	else
+		sphere->mat = init_material(colors, 1, 1, 200);
 	free(colors);
 	return (sphere);
 }
@@ -96,6 +99,7 @@ void	*hyper_init(void)
 	hyper->pos = pos();
 	hyper->scale = pos();
 	hyper->nv = pos();
+	hyper->coeffs = pos();
 	colors = color();
 	if (!colors || !hyper->pos
 		|| !hyper->scale || !hyper->nv || !init_misc_hyper(hyper))
@@ -104,7 +108,10 @@ void	*hyper_init(void)
 		free(colors);
 		return (0);
 	}
-	hyper->mat = init_material(colors, 1, 1, 200);
+	if (hyper->phong_props)
+		hyper->mat = init_material_misc(colors, hyper->phong_props);
+	else
+		hyper->mat = init_material(colors, 1, 1, 200);
 	free(colors);
 	return (hyper);
 }

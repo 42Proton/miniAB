@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   computes.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 08:22:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/12 00:00:20 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/15 22:57:02 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,35 +29,6 @@ t_colors	get_pixel_color(mlx_texture_t *texture, t_uv *uv)
 	return (res);
 }
 
-t_uv	compute_plane_uv(t_plane *obj, t_tuple *p)
-{
-	t_uv			uv;
-	mlx_texture_t	*ref;
-	float			aspect_r;
-
-	ref = obj->color_map_ref;
-	aspect_r = (float)ref->width / ref->height;
-	uv.u = p->x * (aspect_r * 0.05);
-	if (obj->normal_vector->z > EPSILON)
-		uv.v = p->y * (aspect_r * 0.05);
-	else
-		uv.v = p->z * (aspect_r * 0.05);
-	uv.u = fmod(uv.u - floorf(uv.u), 1);
-	uv.v = fmod(uv.v - floorf(uv.v), 1);
-	return (uv);
-}
-
-t_uv	compute_sphere_uv(t_sphere *obj, t_computes *comps)
-{
-	t_uv	uv;
-	t_tuple	nv;
-
-	nv = comps->nv;
-	uv.u = (asin(nv.x) / M_PI) + 0.5;
-	uv.v = (asin(nv.y) / M_PI) + 0.5;
-	return (uv);
-}
-
 t_colors	get_map_color(void *obj, int obj_type, t_computes *comps)
 {
 	t_colors		res;
@@ -71,10 +42,15 @@ t_colors	get_map_color(void *obj, int obj_type, t_computes *comps)
 		uv = compute_plane_uv(obj, &comps->hpoint);
 		ref = ((t_plane *)obj)->color_map_ref;
 	}
-	if (obj_type == SPHERE && ((t_sphere *)obj)->color_map_ref)
+	else if (obj_type == SPHERE && ((t_sphere *)obj)->color_map_ref)
 	{
 		uv = compute_sphere_uv(obj, comps);
 		ref = ((t_sphere *)obj)->color_map_ref;
+	}
+	else if (obj_type == HYPER && ((t_hyper *)obj)->color_map_ref)
+	{
+		uv = compute_hyper_uv(obj, &comps->hpoint);
+		ref = ((t_hyper *)obj)->color_map_ref;
 	}
 	if (ref)
 		res = get_pixel_color(ref, &uv);

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 22:28:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/15 19:11:33 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ typedef struct s_hyper
 {
 	t_tuple			*pos;
 	t_tuple			*scale;
+	t_tuple			*coeffs;
+	t_tuple			coeffs2;
 	t_tuple			*nv;
 	t_material		mat;
 	t_tuple			*phong_props;
@@ -215,6 +217,7 @@ t_matrix_4		submatrix_2x2(t_matrix *m, int skip_col, int skip_row);
 t_matrix		*translation_m(t_tuple *pos);
 t_matrix		*rotation_m(t_tuple *vec);
 t_matrix		*scale_m(t_tuple *vec);
+t_matrix		*lookat_m(t_tuple *from, t_tuple *to);
 // Material
 t_material		init_material(t_colors *colors,
 					float diffuse, float specular, float shininess);

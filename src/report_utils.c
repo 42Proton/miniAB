@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:09:09 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/11 15:10:25 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/14 21:08:57 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	issue_report_msg(int issue)
 		ft_dprintf(2, "Invalid float input\e[39m\n");
 	else if (issue == ERR_INVALID_NFLOAT)
 		ft_dprintf(2, "Invalid normal float input\e[39m\n");
-	else if (issue == ERR_INVALID_VEC)
-		ft_dprintf(2, "Invalid vector input\e[39m\n");
+	else if (issue == ERR_INVALID_TUPLE)
+		ft_dprintf(2, "Invalid tuple input\e[39m\n");
 	else if (issue == ERR_INVALID_RGB)
 		ft_dprintf(2, "Invalid RGB input\e[39m\n");
 	else if (issue == ERR_INVALID_COLOR)
@@ -34,4 +34,6 @@ void	issue_report_msg(int issue)
 		ft_dprintf(2, "Extra token input\e[39m\n");
 	else if (issue == ERR_INVALID_FOV)
 		ft_dprintf(2, "Invalid fov input\e[39m\n");
+	else if (issue == ERR_INVALID_COEFF)
+		ft_dprintf(2, "Invalid coefficient input\e[39m\n");
 }

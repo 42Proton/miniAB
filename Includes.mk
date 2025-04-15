@@ -32,8 +32,9 @@ SRCS= \
 	object_init_misc.c\
 	textures_utils.c\
 	load_textures.c\
-	shader_utils.c
-
+	shader_utils.c\
+	lookat_m.c\
+	object_init_misc_utils.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
@@ -65,7 +66,9 @@ RAYS=\
 	plane_intersect.c\
 	rays_render_utils.c\
 	shadow.c\
-	rays_viewport_utils.c
+	rays_viewport_utils.c\
+	hyper_intersect.c\
+	uv_utils.c
 INCLUDES=\
 	colors.h\
 	debug.h\

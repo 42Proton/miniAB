@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 17:48:16 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/15 23:00:24 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,10 @@ enum			e_issues
 	ERR_OBJ_TYPE,
 	ERR_INVALID_FLOAT,
 	ERR_INVALID_NFLOAT,
+	ERR_INVALID_COEFF,
 	ERR_MISSING_TOK,
 	ERR_EXTRA_TOK,
-	ERR_INVALID_VEC,
+	ERR_INVALID_TUPLE,
 	ERR_INVALID_RGB,
 	ERR_INVALID_COLOR,
 	ERR_INVALID_RATIO,
@@ -90,6 +91,13 @@ enum			e_issues
 	ERR_UNKNOWN_TEXTURE,
 	WARN_CAMERA_MISSING,
 	WARN_ALIGHT_MISSING
+};
+
+enum			e_validate_tuple
+{
+	DEFAULT_VALD,
+	NORM_VALD,
+	COEFFS_VALD
 };
 
 // Object Utils
@@ -105,7 +113,7 @@ void			*plane_init(void);
 void			*cylinder_init(void);
 void			*hyper_init(void);
 // Parser validation
-char			**pre_vec_validation(t_parser *parser);
+char			**pre_tuple_validation(t_parser *parser);
 int				validate_misc(t_parser *parser);
 int				validate_iter_vec_misc(t_parser *parser,
 					char **split_vec);
@@ -151,6 +159,9 @@ int				init_misc_sphere(t_sphere *obj);
 int				init_misc_plane(t_plane *obj);
 int				init_misc_cylinder(t_cylinder *obj);
 int				init_misc_hyper(t_hyper *obj);
+t_tuple			*phong_props(char *tok);
+int				check_init_misc(char *tok,
+					void *phong_props, void *color_map, void *bump_map);
 
 // Textures
 int				load_textures(t_rtptr *rts);
@@ -173,6 +184,9 @@ float			deg_to_rad(float deg);
 t_computes		init_computes(t_rtptr *rts, t_intersect *insect, t_ray *ray);
 int				is_shadow(t_rtptr *rts, t_tuple *p);
 t_colors		ray_color(t_rtptr *rts, t_ray *ray);
+t_uv			compute_plane_uv(t_plane *obj, t_tuple *p);
+t_uv			compute_sphere_uv(t_sphere *obj, t_computes *comps);
+t_uv			compute_hyper_uv(t_hyper *obj, t_tuple *p);
 // Shader Utils
 void			shader_vision_iter(t_shader *shader,
 					t_computes *comp, t_list *vision_objs);

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 19:52:35 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/15 23:01:16 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	camera_transform_m(t_camera *obj)
 	t_matrix	*m;
 	t_tuple		vec;
 
-	obj->transform = translation_m(obj->pos);
+	obj->transform = lookat_m(obj->pos, obj->orientation);
 	if (!obj->transform)
 		return (0);
-	vec = norm_to_radian(obj->orientation);
-	m = rotation_m(&vec);
+	vec = tuplenegt(obj->pos);
+	m = translation_m(&vec);
 	if (!m)
 		return (0);
 	res = matrix_multiply(obj->transform, m);
@@ -103,17 +103,24 @@ int	cylinder_transform_m(t_cylinder *obj)
 
 int	hyper_transform_m(t_hyper *obj)
 {
-	t_matrix	*s;
+	t_matrix	*m;
 	int			res;
 
 	obj->transform = translation_m(obj->pos);
 	if (!obj->transform)
 		return (0);
-	s = scale_m(obj->scale);
-	if (!s)
+	m = lookat_m(obj->pos, obj->nv);
+	if (!m)
 		return (0);
-	res = matrix_multiply(obj->transform, s);
-	free_matrix(s);
+	res = matrix_multiply(obj->transform, m);
+	free_matrix(m);
+	if (!res)
+		return (0);
+	m = scale_m(obj->scale);
+	if (!m)
+		return (0);
+	res = matrix_multiply(obj->transform, m);
+	free_matrix(m);
 	if (!res)
 		return (0);
 	obj->inv_t = matrix_inverse(obj->transform);

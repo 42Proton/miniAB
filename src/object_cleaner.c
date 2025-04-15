@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 00:59:44 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 22:29:25 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/15 23:10:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	free_hyper(t_hyper *hyper)
 	free(hyper->pos);
 	free(hyper->scale);
 	free(hyper->nv);
+	free(hyper->coeffs);
 	free(hyper->phong_props);
 	free(hyper->color_map);
 	free(hyper->bump_map);
