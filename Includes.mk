@@ -34,7 +34,8 @@ SRCS= \
 	load_textures.c\
 	shader_utils.c\
 	lookat_m.c\
-	object_init_misc_utils.c
+	object_init_misc_utils.c\
+	textures.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
