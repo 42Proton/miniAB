@@ -66,7 +66,8 @@ RAYS=\
 	plane_intersect.c\
 	rays_render_utils.c\
 	shadow.c\
-	rays_viewport_utils.c
+	rays_viewport_utils.c\
+	cylinder_intersection.c
 INCLUDES=\
 	colors.h\
 	debug.h\
