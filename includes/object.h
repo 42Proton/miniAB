@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 23:57:27 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/15 15:59:00 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,20 @@ typedef struct s_plane
 	t_matrix		*tpose_inv_t;
 }				t_plane;
 
+typedef struct s_disk
+{
+	t_tuple			*pos;
+	t_tuple			*normal_vector;
+	t_material		mat;
+	t_tuple			*phong_props;
+	char			*color_map;
+	char			*bump_map;
+	mlx_texture_t	*color_map_ref;
+	mlx_texture_t	*bump_map_ref;
+	t_matrix		*transform;
+	t_matrix		*inv_t;
+	t_matrix		*tpose_inv_t;    
+}				t_disk;
 typedef struct s_cylinder
 {
 	t_tuple			*pos;

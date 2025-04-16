@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 22:58:07 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/10 04:04:19 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/15 14:11:25 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ t_intersections	*world_intersect(t_list *solid_objs, t_ray *ray)
 			res = sphere_intersect(insects, entry, ray);
 		if (entry->type == PLANE)
 			res = plane_intersect(insects, entry, ray);
+		if(entry->type == CYLINDER)
+			res = cylinder_intersect(insects,entry,ray);
 		if (!res)
 		{
 			clear_intersections(insects);

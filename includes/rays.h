@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/12 12:31:19 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/15 14:24:08 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,12 @@ int				sphere_intersect(t_intersections *insects,
 					t_object_entry *obj_entry, t_ray *ray);
 int				plane_intersect(t_intersections *insects,
 					t_object_entry *object, t_ray *ray);
+int				cylinder_intersect(t_intersections *insects,
+					t_object_entry *object, t_ray *ray);
 t_intersect		*get_hit(t_intersections *data);
 t_intersections	*world_intersect(t_list *solid_objs, t_ray *ray);
+float			check_plane_intersect(t_plane *plane, t_ray *ray);
+
 // Ray Utils
 t_ray			init_ray(t_tuple *origin, t_tuple *direction);
 t_tuple			ray_hitpoint(t_ray *ray, float t);
