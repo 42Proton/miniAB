@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/16 23:44:51 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/17 00:50:57 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	cylinder_transform_m(t_cylinder *obj)
 	obj->transform = translation_m(obj->pos);
 	if (!obj->transform)
 		return (0);
-	vec = vector(obj->dim,obj->height , obj->dim);
+	vec = vector(obj->dim, obj->height, obj->dim);
 	s = scale_m(&vec);
 	if (!s)
 		return (0);

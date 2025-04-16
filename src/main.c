@@ -6,14 +6,12 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/14 14:41:02 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/17 00:51:06 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <debug.h>
 #include <minirt.h>
-
-
 
 int	main(int ac, char **av)
 {
