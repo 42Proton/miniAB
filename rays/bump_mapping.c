@@ -6,21 +6,44 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 23:13:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/17 23:21:33 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/18 02:14:04 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
 // The tangent for a plane is simply aligned to
-// the x axis, sometimes in z axis to avoid gimbal lock
+// the x axis, sometimes it will change depending
+// on the plane normal vector to always be orthogonal
+// to normal vector
 t_tuple	get_tangent_plane(t_tuple *nv)
 {
 	t_tuple	vec;
 
-	vec = vector(1, 0, 0);
-	if (floatcmp(nv->x, 0) && floatcmp(nv->z, 0))
-		vec = vector(0, 0, 1);
+	if (!floatcmp(nv->x, 0))
+		vec = vector(0, 0, 1 * nv->x);
+	else if (!floatcmp(nv->y, 0))
+		vec = vector(0, 0, 1 * nv->y);
+	else
+		vec = vector(1 * nv->z, 0, 0);
+	return (vec);
+}
+
+// Function to obtain a tangent vector for
+// hyperboloid of one sheet with the derivative
+// of parameterized hyperboloid with differential geometry with respect to u
+t_tuple get_tangent_hyper(t_hyper *obj, t_uv *uv)
+{
+	t_tuple	vec;
+	float	chv;
+	float	su;
+	float	cu;
+
+	chv = cosh(uv->v);
+	su = sin(uv->u);
+	cu = cos(uv->u);
+	vec = vector(chv * su, 0, chv * cu);
+	vec = tuplenormalize(&vec);
 	return (vec);
 }
 
@@ -46,10 +69,12 @@ t_tuple	get_tangent(void *obj, int obj_type, t_computes *comps)
 	t_tuple	tangent;
 
 	ft_bzero(&tangent, sizeof(t_tuple));
-	if (obj_type == PLANE || obj_type == HYPER)
+	if (obj_type == PLANE)
 		tangent = get_tangent_plane(&comps->nv);
 	else if (obj_type == SPHERE)
 		tangent = get_tangent_sphere(&comps->uv);
+	else if (obj_type == HYPER)
+		tangent = get_tangent_hyper(obj, &comps->uv);
 	return (tangent);
 }
 

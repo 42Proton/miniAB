@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:45:25 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/14 21:09:00 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/18 02:20:35 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	validate_t_norm_coeffs(t_parser *parser, int type, char *ref)
 	else if (type == COEFFS_VALD)
 	{
 		val = ft_atof(ref);
-		if (val > 2.5f || val < 0.1f)
+		if (val > 1000.0f || val < 0.1f)
 		{
 			issue_report(parser, ERR_INVALID_COEFF);
 			return (0);
