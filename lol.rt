@@ -1,13 +1,13 @@
-A 0.2 20,20,0
+A 0 20,20,0
 C 0,20,-50 0,0,1 90
-L 0,10,-30 1 0,0,0
-hy 0,0,20 3,3,3 0,1,0 1,1,0.3 0,0,0 color:Tiles_054_basecolor.png
-sp 0,30,0 5 0,0,255 color:awesomeface.png
+L 20,0,-30 1 0,100,0
+hy 0,0,20 3,3,3 0,1,0 1,1,1 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png
+sp 0,30,0 6 0,0,255 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png
 
 
-pl 50,0,0 1,0,0 255,255,0
-pl -50,0,0 -1,0,0 0,255,0
-pl 0,70,0 0,1,0 0,0,255
-pl 0,-40,0 0,-1,0 0,0,255
-pl 0,0,100 0,0,1 0,255,255
-pl 0,0,-100 0,0,1 0,255,255
+pl 50,0,0 1,0,0 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png
+pl -50,0,0 -1,0,0 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png 
+pl 0,70,0 0,1,0 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png
+pl 0,-40,0 0,-1,0 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png
+pl 0,0,100 0,0,1 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png
+pl 0,0,-100 0,0,1 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png

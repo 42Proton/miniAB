@@ -6,56 +6,11 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 08:22:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/15 22:57:02 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/17 23:18:38 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
-
-t_colors	get_pixel_color(mlx_texture_t *texture, t_uv *uv)
-{
-	t_colors	res;
-	size_t		offset;
-	int			width;
-	int			height;
-
-	width = texture->width - 1;
-	height = texture->height - 1;
-	offset = ((int)roundf(uv->v * height) * texture->width
-			+ (int)roundf(uv->u * width)) * 4;
-	res.red = (float)texture->pixels[offset] / 255;
-	res.green = (float)texture->pixels[offset + 1] / 255;
-	res.blue = (float)texture->pixels[offset + 2] / 255;
-	return (res);
-}
-
-t_colors	get_map_color(void *obj, int obj_type, t_computes *comps)
-{
-	t_colors		res;
-	t_uv			uv;
-	mlx_texture_t	*ref;
-
-	res = colorinit(0, 0, 0);
-	ref = 0;
-	if (obj_type == PLANE && ((t_plane *)obj)->color_map_ref)
-	{
-		uv = compute_plane_uv(obj, &comps->hpoint);
-		ref = ((t_plane *)obj)->color_map_ref;
-	}
-	else if (obj_type == SPHERE && ((t_sphere *)obj)->color_map_ref)
-	{
-		uv = compute_sphere_uv(obj, comps);
-		ref = ((t_sphere *)obj)->color_map_ref;
-	}
-	else if (obj_type == HYPER && ((t_hyper *)obj)->color_map_ref)
-	{
-		uv = compute_hyper_uv(obj, &comps->hpoint);
-		ref = ((t_hyper *)obj)->color_map_ref;
-	}
-	if (ref)
-		res = get_pixel_color(ref, &uv);
-	return (res);
-}
 
 t_computes	init_computes(t_rtptr *rts,
 		t_intersect *insect, t_ray *ray)
@@ -72,6 +27,10 @@ t_computes	init_computes(t_rtptr *rts,
 	if (dot_nv_e < 0)
 		comps.nv = tuplenegt(&comps.nv);
 	comps.eyev = tuplenormalize(&comps.eyev);
+	comps.uv = get_uv_coords(insect->obj, insect->obj_type, &comps);
+	comps.p_nv = bump_normal(insect->obj, insect->obj_type, &comps);
+	if (comps.is_err)
+		return (comps);
 	comps.map_color = get_map_color(insect->obj, insect->obj_type, &comps);
 	comps.over_point = n_tuplesmult(&comps.nv, SHADOW_BIAS);
 	comps.over_point = n_tupleadd(&comps.over_point, &comps.hpoint);

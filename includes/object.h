@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/15 19:11:33 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/17 16:04:58 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,12 @@ typedef struct s_cylinder
 	t_matrix		*inv_t;
 	t_matrix		*tpose_inv_t;
 }				t_cylinder;
+
+typedef struct s_uv
+{
+	float	u;
+	float	v;
+}	t_uv;
 
 enum			e_pov
 {

@@ -69,7 +69,9 @@ RAYS=\
 	shadow.c\
 	rays_viewport_utils.c\
 	hyper_intersect.c\
-	uv_utils.c
+	uv_utils.c\
+	bump_mapping.c\
+	mapping_utils.c
 INCLUDES=\
 	colors.h\
 	debug.h\

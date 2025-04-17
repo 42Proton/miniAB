@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:57:07 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/15 22:57:22 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/17 22:22:44 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,21 @@ t_uv	compute_plane_uv(t_plane *obj, t_tuple *p)
 
 	ref = obj->color_map_ref;
 	aspect_r = (float)ref->width / ref->height;
-	uv.u = p->x * (aspect_r * 0.05);
-	if (obj->normal_vector->z > EPSILON)
+	if (!floatcmp(obj->normal_vector->x, 0))
+	{
+		uv.u = p->z * (aspect_r * 0.05);
 		uv.v = p->y * (aspect_r * 0.05);
+	}
+	else if (!floatcmp(obj->normal_vector->z, 0))
+	{
+		uv.u = p->x * (aspect_r * 0.05);
+		uv.v = p->y * (aspect_r * 0.05);
+	}
 	else
+	{
+		uv.u = p->x * (aspect_r * 0.05);
 		uv.v = p->z * (aspect_r * 0.05);
+	}
 	uv.u = fmod(uv.u - floorf(uv.u), 1);
 	uv.v = fmod(uv.v - floorf(uv.v), 1);
 	return (uv);
@@ -37,7 +47,7 @@ t_uv	compute_sphere_uv(t_sphere *obj, t_computes *comps)
 
 	nv = comps->nv;
 	uv.u = (asin(nv.x) / M_PI) + 0.5;
-	uv.v = (asin(-nv.y) / M_PI) + 0.5;
+	uv.v = (asin(nv.y) / M_PI) + 0.5;
 	return (uv);
 }
 

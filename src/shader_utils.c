@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 12:38:56 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/15 16:39:18 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/17 21:27:19 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void	compute_light_props(t_shader *shader,
 	shader->effect_c = colormulti_f(&shader->effect_c, light->ratio);
 	shader->lightv = n_tuplesub(light->pos, &comp->hpoint);
 	shader->lightv = tuplenormalize(&shader->lightv);
-	shader->light_dot_n = tupledot(&shader->lightv, &comp->nv);
+	shader->light_dot_n = tupledot(&shader->lightv, &comp->p_nv);
 	tmp = tuplenegt(&shader->lightv);
-	shader->reflectv = reflect_vec(&tmp, &comp->nv);
+	shader->reflectv = reflect_vec(&tmp, &comp->p_nv);
 	shader->reflect_dot_e = tupledot(&shader->reflectv, &comp->eyev);
 }
 

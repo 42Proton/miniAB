@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/15 23:11:59 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/17 23:20:56 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,6 @@ typedef struct s_texture
 	char			*name;
 	mlx_texture_t	*map;
 }	t_texture;
-
-typedef struct s_uv
-{
-	float	u;
-	float	v;
-}	t_uv;
 
 enum			e_issues
 {
@@ -198,5 +192,10 @@ void			compute_light_props(t_shader *shader,
 t_colors		compute_specular(t_shader *shader, t_light *light);
 t_material		*get_material(int obj_type, void *obj);
 t_colors		compute_diffuse(t_shader *shader);
+t_colors		get_pixel_color(mlx_texture_t *texture, t_uv *uv);
+t_colors		get_map_color(void *obj, int obj_type, t_computes *comps);
+t_uv			get_uv_coords(void *obj, int obj_type, t_computes *comps);
+mlx_texture_t	*get_bump_ref(void *obj, int obj_type);
+t_tuple			bump_normal(void *obj, int obj_type, t_computes *comps);
 
 #endif
