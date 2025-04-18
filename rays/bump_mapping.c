@@ -6,33 +6,38 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 23:13:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/18 03:08:52 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/18 19:29:05 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-// The tangent for a plane is simply aligned to
-// the x axis, sometimes it will change depending
-// on the plane normal vector to always be orthogonal
-// to normal vector
-t_tuple	get_tangent_plane(t_tuple *nv)
+// To get the tangent of the plane we use an arbitary
+// tangent vector for specify direction which most of
+// the time will be the x axis unless if the plane normal
+// is aligned on x axis, then using this vector we will project
+// it on the plane using the normal vector to get the true tangent
+t_tuple get_tangent_plane(t_tuple *nv)
 {
-	t_tuple	vec;
+    t_tuple	vec;
+	t_tuple	t_v;
+	float	vn_d;
 
-	if (!floatcmp(nv->x, 0))
-		vec = vector(0, 0, 1 * nv->x);
-	else if (!floatcmp(nv->y, 0))
-		vec = vector(0, 0, 1 * nv->y);
-	else
-		vec = vector(1 * nv->z, 0, 0);
-	return (vec);
+    if (!floatcmp(nv->x, 0))
+ 		vec = vector(0, 0, 1);
+ 	else
+ 		vec = vector(1, 0, 0);
+	vn_d = tupledot(&vec, nv);
+	t_v = n_tuplesmult(nv, vn_d);
+	t_v = n_tuplesub(&vec, &t_v);
+	t_v = tuplenormalize(&t_v);
+    return (t_v);
 }
 
 // Function to obtain a tangent vector for
 // hyperboloid of one sheet with the derivative
 // of parameterized hyperboloid with respect to u
-t_tuple get_tangent_hyper(t_hyper *obj, t_uv *uv)
+t_tuple get_tangent_hyper(t_uv *uv)
 {
 	t_tuple	vec;
 	float	chv;
@@ -74,11 +79,11 @@ t_tuple	get_tangent(void *obj, int obj_type, t_computes *comps)
 	else if (obj_type == SPHERE)
 		tangent = get_tangent_sphere(&comps->uv);
 	else if (obj_type == HYPER)
-		tangent = get_tangent_hyper(obj, &comps->uv);
+		tangent = get_tangent_hyper(&comps->uv);
 	return (tangent);
 }
 
-void	normal_to_local(t_tuple *t_vec, t_tuple *nv, t_computes *comps)
+void	normal_to_world(t_tuple *t_vec, t_tuple *nv, t_computes *comps)
 {
 	t_tuple		bt_vec;
 	t_matrix	*m;
@@ -100,6 +105,7 @@ void	normal_to_local(t_tuple *t_vec, t_tuple *nv, t_computes *comps)
 	m->data[9] = bt_vec.z;
 	m->data[10] = comps->nv.z;
 	*nv = transform_f(m, nv);
+	*nv = tuplenormalize(nv);
 	free_matrix(m);
 }
 
@@ -115,8 +121,8 @@ t_tuple	bump_normal(void *obj, int obj_type, t_computes *comps)
 		return (comps->nv);
 	tex = get_pixel_color(ref, &comps->uv);
 	tex = colormulti_f(&tex, 2);
-	nv = vector(tex.red - 1, tex.blue - 1, tex.green - 1);
+	nv = vector(tex.red - 1, tex.green - 1, tex.blue - 1);
 	t_vec = get_tangent(obj, obj_type, comps);
-	normal_to_local(&t_vec, &nv, comps);
+	normal_to_world(&t_vec, &nv, comps);
 	return (nv);
 }
