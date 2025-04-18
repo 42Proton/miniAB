@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 23:13:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/18 02:14:04 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/18 03:08:52 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_tuple	get_tangent_plane(t_tuple *nv)
 
 // Function to obtain a tangent vector for
 // hyperboloid of one sheet with the derivative
-// of parameterized hyperboloid with differential geometry with respect to u
+// of parameterized hyperboloid with respect to u
 t_tuple get_tangent_hyper(t_hyper *obj, t_uv *uv)
 {
 	t_tuple	vec;
