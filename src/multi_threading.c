@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 03:29:18 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/19 03:38:26 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 03:52:48 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	*thread_routine(void *arg)
 	x_mod = data->n_procs / 2;
 	y_factor = 2.0f / data->n_procs;
 	offset_x = WID / (data->n_procs / 2);
-	offset_y = HEG / (data->n_procs / 2);
+	offset_y = HEG / 2;
 	data->start_x = offset_x * (data->t_num % x_mod);
 	data->start_y = offset_y * (int)(data->t_num * y_factor);
 	data->end_x = (offset_x * (data->t_num % x_mod)) + offset_x;
