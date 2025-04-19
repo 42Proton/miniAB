@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 18:23:21 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/18 21:50:02 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 23:12:05 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,6 @@ int	validate_misc(t_parser *parser)
 	tok = ft_strtok_iter_nr(parser);
 	while (tok)
 	{
-		if (parser->phong_done && parser->bump_done
-			&& parser->color_done && parser->reflect_done)
-		{
-			simple_report(ERR_EXTRA_TOK);
-			return (0);
-		}
 		res = 0;
 		if (!ft_strncmp(tok, "phong:", 6))
 			res = validate_phong(parser, tok);

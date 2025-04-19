@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/18 21:58:14 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 23:12:53 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ typedef struct s_sphere
 	t_matrix		*transform;
 	t_matrix		*inv_t;
 	t_matrix		*tpose_inv_t;
-	int				reflect;
+	float			reflect;
 }				t_sphere;
 
 typedef struct s_hyper
@@ -129,7 +129,7 @@ typedef struct s_hyper
 	t_matrix		*transform;
 	t_matrix		*inv_t;
 	t_matrix		*tpose_inv_t;
-	int				reflect;
+	float			reflect;
 }				t_hyper;
 
 typedef struct s_plane
@@ -145,7 +145,7 @@ typedef struct s_plane
 	t_matrix		*transform;
 	t_matrix		*inv_t;
 	t_matrix		*tpose_inv_t;
-	int				reflect;
+	float			reflect;
 }				t_plane;
 
 typedef struct s_cylinder
@@ -163,7 +163,7 @@ typedef struct s_cylinder
 	t_matrix		*transform;
 	t_matrix		*inv_t;
 	t_matrix		*tpose_inv_t;
-	int				reflect;
+	float			reflect;
 }				t_cylinder;
 
 typedef struct s_uv

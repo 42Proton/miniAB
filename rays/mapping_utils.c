@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 23:18:27 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/17 23:18:51 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 19:09:39 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_colors	get_pixel_color(mlx_texture_t *texture, t_uv *uv)
 
 	width = texture->width - 1;
 	height = texture->height - 1;
-	offset = ((int)roundf((uv->v) * height) * texture->width
+	offset = ((int)roundf((1 - uv->v) * height) * texture->width
 			+ (int)roundf(uv->u * width)) * 4;
 	res.red = (float)texture->pixels[offset] / 255;
 	res.green = (float)texture->pixels[offset + 1] / 255;

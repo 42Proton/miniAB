@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 12:38:56 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/17 21:27:19 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 20:04:32 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_material	*get_material(int obj_type, void *obj)
 	return (mat);
 }
 
-t_colors	compute_diffuse(t_shader *shader)
+t_colors	compute_diffuse(t_phong_shader *shader)
 {
 	t_colors	diffuse_c;
 
@@ -42,7 +42,7 @@ t_colors	compute_diffuse(t_shader *shader)
 	return (diffuse_c);
 }
 
-t_colors	compute_specular(t_shader *shader, t_light *light)
+t_colors	compute_specular(t_phong_shader *shader, t_light *light)
 {
 	float		factor;
 	t_colors	specular_c;
@@ -59,7 +59,7 @@ t_colors	compute_specular(t_shader *shader, t_light *light)
 	return (specular_c);
 }
 
-void	compute_light_props(t_shader *shader,
+void	compute_light_props(t_phong_shader *shader,
 	t_light *light, t_computes *comp)
 {
 	t_tuple	tmp;
@@ -75,7 +75,7 @@ void	compute_light_props(t_shader *shader,
 	shader->reflect_dot_e = tupledot(&shader->reflectv, &comp->eyev);
 }
 
-void	shader_vision_iter(t_shader *shader,
+void	shader_vision_iter(t_phong_shader *shader,
 	t_computes *comp, t_list *vision_objs)
 {
 	t_light	*light;

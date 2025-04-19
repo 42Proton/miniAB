@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/19 03:59:27 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 23:16:44 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ struct s_rtptr
 	int				is_err;
 };
 
-typedef struct s_shader
+typedef struct s_phong_shader
 {
 	t_colors	ambient_c;
 	t_colors	effect_c;
@@ -76,7 +76,7 @@ typedef struct s_shader
 	t_material	*mat;
 	float		light_dot_n;
 	float		reflect_dot_e;
-}				t_shader;
+}				t_phong_shader;
 
 typedef struct s_texture
 {
@@ -186,8 +186,7 @@ int				prep_textures(t_rtptr *rts);
 int				prep_rt_core(int ac, char **av, t_rtptr *rts);
 
 // Render
-t_colors		shade_hit(t_alight *alight,
-					t_computes *comp, t_list *vision);
+t_colors		shade_hit(t_rtptr *rts, t_computes *comp, int depth);
 int				render_viewport(t_rtptr *rts);
 // SSAA
 
@@ -200,18 +199,18 @@ float			deg_to_rad(float deg);
 t_colors		scaled_ray(t_rtptr *rts, int x, int y);
 t_computes		init_computes(t_rtptr *rts, t_intersect *insect, t_ray *ray);
 int				is_shadow(t_rtptr *rts, t_tuple *p);
-t_colors		ray_color(t_rtptr *rts, t_ray *ray);
+t_colors		ray_color(t_rtptr *rts, t_ray *ray, int depth);
 t_uv			compute_plane_uv(t_plane *obj, t_tuple *p);
 t_uv			compute_sphere_uv(t_sphere *obj, t_computes *comps);
 t_uv			compute_hyper_uv(t_hyper *obj, t_tuple *p);
 // Shader Utils
-void			shader_vision_iter(t_shader *shader,
+void			shader_vision_iter(t_phong_shader *shader,
 					t_computes *comp, t_list *vision_objs);
-void			compute_light_props(t_shader *shader,
+void			compute_light_props(t_phong_shader *shader,
 					t_light *light, t_computes *comp);
-t_colors		compute_specular(t_shader *shader, t_light *light);
+t_colors		compute_specular(t_phong_shader *shader, t_light *light);
 t_material		*get_material(int obj_type, void *obj);
-t_colors		compute_diffuse(t_shader *shader);
+t_colors		compute_diffuse(t_phong_shader *shader);
 t_colors		get_pixel_color(mlx_texture_t *texture, t_uv *uv);
 t_colors		get_map_color(void *obj, int obj_type, t_computes *comps);
 t_uv			get_uv_coords(void *obj, int obj_type, t_computes *comps);

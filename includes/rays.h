@@ -6,14 +6,15 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/19 01:41:02 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 23:16:57 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYS_H
 # define RAYS_H
 
-# define POINT_BIAS 0.2
+# define POINT_BIAS 0.1
+# define REFLECT_MAX_DEPTH 10
 
 # include <object.h>
 
@@ -37,6 +38,7 @@ typedef struct s_computes
 	t_tuple		eyev;
 	t_tuple		nv;
 	t_tuple		p_nv;
+	t_tuple		reflectv;
 	t_tuple		over_point;
 	t_colors	map_color;
 	t_uv		uv;

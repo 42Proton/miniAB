@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 12:21:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/19 03:16:46 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 23:17:11 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_colors	scaled_pixel(t_rtptr *rts, float offset_x, float offset_y)
 	t_colors	color;
 
 	ray = ray_pixel(rts->camera, offset_x, offset_y);
-	color = ray_color(rts, &ray);
+	color = ray_color(rts, &ray, 0);
 	return (color);
 }
 

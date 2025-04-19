@@ -48,7 +48,8 @@ TUPLES=\
 COLORS=\
 	colors.c\
 	colors_utils.c\
-	colors_operations.c
+	colors_operations.c\
+	colors_operations2.c
 MATRIX=\
 	matrix.c\
 	matrix_utils.c\

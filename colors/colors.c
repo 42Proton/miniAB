@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:32:46 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 00:05:12 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/19 15:51:07 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ t_colors	colorinit(float red, float green, float blue)
 	res.red = red;
 	res.green = green;
 	res.blue = blue;
+	return (res);
+}
+
+t_colors	color_black()
+{
+	t_colors	res;
+
+	ft_bzero(&res, sizeof(t_colors));
 	return (res);
 }
 
