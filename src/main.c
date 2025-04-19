@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/19 03:53:10 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 13:21:02 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int	setup_threads(t_rtptr *rts)
 		return (EXIT_FAILURE);
 	}
 	prep_threads_data(rts);
-	spawn_threads(rts);
+	if (spawn_threads(rts))
+		return (EXIT_FAILURE);
 	while (++i < rts->n_procs)
 		pthread_join(rts->threads[i], 0);
 	if (check_error(rts))

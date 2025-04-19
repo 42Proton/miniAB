@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/19 03:38:48 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 03:59:27 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <pthread.h>
 # define WID 800
 # define HEG 600
-# define SSAA 1
+# define SSAA 2
 
 typedef struct s_rtptr t_rtptr;
 
