@@ -35,7 +35,8 @@ SRCS= \
 	shader_utils.c\
 	lookat_m.c\
 	object_init_misc_utils.c\
-	prep_rt.c
+	prep_rt.c\
+	multi_threading.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:58:26 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/14 21:02:28 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/18 21:55:48 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_parser
 	int		phong_done;
 	int		color_done;
 	int		bump_done;
+	int		reflect_done;
 }			t_parser;
 
 int			check_float_input(const char *str);

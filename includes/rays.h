@@ -6,14 +6,14 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/17 21:24:33 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 01:41:02 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYS_H
 # define RAYS_H
 
-# define SHADOW_BIAS 0.5
+# define POINT_BIAS 0.2
 
 # include <object.h>
 

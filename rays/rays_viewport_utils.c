@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 12:21:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/14 16:18:43 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 03:16:46 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_colors	scaled_pixel(t_rtptr *rts, float offset_x, float offset_y)
 	return (color);
 }
 
-t_colors	scaled_ray(t_rtptr *rts, t_camera *cam, int x, int y)
+t_colors	scaled_ray(t_rtptr *rts, int x, int y)
 {
 	int			i;
 	int			j;
@@ -56,7 +56,7 @@ t_colors	scaled_ray(t_rtptr *rts, t_camera *cam, int x, int y)
 		{
 			temp = scaled_pixel(rts, x + ((float)j + 0.5) / SSAA - 0.5,
 					y + ((float)i + 0.5) / SSAA - 0.5);
-			if (rts->is_err)
+			if (check_error(rts))
 				return (total_color);
 			total_color = coloradd(&total_color, &temp);
 			counter++;
@@ -66,25 +66,3 @@ t_colors	scaled_ray(t_rtptr *rts, t_camera *cam, int x, int y)
 	return (total_color);
 }
 
-int	render_viewport(t_rtptr *rts)
-{
-	t_colors	color;
-	int			x;
-	int			y;
-
-	y = 0;
-	while (y < HEG)
-	{
-		x = 0;
-		while (x < WID)
-		{
-			color = scaled_ray(rts, rts->camera, x, y);
-			if (rts->is_err)
-				return (0);
-			mlx_put_pixel(rts->img, x, y, colorvalue(&color));
-			x++;
-		}
-		y++;
-	}
-	return (1);
-}

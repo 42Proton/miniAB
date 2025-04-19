@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:57:07 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/18 02:20:00 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/18 20:56:32 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_uv	compute_sphere_uv(t_sphere *obj, t_computes *comps)
 
 	nv = comps->nv;
 	uv.u = (asin(nv.x) / M_PI) + 0.5;
-	uv.v = (asin(nv.y) / M_PI) + 0.5;
+	uv.v = (asin(-nv.y) / M_PI) + 0.5;
 	return (uv);
 }
 

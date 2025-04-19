@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 17:50:07 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 03:19:11 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ void	cleaner(t_rtptr *rts)
 {
 	int	dummy;
 
+	pthread_mutex_destroy(&rts->fail_mutex);
+	free(rts->t_data);
+	free(rts->threads);
 	if (rts->img)
 		mlx_delete_image(rts->mlx, rts->img);
 	if (rts->mlx)

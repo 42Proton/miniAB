@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/17 23:20:56 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 03:38:48 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,42 @@
 # include <debug.h>
 # include <sys/types.h>
 # include <dirent.h>
+# include <sys/sysinfo.h>
+# include <pthread.h>
 # define WID 800
 # define HEG 600
-# define SSAA 2
+# define SSAA 1
 
-typedef struct s_rtptr
+typedef struct s_rtptr t_rtptr;
+
+typedef struct s_thread_data
 {
-	mlx_t		*mlx;
-	mlx_image_t	*img;
-	t_alight	*alight;
-	t_camera	*camera;
-	t_list		*vision_objs;
-	t_list		*solid_objs;
-	t_list		*objs;
-	t_list		*textures_list;
-	t_list		*textures;
-	int			is_err;
-}				t_rtptr;
+	t_rtptr	*rts;
+	int		start_x;
+	int		start_y;
+	int		end_x;
+	int		end_y;
+	int		t_num;
+	int		n_procs;
+}	t_thread_data;
+
+struct s_rtptr
+{
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	t_alight		*alight;
+	t_camera		*camera;
+	t_list			*vision_objs;
+	t_list			*solid_objs;
+	t_list			*objs;
+	t_list			*textures_list;
+	t_list			*textures;
+	pthread_t		*threads;
+	pthread_mutex_t	fail_mutex;
+	t_thread_data	*t_data;
+	int				n_procs;
+	int				is_err;
+};
 
 typedef struct s_shader
 {
@@ -178,6 +197,7 @@ t_colors		*color(void);
 t_tuple			norm_to_radian(t_tuple *vec);
 float			deg_to_rad(float deg);
 // Ray utils
+t_colors		scaled_ray(t_rtptr *rts, int x, int y);
 t_computes		init_computes(t_rtptr *rts, t_intersect *insect, t_ray *ray);
 int				is_shadow(t_rtptr *rts, t_tuple *p);
 t_colors		ray_color(t_rtptr *rts, t_ray *ray);
@@ -197,5 +217,12 @@ t_colors		get_map_color(void *obj, int obj_type, t_computes *comps);
 t_uv			get_uv_coords(void *obj, int obj_type, t_computes *comps);
 mlx_texture_t	*get_bump_ref(void *obj, int obj_type);
 t_tuple			bump_normal(void *obj, int obj_type, t_computes *comps);
+
+// Multi-Threading
+void			set_error(t_rtptr *rts);
+int				check_error(t_rtptr *rts);
+void			render_section(t_thread_data *data);
+void			*thread_routine(void *arg);
+void			prep_threads_data(t_rtptr *rts);
 
 #endif

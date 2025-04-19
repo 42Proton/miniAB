@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:18:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/15 16:47:42 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/18 21:45:39 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	reset_parser_props(t_parser *parser)
 	parser->phong_done = 0;
 	parser->bump_done = 0;
 	parser->color_done = 0;
+	parser->reflect_done = 0;
 }
 
 int	prep_objs_postparse(t_rtptr *rts)

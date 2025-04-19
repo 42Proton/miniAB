@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_utils_extra.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 18:23:21 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/12 00:10:01 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/18 21:50:02 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,32 @@ int	validate_map(t_parser *parser, char *tok)
 	return (1);
 }
 
+int	validate_reflect(t_parser *parser, char *tok)
+{
+	float	val;
+
+	if (parser->reflect_done)
+	{
+		issue_report(parser, ERR_EXTRA_TOK);
+		return (0);
+	}
+	tok = ft_strchr(tok, ':');
+	tok++;
+	if (!check_float_input(tok))
+	{
+		issue_report(parser, ERR_INVALID_FLOAT);
+		return (0);
+	}
+	val = ft_atof(tok);
+	if (val < 0 || val > 1)
+	{
+		issue_report(parser, ERR_INVALID_RATIO);
+		return (0);
+	}
+	parser->reflect_done = 1;
+	return (1);
+}
+
 int	validate_misc(t_parser *parser)
 {
 	char	*tok;
@@ -68,7 +94,8 @@ int	validate_misc(t_parser *parser)
 	tok = ft_strtok_iter_nr(parser);
 	while (tok)
 	{
-		if (parser->phong_done && parser->bump_done && parser->color_done)
+		if (parser->phong_done && parser->bump_done
+			&& parser->color_done && parser->reflect_done)
 		{
 			simple_report(ERR_EXTRA_TOK);
 			return (0);
@@ -79,6 +106,8 @@ int	validate_misc(t_parser *parser)
 		else if (!ft_strncmp(tok, "color:", 6)
 			|| !ft_strncmp(tok, "bump:", 5))
 			res = validate_map(parser, tok);
+		else if (!ft_strncmp(tok, "reflect:", 8))
+			res = validate_reflect(parser, tok);
 		else
 			simple_report(ERR_UNKNOWN_MISC);
 		if (!res)

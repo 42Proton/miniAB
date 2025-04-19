@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 23:42:50 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/15 22:51:41 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/18 21:59:51 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	init_misc_sphere(t_sphere *obj)
 			obj->color_map = ft_strdup(tok + 6);
 		else if (!ft_strncmp(tok, "bump:", 5))
 			obj->bump_map = ft_strdup(tok + 5);
+		else if (!ft_strncmp(tok, "reflect:", 8))
+			obj->reflect = ft_atof(tok + 8);
 		if (!check_init_misc(tok, obj->phong_props, obj->color_map,
 				obj->bump_map))
 			return (0);
@@ -46,6 +48,8 @@ int	init_misc_plane(t_plane *obj)
 			obj->color_map = ft_strdup(tok + 6);
 		else if (!ft_strncmp(tok, "bump:", 5))
 			obj->bump_map = ft_strdup(tok + 5);
+		else if (!ft_strncmp(tok, "reflect:", 8))
+			obj->reflect = ft_atof(tok + 8);
 		if (!check_init_misc(tok, obj->phong_props, obj->color_map,
 				obj->bump_map))
 			return (0);
@@ -67,6 +71,8 @@ int	init_misc_cylinder(t_cylinder *obj)
 			obj->color_map = ft_strdup(tok + 6);
 		else if (!ft_strncmp(tok, "bump:", 5))
 			obj->bump_map = ft_strdup(tok + 5);
+		else if (!ft_strncmp(tok, "reflect:", 8))
+			obj->reflect = ft_atof(tok + 8);
 		if (!check_init_misc(tok, obj->phong_props, obj->color_map,
 				obj->bump_map))
 			return (0);
@@ -88,6 +94,8 @@ int	init_misc_hyper(t_hyper *obj)
 			obj->color_map = ft_strdup(tok + 6);
 		else if (!ft_strncmp(tok, "bump:", 5))
 			obj->bump_map = ft_strdup(tok + 5);
+		else if (!ft_strncmp(tok, "reflect:", 8))
+			obj->reflect = ft_atof(tok + 8);
 		if (!check_init_misc(tok, obj->phong_props, obj->color_map,
 				obj->bump_map))
 			return (0);
