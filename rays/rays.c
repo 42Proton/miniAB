@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:56:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/05 13:11:22 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/15 22:47:39 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	prep_intersections_sphere(t_intersections *res,
 	return (1);
 }
 
-t_quad_eq	sphere_quad_eq(t_object_entry *obj_entry, t_ray *ray)
+t_quad_eq	sphere_quad_eq(t_ray *ray)
 {
 	t_tuple		sphere_to_ray;
 	t_quad_eq	quad_eq;
@@ -58,7 +58,7 @@ int	sphere_intersect(t_intersections *insects,
 
 	sphere = (t_sphere *)obj_entry->object;
 	ray_transform = transform_ray(sphere->inv_t, ray);
-	quad_eq = sphere_quad_eq(obj_entry, &ray_transform);
+	quad_eq = sphere_quad_eq(&ray_transform);
 	if (quad_eq.discriminant < 0)
 		return (1);
 	if (!prep_intersections_sphere(insects, obj_entry, &quad_eq))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:10:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/12 00:11:26 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/19 23:14:03 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ void	*sphere_init(void)
 		free(colors);
 		return (0);
 	}
-	sphere->mat = init_material(colors, 1, 1, 200);
+	if (sphere->phong_props)
+		sphere->mat = init_material_misc(colors, sphere->phong_props);
+	else
+		sphere->mat = init_material(colors, 1, 1, 200);
+	sphere->mat.reflect = sphere->reflect;
 	free(colors);
 	return (sphere);
 }
@@ -56,6 +60,7 @@ void	*plane_init(void)
 		plane->mat = init_material_misc(colors, plane->phong_props);
 	else
 		plane->mat = init_material(colors, 1, 1, 200);
+	plane->mat.reflect = plane->reflect;
 	free(colors);
 	return (plane);
 }
@@ -81,6 +86,36 @@ void	*cylinder_init(void)
 		return (0);
 	}
 	cylinder->mat = init_material(colors, 1, 1, 200);
+	cylinder->mat.reflect = cylinder->reflect;
 	free(colors);
 	return (cylinder);
+}
+
+void	*hyper_init(void)
+{
+	t_hyper		*hyper;
+	t_colors	*colors;
+
+	hyper = ft_calloc(1, sizeof(t_hyper));
+	if (!hyper)
+		return (0);
+	hyper->pos = pos();
+	hyper->scale = pos();
+	hyper->nv = pos();
+	hyper->coeffs = pos();
+	colors = color();
+	if (!colors || !hyper->pos
+		|| !hyper->scale || !hyper->nv || !init_misc_hyper(hyper))
+	{
+		free_hyper(hyper);
+		free(colors);
+		return (0);
+	}
+	if (hyper->phong_props)
+		hyper->mat = init_material_misc(colors, hyper->phong_props);
+	else
+		hyper->mat = init_material(colors, 1, 1, 200);
+	hyper->mat.reflect = hyper->reflect;
+	free(colors);
+	return (hyper);
 }

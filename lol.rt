@@ -1,11 +1,13 @@
-A 0.2 20,20,0
-C 0,0,0 0,1,0 90
-L 20,0,-30 1 255,0,0
-sp 0,0,10 1 10,0,255 
+A 0 20,20,0
+C 0,20,-60 0,0,1 90
+L 0,40,0 1 0,50,0
+hy 0,0,20 3,3,3 0,1,0 1,1,10 0,0,0 color:uv_test.png
 
+cy 20,0,-20 0,1,0 2 4 0,0,0 bump:Glass_Frosted_001_normal.png reflect:1
 
-pl 50,0,0 1,0,0 255,255,0
-pl -50,0,0 -1,0,0 0,255,0
-pl 0,40,0 0,1,0 0,0,255
-pl 0,-40,0 0,-1,0 0,0,255
-pl 0,0,100 0,0,1 0,255,255
+pl 50,0,0 1,0,0 0,0,0 color:Brick_Wall_012_COLOR.png bump:Brick_Wall_012_NORM.png
+pl -50,0,0 -1,0,0 0,0,0 color:Brick_Wall_012_COLOR.png bump:Brick_Wall_012_NORM.png
+pl 0,70,0 0,1,0 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png
+pl 0,-40,0 0,-1,0 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png
+pl 0,0,100 0,0,1 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png
+pl 0,0,-100 0,0,1 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png

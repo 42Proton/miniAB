@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleaner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:37:37 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/11 14:12:39 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/19 03:19:11 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	object_cleanup(void *content)
 			free_plane(entry->object);
 		else if (entry->type == CYLINDER)
 			free_cylinder(entry->object);
+		else if (entry->type == HYPER)
+			free_hyper(entry->object);
 	}
 	free(content);
 }
@@ -48,6 +50,9 @@ void	cleaner(t_rtptr *rts)
 {
 	int	dummy;
 
+	pthread_mutex_destroy(&rts->fail_mutex);
+	free(rts->t_data);
+	free(rts->threads);
 	if (rts->img)
 		mlx_delete_image(rts->mlx, rts->img);
 	if (rts->mlx)

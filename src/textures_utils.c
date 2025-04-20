@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 02:01:56 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/10 03:38:00 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/15 16:56:57 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	*get_color_map_name(t_object_entry *entry)
 		return (((t_plane *)entry->object)->color_map);
 	if (entry->type == CYLINDER)
 		return (((t_cylinder *)entry->object)->color_map);
+	if (entry->type == HYPER)
+		return (((t_hyper *)entry->object)->color_map);
 	return (0);
 }
 
@@ -31,6 +33,8 @@ void	*get_bump_map_name(t_object_entry *entry)
 		return (((t_plane *)entry->object)->bump_map);
 	if (entry->type == CYLINDER)
 		return (((t_cylinder *)entry->object)->bump_map);
+	if (entry->type == HYPER)
+		return (((t_hyper *)entry->object)->bump_map);
 	return (0);
 }
 

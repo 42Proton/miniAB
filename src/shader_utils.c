@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 12:38:56 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/12 12:43:17 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/20 17:05:41 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ t_material	*get_material(int obj_type, void *obj)
 		mat = &((t_plane *)obj)->mat;
 	else if (obj_type == CYLINDER)
 		mat = &((t_cylinder *)obj)->mat;
+	else if (obj_type == HYPER)
+		mat = &((t_hyper *)obj)->mat;
 	return (mat);
 }
 
-t_colors	compute_diffuse(t_shader *shader)
+t_colors	compute_diffuse(t_phong_shader *shader)
 {
 	t_colors	diffuse_c;
 
@@ -40,7 +42,7 @@ t_colors	compute_diffuse(t_shader *shader)
 	return (diffuse_c);
 }
 
-t_colors	compute_specular(t_shader *shader, t_light *light)
+t_colors	compute_specular(t_phong_shader *shader, t_light *light)
 {
 	float		factor;
 	t_colors	specular_c;
@@ -57,23 +59,23 @@ t_colors	compute_specular(t_shader *shader, t_light *light)
 	return (specular_c);
 }
 
-void	compute_light_props(t_shader *shader,
+void	compute_light_props(t_phong_shader *shader,
 	t_light *light, t_computes *comp)
 {
 	t_tuple	tmp;
 
 	shader->effect_c = coloradd(&shader->mat->color, light->colors);
-	shader->effect_c = coloravg(&shader->effect_c, &comp->map_color);
+	shader->effect_c = coloradd(&shader->effect_c, &comp->map_color);
 	shader->effect_c = colormulti_f(&shader->effect_c, light->ratio);
 	shader->lightv = n_tuplesub(light->pos, &comp->hpoint);
 	shader->lightv = tuplenormalize(&shader->lightv);
-	shader->light_dot_n = tupledot(&shader->lightv, &comp->nv);
+	shader->light_dot_n = tupledot(&shader->lightv, &comp->p_nv);
 	tmp = tuplenegt(&shader->lightv);
-	shader->reflectv = reflect_vec(&tmp, &comp->nv);
+	shader->reflectv = reflect_vec(&tmp, &comp->p_nv);
 	shader->reflect_dot_e = tupledot(&shader->reflectv, &comp->eyev);
 }
 
-void	shader_vision_iter(t_shader *shader,
+void	shader_vision_iter(t_phong_shader *shader,
 	t_computes *comp, t_list *vision_objs)
 {
 	t_light	*light;

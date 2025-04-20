@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 00:11:15 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/20 18:13:42 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	camera_transform_m(t_camera *obj)
 	t_matrix	*m;
 	t_tuple		vec;
 
-	obj->transform = translation_m(obj->pos);
+	obj->transform = lookat_m(obj->pos, obj->orientation);
 	if (!obj->transform)
 		return (0);
-	vec = norm_to_radian(obj->orientation);
-	m = rotation_m(&vec);
+	vec = tuplenegt(obj->pos);
+	m = translation_m(&vec);
 	if (!m)
 		return (0);
 	res = matrix_multiply(obj->transform, m);
@@ -77,20 +77,20 @@ int	plane_transform_m(t_plane *obj)
 
 int	cylinder_transform_m(t_cylinder *obj)
 {
-	t_matrix	*s;
-	t_tuple		vec;
-	int			res;
+	if (!cylinder_tm_core(obj))
+		return (0);
+	obj->inv_t = matrix_inverse(obj->transform);
+	if (!obj->inv_t)
+		return (0);
+	obj->tpose_inv_t = matrix_transpose(obj->inv_t);
+	if (!obj->tpose_inv_t)
+		return (0);
+	return (1);
+}
 
-	obj->transform = translation_m(obj->pos);
-	if (!obj->transform)
-		return (0);
-	vec = vector(obj->dim, obj->dim, obj->height);
-	s = scale_m(&vec);
-	if (!s)
-		return (0);
-	res = matrix_multiply(obj->transform, s);
-	free_matrix(s);
-	if (!res)
+int	hyper_transform_m(t_hyper *obj)
+{
+	if (!hyper_tm_core(obj))
 		return (0);
 	obj->inv_t = matrix_inverse(obj->transform);
 	if (!obj->inv_t)

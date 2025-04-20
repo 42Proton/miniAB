@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:45:25 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/08 19:31:42 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/18 02:20:35 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,35 @@ int	check_vec_input(char *str)
 	return (1);
 }
 
-static int	validate_iter_vec(t_parser *parser,
-	char **split_vec, int is_norm)
+static int	validate_t_norm_coeffs(t_parser *parser, int type, char *ref)
+{
+	float	val;
+
+	if (type == NORM_VALD)
+	{
+		val = ft_atof(ref);
+		if (val > 1.0f || val < -1.0f)
+		{
+			issue_report(parser, ERR_INVALID_NFLOAT);
+			return (0);
+		}
+	}
+	else if (type == COEFFS_VALD)
+	{
+		val = ft_atof(ref);
+		if (val > 1000.0f || val < 0.1f)
+		{
+			issue_report(parser, ERR_INVALID_COEFF);
+			return (0);
+		}
+	}
+	return (1);
+}
+
+static int	validate_iter_tuple(t_parser *parser,
+	char **split_vec, int type)
 {
 	size_t	i;
-	float	val;
 
 	i = 0;
 	while (split_vec[i])
@@ -37,22 +61,15 @@ static int	validate_iter_vec(t_parser *parser,
 			issue_report(parser, ERR_INVALID_FLOAT);
 			return (0);
 		}
-		if (is_norm)
-		{
-			val = ft_atof(split_vec[i]);
-			if (val > 1.0f || val < -1.0f)
-			{
-				issue_report(parser, ERR_INVALID_NFLOAT);
-				return (0);
-			}
-		}
+		if (!validate_t_norm_coeffs(parser, type, split_vec[i]))
+			return (0);
 		i++;
 		parser->problem_pos++;
 	}
 	return (1);
 }
 
-char	**pre_vec_validation(t_parser *parser)
+char	**pre_tuple_validation(t_parser *parser)
 {
 	char	*token;
 	char	**split_vec;
@@ -63,7 +80,7 @@ char	**pre_vec_validation(t_parser *parser)
 	if (!check_vec_input(token)
 		|| ft_getchr_count(token, ',') != 2)
 	{
-		issue_report(parser, ERR_INVALID_VEC);
+		issue_report(parser, ERR_INVALID_TUPLE);
 		return (0);
 	}
 	split_vec = ft_split(token, ',');
@@ -75,28 +92,15 @@ char	**pre_vec_validation(t_parser *parser)
 	return (split_vec);
 }
 
-int	validate_pos(t_parser *parser)
+int	validate_tuple(t_parser *parser, int type)
 {
 	char	**split_vec;
 	int		res;
 
-	split_vec = pre_vec_validation(parser);
+	split_vec = pre_tuple_validation(parser);
 	if (!split_vec)
 		return (0);
-	res = validate_iter_vec(parser, split_vec, 0);
-	free_array((void **)split_vec);
-	return (res);
-}
-
-int	validate_normal(t_parser *parser)
-{
-	char	**split_vec;
-	int		res;
-
-	split_vec = pre_vec_validation(parser);
-	if (!split_vec)
-		return (0);
-	res = validate_iter_vec(parser, split_vec, 1);
+	res = validate_iter_tuple(parser, split_vec, type);
 	free_array((void **)split_vec);
 	return (res);
 }
