@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/17 00:49:06 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/20 15:57:08 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ t_tuple				vector(float x, float y, float z);
 t_tuple				point(float x, float y, float z);
 t_tuple				tuplenegt(t_tuple *a);
 float				tuplemagnitude(t_tuple *a);
+float				tuplemag2(t_tuple *a);
 float				tupledot(t_tuple *a, t_tuple *b);
 t_tuple				tuplecross(t_tuple *a, t_tuple *b);
 t_tuple				tuplenormalize(t_tuple *a);
@@ -204,5 +205,9 @@ t_matrix			*scale_m(t_tuple *vec);
 t_material			init_material(t_colors *colors, float diffuse,
 						float specular, float shininess);
 t_material			init_material_misc(t_colors *colors, t_tuple *props);
+
+// Cylinder
+int					apply_cylinder_scaling(t_cylinder *obj);
+int					apply_cylinder_rotation(t_cylinder *obj);
 
 #endif

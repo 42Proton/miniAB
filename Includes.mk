@@ -33,7 +33,9 @@ SRCS= \
 	textures_utils.c\
 	load_textures.c\
 	shader_utils.c\
-	textures.c
+	textures.c\
+	cylinder_transform.c
+
 
 TUPLES=\
 	tuples.c\
@@ -68,7 +70,8 @@ RAYS=\
 	shadow.c\
 	rays_viewport_utils.c\
 	cylinder_intersection.c\
-	cylinder_quad_parts.c
+	cylinder_quad_parts.c\
+	disk_intersection.c
 INCLUDES=\
 	colors.h\
 	debug.h\

@@ -6,14 +6,14 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 14:35:39 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/17 00:49:27 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/20 15:56:27 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <debug.h>
 #include <rays.h>
 
-t_quad_eq	check_cylinder_intersect(t_cylinder *cy, t_ray *ray)
+static t_quad_eq	check_cylinder_intersect(t_cylinder *cy, t_ray *ray)
 {
 	t_quad_eq	quad;
 
@@ -34,7 +34,7 @@ int	check_cap(t_ray ray, float t1, float height)
 	return (1);
 }
 
-int	prep_cylinder_intersect(t_quad_eq quad, t_ray *ray_transform,
+static int	prep_cylinder_intersect(t_quad_eq quad, t_ray *ray_transform,
 		t_intersections *insects, t_object_entry *object)
 {
 	float	t1;
@@ -70,13 +70,20 @@ int	cylinder_intersect(t_intersections *insects, t_object_entry *object,
 	t_cylinder	*cylinder;
 	t_ray		ray_transform;
 	t_quad_eq	quad;
+	int			result;
 
 	if (!insects || !object || !ray)
 		return (0);
 	cylinder = (t_cylinder *)object->object;
 	ray_transform = transform_ray(cylinder->inv_t, ray);
 	quad = check_cylinder_intersect(cylinder, &ray_transform);
-	if (quad.discriminant < 0)
-		return (1);
-	return (prep_cylinder_intersect(quad, &ray_transform, insects, object));
+	if (!disk_intersection(insects, object, ray))
+		return (0);
+	if (quad.discriminant >= 0)
+	{
+		result = prep_cylinder_intersect(quad, &ray_transform, insects, object);
+		if (result != 1)
+			return (result);
+	}
+	return (1);
 }

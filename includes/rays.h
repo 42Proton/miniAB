@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/17 00:49:01 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/20 15:56:02 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,10 @@ int					plane_intersect(t_intersections *insects,
 						t_object_entry *object, t_ray *ray);
 int					cylinder_intersect(t_intersections *insects,
 						t_object_entry *object, t_ray *ray);
+int					disk_intersection(t_intersections *insects,
+						t_object_entry *object, t_ray *ray);
+float				check_disk_intersect(t_cylinder *cylinder, t_ray *ray,
+						float y_pos);
 t_intersect			*get_hit(t_intersections *data);
 t_intersections		*world_intersect(t_list *solid_objs, t_ray *ray);
 float				check_plane_intersect(t_plane *plane, t_ray *ray);

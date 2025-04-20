@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/17 00:50:57 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/20 15:57:41 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,12 @@ int	plane_transform_m(t_plane *obj)
 
 int	cylinder_transform_m(t_cylinder *obj)
 {
-	t_matrix	*s;
-	t_tuple		vec;
-	int			res;
-
 	obj->transform = translation_m(obj->pos);
 	if (!obj->transform)
 		return (0);
-	vec = vector(obj->dim, obj->height, obj->dim);
-	s = scale_m(&vec);
-	if (!s)
+	if (!apply_cylinder_rotation(obj))
 		return (0);
-	res = matrix_multiply(obj->transform, s);
-	free_matrix(s);
-	if (!res)
+	if (!apply_cylinder_scaling(obj))
 		return (0);
 	obj->inv_t = matrix_inverse(obj->transform);
 	if (!obj->inv_t)
