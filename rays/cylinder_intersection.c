@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 14:35:39 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/20 16:56:39 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/20 17:04:31 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_quad_eq	check_cylinder_intersect(t_cylinder *cy, t_ray *ray)
 
 	quad.a = cylinder_first_part(ray);
 	quad.b = cylinder_middle_part(ray);
-	quad.c = cylinder_last_part(ray, cy->dim / 4);
+	quad.c = cylinder_last_part(ray, 1);
 	quad.discriminant = (quad.b * quad.b) - 4 * (quad.a * quad.c);
 	return (quad);
 }
