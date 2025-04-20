@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 00:37:46 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/17 00:49:39 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/20 16:54:58 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ float	cylinder_first_root(t_quad_eq quad, t_ray *ray_transform,
 {
 	float	t1;
 
-	t1 = ((-quad.b) + quad.discriminant) / (2 * quad.a);
+	t1 = (-quad.b) / (2 * quad.a);
 	if (!check_cap(*ray_transform, t1, ((t_cylinder *)object->object)->height))
 		return (t1);
 	return (__FLT_MIN__);

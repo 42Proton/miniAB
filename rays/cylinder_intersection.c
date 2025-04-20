@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 14:35:39 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/20 15:56:27 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/20 16:56:39 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_quad_eq	check_cylinder_intersect(t_cylinder *cy, t_ray *ray)
 
 	quad.a = cylinder_first_part(ray);
 	quad.b = cylinder_middle_part(ray);
-	quad.c = cylinder_last_part(ray, (1));
+	quad.c = cylinder_last_part(ray, cy->dim / 4);
 	quad.discriminant = (quad.b * quad.b) - 4 * (quad.a * quad.c);
 	return (quad);
 }
@@ -50,8 +50,8 @@ static int	prep_cylinder_intersect(t_quad_eq quad, t_ray *ray_transform,
 	}
 	else
 	{
-		t1 = ((-quad.b) + quad.discriminant) / (2 * quad.a);
-		t2 = ((-quad.b) - quad.discriminant) / (2 * quad.a);
+		t1 = (-quad.b + sqrtf(quad.discriminant)) / (2 * quad.a);
+		t2 = (-quad.b - sqrtf(quad.discriminant)) / (2 * quad.a);
 		if (check_cap(*ray_transform, t1,
 				((t_cylinder *)object->object)->height)
 			&& !add_intersection(insects, t1, object))
@@ -77,13 +77,12 @@ int	cylinder_intersect(t_intersections *insects, t_object_entry *object,
 	cylinder = (t_cylinder *)object->object;
 	ray_transform = transform_ray(cylinder->inv_t, ray);
 	quad = check_cylinder_intersect(cylinder, &ray_transform);
-	if (!disk_intersection(insects, object, ray))
-		return (0);
 	if (quad.discriminant >= 0)
 	{
 		result = prep_cylinder_intersect(quad, &ray_transform, insects, object);
 		if (result != 1)
 			return (result);
 	}
+	disk_intersection(insects, object, ray);
 	return (1);
 }
