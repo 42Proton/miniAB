@@ -6,13 +6,14 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:12:04 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/19 23:18:29 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/20 19:47:56 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-t_colors	phong_shader(t_alight *alight, t_computes *comp, t_list *vision_objs)
+t_colors	phong_shader(t_alight *alight,
+	t_computes *comp, t_list *vision_objs)
 {
 	t_phong_shader	shader;
 	t_colors		res;
@@ -59,6 +60,6 @@ t_colors	shade_hit(t_rtptr *rts, t_computes *comp, int depth)
 	if (mat->reflect > EPSILON && !comp->is_shadow)
 		res = reflect_shade(rts, comp, mat, depth);
 	res = coloradd(&res, &phong_res);
-	res = colorpow_f(&res, 1.0f/GAMMA);
+	res = colorpow_f(&res, 1.0f / GAMMA);
 	return (res);
 }

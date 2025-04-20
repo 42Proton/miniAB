@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/15 23:01:16 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/20 18:13:42 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,7 @@ int	plane_transform_m(t_plane *obj)
 
 int	cylinder_transform_m(t_cylinder *obj)
 {
-	t_matrix	*s;
-	t_tuple		vec;
-	int			res;
-
-	obj->transform = translation_m(obj->pos);
-	if (!obj->transform)
-		return (0);
-	vec = vector(obj->dim, obj->dim, obj->height);
-	s = scale_m(&vec);
-	if (!s)
-		return (0);
-	res = matrix_multiply(obj->transform, s);
-	free_matrix(s);
-	if (!res)
+	if (!cylinder_tm_core(obj))
 		return (0);
 	obj->inv_t = matrix_inverse(obj->transform);
 	if (!obj->inv_t)
@@ -103,25 +90,7 @@ int	cylinder_transform_m(t_cylinder *obj)
 
 int	hyper_transform_m(t_hyper *obj)
 {
-	t_matrix	*m;
-	int			res;
-
-	obj->transform = translation_m(obj->pos);
-	if (!obj->transform)
-		return (0);
-	m = lookat_m(obj->pos, obj->nv);
-	if (!m)
-		return (0);
-	res = matrix_multiply(obj->transform, m);
-	free_matrix(m);
-	if (!res)
-		return (0);
-	m = scale_m(obj->scale);
-	if (!m)
-		return (0);
-	res = matrix_multiply(obj->transform, m);
-	free_matrix(m);
-	if (!res)
+	if (!hyper_tm_core(obj))
 		return (0);
 	obj->inv_t = matrix_inverse(obj->transform);
 	if (!obj->inv_t)

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/19 23:16:44 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/20 19:49:24 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 # include <pthread.h>
 # define WID 800
 # define HEG 600
-# define SSAA 2
+# define SSAA 1
 
-typedef struct s_rtptr t_rtptr;
+typedef struct s_rtptr	t_rtptr;
 
 typedef struct s_thread_data
 {
@@ -201,8 +201,9 @@ t_computes		init_computes(t_rtptr *rts, t_intersect *insect, t_ray *ray);
 int				is_shadow(t_rtptr *rts, t_tuple *p);
 t_colors		ray_color(t_rtptr *rts, t_ray *ray, int depth);
 t_uv			compute_plane_uv(t_plane *obj, t_tuple *p);
-t_uv			compute_sphere_uv(t_sphere *obj, t_computes *comps);
+t_uv			compute_sphere_uv(t_computes *comps);
 t_uv			compute_hyper_uv(t_hyper *obj, t_tuple *p);
+t_uv			compute_cylinder_uv(t_cylinder *obj, t_tuple *p);
 // Shader Utils
 void			shader_vision_iter(t_phong_shader *shader,
 					t_computes *comp, t_list *vision_objs);
@@ -216,6 +217,10 @@ t_colors		get_map_color(void *obj, int obj_type, t_computes *comps);
 t_uv			get_uv_coords(void *obj, int obj_type, t_computes *comps);
 mlx_texture_t	*get_bump_ref(void *obj, int obj_type);
 t_tuple			bump_normal(void *obj, int obj_type, t_computes *comps);
+t_tuple			get_tangent_plane(t_tuple *nv);
+t_tuple			get_tangent_hyper(t_uv *uv);
+t_tuple			get_tangent_sphere(t_uv *uv);
+t_tuple			get_tangent_cylinder(t_uv *uv);
 
 // Multi-Threading
 void			set_error(t_rtptr *rts);

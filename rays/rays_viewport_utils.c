@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 12:21:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/19 23:17:11 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/20 19:41:37 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,3 @@ t_colors	scaled_ray(t_rtptr *rts, int x, int y)
 	colorscale(&total_color, counter);
 	return (total_color);
 }
-

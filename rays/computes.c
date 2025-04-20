@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 08:22:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/19 23:10:39 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/20 20:07:50 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ t_computes	init_computes(t_rtptr *rts,
 		t_intersect *insect, t_ray *ray)
 {
 	t_computes	comps;
-	
+
 	if (!prep_compute_core(&comps, insect, ray))
 		return (comps);
 	comps.map_color = get_map_color(insect->obj, insect->obj_type, &comps);
-	comps.over_point = n_tuplesmult(&comps.nv, POINT_BIAS);
+	comps.over_point = n_tuplesmult(&comps.p_nv, POINT_BIAS);
 	comps.over_point = n_tupleadd(&comps.hpoint, &comps.over_point);
 	comps.is_shadow = is_shadow(rts, &comps.over_point);
 	if (comps.is_shadow == -1)

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:33:07 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/19 17:37:13 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/20 19:46:45 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ u_int8_t	color_inrange(float val);
 t_colors	color_from_value(u_int32_t color_value);
 t_colors	colorscale(t_colors *colors, int scale);
 t_colors	colorpow_f(t_colors *a, float val);
-t_colors	color_black();
+t_colors	color_black(void);
 
 #endif

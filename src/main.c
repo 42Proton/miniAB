@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/19 14:22:43 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/20 19:49:42 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	spawn_threads(t_rtptr *rts)
 	i = 0;
 	while (i < rts->n_procs)
 	{
-		if (pthread_create(&rts->threads[i], 0, thread_routine, &rts->t_data[i]))
+		if (pthread_create(&rts->threads[i],
+				0, thread_routine, &rts->t_data[i]))
 		{
 			ft_dprintf(STDERR_FILENO, "pthread_create failure\n");
 			set_error(rts);

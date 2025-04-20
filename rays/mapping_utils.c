@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 23:18:27 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/19 19:09:39 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/20 19:26:47 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_colors	get_map_color(void *obj, int obj_type, t_computes *comps)
 		ref = ((t_plane *)obj)->color_map_ref;
 	else if (obj_type == SPHERE && ((t_sphere *)obj)->color_map_ref)
 		ref = ((t_sphere *)obj)->color_map_ref;
+	else if (obj_type == CYLINDER && ((t_cylinder *)obj)->color_map_ref)
+		ref = ((t_cylinder *)obj)->color_map_ref;
 	else if (obj_type == HYPER && ((t_hyper *)obj)->color_map_ref)
 		ref = ((t_hyper *)obj)->color_map_ref;
 	if (ref)
@@ -51,10 +53,13 @@ t_uv	get_uv_coords(void *obj, int obj_type, t_computes *comps)
 {
 	t_uv	uv;
 
+	ft_bzero(&uv, sizeof(&uv));
 	if (obj_type == PLANE && ((t_plane *)obj)->color_map_ref)
 		uv = compute_plane_uv(obj, &comps->hpoint);
 	else if (obj_type == SPHERE && ((t_sphere *)obj)->color_map_ref)
-		uv = compute_sphere_uv(obj, comps);
+		uv = compute_sphere_uv(comps);
+	else if (obj_type == CYLINDER && ((t_cylinder *)obj)->color_map_ref)
+		uv = compute_cylinder_uv(obj, &comps->hpoint);
 	else if (obj_type == HYPER && ((t_hyper *)obj)->color_map_ref)
 		uv = compute_hyper_uv(obj, &comps->hpoint);
 	return (uv);
@@ -69,6 +74,8 @@ mlx_texture_t	*get_bump_ref(void *obj, int obj_type)
 		ref = ((t_plane *)obj)->bump_map_ref;
 	else if (obj_type == SPHERE && ((t_sphere *)obj)->bump_map_ref)
 		ref = ((t_sphere *)obj)->bump_map_ref;
+	else if (obj_type == CYLINDER && ((t_sphere *)obj)->bump_map_ref)
+		ref = ((t_cylinder *)obj)->bump_map_ref;
 	else if (obj_type == HYPER && ((t_hyper *)obj)->bump_map_ref)
 		ref = ((t_hyper *)obj)->bump_map_ref;
 	return (ref);

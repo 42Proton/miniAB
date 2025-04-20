@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:32:46 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/19 15:51:07 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/20 19:46:56 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_colors	colorinit(float red, float green, float blue)
 	return (res);
 }
 
-t_colors	color_black()
+t_colors	color_black(void)
 {
 	t_colors	res;
 

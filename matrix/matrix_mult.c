@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 01:19:21 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/06 12:01:54 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/20 18:09:10 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,4 @@ int	matrix_multiply(t_matrix *a, t_matrix *b)
 	a->data = res->data;
 	free(res);
 	return (1);
-}
-
-t_tuple	matrix_mult_t(t_matrix *m, t_tuple *t)
-{
-	t_tuple	res;
-
-	res.x = m->data[0] * t->x + m->data[1] * t->y
-		+ m->data[2] * t->z + m->data[3] * t->w;
-	res.y = m->data[4] * t->x + m->data[5] * t->y
-		+ m->data[6] * t->z + m->data[7] * t->w;
-	res.z = m->data[8] * t->x + m->data[9] * t->y
-		+ m->data[10] * t->z + m->data[11] * t->w;
-	res.w = m->data[12] * t->x + m->data[13] * t->y
-		+ m->data[14] * t->z + m->data[15] * t->w;
-	return (res);
 }

@@ -36,7 +36,8 @@ SRCS= \
 	lookat_m.c\
 	object_init_misc_utils.c\
 	prep_rt.c\
-	multi_threading.c
+	multi_threading.c\
+	transform_utils.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
@@ -73,7 +74,13 @@ RAYS=\
 	hyper_intersect.c\
 	uv_utils.c\
 	bump_mapping.c\
-	mapping_utils.c
+	mapping_utils.c\
+	cylinder_intersection.c\
+	cylinder_quad_parts.c\
+	disk_intersection.c\
+	bump_mapping_utils.c\
+	intersections_utils.c\
+	normal_vec_utils.c
 INCLUDES=\
 	colors.h\
 	debug.h\
