@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_quad_parts.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 00:37:46 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/20 16:54:58 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/20 19:41:24 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 
 float	cylinder_first_part(t_ray *ray)
 {
-	return (ray->direction.x * ray->direction.x + ray->direction.z
-		* ray->direction.z);
+	return (ray->direction.x * ray->direction.x
+		+ ray->direction.y * ray->direction.y);
 }
 
 float	cylinder_middle_part(t_ray *ray)
 {
-	return (2 * (ray->origin.x * ray->direction.x + ray->origin.z
-			* ray->direction.z));
+	return (2 * (ray->origin.x * ray->direction.x
+			+ ray->origin.y * ray->direction.y));
 }
 
-float	cylinder_last_part(t_ray *ray, float radius)
+float	cylinder_last_part(t_ray *ray)
 {
-	return (ray->origin.x * ray->origin.x + ray->origin.z * ray->origin.z
-		- radius * radius);
+	return (ray->origin.x * ray->origin.x
+		+ ray->origin.y * ray->origin.y - 1);
 }
 
 float	cylinder_first_root(t_quad_eq quad, t_ray *ray_transform,
@@ -37,7 +37,7 @@ float	cylinder_first_root(t_quad_eq quad, t_ray *ray_transform,
 	float	t1;
 
 	t1 = (-quad.b) / (2 * quad.a);
-	if (!check_cap(*ray_transform, t1, ((t_cylinder *)object->object)->height))
+	if (!cylinder_cap(ray_transform, t1, object->object))
 		return (t1);
 	return (__FLT_MIN__);
 }

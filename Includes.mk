@@ -33,10 +33,11 @@ SRCS= \
 	textures_utils.c\
 	load_textures.c\
 	shader_utils.c\
-	textures.c\
-	cylinder_transform.c
-
-
+	lookat_m.c\
+	object_init_misc_utils.c\
+	prep_rt.c\
+	multi_threading.c\
+	transform_utils.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
@@ -48,7 +49,8 @@ TUPLES=\
 COLORS=\
 	colors.c\
 	colors_utils.c\
-	colors_operations.c
+	colors_operations.c\
+	colors_operations2.c
 MATRIX=\
 	matrix.c\
 	matrix_utils.c\
@@ -69,9 +71,16 @@ RAYS=\
 	rays_render_utils.c\
 	shadow.c\
 	rays_viewport_utils.c\
+	hyper_intersect.c\
+	uv_utils.c\
+	bump_mapping.c\
+	mapping_utils.c\
 	cylinder_intersection.c\
 	cylinder_quad_parts.c\
-	disk_intersection.c
+	disk_intersection.c\
+	bump_mapping_utils.c\
+	intersections_utils.c\
+	normal_vec_utils.c
 INCLUDES=\
 	colors.h\
 	debug.h\

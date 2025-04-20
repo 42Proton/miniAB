@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:58:26 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/08 18:13:50 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/19 23:11:49 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_parser
 	int		phong_done;
 	int		color_done;
 	int		bump_done;
+	int		reflect_done;
 }			t_parser;
 
 int			check_float_input(const char *str);
@@ -37,8 +38,7 @@ int			read_iter_line(int fd, t_parser *parser);
 void		reset_parser_props(t_parser *parser);
 void		object_cleanup(void *content);
 // Validations set
-int			validate_pos(t_parser *parser);
-int			validate_normal(t_parser *parser);
+int			validate_tuple(t_parser *parser, int type);
 int			validate_color(t_parser *parser);
 int			validate_input(t_parser *parser);
 int			validate_alight(t_parser *parser);
@@ -47,6 +47,7 @@ int			validate_light(t_parser *parser);
 int			validate_plane(t_parser *parser);
 int			validate_cylinder(t_parser *parser);
 int			validate_sphere(t_parser *parser);
+int			validate_hyper(t_parser *parser);
 // Rest
 int			switch_type(char *obj);
 int			check_vec_input(char *str);

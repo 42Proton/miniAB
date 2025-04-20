@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane_intersect.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:46:45 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/12 00:03:35 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/18 13:45:37 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ float	check_plane_intersect(t_plane *plane, t_ray *ray)
 
 	n = *plane->normal_vector;
 	denom = tupledot(&n, &ray->direction);
-	if (ft_fabs(denom) > EPSILON)
+	if (denom > EPSILON)
 	{
 		local_pos = point(0, 0, 0);
 		p2r = n_tuplesub(&local_pos, &ray->origin);

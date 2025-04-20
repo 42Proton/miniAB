@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/20 15:57:08 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/20 18:14:47 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ enum				e_types_of_objects
 	SPHERE,
 	PLANE,
 	CYLINDER,
-	CONE,
-	HYPER,
-	PARA
+	HYPER
 };
 
 typedef struct s_object_entry
@@ -67,11 +65,12 @@ typedef struct s_matrix_4
 
 typedef struct s_material
 {
-	t_colors		color;
-	float			diffuse;
-	float			specular;
-	float			shininess;
-}					t_material;
+	t_colors	color;
+	float		diffuse;
+	float		specular;
+	float		shininess;
+	float		reflect;
+}	t_material;
 
 typedef struct s_alight
 {
@@ -111,7 +110,27 @@ typedef struct s_sphere
 	t_matrix		*transform;
 	t_matrix		*inv_t;
 	t_matrix		*tpose_inv_t;
-}					t_sphere;
+	float			reflect;
+}				t_sphere;
+
+typedef struct s_hyper
+{
+	t_tuple			*pos;
+	t_tuple			*scale;
+	t_tuple			*coeffs;
+	t_tuple			coeffs2;
+	t_tuple			*nv;
+	t_material		mat;
+	t_tuple			*phong_props;
+	char			*color_map;
+	char			*bump_map;
+	mlx_texture_t	*color_map_ref;
+	mlx_texture_t	*bump_map_ref;
+	t_matrix		*transform;
+	t_matrix		*inv_t;
+	t_matrix		*tpose_inv_t;
+	float			reflect;
+}				t_hyper;
 
 typedef struct s_plane
 {
@@ -126,7 +145,8 @@ typedef struct s_plane
 	t_matrix		*transform;
 	t_matrix		*inv_t;
 	t_matrix		*tpose_inv_t;
-}					t_plane;
+	float			reflect;
+}				t_plane;
 
 typedef struct s_cylinder
 {
@@ -143,9 +163,16 @@ typedef struct s_cylinder
 	t_matrix		*transform;
 	t_matrix		*inv_t;
 	t_matrix		*tpose_inv_t;
-}					t_cylinder;
+	float			reflect;
+}				t_cylinder;
 
-enum				e_pov
+typedef struct s_uv
+{
+	float	u;
+	float	v;
+}	t_uv;
+
+enum			e_pov
 {
 	VECTOR,
 	POINT
@@ -185,7 +212,6 @@ float				determinant(t_matrix *m);
 float				determinant2x2(t_matrix *m);
 float				s_determinant_3x3(t_matrix_9 *m);
 int					matrix_multiply(t_matrix *a, t_matrix *b);
-t_tuple				matrix_mult_t(t_matrix *m, t_tuple *t);
 int					matrix_equal(t_matrix *a, t_matrix *b);
 t_tuple				transform_f(t_matrix *m, t_tuple *vec);
 // Matrix Utils
@@ -195,19 +221,21 @@ void				set_matrix_elem(t_matrix *m, int col, int row, float val);
 float				get_matrix_elem(t_matrix *m, int col, int row);
 t_matrix			*matrix_init(int cols, int rows);
 void				free_matrix(t_matrix *m);
-t_matrix_9			submatrix_3x3(t_matrix *m, int skip_col, int skip_row);
+t_matrix_9			submatrix_3x3(t_matrix *m,
+						int skip_col, int skip_row);
 t_matrix			*ident_matrix4x4(void);
 t_matrix_4			submatrix_2x2(t_matrix *m, int skip_col, int skip_row);
 t_matrix			*translation_m(t_tuple *pos);
 t_matrix			*rotation_m(t_tuple *vec);
 t_matrix			*scale_m(t_tuple *vec);
+t_matrix			*lookat_m(t_tuple *from, t_tuple *to);
 // Material
 t_material			init_material(t_colors *colors, float diffuse,
 						float specular, float shininess);
 t_material			init_material_misc(t_colors *colors, t_tuple *props);
 
-// Cylinder
-int					apply_cylinder_scaling(t_cylinder *obj);
-int					apply_cylinder_rotation(t_cylinder *obj);
+// Transformation Matrix Utils
+int					cylinder_tm_core(t_cylinder *obj);
+int					hyper_tm_core(t_hyper *obj);
 
 #endif

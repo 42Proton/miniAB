@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:32:34 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/14 21:55:08 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/14 21:05:33 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int	validate_camera(t_parser *parser)
 {
 	char	*tok;
 
-	if (!validate_pos(parser))
+	if (!validate_tuple(parser, DEFAULT_VALD))
 		return (0);
-	if (!validate_normal(parser))
+	if (!validate_tuple(parser, NORM_VALD))
 		return (0);
 	tok = ft_strtok_iter(NULL, parser, 1);
 	if (!tok)
@@ -95,7 +95,7 @@ int	validate_light(t_parser *parser)
 {
 	char	*tok;
 
-	if (!validate_pos(parser))
+	if (!validate_tuple(parser, DEFAULT_VALD))
 		return (0);
 	if (!check_ratio_input(parser))
 		return (0);

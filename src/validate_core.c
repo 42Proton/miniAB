@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:31:29 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/03/11 15:22:32 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/12 17:34:46 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	validate_object(t_parser *parser, int type)
 		res = validate_cylinder(parser);
 	else if (type == SPHERE)
 		res = validate_sphere(parser);
+	else if (type == HYPER)
+		res = validate_hyper(parser);
 	return (res);
 }
 

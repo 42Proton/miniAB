@@ -6,7 +6,7 @@
 /*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 14:35:39 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/20 17:04:31 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/20 20:27:45 by bismail          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ static t_quad_eq	check_cylinder_intersect(t_cylinder *cy, t_ray *ray)
 
 	quad.a = cylinder_first_part(ray);
 	quad.b = cylinder_middle_part(ray);
-	quad.c = cylinder_last_part(ray, 1);
+	quad.c = cylinder_last_part(ray);
 	quad.discriminant = (quad.b * quad.b) - 4 * (quad.a * quad.c);
 	return (quad);
 }
 
-int	check_cap(t_ray ray, float t1, float height)
+int	cylinder_cap(t_ray *ray, float t1, t_cylinder *obj)
 {
 	t_tuple	hit_point;
 
-	hit_point = ray_hitpoint(&ray, t1);
-	if (hit_point.y < -height / 2 || hit_point.y > height / 2)
+	hit_point = ray_hitpoint(ray, t1);
+	if (hit_point.z < -obj->height || hit_point.z > obj->height)
 		return (0);
 	return (1);
 }
@@ -39,28 +39,17 @@ static int	prep_cylinder_intersect(t_quad_eq quad, t_ray *ray_transform,
 {
 	float	t1;
 	float	t2;
+	float	disc_sqrt;
 
-	if (quad.discriminant == 0)
-	{
-		t1 = cylinder_first_root(quad, ray_transform, object);
-		if (t1 == __FLT_MIN__)
-			return (-1);
-		if (!add_intersection(insects, t1, object))
+	disc_sqrt = sqrtf(quad.discriminant);
+	t1 = (-quad.b + disc_sqrt) / (2 * quad.a);
+	t2 = (-quad.b - disc_sqrt) / (2 * quad.a);
+	if (cylinder_cap(ray_transform, t1, object->object)
+		&& !add_intersection(insects, t1, object))
+		return (0);
+	if (cylinder_cap(ray_transform, t2, object->object))
+		if (!add_intersection(insects, t2, object))
 			return (0);
-	}
-	else
-	{
-		t1 = (-quad.b + sqrtf(quad.discriminant)) / (2 * quad.a);
-		t2 = (-quad.b - sqrtf(quad.discriminant)) / (2 * quad.a);
-		if (check_cap(*ray_transform, t1,
-				((t_cylinder *)object->object)->height)
-			&& !add_intersection(insects, t1, object))
-			return (0);
-		if (check_cap(*ray_transform, t2,
-				((t_cylinder *)object->object)->height))
-			if (!add_intersection(insects, t2, object))
-				return (0);
-	}
 	return (1);
 }
 
@@ -80,7 +69,7 @@ int	cylinder_intersect(t_intersections *insects, t_object_entry *object,
 	if (quad.discriminant >= 0)
 	{
 		result = prep_cylinder_intersect(quad, &ray_transform, insects, object);
-		if (result != 1)
+		if (!result)
 			return (result);
 	}
 	disk_intersection(insects, object, ray);

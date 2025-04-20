@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_utils_extra2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 00:06:16 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/12 00:11:37 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/18 21:44:33 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**pre_vec_validation_misc(t_parser *parser, char *token)
 	if (!check_vec_input(token)
 		|| ft_getchr_count(token, ',') != 2)
 	{
-		issue_report(parser, ERR_INVALID_VEC);
+		issue_report(parser, ERR_INVALID_TUPLE);
 		return (0);
 	}
 	split_vec = ft_split(token, ',');
