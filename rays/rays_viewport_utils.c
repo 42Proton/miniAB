@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 12:21:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/20 19:41:37 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/21 17:55:20 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_ray	ray_pixel(t_camera *cam, float x, float y)
 {
 	t_ray_pixel	data;
 
-	data.world_x = cam->hwidth - (x + 0.5) * cam->pixel_size;
-	data.world_y = cam->hheight - (y + 0.5) * cam->pixel_size;
+	data.world_x = cam->hwidth - (x + 0.5f) * cam->pixel_size;
+	data.world_y = cam->hheight - (y + 0.5f) * cam->pixel_size;
 	data.world_origin = point(0, 0, 0);
 	data.world_point = point(data.world_x, data.world_y, -1);
 	data.world_origin = transform_f(cam->inv_t, &data.world_origin);
@@ -54,8 +54,8 @@ t_colors	scaled_ray(t_rtptr *rts, int x, int y)
 		j = -1;
 		while (++j < SSAA)
 		{
-			temp = scaled_pixel(rts, x + ((float)j + 0.5) / SSAA - 0.5,
-					y + ((float)i + 0.5) / SSAA - 0.5);
+			temp = scaled_pixel(rts, x + ((float)j + 0.5f) / SSAA - 0.5f,
+					y + ((float)i + 0.5f) / SSAA - 0.5f);
 			if (check_error(rts))
 				return (total_color);
 			total_color = coloradd(&total_color, &temp);

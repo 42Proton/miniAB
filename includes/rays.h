@@ -6,14 +6,14 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/20 19:45:56 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/21 17:53:16 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYS_H
 # define RAYS_H
 
-# define POINT_BIAS 0.1
+# define POINT_BIAS 0.1f
 # define REFLECT_MAX_DEPTH 10
 
 # include <object.h>
