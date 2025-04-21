@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:33:07 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/20 19:46:45 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/21 02:17:35 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 // defintions
 # define EPSILON 0.00001f
-# define GAMMA 2.0f
+# define GAMMA 0.5f
 
 typedef struct s_colors
 {

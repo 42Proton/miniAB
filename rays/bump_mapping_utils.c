@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 19:39:39 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/20 19:42:10 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/21 17:47:41 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ t_tuple	get_tangent_hyper(t_uv *uv)
 	float	su;
 	float	cu;
 
-	chv = cosh(uv->v);
-	su = sin(uv->u);
-	cu = cos(uv->u);
+	chv = coshf(uv->v);
+	su = sinf(uv->u);
+	cu = cosf(uv->u);
 	vec = vector(chv * su, 0, chv * cu);
 	vec = tuplenormalize(&vec);
 	return (vec);
@@ -61,9 +61,9 @@ t_tuple	get_tangent_sphere(t_uv *uv)
 	float	sv;
 	float	cu;
 
-	su = sin(uv->u);
-	sv = sin(uv->v);
-	cu = cos(uv->u);
+	su = sinf(uv->u);
+	sv = sinf(uv->v);
+	cu = cosf(uv->u);
 	vec = vector(-sv * su, 0, sv * cu);
 	vec = tuplenormalize(&vec);
 	return (vec);
@@ -75,8 +75,8 @@ t_tuple	get_tangent_cylinder(t_uv *uv)
 	float	su;
 	float	cu;
 
-	su = sin(uv->u);
-	cu = cos(uv->u);
+	su = sinf(uv->u);
+	cu = cosf(uv->u);
 	vec = vector(-su, 0, cu);
 	vec = tuplenormalize(&vec);
 	return (vec);
