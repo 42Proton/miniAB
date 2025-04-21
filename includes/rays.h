@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/21 17:53:16 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/21 19:30:23 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_computes
 	t_tuple		over_point;
 	t_colors	map_color;
 	t_uv		uv;
-	int			is_shadow;
 	int			is_err;
 }				t_computes;
 
@@ -77,7 +76,6 @@ typedef struct s_shadow
 	t_tuple			v;
 	t_tuple			direction;
 	t_light			*light;
-	t_list			*vision_objs;
 	t_ray			ray;
 	float			dist;
 }					t_shadow;

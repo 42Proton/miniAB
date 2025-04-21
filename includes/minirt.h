@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/20 19:49:24 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/21 19:52:38 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ float			deg_to_rad(float deg);
 // Ray utils
 t_colors		scaled_ray(t_rtptr *rts, int x, int y);
 t_computes		init_computes(t_rtptr *rts, t_intersect *insect, t_ray *ray);
-int				is_shadow(t_rtptr *rts, t_tuple *p);
+int				is_shadow(t_rtptr *rts, t_tuple *p, t_light	*light);
 t_colors		ray_color(t_rtptr *rts, t_ray *ray, int depth);
 t_uv			compute_plane_uv(t_plane *obj, t_tuple *p);
 t_uv			compute_sphere_uv(t_computes *comps);

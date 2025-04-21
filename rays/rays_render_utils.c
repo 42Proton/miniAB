@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/21 17:54:57 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/21 19:57:20 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ t_colors	get_insect_color(t_rtptr *rts,
 			return (res);
 		}
 		res = shade_hit(rts, &comp, depth);
+		if (comp.is_err)
+		{
+			set_error(rts);
+			return (res);
+		}
 	}
 	else
 		res = colorinit(ft_fabs(ray->direction.y) * rts->alight->ratio, 0.8f

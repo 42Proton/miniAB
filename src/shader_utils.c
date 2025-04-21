@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 12:38:56 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/20 17:05:41 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/21 19:55:56 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_colors	compute_diffuse(t_phong_shader *shader)
 
 	if (shader->light_dot_n < 0)
 	{
-		diffuse_c = colorinit(0, 0, 0);
+		diffuse_c = color_black();
 		return (diffuse_c);
 	}
 	diffuse_c = colormulti_f(&shader->effect_c, shader->mat->diffuse);
@@ -49,7 +49,7 @@ t_colors	compute_specular(t_phong_shader *shader, t_light *light)
 
 	if (shader->reflect_dot_e <= 0)
 	{
-		specular_c = colorinit(0, 0, 0);
+		specular_c = color_black();
 		return (specular_c);
 	}
 	factor = pow(shader->reflect_dot_e, shader->mat->shininess);

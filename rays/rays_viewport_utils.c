@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 12:21:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/21 17:55:20 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/21 19:55:47 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_colors	scaled_ray(t_rtptr *rts, int x, int y)
 	t_colors	total_color;
 	t_colors	temp;
 
-	total_color = colorinit(0, 0, 0);
+	total_color = color_black();
 	counter = 0;
 	i = -1;
 	while (++i < SSAA)
