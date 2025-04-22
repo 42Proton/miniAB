@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 15:42:04 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/22 17:43:50 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 00:46:36 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	hyper_tm_core(t_hyper *obj)
 	free_matrix(m);
 	if (!res)
 		return (0);
-	matrix_debug(obj->transform);
 	m = scale_m(obj->scale);
 	if (!m)
 		return (0);

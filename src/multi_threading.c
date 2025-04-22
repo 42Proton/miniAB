@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 03:29:18 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/19 03:52:48 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 00:43:48 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	render_section(t_thread_data *data)
 	int			x;
 	int			y;
 
-	y = data->start_y;
-	while (y < data->end_y)
+	y = 0;
+	while (y < HEG)
 	{
 		x = data->start_x;
 		while (x < data->end_x)
@@ -54,24 +54,15 @@ void	render_section(t_thread_data *data)
 	}
 }
 
-// Have to work on handling case when proccessors count is odd
 void	*thread_routine(void *arg)
 {
 	t_thread_data	*data;
 	int				offset_x;
-	int				offset_y;
-	int				x_mod;
-	float			y_factor;
 
 	data = arg;
-	x_mod = data->n_procs / 2;
-	y_factor = 2.0f / data->n_procs;
-	offset_x = WID / (data->n_procs / 2);
-	offset_y = HEG / 2;
-	data->start_x = offset_x * (data->t_num % x_mod);
-	data->start_y = offset_y * (int)(data->t_num * y_factor);
-	data->end_x = (offset_x * (data->t_num % x_mod)) + offset_x;
-	data->end_y = offset_y * ((int)(data->t_num * y_factor) + 1);
+	offset_x = WID / data->n_procs;
+	data->start_x = data->t_num * offset_x;
+	data->end_x = (data->t_num + 1) * offset_x;
 	render_section(data);
 	return (0);
 }
