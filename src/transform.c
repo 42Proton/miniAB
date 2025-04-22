@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/22 15:34:15 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 01:43:53 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	camera_transform_m(t_camera *obj)
 	t_matrix	*m;
 	t_tuple		vec;
 
-	obj->transform = lookat_m(obj->pos, obj->orientation);
+	obj->transform = lookat_m(obj->orientation);
 	if (!obj->transform)
 		return (0);
 	vec = tuplenegt(obj->pos);

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 15:42:04 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/23 00:46:36 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 01:49:32 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int	cylinder_tm_core(t_cylinder *obj)
 	t_tuple		vec;
 	int			res;
 
-	obj->transform = translation_m(obj->pos);
+	obj->transform = lookat_m(obj->normal_axis);
 	if (!obj->transform)
 		return (0);
-	m = lookat_m(obj->pos, obj->normal_axis);
+	vec = tuplenegt(obj->pos);
+	m = translation_m(&vec);
 	if (!m)
 		return (0);
 	res = matrix_multiply(obj->transform, m);
@@ -42,12 +43,14 @@ int	cylinder_tm_core(t_cylinder *obj)
 int	hyper_tm_core(t_hyper *obj)
 {
 	t_matrix	*m;
+	t_tuple		vec;
 	int			res;
 
-	obj->transform = translation_m(obj->pos);
+	obj->transform = lookat_m(obj->nv);
 	if (!obj->transform)
 		return (0);
-	m = lookat_m(obj->pos, obj->nv);
+	vec = tuplenegt(obj->pos);
+	m = translation_m(&vec);
 	if (!m)
 		return (0);
 	res = matrix_multiply(obj->transform, m);

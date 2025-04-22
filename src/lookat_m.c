@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:58:22 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/22 17:34:27 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 00:52:47 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	lookat_set_vecs(t_tuple *forward, t_tuple *up, t_tuple *left)
 	*up = tuplenormalize(up);
 }
 
-t_matrix	*lookat_m(t_tuple *from, t_tuple *to)
+t_matrix	*lookat_m(t_tuple *to)
 {
 	t_tuple		up;
 	t_tuple		forward;
