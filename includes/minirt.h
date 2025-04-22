@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/21 19:52:38 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/22 17:31:19 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <pthread.h>
 # define WID 800
 # define HEG 600
-# define SSAA 1
+# define SSAA 2
 
 typedef struct s_rtptr	t_rtptr;
 
@@ -192,6 +192,7 @@ int				render_viewport(t_rtptr *rts);
 
 // utils
 t_tuple			*pos(void);
+t_tuple			*norm_vec(void);
 t_colors		*color(void);
 t_tuple			norm_to_radian(t_tuple *vec);
 float			deg_to_rad(float deg);

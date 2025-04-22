@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:10:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/19 23:14:03 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/22 14:01:59 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	*plane_init(void)
 	if (!plane)
 		return (0);
 	plane->pos = pos();
-	plane->normal_vector = pos();
+	plane->normal_vector = norm_vec();
 	colors = color();
 	if (!colors || !plane->normal_vector
 		|| !plane->pos || !init_misc_plane(plane))
@@ -74,7 +74,7 @@ void	*cylinder_init(void)
 	if (!cylinder)
 		return (0);
 	cylinder->pos = pos();
-	cylinder->normal_axis = pos();
+	cylinder->normal_axis = norm_vec();
 	cylinder->dim = ft_atof(ft_strtok(0, " \t\r\f\v\n"));
 	cylinder->height = ft_atof(ft_strtok(0, " \t\r\f\v\n"));
 	colors = color();
@@ -101,7 +101,7 @@ void	*hyper_init(void)
 		return (0);
 	hyper->pos = pos();
 	hyper->scale = pos();
-	hyper->nv = pos();
+	hyper->nv = norm_vec();
 	hyper->coeffs = pos();
 	colors = color();
 	if (!colors || !hyper->pos
