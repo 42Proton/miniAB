@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:32:46 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/23 03:19:17 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 15:49:56 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ u_int32_t	colorvalue(t_colors *a)
 	tmp.green = tone_map_aces(a->green);
 	tmp.blue = tone_map_aces(a->blue);
 	tmp = colorpow_f(&tmp, 1.0f / GAMMA);
-	res = color_uint(a);
+	res = color_uint(&tmp);
 	return (res);
 }
 
