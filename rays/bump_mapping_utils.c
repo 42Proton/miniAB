@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 19:39:39 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/21 17:47:41 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 03:18:50 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,12 @@ t_tuple	get_tangent_plane(t_tuple *nv)
 {
 	t_tuple	vec;
 	t_tuple	t_v;
-	float	vn_d;
 
 	if (!floatcmp(nv->x, 0))
 		vec = vector(0, 0, 1);
 	else
 		vec = vector(1, 0, 0);
-	vn_d = tupledot(&vec, nv);
-	t_v = n_tuplesmult(nv, vn_d);
-	t_v = n_tuplesub(&vec, &t_v);
+	t_v = tuplecross(&vec, nv);
 	t_v = tuplenormalize(&t_v);
 	return (t_v);
 }
