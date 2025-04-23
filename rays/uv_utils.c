@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:57:07 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/21 17:50:16 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 17:03:41 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,23 @@
 void	set_plane_uv(t_uv *uv,
 	t_plane *obj, t_tuple *p, int aspect_r)
 {
+	t_tuple	inv_p;
+
+	inv_p = transform_f(obj->inv_t, p);
 	if (!floatcmp(obj->normal_vector->x, 0))
 	{
-		uv->u = p->z * (aspect_r * 0.05);
-		uv->v = p->y * (aspect_r * 0.05);
+		uv->u = inv_p.z * (aspect_r * 0.05);
+		uv->v = inv_p.y * (aspect_r * 0.05);
 	}
 	else if (!floatcmp(obj->normal_vector->z, 0))
 	{
-		uv->u = p->x * (aspect_r * 0.05);
-		uv->v = p->y * (aspect_r * 0.05);
+		uv->u = inv_p.x * (aspect_r * 0.05);
+		uv->v = inv_p.y * (aspect_r * 0.05);
 	}
 	else
 	{
-		uv->u = p->x * (aspect_r * 0.05);
-		uv->v = p->z * (aspect_r * 0.05);
+		uv->u = inv_p.z * (aspect_r * 0.05);
+		uv->v = inv_p.x * (aspect_r * 0.05);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 22:54:55 by abueskander       #+#    #+#             */
-/*   Updated: 2025/03/30 22:24:20 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 19:57:45 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	*camera_init(void)
 		free(cam);
 		return (NULL);
 	}
-	cam->orientation = pos();
+	cam->nv = pos();
 	if (!cam->pos)
 	{
 		free(cam);

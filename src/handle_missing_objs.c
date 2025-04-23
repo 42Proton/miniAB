@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_missing_objs.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 05:24:16 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/05 12:58:51 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/23 19:57:43 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static t_camera	*init_default_camera(void)
 	cam = ft_calloc(1, sizeof(t_camera));
 	if (!cam)
 		return (0);
-	cam->orientation = ft_calloc(1, sizeof(t_tuple));
+	cam->nv = ft_calloc(1, sizeof(t_tuple));
 	cam->pos = ft_calloc(1, sizeof(t_tuple));
-	if (!cam->orientation || !cam->pos)
+	if (!cam->nv || !cam->pos)
 	{
-		free(cam->orientation);
+		free(cam->nv);
 		free(cam->pos);
 		free(cam);
 		return (0);

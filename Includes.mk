@@ -1,7 +1,7 @@
 SRCS= \
 	main.c\
 	cleaner.c\
-	keyhooks.c\
+	hooks.c\
 	object_utils.c\
 	init.c\
 	input_parser.c\

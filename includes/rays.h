@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/21 19:30:23 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 17:35:47 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ t_ray				transform_ray(t_matrix *m, t_ray *ray);
 t_tuple				sphere_normal(t_sphere *obj, t_tuple *p);
 t_tuple				reflect_vec(t_tuple *vec, t_tuple *norm);
 t_tuple				normal_at(void *obj, int obj_type, t_tuple *p);
+t_ray				ray_pixel(t_camera *cam, float x, float y);
 // Extra Utils
 float				cylinder_first_root(t_quad_eq quad, t_ray *ray_transform,
 						t_object_entry *object);

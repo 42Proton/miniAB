@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/23 02:34:08 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 20:00:40 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void			simple_report(int issue);
 void			issue_report(t_parser *parser, int issue);
 
 // Hooks
-void			keyhook(struct mlx_key_data keydata, void *rts);
+void			keyhook(struct mlx_key_data keydata, void *rtptr);
 
 // Initalization
 int				check_args(int ac, char **av);

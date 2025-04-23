@@ -1,41 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vision_cleaner.c                                   :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 01:00:17 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/23 19:58:05 by amsaleh          ###   ########.fr       */
+/*   Created: 2025/02/07 20:42:32 by abueskander       #+#    #+#             */
+/*   Updated: 2025/04/23 19:59:07 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-void	free_ambient(t_alight *al)
+void	keyhook(struct mlx_key_data keydata, void *rtptr)
 {
-	if (al)
-	{
-		free(al->colors);
-		free(al);
-	}
-}
-
-void	free_light(t_light *light)
-{
-	free(light->colors);
-	free(light->pos);
-	free(light);
-}
-
-void	free_camera(t_camera *camera)
-{
-	if (camera)
-	{
-		free(camera->nv);
-		free(camera->pos);
-		free_matrix(camera->transform);
-		free_matrix(camera->inv_t);
-		free(camera);
-	}
+	if (keydata.key == MLX_KEY_ESCAPE)
+		cleaner(rtptr);
 }

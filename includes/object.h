@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/23 00:52:56 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/23 20:00:21 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ typedef struct s_tuple
 	float			z;
 	float			w;
 }					t_tuple;
+
+typedef struct s_vec2i
+{
+	int	x;
+	int	y;
+}	t_vec2i;
 
 typedef struct s_matrix
 {
@@ -81,7 +87,7 @@ typedef struct s_alight
 typedef struct s_camera
 {
 	t_tuple			*pos;
-	t_tuple			*orientation;
+	t_tuple			*nv;
 	t_matrix		*transform;
 	t_matrix		*inv_t;
 	float			fov;
@@ -229,6 +235,7 @@ t_matrix			*translation_m(t_tuple *pos);
 t_matrix			*rotation_m(t_tuple *vec);
 t_matrix			*scale_m(t_tuple *vec);
 t_matrix			*lookat_m(t_tuple *to);
+t_matrix			*lookat_m_cam(t_camera *cam);
 // Material
 t_material			init_material(t_colors *colors, float diffuse,
 						float specular, float shininess);
