@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:33:07 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/23 15:49:20 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 01:58:59 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 // defintions
 # define EPSILON 0.00001f
-# define GAMMA 2.5f
+# define GAMMA 2.2f
 
 typedef struct s_colors
 {
@@ -42,7 +42,7 @@ t_colors	color_from_value(u_int32_t color_value);
 t_colors	colorscale(t_colors *colors, int scale);
 t_colors	colorpow_f(t_colors *a, float val);
 float		saturate_c(float c);
-float 		tone_map_aces(float c);
+float		tone_map_aces(float c);
 t_colors	color_black(void);
 
 #endif

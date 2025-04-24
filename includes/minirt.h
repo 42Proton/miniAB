@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/24 23:31:44 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 01:58:31 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@
 # define WID 800
 # define HEG 600
 # define SSAA 1
+# if WID <= 0
+#  define WID 400
+# endif
+# if HEG <= 0
+#  define HEG 400
+# endif
+# if SSAA <= 0
+#  define SSAA 1
+# endif
 
 typedef struct s_rtptr	t_rtptr;
 
