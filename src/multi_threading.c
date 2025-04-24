@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 03:29:18 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/23 00:43:48 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/24 23:15:32 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	render_section(t_thread_data *data)
 	int			y;
 
 	y = 0;
-	while (y < HEG)
+	while (y < data->rts->height)
 	{
 		x = data->start_x;
 		while (x < data->end_x)
@@ -60,7 +60,7 @@ void	*thread_routine(void *arg)
 	int				offset_x;
 
 	data = arg;
-	offset_x = WID / data->n_procs;
+	offset_x = data->rts->width / data->n_procs;
 	data->start_x = data->t_num * offset_x;
 	data->end_x = (data->t_num + 1) * offset_x;
 	render_section(data);

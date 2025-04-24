@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 12:38:56 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/21 19:55:56 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/24 17:44:45 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ t_material	*get_material(int obj_type, void *obj)
 {
 	t_material	*mat;
 
-	mat = 0;
 	if (obj_type == SPHERE)
 		mat = &((t_sphere *)obj)->mat;
 	else if (obj_type == PLANE)
 		mat = &((t_plane *)obj)->mat;
 	else if (obj_type == CYLINDER)
 		mat = &((t_cylinder *)obj)->mat;
-	else if (obj_type == HYPER)
+	else
 		mat = &((t_hyper *)obj)->mat;
 	return (mat);
 }

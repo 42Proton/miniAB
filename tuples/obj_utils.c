@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/17 23:44:45 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/24 22:11:14 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	floatcmp(float a, float b)
 
 int	tuplecmp(t_tuple *a, t_tuple *b)
 {
-	if (!a || !b)
-		return (0);
 	if (floatcmp(a->x, b->x) && floatcmp(a->y, b->y) && floatcmp(a->z, b->z)
 		&& floatcmp(a->w, b->w))
 		return (1);
@@ -33,8 +31,6 @@ int	tuplecmp(t_tuple *a, t_tuple *b)
 
 void	tupleadd(t_tuple *a, t_tuple *b)
 {
-	if (a->w + b->w > 1)
-		return ;
 	a->x = a->x + b->x;
 	a->y = a->y + b->y;
 	a->z = a->z + b->z;
@@ -43,8 +39,6 @@ void	tupleadd(t_tuple *a, t_tuple *b)
 
 void	tuplesub(t_tuple *a, t_tuple *b)
 {
-	if (!a || !b)
-		return ;
 	a->x = a->x - b->x;
 	a->y = a->y - b->y;
 	a->z = a->z - b->z;
@@ -56,8 +50,6 @@ t_tuple	tuplenegt(t_tuple *a)
 	t_tuple	res;
 
 	ft_bzero(&res, sizeof(t_tuple));
-	if (!a)
-		return (res);
 	res.x = -a->x;
 	res.y = -a->y;
 	res.z = -a->z;

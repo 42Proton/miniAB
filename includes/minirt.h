@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/23 20:00:40 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/24 23:22:46 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@
 # include <dirent.h>
 # include <sys/sysinfo.h>
 # include <pthread.h>
+# include <sys/time.h>
 # define WID 800
 # define HEG 600
-# define SSAA 3
+# define SSAA 1
 
 typedef struct s_rtptr	t_rtptr;
 
@@ -45,6 +46,8 @@ typedef struct s_thread_data
 
 struct s_rtptr
 {
+	int				width;
+	int				height;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_alight		*alight;
@@ -57,8 +60,11 @@ struct s_rtptr
 	pthread_t		*threads;
 	pthread_mutex_t	fail_mutex;
 	t_thread_data	*t_data;
+	t_object_entry	sel_obj;
+	t_tuple			sel_ray_pos;
 	int				n_procs;
 	int				is_err;
+	time_t			scroll_time;
 };
 
 typedef struct s_phong_shader
@@ -148,6 +154,8 @@ void			issue_report(t_parser *parser, int issue);
 
 // Hooks
 void			keyhook(struct mlx_key_data keydata, void *rtptr);
+void			scrollhook(int width, int height, void *rtptr);
+void			generichook(void *rtptr);
 
 // Initalization
 int				check_args(int ac, char **av);
@@ -162,7 +170,7 @@ int				sphere_postparse(t_rtptr *rts, t_sphere *obj);
 int				plane_postparse(t_rtptr *rts, t_plane *obj);
 int				cylinder_postparse(t_rtptr *rts, t_cylinder *obj);
 int				hyper_postparse(t_rtptr *rts, t_hyper *obj);
-int				camera_portparse(t_camera *obj);
+void			camera_portparse(t_camera *obj, int width, int height);
 int				prep_objs_postparse(t_rtptr *rts);
 void			prep_lights_postparse(t_rtptr *rts);
 int				handle_missing_objs(t_rtptr *rts);
@@ -186,6 +194,7 @@ int				prep_rt_core(int ac, char **av, t_rtptr *rts);
 // Render
 t_colors		shade_hit(t_rtptr *rts, t_computes *comp, int depth);
 int				render_viewport(t_rtptr *rts);
+int				render_scene(t_rtptr *rts);
 // SSAA
 
 // utils
@@ -227,5 +236,7 @@ int				check_error(t_rtptr *rts);
 void			render_section(t_thread_data *data);
 void			*thread_routine(void *arg);
 void			prep_threads_data(t_rtptr *rts);
+int				spawn_threads(t_rtptr *rts);
+int				setup_threads(t_rtptr *rts);
 
 #endif

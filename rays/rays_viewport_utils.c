@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 12:21:32 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/21 19:55:47 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/24 23:20:40 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ t_ray	ray_pixel(t_camera *cam, float x, float y)
 
 	data.world_x = cam->hwidth - (x + 0.5f) * cam->pixel_size;
 	data.world_y = cam->hheight - (y + 0.5f) * cam->pixel_size;
-	data.world_origin = point(0, 0, 0);
 	data.world_point = point(data.world_x, data.world_y, -1);
-	data.world_origin = transform_f(cam->inv_t, &data.world_origin);
 	data.world_point = transform_f(cam->inv_t, &data.world_point);
-	data.ray_direction = n_tuplesub(&data.world_point, &data.world_origin);
+	data.ray_direction = n_tuplesub(&data.world_point, &cam->origin);
 	data.ray_direction = tuplenormalize(&data.ray_direction);
-	data.ray = init_ray(&data.world_origin, &data.ray_direction);
+	data.ray = init_ray(&cam->origin, &data.ray_direction);
 	return (data.ray);
 }
 

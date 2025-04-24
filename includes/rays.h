@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/23 17:35:47 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/24 23:20:50 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_ray_pixel
 {
 	float			world_x;
 	float			world_y;
-	t_tuple			world_origin;
 	t_tuple			world_point;
 	t_ray			ray;
 	t_tuple			ray_direction;

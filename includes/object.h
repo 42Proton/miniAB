@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/23 20:00:21 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/24 23:19:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_camera
 	t_tuple			*nv;
 	t_matrix		*transform;
 	t_matrix		*inv_t;
+	t_tuple			origin;
 	float			fov;
 	float			hwidth;
 	float			hheight;

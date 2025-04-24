@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 09:16:30 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/20 19:45:12 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/24 17:43:42 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,13 @@ t_tuple	normal_at(void *obj, int obj_type, t_tuple *p)
 {
 	t_tuple	nv;
 
-	ft_bzero(&nv, sizeof(t_tuple));
 	if (obj_type == SPHERE)
 		nv = sphere_normal(obj, p);
 	else if (obj_type == PLANE)
 		nv = plane_normal(obj);
 	if (obj_type == HYPER)
 		nv = hyper_normal(obj, p);
-	else if (obj_type == CYLINDER)
+	else
 		nv = cylinder_normal(obj, p);
 	return (nv);
 }

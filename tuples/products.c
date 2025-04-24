@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:14:02 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/22 17:34:27 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/24 22:11:35 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ t_tuple	tuplecross(t_tuple *a, t_tuple *b)
 {
 	t_tuple	res;
 
-	ft_bzero(&res, sizeof(t_tuple));
-	if (!a || !b)
-		return (res);
 	res.x = a->y * b->z - b->y * a->z;
 	res.y = a->z * b->x - b->z * a->x;
 	res.z = a->x * b->y - b->x * a->y;
@@ -30,8 +27,6 @@ float	tupledot(t_tuple *a, t_tuple *b)
 {
 	float	res;
 
-	if (!a || !b)
-		return (0);
 	res = a->x * b->x;
 	res += a->y * b->y;
 	res += a->z * b->z;
