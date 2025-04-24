@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:42:32 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/24 23:24:38 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/24 23:31:36 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	scrollhook(int width, int height, void *rtptr)
 	rts = rtptr;
 	rts->width = width;
 	rts->height = height;
-	rts->scroll_time = get_timestamp();
+	rts->resize_time = get_timestamp();
 }
 
 void	generichook(void *rtptr)
@@ -43,11 +43,11 @@ void	generichook(void *rtptr)
 	t_rtptr	*rts;
 
 	rts = rtptr;
-	if (rts->scroll_time)
+	if (rts->resize_time)
 	{
-		if (get_timestamp() > rts->scroll_time)
+		if (get_timestamp() > rts->resize_time)
 		{
-			rts->scroll_time = 0;
+			rts->resize_time = 0;
 			if (!mlx_resize_image(rts->img, rts->width, rts->height))
 			{
 				ft_dprintf(STDERR_FILENO, "mlx_resize_image failure");

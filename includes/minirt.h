@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/24 23:22:46 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/24 23:31:44 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ struct s_rtptr
 	t_tuple			sel_ray_pos;
 	int				n_procs;
 	int				is_err;
-	time_t			scroll_time;
+	time_t			resize_time;
 };
 
 typedef struct s_phong_shader
