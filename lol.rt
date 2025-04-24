@@ -8,7 +8,7 @@ cy 0,0,200 0.5,0.5,0 2 4 0,0,0 bump:Glass_Frosted_001_normal.png reflect:1
 
 pl 50,0,0 1,0,0 0,0,0 color:Brick_Wall_012_COLOR.png bump:Brick_Wall_012_NORM.png
 
-pl 0,70,0 0,1,0 0,0,0 color:Brick_Wall_012_COLOR.png 
-pl 0,-40,0 0,-1,0 0,0,0 color:Brick_Wall_012_COLOR.png
+pl 0,70,0 0,1,0 0,0,0 color:Brick_Wall_012_COLOR.png bump:Brick_Wall_012_NORM.png
+pl 0,-40,0 0,-1,0 0,0,0 color:Brick_Wall_012_COLOR.png bump:Brick_Wall_012_NORM.png
 pl 0,0,100 0,0,1 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png
 pl 0,0,-100 0,0,-1 0,0,0 color:Abstract_Organic_002_COLOR.png bump:Abstract_Organic_002_NORM.png
