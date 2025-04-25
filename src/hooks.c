@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:42:32 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/24 23:31:36 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 04:26:18 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	generichook(void *rtptr)
 				ft_dprintf(STDERR_FILENO, "mlx_resize_image failure");
 				cleaner(rts);
 			}
+			camera_portparse(rts->camera, rts->width, rts->height);
 			if (render_scene(rts))
 				cleaner(rts);
 		}
