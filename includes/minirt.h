@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/25 01:58:31 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 04:27:15 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ void			issue_report(t_parser *parser, int issue);
 
 // Hooks
 void			keyhook(struct mlx_key_data keydata, void *rtptr);
-void			scrollhook(int width, int height, void *rtptr);
+void			resizehook(int width, int height, void *rtptr);
 void			generichook(void *rtptr);
 
 // Initalization

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:42:32 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/25 04:26:18 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 04:27:18 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	keyhook(struct mlx_key_data keydata, void *rtptr)
 		cleaner(rtptr);
 }
 
-void	scrollhook(int width, int height, void *rtptr)
+void	resizehook(int width, int height, void *rtptr)
 {
 	t_rtptr			*rts;
 
