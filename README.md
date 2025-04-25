@@ -26,3 +26,6 @@ Our raytracer supports wide ranges of features:
 * Learn OpenGL: https://learnopengl.com/
 * opengl-tutorial: https://www.opengl-tutorial.org/
 * Scratchapixel: https://www.scratchapixel.com/
+* ACES Filmic Tone Mapping Curve: https://knarkowicz.wordpress.com/2016/01/06/aces-filmic-tone-mapping-curve/
+* 3D Textures: https://3dtextures.me/
+* Wolfenstein 3D Texture Library https://www.areyep.com/RIPandMCS-TextureLibrary.html
