@@ -5,7 +5,7 @@ LIBFT= libft
 MLXLIB= ./MLX42
 
 LINKERS= -L./$(LIBFT)/ -lft -L$(MLXLIB)/build/ -lmlx42 -ldl -lglfw -pthread -lm
-CFLAGS = -Wall -Werror -Werror -g -std=c99 -Ofast -I./includes/ -I./$(LIBFT)/includes/ -I$(MLXLIB)/include
+CFLAGS = -Wall -Werror -Werror -std=c99 -Ofast -I./includes/ -I./$(LIBFT)/includes/ -I$(MLXLIB)/include
 
 OBJ_DIR = build
 NAME = miniRT 
