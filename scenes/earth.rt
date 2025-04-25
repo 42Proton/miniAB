@@ -3,4 +3,4 @@ C 0,0,-50 0,0,1 90
 L -20,0,-50 0.2 50,50,50
 
 sp 0,0,0 20 0,0,0 color:2k_earth_daymap.png bump:2k_earth_daymap_norm.png phong:1,1,1
-pl 0,0,100 0,0,1 0,0,0 color:space.png phong:1,0,0
+pl 0,0,100 0,0,1 0,0,0 color:space.png phong:0,0,0
