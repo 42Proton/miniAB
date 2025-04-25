@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 23:34:37 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/04 23:18:59 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 09:42:38 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ t_matrix	*scale_m(t_tuple *vec)
 	m = ident_matrix4x4();
 	if (!m)
 		return (0);
-	set_matrix_elem(m, 0, 0, vec->x);
-	set_matrix_elem(m, 1, 1, vec->y);
-	set_matrix_elem(m, 2, 2, vec->z);
+	set_matrix_elem(m, 0, 0, vec->x + 0.01);
+	set_matrix_elem(m, 1, 1, vec->y + 0.01);
+	set_matrix_elem(m, 2, 2, vec->z + 0.01);
 	return (m);
 }
