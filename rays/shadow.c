@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 19:43:40 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/25 05:56:42 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 14:59:10 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_shadow(t_rtptr *rts, t_tuple *p, t_light	*light)
 	if (!data.insects)
 		return (-1);
 	data.insect = get_hit(data.insects);
-	if (data.insect && data.insect->t < data.dist)
+	if (data.insect && data.insect->t < data.dist - POINT_BIAS)
 		res = 1;
 	else
 		res = 0;
