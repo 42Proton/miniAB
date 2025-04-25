@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/25 05:01:23 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 07:55:17 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # include <sys/time.h>
 # define WID 800
 # define HEG 600
-# define SSAA 3
+# define SSAA 2
 # if WID <= 0
 #  define WID 400
 # endif

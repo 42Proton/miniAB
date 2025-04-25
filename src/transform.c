@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 03:33:56 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/23 19:58:04 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 08:33:58 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,8 @@
 
 int	camera_transform_m(t_camera *obj)
 {
-	int			res;
-	t_matrix	*m;
-	t_tuple		vec;
-
-	obj->transform = lookat_m(obj->nv);
+	obj->transform = lookat_m(obj->pos, obj->nv);
 	if (!obj->transform)
-		return (0);
-	vec = tuplenegt(obj->pos);
-	m = translation_m(&vec);
-	if (!m)
-		return (0);
-	res = matrix_multiply(obj->transform, m);
-	free_matrix(m);
-	if (!res)
 		return (0);
 	obj->inv_t = matrix_inverse(obj->transform);
 	if (!obj->inv_t)

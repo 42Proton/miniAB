@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:58:22 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/23 00:52:47 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 08:21:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,22 @@ void	lookat_set_vecs(t_tuple *forward, t_tuple *up, t_tuple *left)
 	*up = tuplenormalize(up);
 }
 
-t_matrix	*lookat_m(t_tuple *to)
+int	lookat_mult_translate(t_matrix *m, t_tuple *pos)
+{
+	t_tuple		vec;
+	t_matrix	*m2;
+	int			res;
+
+	vec = tuplenegt(pos);
+	m2 = translation_m(&vec);
+	if (!m2)
+		return (0);
+	res = matrix_multiply(m, m2);
+	free_matrix(m2);
+	return (res);
+}
+
+t_matrix	*lookat_m(t_tuple *pos, t_tuple *to)
 {
 	t_tuple		up;
 	t_tuple		forward;
@@ -56,5 +71,10 @@ t_matrix	*lookat_m(t_tuple *to)
 	m->data[8] = -forward.x;
 	m->data[9] = -forward.y;
 	m->data[10] = -forward.z;
+	if (!lookat_mult_translate(m, pos))
+	{
+		free_matrix(m);
+		return (0);
+	}
 	return (m);
 }
