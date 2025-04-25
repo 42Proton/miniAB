@@ -1,0 +1,7 @@
+A 0.1 0,0,0
+C 0,0,-70 0,0,1 90
+L 40,20,-50 0.2 50,50,50
+
+sp -40,10,0 15 0,0,0 color:Brick_Wall_012_COLOR.png
+sp 0,0,0 15 0,0,0 color:Brick_Wall_012_COLOR.png bump:Brick_Wall_012_NORM.png
+sp 40,-10,0 15 0,0,0 color:Brick_Wall_012_NORM.png bump:Brick_Wall_012_NORM.png
