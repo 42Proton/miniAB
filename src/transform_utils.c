@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 15:42:04 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/24 22:42:14 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 06:17:58 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ int	cylinder_tm_core(t_cylinder *obj)
 	t_tuple		vec;
 	int			res;
 
-	obj->transform = lookat_m(obj->normal_axis);
+	vec = vector(obj->dim, obj->height, obj->dim);
+	obj->transform = scale_m(&vec);
 	if (!obj->transform)
 		return (0);
-	vec = tuplenegt(obj->pos);
-	m = translation_m(&vec);
+	m = lookat_m(obj->normal_axis);
 	if (!m)
 		return (0);
 	res = matrix_multiply(obj->transform, m);
 	free_matrix(m);
 	if (!res)
 		return (0);
-	vec = vector(obj->dim, obj->dim, obj->height);
-	m = scale_m(&vec);
+	vec = tuplenegt(obj->pos);
+	m = translation_m(&vec);
 	if (!m)
 		return (0);
 	res = matrix_multiply(obj->transform, m);
@@ -46,18 +46,18 @@ int	hyper_tm_core(t_hyper *obj)
 	t_tuple		vec;
 	int			res;
 
-	obj->transform = lookat_m(obj->nv);
+	obj->transform = scale_m(obj->scale);
 	if (!obj->transform)
 		return (0);
-	vec = tuplenegt(obj->pos);
-	m = translation_m(&vec);
+	m = lookat_m(obj->nv);
 	if (!m)
 		return (0);
 	res = matrix_multiply(obj->transform, m);
 	free_matrix(m);
 	if (!res)
 		return (0);
-	m = scale_m(obj->scale);
+	vec = tuplenegt(obj->pos);
+	m = translation_m(&vec);
 	if (!m)
 		return (0);
 	res = matrix_multiply(obj->transform, m);
