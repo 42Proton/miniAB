@@ -18,6 +18,8 @@ Our raytracer supports wide ranges of features:
 * Bump Mapping: The support for perturbing the normal vectors of a surface to simulate the look of uneven surface.
 * Reflection: The support of reflective surface with recursive ray intersections.
 * Field of view (FOV): Implementation of fov to control the focal length of the camera.
+* Gamma Correction: Ability to control the gamma in the shader
+* HDR: Ability to represent colors in high dynamic range then converted to LDR with ACES approximation
 # Resources:
 * OpenGL Programming: http://www.opengl-redbook.com/
 * The Ray Tracer Challenege: https://pragprog.com/titles/jbtracer/the-ray-tracer-challenge/
