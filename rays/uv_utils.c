@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:57:07 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/25 04:58:25 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:52:42 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ t_uv	compute_sphere_uv(t_computes *comps)
 	t_tuple	nv;
 
 	nv = comps->nv;
-	uv.u = (asinf(nv.x) / M_PI) + 0.5;
-	uv.v = (asinf(nv.y) / M_PI) + 0.5;
+	uv.u = (asinf(nv.x) / PI) + 0.5;
+	uv.v = (asinf(nv.y) / PI) + 0.5;
 	return (uv);
 }
 
@@ -71,7 +71,7 @@ t_uv	compute_cylinder_uv(t_cylinder *obj, t_tuple *p)
 
 	inv_p = transform_f(obj->inv_t, p);
 	theta = atan2f(inv_p.x, inv_p.y);
-	uv.u = theta / (2 * M_PI);
+	uv.u = theta / TAU;
 	uv.u = 1 - (uv.u + 0.5);
 	uv.v = fmod(inv_p.z - floorf(inv_p.z), 1);
 	return (uv);
@@ -86,9 +86,9 @@ t_uv	compute_hyper_uv(t_hyper *obj, t_tuple *p)
 	uv.u = atanf(obj->coeffs->x / obj->coeffs->z
 			* inv_p.z / inv_p.x);
 	if (uv.u < 0)
-		uv.u += 2 * M_PI;
+		uv.u += TAU;
 	uv.v = asinhf(inv_p.y / obj->coeffs->y);
-	uv.u /= 2 * M_PI;
+	uv.u /= TAU;
 	uv.v = fmod(uv.v - floorf(uv.v), 1);
 	return (uv);
 }

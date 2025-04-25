@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 12:33:07 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/25 01:58:59 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:52:33 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <libft.h>
 
 // defintions
+# define TAU 6.283185307f
+# define PI_180 0.0174532925f
+# define PI_2 1.570796326794f
+# define PI 3.141592653589f
 # define EPSILON 0.00001f
 # define GAMMA 2.2f
 
