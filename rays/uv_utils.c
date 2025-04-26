@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:57:07 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/26 05:55:09 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/27 01:49:06 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ t_uv	compute_cylinder_uv(t_cylinder *obj, t_tuple *p)
 
 	inv_p = transform_f(obj->inv_t, p);
 	if (floatcmp(inv_p.z, obj->height) || floatcmp(inv_p.z, -obj->height))
-		return (compute_disk_uv(obj, p));
+	{
+		uv = compute_disk_uv(obj, p);
+		return (uv);
+	}
 	theta = atan2f(inv_p.x, inv_p.y);
 	uv.u = theta / TAU;
 	uv.u = 1 - (uv.u + 0.5);
