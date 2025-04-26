@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/27 00:08:38 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/27 00:16:27 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ struct s_rtptr
 	t_tuple			sel_ray_pos;
 	int				n_procs;
 	int				is_err;
+	int				is_mutex_init;
 	time_t			resize_time;
 };
 
