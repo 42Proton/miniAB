@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/26 23:02:09 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/27 00:08:38 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ typedef struct s_thread_data
 {
 	t_rtptr	*rts;
 	int		start_x;
+	int		start_y;
 	int		end_x;
+	int		end_y;
 	int		t_num;
 	int		n_procs;
 }	t_thread_data;
@@ -243,8 +245,7 @@ void			set_error(t_rtptr *rts);
 int				check_error(t_rtptr *rts);
 void			render_section(t_thread_data *data);
 void			*thread_routine(void *arg);
-void			prep_threads_data(t_rtptr *rts);
+int				prep_threads_data(t_rtptr *rts);
 int				spawn_threads(t_rtptr *rts);
-int				setup_threads(t_rtptr *rts);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 03:29:18 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/24 23:15:32 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 23:58:12 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,23 @@ void	*thread_routine(void *arg)
 	return (0);
 }
 
-void	prep_threads_data(t_rtptr *rts)
+int	prep_threads_data(t_rtptr *rts)
 {
 	int	i;
 
 	i = 0;
+	free(rts->threads);
+	free(rts->t_data);
+	rts->n_procs = get_nprocs();
+	if (rts->n_procs > rts->width)
+		rts->n_procs = rts->width;
+	rts->threads = malloc(rts->n_procs * sizeof(pthread_t));
+	rts->t_data = ft_calloc(rts->n_procs, sizeof(t_thread_data));
+	if (!rts->threads || !rts->t_data)
+	{
+		perror("malloc");
+		return (0);
+	}
 	while (i < rts->n_procs)
 	{
 		rts->t_data[i].rts = rts;
@@ -79,4 +91,5 @@ void	prep_threads_data(t_rtptr *rts)
 		rts->t_data[i].t_num = i;
 		i++;
 	}
+	return (1);
 }

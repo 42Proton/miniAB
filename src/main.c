@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:48 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/25 04:27:04 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/27 00:00:30 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ int	main(int ac, char **av)
 		cleaner(&rts);
 	if (init_mlx(&rts))
 		cleaner(&rts);
-	if (setup_threads(&rts))
+	if (pthread_mutex_init(&rts.fail_mutex, 0))
+	{
+		ft_dprintf(STDERR_FILENO, "pthread_mutex_init failure\n");
 		cleaner(&rts);
+	}
 	if (render_scene(&rts))
 		cleaner(&rts);
 	mlx_image_to_window(rts.mlx, rts.img, 0, 0);
