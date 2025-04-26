@@ -6,11 +6,10 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:46:45 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/18 13:45:37 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 23:00:25 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <debug.h>
 #include <rays.h>
 
 float	check_plane_intersect(t_plane *plane, t_ray *ray)

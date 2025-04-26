@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:42:32 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/26 17:08:07 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 22:51:08 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ void	resizehook(int width, int height, void *rtptr)
 	rts = rtptr;
 	rts->width = width;
 	rts->height = height;
-	if (rts->resize_time != -1)
-		rts->resize_time = get_timestamp_sec();
+	rts->resize_time = get_timestamp_sec();
 }
 
 void	generichook(void *rtptr)
@@ -46,7 +45,6 @@ void	generichook(void *rtptr)
 	{
 		if (get_timestamp_sec() > rts->resize_time + 3)
 		{
-			rts->resize_time = -1;
 			if (!mlx_resize_image(rts->img, rts->width, rts->height))
 			{
 				ft_dprintf(STDERR_FILENO, "mlx_resize_image failure");

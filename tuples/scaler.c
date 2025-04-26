@@ -6,26 +6,11 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:07:54 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/24 22:13:16 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 22:56:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <object.h>
-#include <stdio.h>
-
-void	tuplesmult(t_tuple *a, float scale)
-{
-	a->x = a->x * scale;
-	a->y = a->y * scale;
-	a->z = a->z * scale;
-}
-
-void	tuplesdiv(t_tuple *a, float scale)
-{
-	a->x = a->x / scale;
-	a->y = a->y / scale;
-	a->z = a->z / scale;
-}
 
 float	tuplemagnitude(t_tuple *a)
 {

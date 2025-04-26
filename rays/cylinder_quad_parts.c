@@ -6,11 +6,10 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 00:37:46 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/20 19:41:24 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 23:00:19 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <debug.h>
 #include <rays.h>
 
 float	cylinder_first_part(t_ray *ray)

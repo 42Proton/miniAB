@@ -6,11 +6,10 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:41:23 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/20 18:10:36 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 23:00:22 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <debug.h>
 #include <rays.h>
 
 static float	check_hit_point_in_disk(t_ray *ray, float t, t_tuple *local_pos)

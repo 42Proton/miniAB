@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:30:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/24 22:11:14 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 22:55:28 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,6 @@ int	floatcmp(float a, float b)
 		return (1);
 	else
 		return (0);
-}
-
-int	tuplecmp(t_tuple *a, t_tuple *b)
-{
-	if (floatcmp(a->x, b->x) && floatcmp(a->y, b->y) && floatcmp(a->z, b->z)
-		&& floatcmp(a->w, b->w))
-		return (1);
-	else
-		return (0);
-}
-
-void	tupleadd(t_tuple *a, t_tuple *b)
-{
-	a->x = a->x + b->x;
-	a->y = a->y + b->y;
-	a->z = a->z + b->z;
-	a->w = a->w + b->w;
-}
-
-void	tuplesub(t_tuple *a, t_tuple *b)
-{
-	a->x = a->x - b->x;
-	a->y = a->y - b->y;
-	a->z = a->z - b->z;
-	a->w = a->w - b->w;
 }
 
 t_tuple	tuplenegt(t_tuple *a)

@@ -20,12 +20,10 @@ SRCS= \
 	validate_utils_float.c\
 	validate_vision.c\
 	validate_object.c\
-	debug.c\
 	transform.c\
 	material.c\
 	postparse_utils.c\
 	handle_missing_objs.c\
-	testing.c\
 	shader.c\
 	validate_utils_extra.c\
 	validate_utils_extra2.c\
@@ -43,7 +41,6 @@ TUPLES=\
 	tuples.c\
 	obj_utils.c\
 	obj_utils_new.c\
-	obj_utils_s.c\
 	scaler.c\
 	normalization.c\
 	products.c
@@ -60,8 +57,7 @@ MATRIX=\
 	determinant.c\
 	submatrix.c\
 	matrix_inv.c\
-	matrix_mult.c\
-	rotation_matrix.c
+	matrix_mult.c
 RAYS=\
 	intersections.c\
 	rays.c\
@@ -85,7 +81,6 @@ RAYS=\
 	disk_uv.c
 INCLUDES=\
 	colors.h\
-	debug.h\
 	minirt.h\
 	object.h\
 	rays.h\

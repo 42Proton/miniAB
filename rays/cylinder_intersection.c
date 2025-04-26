@@ -6,11 +6,10 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 14:35:39 by bismail           #+#    #+#             */
-/*   Updated: 2025/04/25 05:29:41 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 23:00:15 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <debug.h>
 #include <rays.h>
 
 static t_quad_eq	check_cylinder_intersect(t_cylinder *cy, t_ray *ray)

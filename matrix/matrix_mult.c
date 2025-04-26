@@ -6,12 +6,11 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 01:19:21 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/20 18:09:10 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 22:58:03 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <utils.h>
-#include <stdio.h>
 
 float	m_dot_product(t_matrix *a,
 	t_matrix *b, int i_a, int i_b)

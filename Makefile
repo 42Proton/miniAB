@@ -48,4 +48,4 @@ fclean:clean
 	@rm -f $(NAME) 
 re: fclean all
 
-.PHONY: all clean fclean re libft minilibx-linux
+.PHONY: all clean fclean re libft mlx42

@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 02:01:13 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/24 22:13:05 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 22:53:34 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,6 @@ t_tuple	n_tupleadd(t_tuple *a, t_tuple *b)
 	res.y = a->y + b->y;
 	res.z = a->z + b->z;
 	res.w = a->w + b->w;
-	return (res);
-}
-
-t_tuple	n_tuplesdiv(t_tuple *a, float scale)
-{
-	t_tuple	res;
-
-	res.x = a->x / scale;
-	res.y = a->y / scale;
-	res.z = a->z / scale;
-	res.w = a->w;
 	return (res);
 }
 

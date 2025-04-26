@@ -6,12 +6,11 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 01:51:25 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/22 14:38:17 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 22:58:07 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
-#include <debug.h>
 
 int	is_invertible(t_matrix *m)
 {

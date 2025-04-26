@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:04:22 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/25 07:28:08 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 22:56:15 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,15 +186,8 @@ enum			e_pov
 };
 
 int					floatcmp(float a, float b);
-int					tuplecmp(t_tuple *a, t_tuple *b);
 
-// Modify Old instance
-void				tuplesub(t_tuple *a, t_tuple *b);
-void				tupleadd(t_tuple *a, t_tuple *b);
-void				tuplesdiv(t_tuple *a, float scale);
-void				tuplesmult(t_tuple *a, float scale);
 // New instance
-t_tuple				n_tuplesdiv(t_tuple *a, float scale);
 t_tuple				n_tuplesmult(t_tuple *a, float scale);
 t_tuple				n_tuplesub(t_tuple *a, t_tuple *b);
 t_tuple				n_tupleadd(t_tuple *a, t_tuple *b);
@@ -206,8 +199,6 @@ float				tuplemag2(t_tuple *a);
 float				tupledot(t_tuple *a, t_tuple *b);
 t_tuple				tuplecross(t_tuple *a, t_tuple *b);
 t_tuple				tuplenormalize(t_tuple *a);
-// Stack Argument
-t_tuple				s_tuplesub(t_tuple a, t_tuple b);
 
 // Matrix functions
 int					is_invertible(t_matrix *m);
@@ -233,7 +224,6 @@ t_matrix_9			submatrix_3x3(t_matrix *m,
 t_matrix			*ident_matrix4x4(void);
 t_matrix_4			submatrix_2x2(t_matrix *m, int skip_col, int skip_row);
 t_matrix			*translation_m(t_tuple *pos);
-t_matrix			*rotation_m(t_tuple *vec);
 t_matrix			*scale_m(t_tuple *vec);
 t_matrix			*lookat_m(t_tuple *pos, t_tuple *to);
 // Material

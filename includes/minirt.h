@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/26 05:55:44 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 23:02:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # define XK_MISCELLANY
 # include <colors.h>
-# include <debug.h>
 # include <fcntl.h>
 # include <object.h>
 # include <rays.h>
@@ -23,7 +22,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <utils.h>
-# include <debug.h>
 # include <sys/types.h>
 # include <dirent.h>
 # include <sys/sysinfo.h>

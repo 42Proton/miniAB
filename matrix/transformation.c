@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   transformation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 23:56:13 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/16 22:34:36 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/26 23:00:01 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rays.h>
-#include <debug.h>
 
 t_tuple	transform_f(t_matrix *m, t_tuple *vec)
 {

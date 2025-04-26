@@ -6,12 +6,11 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:56:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/21 17:49:21 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 23:00:32 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rays.h>
-#include <debug.h>
 
 int	prep_intersections_sphere(t_intersections *res,
 	t_object_entry *obj_entry, t_quad_eq *quad_eq)

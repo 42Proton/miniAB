@@ -6,11 +6,10 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/25 17:52:09 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 23:01:28 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <debug.h>
 #include <minirt.h>
 
 t_tuple	*pos(void)
@@ -84,9 +83,9 @@ t_tuple	norm_to_radian(t_tuple *vec)
 {
 	t_tuple	res;
 
-	res.x = vec->x * (PI_2);
-	res.y = vec->y * (PI_2);
-	res.z = vec->z * (PI_2);
+	res.x = vec->x * PI_2;
+	res.y = vec->y * PI_2;
+	res.z = vec->z * PI_2;
 	res.w = VECTOR;
 	return (res);
 }
