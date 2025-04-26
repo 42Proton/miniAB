@@ -30,3 +30,4 @@ Our raytracer supports wide ranges of features:
 * ACES Filmic Tone Mapping Curve: https://knarkowicz.wordpress.com/2016/01/06/aces-filmic-tone-mapping-curve/
 * 3D Textures: https://3dtextures.me/
 * Wolfenstein 3D Texture Library https://www.areyep.com/RIPandMCS-TextureLibrary.html
+* Freepik: https://www.freepik.com/
