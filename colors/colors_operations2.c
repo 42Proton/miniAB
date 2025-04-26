@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 17:26:35 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/23 03:20:45 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 04:28:49 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ float	tone_map_aces(float c)
 {
 	float	res;
 
-	res = saturate_c(c * (2.51f * c + 0.03f))
-		/ (c * (2.43f * c + 0.59f) + 0.14f);
+	res = saturate_c(c * (2.51f * c + 0.03f)
+		/ (c * (2.43f * c + 0.59f) + 0.14f));
 	return (res);
 }
