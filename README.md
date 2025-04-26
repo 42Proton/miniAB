@@ -33,9 +33,9 @@ Scenes are defined with .rt extension which contains all the objects to render i
 | --- | --- | --- | --- |
 | C | Vec3 | Vec3 | Int |
 ## Point Light
-| ID | Position | Normal Vector | FOV |
+| ID | Position | Intensity | Color |
 | --- | --- | --- | --- |
-| L | Vec3 | Vec3 | Int |
+| L | Vec3 | Int | RGB |
 ## Plane
 | ID | Position | Normal Vector | Color |
 | --- | --- | --- | --- |
