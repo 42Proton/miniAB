@@ -1,14 +1,14 @@
 A 0 0,0,0
-C 0,0,-30 0,0,1 90
+C 0,0,-50 0,0,1 90
 L 30,0,-50 0.4 100,0,0
 L -30,0,-50 0.4 0,100,0
 
-pl 0,0,50 0,0,1 0,0,0 color:Checkerboard_tile.png
-pl 0,0,-50 0,0,-1 0,0,0 color:Checkerboard_tile.png
-pl 0,-50,0 0,-1,0 0,0,0 color:Checkerboard_tile.png
-pl 0,50,0 0,1,0 0,0,0 color:Checkerboard_tile.png
-pl 50,0,0 1,0,0 0,0,0 color:Checkerboard_tile.png
-pl -50,0,0 -1,0,0 0,0,0 color:Checkerboard_tile.png
+pl 0,0,60 0,0,1 0,0,0 color:Checkerboard_tile.png
+pl 0,0,-60 0,0,-1 0,0,0 color:Checkerboard_tile.png
+pl 0,-60,0 0,-1,0 0,0,0 color:Checkerboard_tile.png
+pl 0,60,0 0,1,0 0,0,0 color:Checkerboard_tile.png
+pl 60,0,0 1,0,0 0,0,0 color:Checkerboard_tile.png
+pl -60,0,0 -1,0,0 0,0,0 color:Checkerboard_tile.png
 
 sp -5,10,10 2 0,0,0 color:eye_map.png bump:eye_norm.png reflect:0.1
 sp 5,10,10 2 0,0,0 color:eye_map.png bump:eye_norm.png reflect:0.1
