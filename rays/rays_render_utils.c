@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/25 16:44:27 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 03:58:31 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray, int depth)
 	if (depth == REFLECT_MAX_DEPTH)
 		return (res);
 	insects = world_intersect(rts->solid_objs, ray);
-	ft_bzero(&res, sizeof(t_colors));
 	if (!insects)
 	{
 		set_error(rts);
