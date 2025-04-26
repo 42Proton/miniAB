@@ -21,6 +21,7 @@ Our raytracer supports wide ranges of features:
 * Gamma Correction: Ability to control the gamma in the shader
 * HDR: Ability to represent colors in high dynamic range then converted to LDR with ACES approximation
 # Resources:
+* MLX42: https://github.com/codam-coding-college/MLX42
 * OpenGL Programming: http://www.opengl-redbook.com/
 * The Ray Tracer Challenege: https://pragprog.com/titles/jbtracer/the-ray-tracer-challenge/
 * Learn OpenGL: https://learnopengl.com/
