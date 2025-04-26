@@ -31,3 +31,4 @@ Our raytracer supports wide ranges of features:
 * 3D Textures: https://3dtextures.me/
 * Wolfenstein 3D Texture Library https://www.areyep.com/RIPandMCS-TextureLibrary.html
 * Freepik: https://www.freepik.com/
+* Planets Texture Maps: https://www.solarsystemscope.com/
