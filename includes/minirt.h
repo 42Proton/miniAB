@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/25 09:24:04 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 05:55:44 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,6 +221,7 @@ t_uv			compute_plane_uv(t_plane *obj, t_tuple *p);
 t_uv			compute_sphere_uv(t_computes *comps);
 t_uv			compute_hyper_uv(t_hyper *obj, t_tuple *p);
 t_uv			compute_cylinder_uv(t_cylinder *obj, t_tuple *p);
+t_uv			compute_disk_uv(t_cylinder *obj, t_tuple *p);
 // Shader Utils
 void			shader_vision_iter(t_phong_shader *shader,
 					t_computes *comp, t_list *vision_objs);
@@ -237,7 +238,7 @@ t_tuple			bump_normal(void *obj, int obj_type, t_computes *comps);
 t_tuple			get_tangent_plane(t_tuple *nv);
 t_tuple			get_tangent_hyper(t_uv *uv);
 t_tuple			get_tangent_sphere(t_uv *uv);
-t_tuple			get_tangent_cylinder(t_uv *uv);
+t_tuple			get_tangent_cylinder(t_computes *comps);
 
 // Multi-Threading
 void			set_error(t_rtptr *rts);

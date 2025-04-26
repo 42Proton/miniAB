@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 19:39:39 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/23 03:18:50 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 05:50:20 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_tuple	get_tangent_sphere(t_uv *uv)
 	return (vec);
 }
 
-t_tuple	get_tangent_cylinder(t_uv *uv)
+t_tuple	get_tangent_cylinder_m(t_uv *uv)
 {
 	t_tuple	vec;
 	float	su;
@@ -76,5 +76,20 @@ t_tuple	get_tangent_cylinder(t_uv *uv)
 	cu = cosf(uv->u);
 	vec = vector(-su, 0, cu);
 	vec = tuplenormalize(&vec);
+	return (vec);
+}
+
+t_tuple	get_tangent_cylinder(t_computes *comps)
+{
+	t_tuple		inv_p;
+	t_cylinder	*obj;
+	t_tuple		vec;
+
+	obj = comps->insect->obj;
+	inv_p = transform_f(obj->inv_t, &comps->hpoint);
+	if (floatcmp(inv_p.z, obj->height) || floatcmp(inv_p.z, -obj->height))
+		vec = get_tangent_plane(&comps->nv);
+	else
+		vec = get_tangent_cylinder_m(&comps->uv);
 	return (vec);
 }

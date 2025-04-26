@@ -81,7 +81,8 @@ RAYS=\
 	disk_intersection.c\
 	bump_mapping_utils.c\
 	intersections_utils.c\
-	normal_vec_utils.c
+	normal_vec_utils.c\
+	disk_uv.c
 INCLUDES=\
 	colors.h\
 	debug.h\
