@@ -20,6 +20,7 @@ Our raytracer supports wide ranges of features:
 * Field of view (FOV): Implementation of fov to control the focal length of the camera.
 * Gamma Correction: Ability to control the gamma in the shader
 * HDR: Ability to represent colors in high dynamic range then converted to LDR with ACES approximation
+* Supersampling: The ability to represent colors in the scene more accuratly by shooting multiple rays for each pixel
 # How to use:
 First compile the project by running make then run the miniRT executable with an scene provided as argument.
 # Scenes
@@ -68,8 +69,19 @@ All primitvies has miscellaneous properties which can be provided after the requ
 * opengl-tutorial: https://www.opengl-tutorial.org/
 * Scratchapixel: https://www.scratchapixel.com/
 * ACES Filmic Tone Mapping Curve: https://knarkowicz.wordpress.com/2016/01/06/aces-filmic-tone-mapping-curve/
+* Writing a Raytracer in Rust Part 3: https://bheisler.github.io/post/writing-raytracer-in-rust-part-3/
+* Supersampling: https://en.wikipedia.org/wiki/Supersampling
+* Cartesian Coordinate System: https://en.wikipedia.org/wiki/Cartesian_coordinate_system
+* Spherical Coordinate System: https://en.wikipedia.org/wiki/Spherical_coordinate_system
+* Cylindrical Coordinate System: https://en.wikipedia.org/wiki/Cylindrical_coordinate_system
 * 3D Textures: https://3dtextures.me/
 * Wolfenstein 3D Texture Library https://www.areyep.com/RIPandMCS-TextureLibrary.html
 * Freepik: https://www.freepik.com/
 * Planets Texture Maps: https://www.solarsystemscope.com/
 * NormalMap Online: https://cpetry.github.io/NormalMap-Online/
+# Testing Tools:
+* Jupyter: https://jupyter.org/
+* Numpy: https://numpy.org/
+* ImageIO: https://pypi.org/project/imageio/
+* Seaborn: https://seaborn.pydata.org/
+* SymPy: https://www.sympy.org/en/index.html
