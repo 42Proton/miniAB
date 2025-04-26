@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_utils_new.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bismail <bismail@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 02:01:13 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/05 13:18:10 by bismail          ###   ########.fr       */
+/*   Updated: 2025/04/24 22:13:05 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ t_tuple	n_tuplesub(t_tuple *a, t_tuple *b)
 {
 	t_tuple	res;
 
-	ft_bzero(&res, sizeof(t_tuple));
-	if (!a || !b)
-		return (res);
 	res.x = a->x - b->x;
 	res.y = a->y - b->y;
 	res.z = a->z - b->z;
@@ -30,9 +27,6 @@ t_tuple	n_tupleadd(t_tuple *a, t_tuple *b)
 {
 	t_tuple	res;
 
-	ft_bzero(&res, sizeof(t_tuple));
-	if (!a || !b)
-		return (res);
 	res.x = a->x + b->x;
 	res.y = a->y + b->y;
 	res.z = a->z + b->z;
@@ -44,9 +38,6 @@ t_tuple	n_tuplesdiv(t_tuple *a, float scale)
 {
 	t_tuple	res;
 
-	ft_bzero(&res, sizeof(t_tuple));
-	if (!a)
-		return (res);
 	res.x = a->x / scale;
 	res.y = a->y / scale;
 	res.z = a->z / scale;
@@ -58,9 +49,6 @@ t_tuple	n_tuplesmult(t_tuple *a, float scale)
 {
 	t_tuple	res;
 
-	ft_bzero(&res, sizeof(t_tuple));
-	if (!a)
-		return (res);
 	res.x = a->x * scale;
 	res.y = a->y * scale;
 	res.z = a->z * scale;

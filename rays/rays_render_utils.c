@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:13:10 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/19 23:17:52 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 03:58:31 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,15 @@ t_colors	get_insect_color(t_rtptr *rts,
 			return (res);
 		}
 		res = shade_hit(rts, &comp, depth);
+		if (comp.is_err)
+		{
+			set_error(rts);
+			return (res);
+		}
 	}
 	else
-		res = colorinit(ft_fabs(ray->direction.y) * rts->alight->ratio, 0.8
-				* rts->alight->ratio, 0.8 * rts->alight->ratio);
+		res = colorinit((ft_fabs(ray->direction.y) * 0.2)
+				* rts->alight->ratio, rts->alight->ratio, rts->alight->ratio);
 	return (res);
 }
 
@@ -46,7 +51,6 @@ t_colors	ray_color(t_rtptr *rts, t_ray *ray, int depth)
 	if (depth == REFLECT_MAX_DEPTH)
 		return (res);
 	insects = world_intersect(rts->solid_objs, ray);
-	ft_bzero(&res, sizeof(t_colors));
 	if (!insects)
 	{
 		set_error(rts);

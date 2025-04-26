@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 23:13:28 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/20 19:39:47 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 05:50:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ t_tuple	get_tangent(void *obj, int obj_type, t_computes *comps)
 {
 	t_tuple	tangent;
 
-	ft_bzero(&tangent, sizeof(t_tuple));
 	if (obj_type == PLANE)
 		tangent = get_tangent_plane(&comps->nv);
 	else if (obj_type == SPHERE)
 		tangent = get_tangent_sphere(&comps->uv);
 	else if (obj_type == CYLINDER)
-		tangent = get_tangent_cylinder(&comps->uv);
-	else if (obj_type == HYPER)
+		tangent = get_tangent_cylinder(comps);
+	else
 		tangent = get_tangent_hyper(&comps->uv);
 	return (tangent);
 }

@@ -1,0 +1,12 @@
+A 0 0,0,0
+C 0,0,-70 0,0,1 90
+L 0,20,-40 0.2 50,50,50
+
+pl 0,0,100 0,0,1 0,0,0 reflect:1
+pl 0,-30,0 0,-1,0 0,0,0 color:Checkerboard_tile.png
+pl 0,30,0 0,1,0 0,0,0 color:Tiles_054_basecolor.png bump:Tiles_054_normal.png
+
+hy 0,0,0 3,3,20 0.5,0.3,0.5 1,1,1 0,0,255 reflect:1
+cy 0,0,0 -0.5,0.3,0.5 3 20 255,0,255 reflect:1
+
+sp 0,-10,0 5 255,0,0 reflect:1

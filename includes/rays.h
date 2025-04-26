@@ -6,14 +6,14 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 22:00:36 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/20 19:45:56 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 03:59:18 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYS_H
 # define RAYS_H
 
-# define POINT_BIAS 0.1
+# define POINT_BIAS 0.1f
 # define REFLECT_MAX_DEPTH 10
 
 # include <object.h>
@@ -42,7 +42,6 @@ typedef struct s_computes
 	t_tuple		over_point;
 	t_colors	map_color;
 	t_uv		uv;
-	int			is_shadow;
 	int			is_err;
 }				t_computes;
 
@@ -64,7 +63,6 @@ typedef struct s_ray_pixel
 {
 	float			world_x;
 	float			world_y;
-	t_tuple			world_origin;
 	t_tuple			world_point;
 	t_ray			ray;
 	t_tuple			ray_direction;
@@ -77,7 +75,6 @@ typedef struct s_shadow
 	t_tuple			v;
 	t_tuple			direction;
 	t_light			*light;
-	t_list			*vision_objs;
 	t_ray			ray;
 	float			dist;
 }					t_shadow;
@@ -112,6 +109,7 @@ t_ray				transform_ray(t_matrix *m, t_ray *ray);
 t_tuple				sphere_normal(t_sphere *obj, t_tuple *p);
 t_tuple				reflect_vec(t_tuple *vec, t_tuple *norm);
 t_tuple				normal_at(void *obj, int obj_type, t_tuple *p);
+t_ray				ray_pixel(t_camera *cam, float x, float y);
 // Extra Utils
 float				cylinder_first_root(t_quad_eq quad, t_ray *ray_transform,
 						t_object_entry *object);

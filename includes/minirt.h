@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 09:55:59 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/20 19:49:24 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 05:55:44 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,19 @@
 # include <dirent.h>
 # include <sys/sysinfo.h>
 # include <pthread.h>
+# include <sys/time.h>
 # define WID 800
 # define HEG 600
-# define SSAA 1
+# define SSAA 3
+# if WID <= 0
+#  define WID 400
+# endif
+# if HEG <= 0
+#  define HEG 400
+# endif
+# if SSAA <= 0
+#  define SSAA 1
+# endif
 
 typedef struct s_rtptr	t_rtptr;
 
@@ -38,15 +48,15 @@ typedef struct s_thread_data
 {
 	t_rtptr	*rts;
 	int		start_x;
-	int		start_y;
 	int		end_x;
-	int		end_y;
 	int		t_num;
 	int		n_procs;
 }	t_thread_data;
 
 struct s_rtptr
 {
+	int				width;
+	int				height;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	t_alight		*alight;
@@ -59,8 +69,11 @@ struct s_rtptr
 	pthread_t		*threads;
 	pthread_mutex_t	fail_mutex;
 	t_thread_data	*t_data;
+	t_object_entry	sel_obj;
+	t_tuple			sel_ray_pos;
 	int				n_procs;
 	int				is_err;
+	time_t			resize_time;
 };
 
 typedef struct s_phong_shader
@@ -149,7 +162,9 @@ void			simple_report(int issue);
 void			issue_report(t_parser *parser, int issue);
 
 // Hooks
-void			keyhook(struct mlx_key_data keydata, void *rts);
+void			keyhook(struct mlx_key_data keydata, void *rtptr);
+void			resizehook(int width, int height, void *rtptr);
+void			generichook(void *rtptr);
 
 // Initalization
 int				check_args(int ac, char **av);
@@ -164,7 +179,7 @@ int				sphere_postparse(t_rtptr *rts, t_sphere *obj);
 int				plane_postparse(t_rtptr *rts, t_plane *obj);
 int				cylinder_postparse(t_rtptr *rts, t_cylinder *obj);
 int				hyper_postparse(t_rtptr *rts, t_hyper *obj);
-int				camera_portparse(t_camera *obj);
+void			camera_portparse(t_camera *obj, int width, int height);
 int				prep_objs_postparse(t_rtptr *rts);
 void			prep_lights_postparse(t_rtptr *rts);
 int				handle_missing_objs(t_rtptr *rts);
@@ -188,22 +203,25 @@ int				prep_rt_core(int ac, char **av, t_rtptr *rts);
 // Render
 t_colors		shade_hit(t_rtptr *rts, t_computes *comp, int depth);
 int				render_viewport(t_rtptr *rts);
+int				render_scene(t_rtptr *rts);
 // SSAA
 
 // utils
 t_tuple			*pos(void);
+t_tuple			*norm_vec(void);
 t_colors		*color(void);
 t_tuple			norm_to_radian(t_tuple *vec);
 float			deg_to_rad(float deg);
 // Ray utils
 t_colors		scaled_ray(t_rtptr *rts, int x, int y);
 t_computes		init_computes(t_rtptr *rts, t_intersect *insect, t_ray *ray);
-int				is_shadow(t_rtptr *rts, t_tuple *p);
+int				is_shadow(t_rtptr *rts, t_tuple *p, t_light	*light);
 t_colors		ray_color(t_rtptr *rts, t_ray *ray, int depth);
 t_uv			compute_plane_uv(t_plane *obj, t_tuple *p);
 t_uv			compute_sphere_uv(t_computes *comps);
 t_uv			compute_hyper_uv(t_hyper *obj, t_tuple *p);
 t_uv			compute_cylinder_uv(t_cylinder *obj, t_tuple *p);
+t_uv			compute_disk_uv(t_cylinder *obj, t_tuple *p);
 // Shader Utils
 void			shader_vision_iter(t_phong_shader *shader,
 					t_computes *comp, t_list *vision_objs);
@@ -220,7 +238,7 @@ t_tuple			bump_normal(void *obj, int obj_type, t_computes *comps);
 t_tuple			get_tangent_plane(t_tuple *nv);
 t_tuple			get_tangent_hyper(t_uv *uv);
 t_tuple			get_tangent_sphere(t_uv *uv);
-t_tuple			get_tangent_cylinder(t_uv *uv);
+t_tuple			get_tangent_cylinder(t_computes *comps);
 
 // Multi-Threading
 void			set_error(t_rtptr *rts);
@@ -228,5 +246,7 @@ int				check_error(t_rtptr *rts);
 void			render_section(t_thread_data *data);
 void			*thread_routine(void *arg);
 void			prep_threads_data(t_rtptr *rts);
+int				spawn_threads(t_rtptr *rts);
+int				setup_threads(t_rtptr *rts);
 
 #endif

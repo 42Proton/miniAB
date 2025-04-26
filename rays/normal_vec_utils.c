@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 19:45:01 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/20 19:45:45 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/26 05:44:20 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@ t_tuple	get_cylinder_object_normal(t_tuple *object_point,
 	float height)
 {
 	t_tuple	object_normal;
-	float	dist;
 
-	dist = object_point->x * object_point->x + object_point->y
-		* object_point->y;
-	if (dist < 1.0 && fabs(object_point->z - height) < EPSILON)
+	if (floatcmp(object_point->z, height))
 		object_normal = vector(0, 0, 1);
-	else if (dist < 1.0 && fabs(object_point->z + height) < EPSILON)
+	else if (floatcmp(object_point->z, -height))
 		object_normal = vector(0, 0, -1);
 	else
 	{

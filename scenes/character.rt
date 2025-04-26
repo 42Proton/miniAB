@@ -1,0 +1,22 @@
+A 0 0,0,0
+C 0,0,-50 0,0,1 90
+L 30,0,-50 0.4 100,0,0
+L -30,0,-50 0.4 0,100,0
+
+pl 0,0,60 0,0,1 0,0,0 color:Checkerboard_tile.png
+pl 0,0,-60 0,0,-1 0,0,0 color:Checkerboard_tile.png
+pl 0,-60,0 0,-1,0 0,0,0 color:Checkerboard_tile.png
+pl 0,60,0 0,1,0 0,0,0 color:Checkerboard_tile.png
+pl 60,0,0 1,0,0 0,0,0 color:Checkerboard_tile.png
+pl -60,0,0 -1,0,0 0,0,0 color:Checkerboard_tile.png
+
+sp -5,10,10 2 0,0,0 color:eye_map.png bump:eye_norm.png reflect:0.1
+sp 5,10,10 2 0,0,0 color:eye_map.png bump:eye_norm.png reflect:0.1
+sp 0,10,18.5 10 253,197,177
+cy 0,18.5,-18 0,1,0 10 0.8 0,0,0 color:Leather_002_COLOR.png bump:Leather_002_NRM.png
+cy 0,13,-18.7 0,1,0 8 0.3 0,0,0 color:Leather_002_COLOR.png bump:Leather_002_NRM.png
+cy 0,16,10 0,1,0 5 4 255,0,0
+cy 15,16,5 0.2,0.5,0.5 2 3 255,255,0
+cy -15,16,5 -0.2,0.5,0.5 2 3 0,255,0
+cy -10,23,-15 0.2,0.6,0.2 2 3 0,255,255
+cy 10,23,-15 -0.2,0.6,0.2 2 3 0,255,255

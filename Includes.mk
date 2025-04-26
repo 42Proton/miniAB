@@ -1,7 +1,7 @@
 SRCS= \
 	main.c\
 	cleaner.c\
-	keyhooks.c\
+	hooks.c\
 	object_utils.c\
 	init.c\
 	input_parser.c\
@@ -37,7 +37,8 @@ SRCS= \
 	object_init_misc_utils.c\
 	prep_rt.c\
 	multi_threading.c\
-	transform_utils.c
+	transform_utils.c\
+	render_utils.c
 TUPLES=\
 	tuples.c\
 	obj_utils.c\
@@ -80,7 +81,8 @@ RAYS=\
 	disk_intersection.c\
 	bump_mapping_utils.c\
 	intersections_utils.c\
-	normal_vec_utils.c
+	normal_vec_utils.c\
+	disk_uv.c
 INCLUDES=\
 	colors.h\
 	debug.h\

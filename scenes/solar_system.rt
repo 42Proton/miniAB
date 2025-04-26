@@ -1,0 +1,14 @@
+A 0.2 20,5,0
+C -100,0,-250 0,0,1 90
+L -150,0,100 1 50,10,0
+
+sp -350,0,0 100 0,0,0 color:Solarsystemscope_texture_2k_sun.png bump:sun_norm.png
+sp -210,0,0 4 0,0,0 color:Solarsystemscope_texture_2k_mercury.png
+sp -180,0,0 7 0,0,0 color:Solarsystemscope_texture_2k_venus_surface.png
+sp -150,0,0 7 0,0,0 color:2k_earth_daymap.png bump:2k_earth_daymap_norm.png
+sp -110,0,0 7 0,0,0 color:Solarsystemscope_texture_2k_mars.png
+sp -50,0,0 25 0,0,0 color:Solarsystemscope_texture_2k_jupiter.png
+sp 20,0,0 6 0,0,0 color:Solarsystemscope_texture_2k_uranus.png
+sp 60,0,0 7 0,0,0 color:Solarsystemscope_texture_2k_neptune.png
+
+pl 0,0,100 0,0,1 0,0,0 phong:0,0,0

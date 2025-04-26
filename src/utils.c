@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 23:32:31 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/15 20:28:37 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/25 17:52:09 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,27 @@ t_tuple	*pos(void)
 	}
 	*res = point(ft_atof(split_vec[0]), ft_atof(split_vec[1]),
 			ft_atof(split_vec[2]));
+	free_array((void **)split_vec);
+	return (res);
+}
+
+t_tuple	*norm_vec(void)
+{
+	char	**split_vec;
+	t_tuple	*res;
+
+	split_vec = ft_split(ft_strtok(0, " \t\r\f\v\n"), ',');
+	if (!split_vec)
+		return (0);
+	res = malloc(sizeof(t_tuple));
+	if (!res)
+	{
+		free_array((void **)split_vec);
+		return (0);
+	}
+	*res = vector(ft_atof(split_vec[0]), ft_atof(split_vec[1]),
+			ft_atof(split_vec[2]));
+	*res = tuplenormalize(res);
 	free_array((void **)split_vec);
 	return (res);
 }
@@ -63,14 +84,14 @@ t_tuple	norm_to_radian(t_tuple *vec)
 {
 	t_tuple	res;
 
-	res.x = vec->x * (M_PI / 2);
-	res.y = vec->y * (M_PI / 2);
-	res.z = vec->z * (M_PI / 2);
+	res.x = vec->x * (PI_2);
+	res.y = vec->y * (PI_2);
+	res.z = vec->z * (PI_2);
 	res.w = VECTOR;
 	return (res);
 }
 
 float	deg_to_rad(float deg)
 {
-	return (deg * (M_PI / 180));
+	return (deg * PI_180);
 }

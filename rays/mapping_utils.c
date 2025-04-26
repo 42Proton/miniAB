@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 23:18:27 by amsaleh           #+#    #+#             */
-/*   Updated: 2025/04/20 19:26:47 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/21 19:55:43 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_colors	get_map_color(void *obj, int obj_type, t_computes *comps)
 	t_colors		res;
 	mlx_texture_t	*ref;
 
-	res = colorinit(0, 0, 0);
+	res = color_black();
 	ref = 0;
 	if (obj_type == PLANE && ((t_plane *)obj)->color_map_ref)
 		ref = ((t_plane *)obj)->color_map_ref;
