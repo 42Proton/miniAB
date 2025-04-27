@@ -6,7 +6,7 @@
 /*   By: amsaleh <amsaleh@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 23:41:06 by abueskander       #+#    #+#             */
-/*   Updated: 2025/04/12 17:34:31 by amsaleh          ###   ########.fr       */
+/*   Updated: 2025/04/27 19:27:33 by amsaleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,10 @@ int	parser(char *file_name, t_rtptr *rts)
 		return (EXIT_FAILURE);
 	}
 	if (read_file(file_name, fd, rts) == EXIT_FAILURE)
+	{
+		close(fd);
 		return (EXIT_FAILURE);
+	}
+	close(fd);
 	return (EXIT_SUCCESS);
 }
