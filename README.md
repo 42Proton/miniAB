@@ -3,7 +3,7 @@
 </p>
 
 # miniRT
-## Grade: N/A
+## Grade: 125
 miniRT project is about creating a simple raytracer to produce a realistic render.  
 implement such raytracer required us to learn linear algebra and calculus to understand how to perform calculation in 3D space properly and learning to 
 the usage of matrices to transform the point in different spaces like World Space, Object Space, Tangent Space and the process of implementing cartesian coordinates system and converting a point in it to different coordinate systems and the usage of vectors to apply
